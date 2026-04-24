@@ -1,0 +1,727 @@
+10:32:28 INFO src.model_v6_conv2d: ============================================================
+10:32:28 INFO src.model_v6_conv2d: V6.0 Conv2D — hourly prediction (18, 12, 7)
+10:32:28 INFO src.model_v6_conv2d:   input=(18 ch, 12 slots, 7 days), epochs=200, NO early stop
+10:32:28 INFO src.model_v6_conv2d:   Lag0(7 ch): ('load_forecast', 'renewable_forecast', 'wind_forecast', 'solar_forecast', 'east_send_forecast', 'reserve_pos_capacity', 'reserve_neg_capacity') + time_enc(4)
+10:32:28 INFO src.model_v6_conv2d:   Lag1(3 ch): ('price_unified', 'price_hbd', 'price_hbx')
+10:32:28 INFO src.model_v6_conv2d:   Lag2(4 ch): ('load_actual', 'renewable_actual', 'wind_actual', 'solar_actual')
+10:32:28 INFO src.model_v6_conv2d:   bs=64, LR=1.0e-03 (warmup 10 ep → Cosine), train_window=6M
+10:32:28 INFO src.model_v6_conv2d: PyTorch 2.5.1 | device=mps
+10:32:29 INFO src.model_v6_conv2d: Padded 1395 midnight entries (00:00 <- 00:15)
+10:32:29 INFO src.model_v6_conv2d: DWS: 131151 rows x 14 cols (2022-06-01 00:00:00 ~ 2026-03-26 23:15:00)
+10:32:29 INFO src.model_v6_conv2d: Daily arrays (15min): 1303 days, 1303 with target
+10:32:29 INFO src.model_v6_conv2d: Valid days: 1303
+10:32:29 INFO src.model_v6_conv2d: Model params: 179201
+10:32:29 INFO src.model_v6_conv2d: Rolling folds: 16 (fold 1 ~ 16)
+10:32:30 INFO src.model_v6_conv2d: Fold  1 | train=4344 (2025-02-18~2025-08-18) val=336 test=168 | test 2025-09-01 ~ 2025-09-07
+10:32:33 INFO src.model_v6_conv2d:   fold01 ep  0  eval_loss=0.3937  train=115.9  val=95.0  test=98.5  best_val=95.0  lr=1.9e-04
+10:32:39 INFO src.model_v6_conv2d:   fold01 ep  5  eval_loss=0.2435  train=71.7  val=92.8  test=98.9  best_val=92.8  lr=6.4e-04
+/Users/tim/miniforge3/lib/python3.9/site-packages/torch/optim/lr_scheduler.py:240: UserWarning: The epoch parameter in `scheduler.step()` was not necessary and is being deprecated where possible. Please use `scheduler.step()` to step the scheduler. During the deprecation, if epoch is different from None, the closed form is used instead of the new chainable form, where available. Please open an issue if you are unable to replicate your use case: https://github.com/pytorch/pytorch/issues/new/choose.
+  warnings.warn(EPOCH_DEPRECATION_WARNING, UserWarning)
+10:32:45 INFO src.model_v6_conv2d:   fold01 ep 10  eval_loss=0.2298  train=67.6  val=82.8  test=83.7  best_val=82.8  lr=1.0e-03
+10:32:51 INFO src.model_v6_conv2d:   fold01 ep 15  eval_loss=0.1755  train=51.6  val=94.1  test=111.1  best_val=78.7  lr=1.0e-03
+10:32:57 INFO src.model_v6_conv2d:   fold01 ep 20  eval_loss=0.1473  train=43.3  val=80.8  test=98.9  best_val=76.3  lr=9.9e-04
+10:33:04 INFO src.model_v6_conv2d:   fold01 ep 25  eval_loss=0.1334  train=39.3  val=83.9  test=110.1  best_val=73.6  lr=9.8e-04
+10:33:10 INFO src.model_v6_conv2d:   fold01 ep 30  eval_loss=0.1263  train=37.2  val=80.1  test=94.3  best_val=73.6  lr=9.7e-04
+10:33:16 INFO src.model_v6_conv2d:   fold01 ep 35  eval_loss=0.1046  train=30.8  val=76.3  test=97.1  best_val=73.6  lr=9.5e-04
+10:33:21 INFO src.model_v6_conv2d:   fold01 ep 40  eval_loss=0.0996  train=29.3  val=79.8  test=98.5  best_val=73.6  lr=9.4e-04
+10:33:27 INFO src.model_v6_conv2d:   fold01 ep 45  eval_loss=0.0963  train=28.4  val=82.0  test=100.9  best_val=73.6  lr=9.1e-04
+10:33:33 INFO src.model_v6_conv2d:   fold01 ep 50  eval_loss=0.0878  train=25.8  val=80.9  test=109.7  best_val=73.6  lr=8.9e-04
+10:33:39 INFO src.model_v6_conv2d:   fold01 ep 55  eval_loss=0.0839  train=24.7  val=77.8  test=99.5  best_val=73.6  lr=8.6e-04
+10:33:44 INFO src.model_v6_conv2d:   fold01 ep 60  eval_loss=0.0845  train=24.9  val=78.0  test=101.1  best_val=73.6  lr=8.3e-04
+10:33:50 INFO src.model_v6_conv2d:   fold01 ep 65  eval_loss=0.0744  train=21.9  val=80.7  test=110.0  best_val=73.6  lr=8.0e-04
+10:33:56 INFO src.model_v6_conv2d:   fold01 ep 70  eval_loss=0.0720  train=21.2  val=76.2  test=101.8  best_val=73.6  lr=7.7e-04
+10:34:02 INFO src.model_v6_conv2d:   fold01 ep 75  eval_loss=0.0665  train=19.6  val=76.0  test=105.8  best_val=73.6  lr=7.3e-04
+10:34:08 INFO src.model_v6_conv2d:   fold01 ep 80  eval_loss=0.0644  train=19.0  val=78.2  test=102.0  best_val=73.6  lr=6.9e-04
+10:34:13 INFO src.model_v6_conv2d:   fold01 ep 85  eval_loss=0.0631  train=18.6  val=78.8  test=107.3  best_val=73.6  lr=6.5e-04
+10:34:19 INFO src.model_v6_conv2d:   fold01 ep 90  eval_loss=0.0637  train=18.8  val=79.3  test=103.3  best_val=73.6  lr=6.2e-04
+10:34:25 INFO src.model_v6_conv2d:   fold01 ep 95  eval_loss=0.0594  train=17.5  val=76.5  test=103.9  best_val=73.6  lr=5.7e-04
+10:34:31 INFO src.model_v6_conv2d:   fold01 ep100  eval_loss=0.0542  train=16.0  val=80.6  test=106.3  best_val=73.6  lr=5.3e-04
+10:34:36 INFO src.model_v6_conv2d:   fold01 ep105  eval_loss=0.0507  train=14.9  val=78.5  test=102.0  best_val=73.6  lr=4.9e-04
+10:34:42 INFO src.model_v6_conv2d:   fold01 ep110  eval_loss=0.0503  train=14.8  val=78.2  test=102.2  best_val=73.6  lr=4.5e-04
+10:34:48 INFO src.model_v6_conv2d:   fold01 ep115  eval_loss=0.0466  train=13.7  val=75.6  test=99.9  best_val=73.6  lr=4.1e-04
+10:34:54 INFO src.model_v6_conv2d:   fold01 ep120  eval_loss=0.0388  train=11.4  val=77.3  test=101.3  best_val=73.6  lr=3.7e-04
+10:35:00 INFO src.model_v6_conv2d:   fold01 ep125  eval_loss=0.0399  train=11.8  val=79.3  test=99.2  best_val=73.6  lr=3.3e-04
+10:35:05 INFO src.model_v6_conv2d:   fold01 ep130  eval_loss=0.0383  train=11.3  val=78.1  test=104.2  best_val=73.6  lr=2.9e-04
+10:35:11 INFO src.model_v6_conv2d:   fold01 ep135  eval_loss=0.0341  train=10.0  val=77.4  test=100.4  best_val=73.6  lr=2.6e-04
+10:35:17 INFO src.model_v6_conv2d:   fold01 ep140  eval_loss=0.0323  train=9.5  val=79.5  test=102.4  best_val=73.6  lr=2.2e-04
+10:35:23 INFO src.model_v6_conv2d:   fold01 ep145  eval_loss=0.0303  train=8.9  val=77.4  test=101.0  best_val=73.6  lr=1.9e-04
+10:35:28 INFO src.model_v6_conv2d:   fold01 ep150  eval_loss=0.0266  train=7.8  val=77.0  test=98.8  best_val=73.6  lr=1.6e-04
+10:35:34 INFO src.model_v6_conv2d:   fold01 ep155  eval_loss=0.0249  train=7.3  val=78.7  test=101.9  best_val=73.6  lr=1.3e-04
+10:35:40 INFO src.model_v6_conv2d:   fold01 ep160  eval_loss=0.0239  train=7.0  val=77.8  test=100.9  best_val=73.6  lr=1.0e-04
+10:35:46 INFO src.model_v6_conv2d:   fold01 ep165  eval_loss=0.0226  train=6.7  val=78.2  test=101.5  best_val=73.6  lr=7.8e-05
+10:35:51 INFO src.model_v6_conv2d:   fold01 ep170  eval_loss=0.0193  train=5.7  val=79.0  test=100.6  best_val=73.6  lr=5.7e-05
+10:35:57 INFO src.model_v6_conv2d:   fold01 ep175  eval_loss=0.0185  train=5.4  val=78.3  test=99.5  best_val=73.6  lr=4.0e-05
+10:36:03 INFO src.model_v6_conv2d:   fold01 ep180  eval_loss=0.0167  train=4.9  val=78.5  test=101.0  best_val=73.6  lr=2.5e-05
+10:36:09 INFO src.model_v6_conv2d:   fold01 ep185  eval_loss=0.0151  train=4.4  val=78.5  test=100.3  best_val=73.6  lr=1.4e-05
+10:36:15 INFO src.model_v6_conv2d:   fold01 ep190  eval_loss=0.0151  train=4.5  val=77.8  test=99.5  best_val=73.6  lr=6.5e-06
+10:36:20 INFO src.model_v6_conv2d:   fold01 ep195  eval_loss=0.0142  train=4.2  val=78.2  test=100.4  best_val=73.6  lr=2.1e-06
+10:36:25 INFO src.model_v6_conv2d:   fold01 ep199  eval_loss=0.0149  train=4.4  val=78.1  test=100.2  best_val=73.6  lr=1.0e-06
+10:36:25 INFO src.model_v6_conv2d: Fold  1 done | val=73.6  test_MAE=99.3  test_RMSE=137.2
+10:36:25 INFO src.model_v6_conv2d: Fold  2 | train=4344 (2025-02-25~2025-08-25) val=336 test=168 | test 2025-09-08 ~ 2025-09-14
+10:36:27 INFO src.model_v6_conv2d:   fold02 ep  0  eval_loss=0.3916  train=109.4  val=105.6  test=105.1  best_val=105.6  lr=1.9e-04
+10:36:33 INFO src.model_v6_conv2d:   fold02 ep  5  eval_loss=0.2473  train=69.1  val=86.8  test=92.6  best_val=86.8  lr=6.4e-04
+10:36:39 INFO src.model_v6_conv2d:   fold02 ep 10  eval_loss=0.2166  train=60.5  val=87.4  test=93.0  best_val=84.7  lr=1.0e-03
+10:36:44 INFO src.model_v6_conv2d:   fold02 ep 15  eval_loss=0.1844  train=51.5  val=86.0  test=86.6  best_val=83.9  lr=1.0e-03
+10:36:50 INFO src.model_v6_conv2d:   fold02 ep 20  eval_loss=0.1492  train=41.7  val=100.9  test=94.6  best_val=81.4  lr=9.9e-04
+10:36:56 INFO src.model_v6_conv2d:   fold02 ep 25  eval_loss=0.1308  train=36.5  val=87.9  test=91.1  best_val=81.4  lr=9.8e-04
+10:37:02 INFO src.model_v6_conv2d:   fold02 ep 30  eval_loss=0.1314  train=36.7  val=90.5  test=87.7  best_val=81.4  lr=9.7e-04
+10:37:07 INFO src.model_v6_conv2d:   fold02 ep 35  eval_loss=0.1110  train=31.0  val=88.4  test=97.2  best_val=81.4  lr=9.5e-04
+10:37:13 INFO src.model_v6_conv2d:   fold02 ep 40  eval_loss=0.1016  train=28.4  val=83.7  test=91.8  best_val=81.4  lr=9.4e-04
+10:37:19 INFO src.model_v6_conv2d:   fold02 ep 45  eval_loss=0.0913  train=25.5  val=85.3  test=93.7  best_val=81.4  lr=9.1e-04
+10:37:25 INFO src.model_v6_conv2d:   fold02 ep 50  eval_loss=0.0906  train=25.3  val=87.7  test=90.1  best_val=81.4  lr=8.9e-04
+10:37:30 INFO src.model_v6_conv2d:   fold02 ep 55  eval_loss=0.0896  train=25.0  val=87.0  test=98.0  best_val=81.4  lr=8.6e-04
+10:37:36 INFO src.model_v6_conv2d:   fold02 ep 60  eval_loss=0.0863  train=24.1  val=84.5  test=94.8  best_val=81.4  lr=8.3e-04
+10:37:42 INFO src.model_v6_conv2d:   fold02 ep 65  eval_loss=0.0753  train=21.0  val=88.0  test=88.5  best_val=81.4  lr=8.0e-04
+10:37:48 INFO src.model_v6_conv2d:   fold02 ep 70  eval_loss=0.0706  train=19.7  val=89.0  test=88.7  best_val=81.4  lr=7.7e-04
+10:37:54 INFO src.model_v6_conv2d:   fold02 ep 75  eval_loss=0.0699  train=19.5  val=88.5  test=88.4  best_val=81.4  lr=7.3e-04
+10:37:59 INFO src.model_v6_conv2d:   fold02 ep 80  eval_loss=0.0689  train=19.2  val=87.8  test=91.5  best_val=81.4  lr=6.9e-04
+10:38:05 INFO src.model_v6_conv2d:   fold02 ep 85  eval_loss=0.0634  train=17.7  val=90.7  test=90.5  best_val=81.4  lr=6.5e-04
+10:38:11 INFO src.model_v6_conv2d:   fold02 ep 90  eval_loss=0.0583  train=16.3  val=88.1  test=89.9  best_val=81.4  lr=6.2e-04
+10:38:17 INFO src.model_v6_conv2d:   fold02 ep 95  eval_loss=0.0540  train=15.1  val=86.4  test=89.4  best_val=81.4  lr=5.7e-04
+10:38:22 INFO src.model_v6_conv2d:   fold02 ep100  eval_loss=0.0610  train=17.0  val=84.5  test=90.1  best_val=81.4  lr=5.3e-04
+10:38:28 INFO src.model_v6_conv2d:   fold02 ep105  eval_loss=0.0499  train=13.9  val=89.5  test=89.0  best_val=81.4  lr=4.9e-04
+10:38:34 INFO src.model_v6_conv2d:   fold02 ep110  eval_loss=0.0459  train=12.8  val=88.3  test=91.8  best_val=81.4  lr=4.5e-04
+10:38:40 INFO src.model_v6_conv2d:   fold02 ep115  eval_loss=0.0442  train=12.3  val=87.2  test=90.9  best_val=81.4  lr=4.1e-04
+10:38:46 INFO src.model_v6_conv2d:   fold02 ep120  eval_loss=0.0415  train=11.6  val=87.3  test=89.9  best_val=81.4  lr=3.7e-04
+10:38:52 INFO src.model_v6_conv2d:   fold02 ep125  eval_loss=0.0397  train=11.1  val=86.4  test=89.0  best_val=81.4  lr=3.3e-04
+10:38:57 INFO src.model_v6_conv2d:   fold02 ep130  eval_loss=0.0369  train=10.3  val=87.9  test=90.3  best_val=81.4  lr=2.9e-04
+10:39:03 INFO src.model_v6_conv2d:   fold02 ep135  eval_loss=0.0324  train=9.1  val=88.9  test=88.5  best_val=81.4  lr=2.6e-04
+10:39:09 INFO src.model_v6_conv2d:   fold02 ep140  eval_loss=0.0300  train=8.4  val=87.3  test=88.8  best_val=81.4  lr=2.2e-04
+10:39:15 INFO src.model_v6_conv2d:   fold02 ep145  eval_loss=0.0333  train=9.3  val=87.8  test=88.6  best_val=81.4  lr=1.9e-04
+10:39:21 INFO src.model_v6_conv2d:   fold02 ep150  eval_loss=0.0280  train=7.8  val=88.8  test=89.7  best_val=81.4  lr=1.6e-04
+10:39:27 INFO src.model_v6_conv2d:   fold02 ep155  eval_loss=0.0240  train=6.7  val=86.0  test=88.9  best_val=81.4  lr=1.3e-04
+10:39:33 INFO src.model_v6_conv2d:   fold02 ep160  eval_loss=0.0239  train=6.7  val=88.6  test=89.2  best_val=81.4  lr=1.0e-04
+10:39:38 INFO src.model_v6_conv2d:   fold02 ep165  eval_loss=0.0215  train=6.0  val=87.4  test=89.5  best_val=81.4  lr=7.8e-05
+10:39:44 INFO src.model_v6_conv2d:   fold02 ep170  eval_loss=0.0193  train=5.4  val=87.8  test=89.9  best_val=81.4  lr=5.7e-05
+10:39:50 INFO src.model_v6_conv2d:   fold02 ep175  eval_loss=0.0197  train=5.5  val=87.8  test=89.1  best_val=81.4  lr=4.0e-05
+10:39:56 INFO src.model_v6_conv2d:   fold02 ep180  eval_loss=0.0160  train=4.5  val=88.1  test=88.4  best_val=81.4  lr=2.5e-05
+10:40:02 INFO src.model_v6_conv2d:   fold02 ep185  eval_loss=0.0153  train=4.3  val=87.5  test=88.8  best_val=81.4  lr=1.4e-05
+10:40:07 INFO src.model_v6_conv2d:   fold02 ep190  eval_loss=0.0142  train=4.0  val=87.7  test=88.7  best_val=81.4  lr=6.5e-06
+10:40:13 INFO src.model_v6_conv2d:   fold02 ep195  eval_loss=0.0140  train=3.9  val=88.4  test=89.3  best_val=81.4  lr=2.1e-06
+10:40:18 INFO src.model_v6_conv2d:   fold02 ep199  eval_loss=0.0141  train=3.9  val=88.0  test=89.2  best_val=81.4  lr=1.0e-06
+10:40:18 INFO src.model_v6_conv2d: Fold  2 done | val=81.4  test_MAE=90.9  test_RMSE=145.7
+10:40:18 INFO src.model_v6_conv2d: Fold  3 | train=4416 (2025-03-01~2025-09-01) val=336 test=168 | test 2025-09-15 ~ 2025-09-21
+10:40:20 INFO src.model_v6_conv2d:   fold03 ep  0  eval_loss=0.3994  train=108.7  val=99.5  test=209.1  best_val=99.5  lr=1.9e-04
+10:40:26 INFO src.model_v6_conv2d:   fold03 ep  5  eval_loss=0.2453  train=66.8  val=88.9  test=191.0  best_val=87.4  lr=6.4e-04
+10:40:32 INFO src.model_v6_conv2d:   fold03 ep 10  eval_loss=0.2349  train=63.9  val=91.4  test=172.5  best_val=83.2  lr=1.0e-03
+10:40:38 INFO src.model_v6_conv2d:   fold03 ep 15  eval_loss=0.1861  train=50.7  val=95.6  test=190.7  best_val=82.7  lr=1.0e-03
+10:40:44 INFO src.model_v6_conv2d:   fold03 ep 20  eval_loss=0.1478  train=40.2  val=87.3  test=204.6  best_val=82.7  lr=9.9e-04
+10:40:50 INFO src.model_v6_conv2d:   fold03 ep 25  eval_loss=0.1375  train=37.4  val=89.4  test=197.5  best_val=82.7  lr=9.8e-04
+10:40:56 INFO src.model_v6_conv2d:   fold03 ep 30  eval_loss=0.1318  train=35.9  val=91.3  test=184.5  best_val=82.7  lr=9.7e-04
+10:41:04 INFO src.model_v6_conv2d:   fold03 ep 35  eval_loss=0.1034  train=28.1  val=94.1  test=189.9  best_val=82.7  lr=9.5e-04
+10:41:10 INFO src.model_v6_conv2d:   fold03 ep 40  eval_loss=0.1111  train=30.2  val=85.6  test=185.8  best_val=82.7  lr=9.4e-04
+10:41:16 INFO src.model_v6_conv2d:   fold03 ep 45  eval_loss=0.0946  train=25.7  val=90.2  test=185.8  best_val=82.7  lr=9.1e-04
+10:41:22 INFO src.model_v6_conv2d:   fold03 ep 50  eval_loss=0.0879  train=23.9  val=90.7  test=194.1  best_val=82.7  lr=8.9e-04
+10:41:28 INFO src.model_v6_conv2d:   fold03 ep 55  eval_loss=0.0935  train=25.5  val=92.6  test=187.9  best_val=82.7  lr=8.6e-04
+10:41:35 INFO src.model_v6_conv2d:   fold03 ep 60  eval_loss=0.0841  train=22.9  val=88.8  test=193.2  best_val=82.7  lr=8.3e-04
+10:41:41 INFO src.model_v6_conv2d:   fold03 ep 65  eval_loss=0.0807  train=22.0  val=91.6  test=203.6  best_val=82.7  lr=8.0e-04
+10:41:47 INFO src.model_v6_conv2d:   fold03 ep 70  eval_loss=0.0716  train=19.5  val=91.6  test=188.1  best_val=82.7  lr=7.7e-04
+10:41:53 INFO src.model_v6_conv2d:   fold03 ep 75  eval_loss=0.0676  train=18.4  val=89.5  test=196.6  best_val=82.7  lr=7.3e-04
+10:41:59 INFO src.model_v6_conv2d:   fold03 ep 80  eval_loss=0.0607  train=16.5  val=89.4  test=185.1  best_val=82.7  lr=6.9e-04
+10:42:05 INFO src.model_v6_conv2d:   fold03 ep 85  eval_loss=0.0644  train=17.5  val=89.5  test=186.5  best_val=82.7  lr=6.5e-04
+10:42:11 INFO src.model_v6_conv2d:   fold03 ep 90  eval_loss=0.0607  train=16.5  val=90.6  test=186.3  best_val=82.7  lr=6.2e-04
+10:42:17 INFO src.model_v6_conv2d:   fold03 ep 95  eval_loss=0.0607  train=16.5  val=89.5  test=188.6  best_val=82.7  lr=5.7e-04
+10:42:23 INFO src.model_v6_conv2d:   fold03 ep100  eval_loss=0.0523  train=14.2  val=88.4  test=193.7  best_val=82.7  lr=5.3e-04
+10:42:29 INFO src.model_v6_conv2d:   fold03 ep105  eval_loss=0.0472  train=12.8  val=87.5  test=190.7  best_val=82.7  lr=4.9e-04
+10:42:35 INFO src.model_v6_conv2d:   fold03 ep110  eval_loss=0.0481  train=13.1  val=89.4  test=190.6  best_val=82.7  lr=4.5e-04
+10:42:41 INFO src.model_v6_conv2d:   fold03 ep115  eval_loss=0.0474  train=12.9  val=89.8  test=190.5  best_val=82.7  lr=4.1e-04
+10:42:47 INFO src.model_v6_conv2d:   fold03 ep120  eval_loss=0.0429  train=11.7  val=87.9  test=191.1  best_val=82.7  lr=3.7e-04
+10:42:53 INFO src.model_v6_conv2d:   fold03 ep125  eval_loss=0.0400  train=10.9  val=89.8  test=190.4  best_val=82.7  lr=3.3e-04
+10:42:59 INFO src.model_v6_conv2d:   fold03 ep130  eval_loss=0.0374  train=10.2  val=90.2  test=189.2  best_val=82.7  lr=2.9e-04
+10:43:05 INFO src.model_v6_conv2d:   fold03 ep135  eval_loss=0.0351  train=9.5  val=86.9  test=193.8  best_val=82.7  lr=2.6e-04
+10:43:11 INFO src.model_v6_conv2d:   fold03 ep140  eval_loss=0.0329  train=9.0  val=88.3  test=193.7  best_val=82.7  lr=2.2e-04
+10:43:17 INFO src.model_v6_conv2d:   fold03 ep145  eval_loss=0.0292  train=8.0  val=90.6  test=193.1  best_val=82.7  lr=1.9e-04
+10:43:23 INFO src.model_v6_conv2d:   fold03 ep150  eval_loss=0.0289  train=7.9  val=91.0  test=193.7  best_val=82.7  lr=1.6e-04
+10:43:29 INFO src.model_v6_conv2d:   fold03 ep155  eval_loss=0.0244  train=6.6  val=88.3  test=193.8  best_val=82.7  lr=1.3e-04
+10:43:35 INFO src.model_v6_conv2d:   fold03 ep160  eval_loss=0.0235  train=6.4  val=88.9  test=194.2  best_val=82.7  lr=1.0e-04
+10:43:41 INFO src.model_v6_conv2d:   fold03 ep165  eval_loss=0.0214  train=5.8  val=88.5  test=191.2  best_val=82.7  lr=7.8e-05
+10:43:47 INFO src.model_v6_conv2d:   fold03 ep170  eval_loss=0.0194  train=5.3  val=89.1  test=193.1  best_val=82.7  lr=5.7e-05
+10:43:53 INFO src.model_v6_conv2d:   fold03 ep175  eval_loss=0.0176  train=4.8  val=88.8  test=192.5  best_val=82.7  lr=4.0e-05
+10:43:59 INFO src.model_v6_conv2d:   fold03 ep180  eval_loss=0.0168  train=4.6  val=89.4  test=192.3  best_val=82.7  lr=2.5e-05
+10:44:05 INFO src.model_v6_conv2d:   fold03 ep185  eval_loss=0.0162  train=4.4  val=89.9  test=193.2  best_val=82.7  lr=1.4e-05
+10:44:12 INFO src.model_v6_conv2d:   fold03 ep190  eval_loss=0.0146  train=4.0  val=89.3  test=192.4  best_val=82.7  lr=6.5e-06
+10:44:18 INFO src.model_v6_conv2d:   fold03 ep195  eval_loss=0.0143  train=3.9  val=88.8  test=192.7  best_val=82.7  lr=2.1e-06
+10:44:23 INFO src.model_v6_conv2d:   fold03 ep199  eval_loss=0.0145  train=3.9  val=89.3  test=193.0  best_val=82.7  lr=1.0e-06
+10:44:23 INFO src.model_v6_conv2d: Fold  3 done | val=82.7  test_MAE=190.2  test_RMSE=315.2
+10:44:24 INFO src.model_v6_conv2d: Fold  4 | train=4416 (2025-03-08~2025-09-08) val=336 test=168 | test 2025-09-22 ~ 2025-09-28
+10:44:25 INFO src.model_v6_conv2d:   fold04 ep  0  eval_loss=0.3865  train=101.5  val=154.4  test=121.2  best_val=154.4  lr=1.9e-04
+10:44:31 INFO src.model_v6_conv2d:   fold04 ep  5  eval_loss=0.2537  train=66.6  val=162.4  test=125.0  best_val=146.2  lr=6.4e-04
+10:44:37 INFO src.model_v6_conv2d:   fold04 ep 10  eval_loss=0.2076  train=54.5  val=146.0  test=132.8  best_val=146.0  lr=1.0e-03
+10:44:43 INFO src.model_v6_conv2d:   fold04 ep 15  eval_loss=0.1714  train=45.0  val=145.9  test=123.5  best_val=137.9  lr=1.0e-03
+10:44:49 INFO src.model_v6_conv2d:   fold04 ep 20  eval_loss=0.1510  train=39.6  val=143.3  test=124.2  best_val=137.9  lr=9.9e-04
+10:44:55 INFO src.model_v6_conv2d:   fold04 ep 25  eval_loss=0.1253  train=32.9  val=145.7  test=114.6  best_val=137.9  lr=9.8e-04
+10:45:01 INFO src.model_v6_conv2d:   fold04 ep 30  eval_loss=0.1275  train=33.5  val=146.0  test=126.1  best_val=137.9  lr=9.7e-04
+10:45:07 INFO src.model_v6_conv2d:   fold04 ep 35  eval_loss=0.1115  train=29.3  val=141.4  test=123.1  best_val=137.9  lr=9.5e-04
+10:45:13 INFO src.model_v6_conv2d:   fold04 ep 40  eval_loss=0.1008  train=26.5  val=148.3  test=115.6  best_val=137.9  lr=9.4e-04
+10:45:19 INFO src.model_v6_conv2d:   fold04 ep 45  eval_loss=0.0943  train=24.7  val=145.7  test=114.8  best_val=137.9  lr=9.1e-04
+10:45:25 INFO src.model_v6_conv2d:   fold04 ep 50  eval_loss=0.0908  train=23.8  val=147.0  test=118.0  best_val=137.9  lr=8.9e-04
+10:45:31 INFO src.model_v6_conv2d:   fold04 ep 55  eval_loss=0.0822  train=21.6  val=143.7  test=117.9  best_val=137.9  lr=8.6e-04
+10:45:37 INFO src.model_v6_conv2d:   fold04 ep 60  eval_loss=0.0868  train=22.8  val=145.8  test=117.0  best_val=137.9  lr=8.3e-04
+10:45:43 INFO src.model_v6_conv2d:   fold04 ep 65  eval_loss=0.0707  train=18.6  val=145.3  test=118.1  best_val=137.9  lr=8.0e-04
+10:45:49 INFO src.model_v6_conv2d:   fold04 ep 70  eval_loss=0.0655  train=17.2  val=142.4  test=123.5  best_val=137.9  lr=7.7e-04
+10:45:55 INFO src.model_v6_conv2d:   fold04 ep 75  eval_loss=0.0691  train=18.2  val=147.3  test=118.0  best_val=137.9  lr=7.3e-04
+10:46:01 INFO src.model_v6_conv2d:   fold04 ep 80  eval_loss=0.0675  train=17.7  val=142.7  test=116.5  best_val=137.9  lr=6.9e-04
+10:46:06 INFO src.model_v6_conv2d:   fold04 ep 85  eval_loss=0.0654  train=17.2  val=145.4  test=119.9  best_val=137.9  lr=6.5e-04
+10:46:12 INFO src.model_v6_conv2d:   fold04 ep 90  eval_loss=0.0594  train=15.6  val=144.3  test=117.3  best_val=137.9  lr=6.2e-04
+10:46:19 INFO src.model_v6_conv2d:   fold04 ep 95  eval_loss=0.0535  train=14.0  val=144.2  test=119.7  best_val=137.9  lr=5.7e-04
+10:46:25 INFO src.model_v6_conv2d:   fold04 ep100  eval_loss=0.0504  train=13.2  val=143.6  test=119.2  best_val=137.9  lr=5.3e-04
+10:46:31 INFO src.model_v6_conv2d:   fold04 ep105  eval_loss=0.0490  train=12.9  val=145.6  test=122.6  best_val=137.9  lr=4.9e-04
+10:46:36 INFO src.model_v6_conv2d:   fold04 ep110  eval_loss=0.0484  train=12.7  val=144.2  test=122.2  best_val=137.9  lr=4.5e-04
+10:46:42 INFO src.model_v6_conv2d:   fold04 ep115  eval_loss=0.0504  train=13.2  val=144.8  test=112.3  best_val=137.9  lr=4.1e-04
+10:46:48 INFO src.model_v6_conv2d:   fold04 ep120  eval_loss=0.0430  train=11.3  val=145.8  test=118.3  best_val=137.9  lr=3.7e-04
+10:46:54 INFO src.model_v6_conv2d:   fold04 ep125  eval_loss=0.0370  train=9.7  val=144.2  test=119.1  best_val=137.9  lr=3.3e-04
+10:47:00 INFO src.model_v6_conv2d:   fold04 ep130  eval_loss=0.0348  train=9.1  val=143.6  test=117.7  best_val=137.9  lr=2.9e-04
+10:47:06 INFO src.model_v6_conv2d:   fold04 ep135  eval_loss=0.0338  train=8.9  val=143.2  test=120.0  best_val=137.9  lr=2.6e-04
+10:47:12 INFO src.model_v6_conv2d:   fold04 ep140  eval_loss=0.0317  train=8.3  val=143.9  test=118.2  best_val=137.9  lr=2.2e-04
+10:47:18 INFO src.model_v6_conv2d:   fold04 ep145  eval_loss=0.0299  train=7.8  val=144.1  test=117.9  best_val=137.9  lr=1.9e-04
+10:47:24 INFO src.model_v6_conv2d:   fold04 ep150  eval_loss=0.0289  train=7.6  val=143.3  test=118.9  best_val=137.9  lr=1.6e-04
+10:47:30 INFO src.model_v6_conv2d:   fold04 ep155  eval_loss=0.0235  train=6.2  val=143.0  test=118.8  best_val=137.9  lr=1.3e-04
+10:47:36 INFO src.model_v6_conv2d:   fold04 ep160  eval_loss=0.0246  train=6.5  val=143.7  test=117.5  best_val=137.9  lr=1.0e-04
+10:47:42 INFO src.model_v6_conv2d:   fold04 ep165  eval_loss=0.0229  train=6.0  val=143.7  test=117.5  best_val=137.9  lr=7.8e-05
+10:47:48 INFO src.model_v6_conv2d:   fold04 ep170  eval_loss=0.0189  train=5.0  val=143.3  test=118.6  best_val=137.9  lr=5.7e-05
+10:47:54 INFO src.model_v6_conv2d:   fold04 ep175  eval_loss=0.0173  train=4.6  val=143.3  test=118.9  best_val=137.9  lr=4.0e-05
+10:48:00 INFO src.model_v6_conv2d:   fold04 ep180  eval_loss=0.0155  train=4.1  val=143.8  test=119.0  best_val=137.9  lr=2.5e-05
+10:48:06 INFO src.model_v6_conv2d:   fold04 ep185  eval_loss=0.0159  train=4.2  val=144.1  test=119.1  best_val=137.9  lr=1.4e-05
+10:48:12 INFO src.model_v6_conv2d:   fold04 ep190  eval_loss=0.0149  train=3.9  val=143.9  test=119.1  best_val=137.9  lr=6.5e-06
+10:48:18 INFO src.model_v6_conv2d:   fold04 ep195  eval_loss=0.0138  train=3.6  val=143.7  test=119.4  best_val=137.9  lr=2.1e-06
+10:48:23 INFO src.model_v6_conv2d:   fold04 ep199  eval_loss=0.0139  train=3.7  val=143.9  test=119.3  best_val=137.9  lr=1.0e-06
+10:48:23 INFO src.model_v6_conv2d: Fold  4 done | val=137.9  test_MAE=126.9  test_RMSE=190.3
+10:48:23 INFO src.model_v6_conv2d: Fold  5 | train=4416 (2025-03-15~2025-09-15) val=336 test=168 | test 2025-09-29 ~ 2025-10-05
+10:48:25 INFO src.model_v6_conv2d:   fold05 ep  0  eval_loss=0.3972  train=104.1  val=171.2  test=148.3  best_val=171.2  lr=1.9e-04
+10:48:31 INFO src.model_v6_conv2d:   fold05 ep  5  eval_loss=0.2652  train=69.5  val=174.2  test=141.4  best_val=166.1  lr=6.4e-04
+10:48:37 INFO src.model_v6_conv2d:   fold05 ep 10  eval_loss=0.2356  train=61.7  val=167.3  test=125.0  best_val=155.7  lr=1.0e-03
+10:48:43 INFO src.model_v6_conv2d:   fold05 ep 15  eval_loss=0.1769  train=46.4  val=162.3  test=122.0  best_val=154.4  lr=1.0e-03
+10:48:49 INFO src.model_v6_conv2d:   fold05 ep 20  eval_loss=0.1367  train=35.8  val=157.8  test=113.7  best_val=154.4  lr=9.9e-04
+10:48:55 INFO src.model_v6_conv2d:   fold05 ep 25  eval_loss=0.1304  train=34.2  val=160.0  test=121.2  best_val=154.4  lr=9.8e-04
+10:49:01 INFO src.model_v6_conv2d:   fold05 ep 30  eval_loss=0.1187  train=31.1  val=157.6  test=121.2  best_val=151.1  lr=9.7e-04
+10:49:07 INFO src.model_v6_conv2d:   fold05 ep 35  eval_loss=0.1032  train=27.0  val=155.8  test=115.5  best_val=151.1  lr=9.5e-04
+10:49:13 INFO src.model_v6_conv2d:   fold05 ep 40  eval_loss=0.1147  train=30.1  val=158.8  test=124.8  best_val=151.1  lr=9.4e-04
+10:49:19 INFO src.model_v6_conv2d:   fold05 ep 45  eval_loss=0.0952  train=24.9  val=163.8  test=113.7  best_val=151.1  lr=9.1e-04
+10:49:25 INFO src.model_v6_conv2d:   fold05 ep 50  eval_loss=0.0934  train=24.5  val=161.0  test=114.9  best_val=151.1  lr=8.9e-04
+10:49:30 INFO src.model_v6_conv2d:   fold05 ep 55  eval_loss=0.0798  train=20.9  val=160.3  test=119.3  best_val=151.1  lr=8.6e-04
+10:49:36 INFO src.model_v6_conv2d:   fold05 ep 60  eval_loss=0.0728  train=19.1  val=157.1  test=114.1  best_val=151.1  lr=8.3e-04
+10:49:42 INFO src.model_v6_conv2d:   fold05 ep 65  eval_loss=0.0771  train=20.2  val=163.5  test=114.6  best_val=151.1  lr=8.0e-04
+10:49:48 INFO src.model_v6_conv2d:   fold05 ep 70  eval_loss=0.0754  train=19.8  val=160.5  test=118.9  best_val=151.1  lr=7.7e-04
+10:49:54 INFO src.model_v6_conv2d:   fold05 ep 75  eval_loss=0.0694  train=18.2  val=161.8  test=118.0  best_val=151.1  lr=7.3e-04
+10:50:00 INFO src.model_v6_conv2d:   fold05 ep 80  eval_loss=0.0662  train=17.3  val=165.9  test=117.8  best_val=151.1  lr=6.9e-04
+10:50:06 INFO src.model_v6_conv2d:   fold05 ep 85  eval_loss=0.0651  train=17.1  val=163.2  test=114.2  best_val=151.1  lr=6.5e-04
+10:50:12 INFO src.model_v6_conv2d:   fold05 ep 90  eval_loss=0.0605  train=15.9  val=157.9  test=109.5  best_val=151.1  lr=6.2e-04
+10:50:18 INFO src.model_v6_conv2d:   fold05 ep 95  eval_loss=0.0567  train=14.9  val=160.1  test=114.3  best_val=151.1  lr=5.7e-04
+10:50:24 INFO src.model_v6_conv2d:   fold05 ep100  eval_loss=0.0524  train=13.7  val=160.3  test=109.5  best_val=151.1  lr=5.3e-04
+10:50:29 INFO src.model_v6_conv2d:   fold05 ep105  eval_loss=0.0526  train=13.8  val=159.3  test=113.2  best_val=151.1  lr=4.9e-04
+10:50:35 INFO src.model_v6_conv2d:   fold05 ep110  eval_loss=0.0466  train=12.2  val=159.2  test=112.0  best_val=151.1  lr=4.5e-04
+10:50:41 INFO src.model_v6_conv2d:   fold05 ep115  eval_loss=0.0479  train=12.5  val=161.0  test=114.2  best_val=151.1  lr=4.1e-04
+10:50:47 INFO src.model_v6_conv2d:   fold05 ep120  eval_loss=0.0429  train=11.3  val=159.2  test=115.0  best_val=151.1  lr=3.7e-04
+10:50:53 INFO src.model_v6_conv2d:   fold05 ep125  eval_loss=0.0390  train=10.2  val=159.3  test=111.1  best_val=151.1  lr=3.3e-04
+10:50:59 INFO src.model_v6_conv2d:   fold05 ep130  eval_loss=0.0356  train=9.3  val=159.8  test=112.9  best_val=151.1  lr=2.9e-04
+10:51:05 INFO src.model_v6_conv2d:   fold05 ep135  eval_loss=0.0331  train=8.7  val=159.4  test=113.6  best_val=151.1  lr=2.6e-04
+10:51:11 INFO src.model_v6_conv2d:   fold05 ep140  eval_loss=0.0299  train=7.8  val=159.6  test=109.0  best_val=151.1  lr=2.2e-04
+10:51:17 INFO src.model_v6_conv2d:   fold05 ep145  eval_loss=0.0281  train=7.4  val=159.7  test=111.0  best_val=151.1  lr=1.9e-04
+10:51:23 INFO src.model_v6_conv2d:   fold05 ep150  eval_loss=0.0272  train=7.1  val=158.3  test=110.9  best_val=151.1  lr=1.6e-04
+10:51:29 INFO src.model_v6_conv2d:   fold05 ep155  eval_loss=0.0243  train=6.4  val=159.0  test=111.8  best_val=151.1  lr=1.3e-04
+10:51:35 INFO src.model_v6_conv2d:   fold05 ep160  eval_loss=0.0221  train=5.8  val=160.3  test=111.3  best_val=151.1  lr=1.0e-04
+10:51:41 INFO src.model_v6_conv2d:   fold05 ep165  eval_loss=0.0215  train=5.6  val=158.8  test=111.4  best_val=151.1  lr=7.8e-05
+10:51:47 INFO src.model_v6_conv2d:   fold05 ep170  eval_loss=0.0189  train=5.0  val=159.9  test=111.1  best_val=151.1  lr=5.7e-05
+10:51:53 INFO src.model_v6_conv2d:   fold05 ep175  eval_loss=0.0183  train=4.8  val=160.1  test=110.8  best_val=151.1  lr=4.0e-05
+10:51:59 INFO src.model_v6_conv2d:   fold05 ep180  eval_loss=0.0168  train=4.4  val=159.8  test=111.5  best_val=151.1  lr=2.5e-05
+10:52:05 INFO src.model_v6_conv2d:   fold05 ep185  eval_loss=0.0164  train=4.3  val=159.8  test=111.2  best_val=151.1  lr=1.4e-05
+10:52:11 INFO src.model_v6_conv2d:   fold05 ep190  eval_loss=0.0148  train=3.9  val=159.7  test=110.7  best_val=151.1  lr=6.5e-06
+10:52:17 INFO src.model_v6_conv2d:   fold05 ep195  eval_loss=0.0145  train=3.8  val=159.8  test=111.5  best_val=151.1  lr=2.1e-06
+10:52:22 INFO src.model_v6_conv2d:   fold05 ep199  eval_loss=0.0138  train=3.6  val=159.8  test=110.8  best_val=151.1  lr=1.0e-06
+10:52:22 INFO src.model_v6_conv2d: Fold  5 done | val=151.1  test_MAE=114.6  test_RMSE=181.5
+10:52:22 INFO src.model_v6_conv2d: Fold  6 | train=4416 (2025-03-22~2025-09-22) val=336 test=168 | test 2025-10-06 ~ 2025-10-12
+10:52:23 INFO src.model_v6_conv2d:   fold06 ep  0  eval_loss=0.3873  train=106.4  val=132.1  test=350.5  best_val=132.1  lr=1.9e-04
+10:52:29 INFO src.model_v6_conv2d:   fold06 ep  5  eval_loss=0.2509  train=68.9  val=125.7  test=301.3  best_val=122.9  lr=6.4e-04
+10:52:35 INFO src.model_v6_conv2d:   fold06 ep 10  eval_loss=0.2297  train=63.1  val=128.5  test=328.6  best_val=122.9  lr=1.0e-03
+10:52:41 INFO src.model_v6_conv2d:   fold06 ep 15  eval_loss=0.1768  train=48.6  val=121.9  test=334.8  best_val=121.1  lr=1.0e-03
+10:52:47 INFO src.model_v6_conv2d:   fold06 ep 20  eval_loss=0.1642  train=45.1  val=123.1  test=310.0  best_val=120.5  lr=9.9e-04
+10:52:53 INFO src.model_v6_conv2d:   fold06 ep 25  eval_loss=0.1238  train=34.0  val=118.0  test=305.5  best_val=116.6  lr=9.8e-04
+10:52:59 INFO src.model_v6_conv2d:   fold06 ep 30  eval_loss=0.1230  train=33.8  val=120.5  test=301.1  best_val=116.6  lr=9.7e-04
+10:53:05 INFO src.model_v6_conv2d:   fold06 ep 35  eval_loss=0.1058  train=29.1  val=115.1  test=315.0  best_val=115.1  lr=9.5e-04
+10:53:11 INFO src.model_v6_conv2d:   fold06 ep 40  eval_loss=0.1124  train=30.9  val=115.9  test=303.1  best_val=114.2  lr=9.4e-04
+10:53:17 INFO src.model_v6_conv2d:   fold06 ep 45  eval_loss=0.1050  train=28.8  val=123.3  test=317.0  best_val=114.2  lr=9.1e-04
+10:53:23 INFO src.model_v6_conv2d:   fold06 ep 50  eval_loss=0.0920  train=25.3  val=116.2  test=327.4  best_val=114.2  lr=8.9e-04
+10:53:29 INFO src.model_v6_conv2d:   fold06 ep 55  eval_loss=0.0853  train=23.4  val=119.4  test=315.6  best_val=114.2  lr=8.6e-04
+10:53:36 INFO src.model_v6_conv2d:   fold06 ep 60  eval_loss=0.0871  train=23.9  val=119.6  test=299.7  best_val=114.2  lr=8.3e-04
+10:53:42 INFO src.model_v6_conv2d:   fold06 ep 65  eval_loss=0.0758  train=20.8  val=118.8  test=306.3  best_val=114.2  lr=8.0e-04
+10:53:49 INFO src.model_v6_conv2d:   fold06 ep 70  eval_loss=0.0798  train=21.9  val=117.5  test=313.4  best_val=114.2  lr=7.7e-04
+10:53:55 INFO src.model_v6_conv2d:   fold06 ep 75  eval_loss=0.0685  train=18.8  val=122.8  test=315.7  best_val=114.2  lr=7.3e-04
+10:54:01 INFO src.model_v6_conv2d:   fold06 ep 80  eval_loss=0.0701  train=19.2  val=117.0  test=310.8  best_val=114.2  lr=6.9e-04
+10:54:07 INFO src.model_v6_conv2d:   fold06 ep 85  eval_loss=0.0602  train=16.5  val=120.2  test=322.4  best_val=114.2  lr=6.5e-04
+10:54:14 INFO src.model_v6_conv2d:   fold06 ep 90  eval_loss=0.0607  train=16.7  val=117.5  test=312.9  best_val=114.2  lr=6.2e-04
+10:54:25 INFO src.model_v6_conv2d:   fold06 ep 95  eval_loss=0.0611  train=16.8  val=120.2  test=325.6  best_val=114.2  lr=5.7e-04
+10:54:31 INFO src.model_v6_conv2d:   fold06 ep100  eval_loss=0.0529  train=14.5  val=119.3  test=319.3  best_val=114.2  lr=5.3e-04
+10:54:37 INFO src.model_v6_conv2d:   fold06 ep105  eval_loss=0.0522  train=14.3  val=118.0  test=322.2  best_val=114.2  lr=4.9e-04
+10:54:43 INFO src.model_v6_conv2d:   fold06 ep110  eval_loss=0.0490  train=13.5  val=120.8  test=315.2  best_val=114.2  lr=4.5e-04
+10:54:49 INFO src.model_v6_conv2d:   fold06 ep115  eval_loss=0.0486  train=13.4  val=116.8  test=315.6  best_val=114.2  lr=4.1e-04
+10:54:57 INFO src.model_v6_conv2d:   fold06 ep120  eval_loss=0.0407  train=11.2  val=118.3  test=312.6  best_val=114.2  lr=3.7e-04
+10:55:09 INFO src.model_v6_conv2d:   fold06 ep125  eval_loss=0.0406  train=11.2  val=117.9  test=318.5  best_val=114.2  lr=3.3e-04
+10:55:15 INFO src.model_v6_conv2d:   fold06 ep130  eval_loss=0.0367  train=10.1  val=119.2  test=313.1  best_val=114.2  lr=2.9e-04
+10:55:21 INFO src.model_v6_conv2d:   fold06 ep135  eval_loss=0.0357  train=9.8  val=117.0  test=322.5  best_val=114.2  lr=2.6e-04
+10:55:27 INFO src.model_v6_conv2d:   fold06 ep140  eval_loss=0.0346  train=9.5  val=117.9  test=315.8  best_val=114.2  lr=2.2e-04
+10:55:33 INFO src.model_v6_conv2d:   fold06 ep145  eval_loss=0.0291  train=8.0  val=117.3  test=325.4  best_val=114.2  lr=1.9e-04
+10:55:38 INFO src.model_v6_conv2d:   fold06 ep150  eval_loss=0.0285  train=7.8  val=117.0  test=320.3  best_val=114.2  lr=1.6e-04
+10:55:45 INFO src.model_v6_conv2d:   fold06 ep155  eval_loss=0.0264  train=7.2  val=118.3  test=326.6  best_val=114.2  lr=1.3e-04
+10:55:51 INFO src.model_v6_conv2d:   fold06 ep160  eval_loss=0.0249  train=6.8  val=117.8  test=325.1  best_val=114.2  lr=1.0e-04
+10:55:57 INFO src.model_v6_conv2d:   fold06 ep165  eval_loss=0.0218  train=6.0  val=118.4  test=324.5  best_val=114.2  lr=7.8e-05
+10:56:03 INFO src.model_v6_conv2d:   fold06 ep170  eval_loss=0.0196  train=5.4  val=119.0  test=322.6  best_val=114.2  lr=5.7e-05
+10:56:09 INFO src.model_v6_conv2d:   fold06 ep175  eval_loss=0.0177  train=4.9  val=118.6  test=322.8  best_val=114.2  lr=4.0e-05
+10:56:14 INFO src.model_v6_conv2d:   fold06 ep180  eval_loss=0.0163  train=4.5  val=118.6  test=322.1  best_val=114.2  lr=2.5e-05
+10:56:20 INFO src.model_v6_conv2d:   fold06 ep185  eval_loss=0.0158  train=4.3  val=118.3  test=323.5  best_val=114.2  lr=1.4e-05
+10:56:26 INFO src.model_v6_conv2d:   fold06 ep190  eval_loss=0.0156  train=4.3  val=118.8  test=324.4  best_val=114.2  lr=6.5e-06
+10:56:32 INFO src.model_v6_conv2d:   fold06 ep195  eval_loss=0.0149  train=4.1  val=118.8  test=323.8  best_val=114.2  lr=2.1e-06
+10:56:37 INFO src.model_v6_conv2d:   fold06 ep199  eval_loss=0.0150  train=4.1  val=118.4  test=322.8  best_val=114.2  lr=1.0e-06
+10:56:37 INFO src.model_v6_conv2d: Fold  6 done | val=114.2  test_MAE=312.2  test_RMSE=436.4
+10:56:37 INFO src.model_v6_conv2d: Fold  7 | train=4416 (2025-03-29~2025-09-29) val=336 test=168 | test 2025-10-13 ~ 2025-10-19
+10:56:39 INFO src.model_v6_conv2d:   fold07 ep  0  eval_loss=0.3956  train=107.8  val=247.2  test=203.8  best_val=247.2  lr=1.9e-04
+10:56:45 INFO src.model_v6_conv2d:   fold07 ep  5  eval_loss=0.2569  train=70.0  val=229.5  test=205.1  best_val=213.5  lr=6.4e-04
+10:56:51 INFO src.model_v6_conv2d:   fold07 ep 10  eval_loss=0.2394  train=65.3  val=234.2  test=173.6  best_val=200.3  lr=1.0e-03
+10:56:57 INFO src.model_v6_conv2d:   fold07 ep 15  eval_loss=0.1786  train=48.7  val=202.2  test=189.9  best_val=200.3  lr=1.0e-03
+10:57:03 INFO src.model_v6_conv2d:   fold07 ep 20  eval_loss=0.1506  train=41.1  val=222.1  test=198.5  best_val=200.3  lr=9.9e-04
+10:57:09 INFO src.model_v6_conv2d:   fold07 ep 25  eval_loss=0.1448  train=39.5  val=220.5  test=186.7  best_val=200.3  lr=9.8e-04
+10:57:15 INFO src.model_v6_conv2d:   fold07 ep 30  eval_loss=0.1216  train=33.2  val=222.0  test=198.5  best_val=200.3  lr=9.7e-04
+10:57:21 INFO src.model_v6_conv2d:   fold07 ep 35  eval_loss=0.1076  train=29.3  val=220.6  test=201.1  best_val=200.3  lr=9.5e-04
+10:57:27 INFO src.model_v6_conv2d:   fold07 ep 40  eval_loss=0.1067  train=29.1  val=224.3  test=188.2  best_val=200.3  lr=9.4e-04
+10:57:33 INFO src.model_v6_conv2d:   fold07 ep 45  eval_loss=0.0995  train=27.1  val=215.6  test=200.7  best_val=200.3  lr=9.1e-04
+10:57:39 INFO src.model_v6_conv2d:   fold07 ep 50  eval_loss=0.1009  train=27.5  val=229.9  test=217.2  best_val=200.3  lr=8.9e-04
+10:57:44 INFO src.model_v6_conv2d:   fold07 ep 55  eval_loss=0.0894  train=24.4  val=229.4  test=198.7  best_val=200.3  lr=8.6e-04
+10:57:50 INFO src.model_v6_conv2d:   fold07 ep 60  eval_loss=0.0833  train=22.7  val=215.7  test=195.3  best_val=200.3  lr=8.3e-04
+10:57:56 INFO src.model_v6_conv2d:   fold07 ep 65  eval_loss=0.0829  train=22.6  val=223.6  test=205.9  best_val=200.3  lr=8.0e-04
+10:58:02 INFO src.model_v6_conv2d:   fold07 ep 70  eval_loss=0.0707  train=19.3  val=218.9  test=204.6  best_val=200.3  lr=7.7e-04
+10:58:09 INFO src.model_v6_conv2d:   fold07 ep 75  eval_loss=0.0768  train=20.9  val=225.6  test=198.2  best_val=200.3  lr=7.3e-04
+10:58:14 INFO src.model_v6_conv2d:   fold07 ep 80  eval_loss=0.0685  train=18.7  val=223.2  test=200.6  best_val=200.3  lr=6.9e-04
+10:58:20 INFO src.model_v6_conv2d:   fold07 ep 85  eval_loss=0.0616  train=16.8  val=224.4  test=200.1  best_val=200.3  lr=6.5e-04
+10:58:26 INFO src.model_v6_conv2d:   fold07 ep 90  eval_loss=0.0572  train=15.6  val=225.9  test=197.3  best_val=200.3  lr=6.2e-04
+10:58:32 INFO src.model_v6_conv2d:   fold07 ep 95  eval_loss=0.0618  train=16.8  val=228.7  test=203.9  best_val=200.3  lr=5.7e-04
+10:58:38 INFO src.model_v6_conv2d:   fold07 ep100  eval_loss=0.0537  train=14.6  val=225.1  test=198.6  best_val=200.3  lr=5.3e-04
+10:58:44 INFO src.model_v6_conv2d:   fold07 ep105  eval_loss=0.0527  train=14.4  val=220.8  test=195.8  best_val=200.3  lr=4.9e-04
+10:58:50 INFO src.model_v6_conv2d:   fold07 ep110  eval_loss=0.0461  train=12.6  val=221.1  test=194.9  best_val=200.3  lr=4.5e-04
+10:58:56 INFO src.model_v6_conv2d:   fold07 ep115  eval_loss=0.0447  train=12.2  val=223.9  test=193.9  best_val=200.3  lr=4.1e-04
+10:59:02 INFO src.model_v6_conv2d:   fold07 ep120  eval_loss=0.0420  train=11.4  val=230.1  test=198.6  best_val=200.3  lr=3.7e-04
+10:59:08 INFO src.model_v6_conv2d:   fold07 ep125  eval_loss=0.0420  train=11.4  val=227.9  test=204.3  best_val=200.3  lr=3.3e-04
+10:59:14 INFO src.model_v6_conv2d:   fold07 ep130  eval_loss=0.0376  train=10.3  val=224.8  test=199.2  best_val=200.3  lr=2.9e-04
+10:59:20 INFO src.model_v6_conv2d:   fold07 ep135  eval_loss=0.0339  train=9.2  val=225.8  test=197.1  best_val=200.3  lr=2.6e-04
+10:59:26 INFO src.model_v6_conv2d:   fold07 ep140  eval_loss=0.0311  train=8.5  val=227.7  test=196.0  best_val=200.3  lr=2.2e-04
+10:59:32 INFO src.model_v6_conv2d:   fold07 ep145  eval_loss=0.0298  train=8.1  val=224.6  test=195.4  best_val=200.3  lr=1.9e-04
+10:59:38 INFO src.model_v6_conv2d:   fold07 ep150  eval_loss=0.0270  train=7.3  val=223.7  test=194.4  best_val=200.3  lr=1.6e-04
+10:59:44 INFO src.model_v6_conv2d:   fold07 ep155  eval_loss=0.0260  train=7.1  val=223.7  test=196.7  best_val=200.3  lr=1.3e-04
+10:59:50 INFO src.model_v6_conv2d:   fold07 ep160  eval_loss=0.0226  train=6.2  val=224.7  test=195.4  best_val=200.3  lr=1.0e-04
+10:59:55 INFO src.model_v6_conv2d:   fold07 ep165  eval_loss=0.0219  train=6.0  val=227.3  test=199.5  best_val=200.3  lr=7.8e-05
+11:00:01 INFO src.model_v6_conv2d:   fold07 ep170  eval_loss=0.0195  train=5.3  val=226.7  test=199.9  best_val=200.3  lr=5.7e-05
+11:00:07 INFO src.model_v6_conv2d:   fold07 ep175  eval_loss=0.0183  train=5.0  val=225.3  test=197.9  best_val=200.3  lr=4.0e-05
+11:00:13 INFO src.model_v6_conv2d:   fold07 ep180  eval_loss=0.0165  train=4.5  val=224.3  test=194.9  best_val=200.3  lr=2.5e-05
+11:00:19 INFO src.model_v6_conv2d:   fold07 ep185  eval_loss=0.0160  train=4.4  val=225.0  test=197.4  best_val=200.3  lr=1.4e-05
+11:00:25 INFO src.model_v6_conv2d:   fold07 ep190  eval_loss=0.0155  train=4.2  val=226.1  test=197.4  best_val=200.3  lr=6.5e-06
+11:00:31 INFO src.model_v6_conv2d:   fold07 ep195  eval_loss=0.0146  train=4.0  val=225.4  test=197.1  best_val=200.3  lr=2.1e-06
+11:00:36 INFO src.model_v6_conv2d:   fold07 ep199  eval_loss=0.0150  train=4.1  val=225.9  test=197.6  best_val=200.3  lr=1.0e-06
+11:00:36 INFO src.model_v6_conv2d: Fold  7 done | val=200.3  test_MAE=203.4  test_RMSE=265.5
+11:00:36 INFO src.model_v6_conv2d: Fold  8 | train=4392 (2025-04-06~2025-10-06) val=336 test=168 | test 2025-10-20 ~ 2025-10-26
+11:00:38 INFO src.model_v6_conv2d:   fold08 ep  0  eval_loss=0.4088  train=111.3  val=276.3  test=164.5  best_val=276.3  lr=1.9e-04
+11:00:44 INFO src.model_v6_conv2d:   fold08 ep  5  eval_loss=0.2720  train=74.0  val=248.7  test=189.2  best_val=234.0  lr=6.4e-04
+11:00:50 INFO src.model_v6_conv2d:   fold08 ep 10  eval_loss=0.2424  train=66.0  val=264.5  test=214.4  best_val=234.0  lr=1.0e-03
+11:00:56 INFO src.model_v6_conv2d:   fold08 ep 15  eval_loss=0.1809  train=49.2  val=255.7  test=180.7  best_val=234.0  lr=1.0e-03
+11:01:02 INFO src.model_v6_conv2d:   fold08 ep 20  eval_loss=0.1605  train=43.7  val=263.7  test=199.2  best_val=234.0  lr=9.9e-04
+11:01:08 INFO src.model_v6_conv2d:   fold08 ep 25  eval_loss=0.1452  train=39.5  val=252.8  test=189.4  best_val=234.0  lr=9.8e-04
+11:01:14 INFO src.model_v6_conv2d:   fold08 ep 30  eval_loss=0.1304  train=35.5  val=251.6  test=175.9  best_val=234.0  lr=9.7e-04
+11:01:19 INFO src.model_v6_conv2d:   fold08 ep 35  eval_loss=0.1185  train=32.2  val=238.1  test=183.5  best_val=233.4  lr=9.5e-04
+11:01:25 INFO src.model_v6_conv2d:   fold08 ep 40  eval_loss=0.0970  train=26.4  val=246.1  test=177.6  best_val=233.4  lr=9.4e-04
+11:01:31 INFO src.model_v6_conv2d:   fold08 ep 45  eval_loss=0.1032  train=28.1  val=250.3  test=181.8  best_val=233.4  lr=9.1e-04
+11:01:37 INFO src.model_v6_conv2d:   fold08 ep 50  eval_loss=0.0902  train=24.5  val=255.3  test=179.8  best_val=233.4  lr=8.9e-04
+11:01:43 INFO src.model_v6_conv2d:   fold08 ep 55  eval_loss=0.0885  train=24.1  val=243.4  test=179.3  best_val=233.4  lr=8.6e-04
+11:01:49 INFO src.model_v6_conv2d:   fold08 ep 60  eval_loss=0.0829  train=22.6  val=247.6  test=177.9  best_val=233.4  lr=8.3e-04
+11:01:55 INFO src.model_v6_conv2d:   fold08 ep 65  eval_loss=0.0759  train=20.7  val=250.2  test=174.7  best_val=233.4  lr=8.0e-04
+11:02:00 INFO src.model_v6_conv2d:   fold08 ep 70  eval_loss=0.0750  train=20.4  val=248.8  test=183.2  best_val=233.4  lr=7.7e-04
+11:02:06 INFO src.model_v6_conv2d:   fold08 ep 75  eval_loss=0.0739  train=20.1  val=247.9  test=176.1  best_val=233.4  lr=7.3e-04
+11:02:12 INFO src.model_v6_conv2d:   fold08 ep 80  eval_loss=0.0680  train=18.5  val=250.3  test=178.3  best_val=233.4  lr=6.9e-04
+11:02:18 INFO src.model_v6_conv2d:   fold08 ep 85  eval_loss=0.0614  train=16.7  val=248.7  test=177.8  best_val=233.4  lr=6.5e-04
+11:02:24 INFO src.model_v6_conv2d:   fold08 ep 90  eval_loss=0.0638  train=17.4  val=249.2  test=178.3  best_val=233.4  lr=6.2e-04
+11:02:30 INFO src.model_v6_conv2d:   fold08 ep 95  eval_loss=0.0615  train=16.7  val=258.8  test=182.7  best_val=233.4  lr=5.7e-04
+11:02:36 INFO src.model_v6_conv2d:   fold08 ep100  eval_loss=0.0533  train=14.5  val=245.2  test=174.4  best_val=233.4  lr=5.3e-04
+11:02:41 INFO src.model_v6_conv2d:   fold08 ep105  eval_loss=0.0519  train=14.1  val=251.5  test=175.0  best_val=233.4  lr=4.9e-04
+11:02:48 INFO src.model_v6_conv2d:   fold08 ep110  eval_loss=0.0471  train=12.8  val=246.7  test=173.3  best_val=233.4  lr=4.5e-04
+11:02:53 INFO src.model_v6_conv2d:   fold08 ep115  eval_loss=0.0454  train=12.4  val=248.9  test=178.5  best_val=233.4  lr=4.1e-04
+11:02:59 INFO src.model_v6_conv2d:   fold08 ep120  eval_loss=0.0433  train=11.8  val=244.6  test=177.7  best_val=233.4  lr=3.7e-04
+11:03:05 INFO src.model_v6_conv2d:   fold08 ep125  eval_loss=0.0427  train=11.6  val=240.1  test=171.3  best_val=233.4  lr=3.3e-04
+11:03:11 INFO src.model_v6_conv2d:   fold08 ep130  eval_loss=0.0364  train=9.9  val=247.4  test=174.1  best_val=233.4  lr=2.9e-04
+11:03:17 INFO src.model_v6_conv2d:   fold08 ep135  eval_loss=0.0372  train=10.1  val=241.8  test=170.1  best_val=233.4  lr=2.6e-04
+11:03:23 INFO src.model_v6_conv2d:   fold08 ep140  eval_loss=0.0336  train=9.1  val=243.0  test=171.9  best_val=233.4  lr=2.2e-04
+11:03:29 INFO src.model_v6_conv2d:   fold08 ep145  eval_loss=0.0304  train=8.3  val=246.1  test=174.2  best_val=233.4  lr=1.9e-04
+11:03:35 INFO src.model_v6_conv2d:   fold08 ep150  eval_loss=0.0292  train=8.0  val=248.0  test=173.4  best_val=233.4  lr=1.6e-04
+11:03:40 INFO src.model_v6_conv2d:   fold08 ep155  eval_loss=0.0259  train=7.0  val=247.5  test=174.7  best_val=233.4  lr=1.3e-04
+11:03:46 INFO src.model_v6_conv2d:   fold08 ep160  eval_loss=0.0251  train=6.8  val=249.2  test=174.9  best_val=233.4  lr=1.0e-04
+11:03:52 INFO src.model_v6_conv2d:   fold08 ep165  eval_loss=0.0213  train=5.8  val=248.7  test=172.7  best_val=233.4  lr=7.8e-05
+11:03:58 INFO src.model_v6_conv2d:   fold08 ep170  eval_loss=0.0201  train=5.5  val=247.5  test=173.3  best_val=233.4  lr=5.7e-05
+11:04:04 INFO src.model_v6_conv2d:   fold08 ep175  eval_loss=0.0179  train=4.9  val=245.2  test=171.2  best_val=233.4  lr=4.0e-05
+11:04:10 INFO src.model_v6_conv2d:   fold08 ep180  eval_loss=0.0167  train=4.6  val=244.9  test=172.9  best_val=233.4  lr=2.5e-05
+11:04:15 INFO src.model_v6_conv2d:   fold08 ep185  eval_loss=0.0153  train=4.2  val=245.3  test=173.0  best_val=233.4  lr=1.4e-05
+11:04:21 INFO src.model_v6_conv2d:   fold08 ep190  eval_loss=0.0153  train=4.2  val=244.2  test=172.1  best_val=233.4  lr=6.5e-06
+11:04:27 INFO src.model_v6_conv2d:   fold08 ep195  eval_loss=0.0152  train=4.1  val=246.0  test=172.2  best_val=233.4  lr=2.1e-06
+11:04:32 INFO src.model_v6_conv2d:   fold08 ep199  eval_loss=0.0153  train=4.2  val=246.2  test=173.3  best_val=233.4  lr=1.0e-06
+11:04:32 INFO src.model_v6_conv2d: Fold  8 done | val=233.4  test_MAE=176.1  test_RMSE=240.9
+11:04:32 INFO src.model_v6_conv2d: Fold  9 | train=4392 (2025-04-13~2025-10-13) val=336 test=168 | test 2025-10-27 ~ 2025-11-02
+11:04:34 INFO src.model_v6_conv2d:   fold09 ep  0  eval_loss=0.3978  train=116.9  val=167.8  test=113.0  best_val=167.8  lr=1.9e-04
+11:04:40 INFO src.model_v6_conv2d:   fold09 ep  5  eval_loss=0.2629  train=77.3  val=200.9  test=151.9  best_val=167.8  lr=6.4e-04
+11:04:46 INFO src.model_v6_conv2d:   fold09 ep 10  eval_loss=0.2432  train=71.5  val=199.4  test=160.2  best_val=167.8  lr=1.0e-03
+11:04:51 INFO src.model_v6_conv2d:   fold09 ep 15  eval_loss=0.1897  train=55.8  val=188.1  test=133.9  best_val=167.8  lr=1.0e-03
+11:04:57 INFO src.model_v6_conv2d:   fold09 ep 20  eval_loss=0.1629  train=47.9  val=179.1  test=121.4  best_val=167.8  lr=9.9e-04
+11:05:03 INFO src.model_v6_conv2d:   fold09 ep 25  eval_loss=0.1373  train=40.4  val=188.1  test=110.9  best_val=167.8  lr=9.8e-04
+11:05:09 INFO src.model_v6_conv2d:   fold09 ep 30  eval_loss=0.1260  train=37.0  val=183.3  test=120.7  best_val=167.8  lr=9.7e-04
+11:05:15 INFO src.model_v6_conv2d:   fold09 ep 35  eval_loss=0.1133  train=33.3  val=182.9  test=125.8  best_val=167.8  lr=9.5e-04
+11:05:21 INFO src.model_v6_conv2d:   fold09 ep 40  eval_loss=0.1084  train=31.9  val=175.4  test=127.8  best_val=167.8  lr=9.4e-04
+11:05:26 INFO src.model_v6_conv2d:   fold09 ep 45  eval_loss=0.1009  train=29.7  val=200.2  test=134.4  best_val=167.8  lr=9.1e-04
+11:05:32 INFO src.model_v6_conv2d:   fold09 ep 50  eval_loss=0.0889  train=26.1  val=192.4  test=117.0  best_val=167.8  lr=8.9e-04
+11:05:38 INFO src.model_v6_conv2d:   fold09 ep 55  eval_loss=0.0870  train=25.6  val=178.8  test=121.7  best_val=167.8  lr=8.6e-04
+11:05:44 INFO src.model_v6_conv2d:   fold09 ep 60  eval_loss=0.0796  train=23.4  val=185.5  test=117.9  best_val=167.8  lr=8.3e-04
+11:05:50 INFO src.model_v6_conv2d:   fold09 ep 65  eval_loss=0.0818  train=24.0  val=178.5  test=118.5  best_val=167.8  lr=8.0e-04
+11:05:56 INFO src.model_v6_conv2d:   fold09 ep 70  eval_loss=0.0741  train=21.8  val=177.8  test=122.7  best_val=167.8  lr=7.7e-04
+11:06:02 INFO src.model_v6_conv2d:   fold09 ep 75  eval_loss=0.0714  train=21.0  val=180.7  test=125.7  best_val=167.8  lr=7.3e-04
+11:06:07 INFO src.model_v6_conv2d:   fold09 ep 80  eval_loss=0.0669  train=19.7  val=177.4  test=126.2  best_val=167.8  lr=6.9e-04
+11:06:13 INFO src.model_v6_conv2d:   fold09 ep 85  eval_loss=0.0651  train=19.1  val=178.3  test=121.5  best_val=167.8  lr=6.5e-04
+11:06:19 INFO src.model_v6_conv2d:   fold09 ep 90  eval_loss=0.0549  train=16.1  val=182.0  test=115.9  best_val=167.8  lr=6.2e-04
+11:06:25 INFO src.model_v6_conv2d:   fold09 ep 95  eval_loss=0.0511  train=15.0  val=176.3  test=117.3  best_val=167.8  lr=5.7e-04
+11:06:31 INFO src.model_v6_conv2d:   fold09 ep100  eval_loss=0.0591  train=17.4  val=177.3  test=117.0  best_val=167.8  lr=5.3e-04
+11:06:37 INFO src.model_v6_conv2d:   fold09 ep105  eval_loss=0.0531  train=15.6  val=180.2  test=114.5  best_val=167.8  lr=4.9e-04
+11:06:43 INFO src.model_v6_conv2d:   fold09 ep110  eval_loss=0.0453  train=13.3  val=181.0  test=119.4  best_val=167.8  lr=4.5e-04
+11:06:49 INFO src.model_v6_conv2d:   fold09 ep115  eval_loss=0.0499  train=14.7  val=176.2  test=123.8  best_val=167.8  lr=4.1e-04
+11:06:54 INFO src.model_v6_conv2d:   fold09 ep120  eval_loss=0.0455  train=13.4  val=176.8  test=118.6  best_val=167.8  lr=3.7e-04
+11:07:00 INFO src.model_v6_conv2d:   fold09 ep125  eval_loss=0.0405  train=11.9  val=177.4  test=120.7  best_val=167.8  lr=3.3e-04
+11:07:06 INFO src.model_v6_conv2d:   fold09 ep130  eval_loss=0.0370  train=10.9  val=179.5  test=120.8  best_val=167.8  lr=2.9e-04
+11:07:12 INFO src.model_v6_conv2d:   fold09 ep135  eval_loss=0.0342  train=10.1  val=175.1  test=119.9  best_val=167.8  lr=2.6e-04
+11:07:18 INFO src.model_v6_conv2d:   fold09 ep140  eval_loss=0.0343  train=10.1  val=174.9  test=121.7  best_val=167.8  lr=2.2e-04
+11:07:24 INFO src.model_v6_conv2d:   fold09 ep145  eval_loss=0.0294  train=8.6  val=176.5  test=120.5  best_val=167.8  lr=1.9e-04
+11:07:30 INFO src.model_v6_conv2d:   fold09 ep150  eval_loss=0.0281  train=8.3  val=176.1  test=120.3  best_val=167.8  lr=1.6e-04
+11:07:35 INFO src.model_v6_conv2d:   fold09 ep155  eval_loss=0.0247  train=7.3  val=174.7  test=123.3  best_val=167.8  lr=1.3e-04
+11:07:41 INFO src.model_v6_conv2d:   fold09 ep160  eval_loss=0.0220  train=6.5  val=176.8  test=120.1  best_val=167.8  lr=1.0e-04
+11:07:47 INFO src.model_v6_conv2d:   fold09 ep165  eval_loss=0.0205  train=6.0  val=175.1  test=120.4  best_val=167.8  lr=7.8e-05
+11:07:53 INFO src.model_v6_conv2d:   fold09 ep170  eval_loss=0.0187  train=5.5  val=176.1  test=121.0  best_val=167.8  lr=5.7e-05
+11:07:59 INFO src.model_v6_conv2d:   fold09 ep175  eval_loss=0.0176  train=5.2  val=175.8  test=120.0  best_val=167.8  lr=4.0e-05
+11:08:05 INFO src.model_v6_conv2d:   fold09 ep180  eval_loss=0.0160  train=4.7  val=176.5  test=120.7  best_val=167.8  lr=2.5e-05
+11:08:11 INFO src.model_v6_conv2d:   fold09 ep185  eval_loss=0.0146  train=4.3  val=175.9  test=121.0  best_val=167.8  lr=1.4e-05
+11:08:17 INFO src.model_v6_conv2d:   fold09 ep190  eval_loss=0.0143  train=4.2  val=176.1  test=120.9  best_val=167.8  lr=6.5e-06
+11:08:23 INFO src.model_v6_conv2d:   fold09 ep195  eval_loss=0.0143  train=4.2  val=175.9  test=121.1  best_val=167.8  lr=2.1e-06
+11:08:28 INFO src.model_v6_conv2d:   fold09 ep199  eval_loss=0.0146  train=4.3  val=175.4  test=120.5  best_val=167.8  lr=1.0e-06
+11:08:28 INFO src.model_v6_conv2d: Fold  9 done | val=167.8  test_MAE=113.0  test_RMSE=159.6
+11:08:28 INFO src.model_v6_conv2d: Fold 10 | train=4392 (2025-04-20~2025-10-20) val=336 test=168 | test 2025-11-03 ~ 2025-11-09
+11:08:29 INFO src.model_v6_conv2d:   fold10 ep  0  eval_loss=0.3967  train=118.2  val=127.6  test=75.3  best_val=127.6  lr=1.9e-04
+11:08:35 INFO src.model_v6_conv2d:   fold10 ep  5  eval_loss=0.2535  train=75.5  val=161.6  test=83.7  best_val=127.6  lr=6.4e-04
+11:08:41 INFO src.model_v6_conv2d:   fold10 ep 10  eval_loss=0.2394  train=71.3  val=180.8  test=75.4  best_val=127.6  lr=1.0e-03
+11:08:47 INFO src.model_v6_conv2d:   fold10 ep 15  eval_loss=0.1988  train=59.2  val=156.9  test=87.4  best_val=126.5  lr=1.0e-03
+11:08:53 INFO src.model_v6_conv2d:   fold10 ep 20  eval_loss=0.1618  train=48.2  val=156.3  test=72.7  best_val=126.5  lr=9.9e-04
+11:08:59 INFO src.model_v6_conv2d:   fold10 ep 25  eval_loss=0.1443  train=43.0  val=157.1  test=80.3  best_val=126.5  lr=9.8e-04
+11:09:05 INFO src.model_v6_conv2d:   fold10 ep 30  eval_loss=0.1265  train=37.7  val=157.4  test=81.0  best_val=126.5  lr=9.7e-04
+11:09:11 INFO src.model_v6_conv2d:   fold10 ep 35  eval_loss=0.1174  train=35.0  val=147.4  test=72.0  best_val=126.5  lr=9.5e-04
+11:09:17 INFO src.model_v6_conv2d:   fold10 ep 40  eval_loss=0.1138  train=33.9  val=147.2  test=67.8  best_val=126.5  lr=9.4e-04
+11:09:23 INFO src.model_v6_conv2d:   fold10 ep 45  eval_loss=0.1084  train=32.3  val=167.8  test=91.4  best_val=126.5  lr=9.1e-04
+11:09:29 INFO src.model_v6_conv2d:   fold10 ep 50  eval_loss=0.0944  train=28.1  val=161.2  test=89.1  best_val=126.5  lr=8.9e-04
+11:09:35 INFO src.model_v6_conv2d:   fold10 ep 55  eval_loss=0.0873  train=26.0  val=162.8  test=84.7  best_val=126.5  lr=8.6e-04
+11:09:40 INFO src.model_v6_conv2d:   fold10 ep 60  eval_loss=0.0887  train=26.4  val=152.4  test=79.5  best_val=126.5  lr=8.3e-04
+11:09:46 INFO src.model_v6_conv2d:   fold10 ep 65  eval_loss=0.0833  train=24.8  val=151.3  test=79.8  best_val=126.5  lr=8.0e-04
+11:09:52 INFO src.model_v6_conv2d:   fold10 ep 70  eval_loss=0.0815  train=24.3  val=163.5  test=82.0  best_val=126.5  lr=7.7e-04
+11:09:58 INFO src.model_v6_conv2d:   fold10 ep 75  eval_loss=0.0695  train=20.7  val=153.6  test=78.5  best_val=126.5  lr=7.3e-04
+11:10:04 INFO src.model_v6_conv2d:   fold10 ep 80  eval_loss=0.0701  train=20.9  val=145.5  test=71.1  best_val=126.5  lr=6.9e-04
+11:10:10 INFO src.model_v6_conv2d:   fold10 ep 85  eval_loss=0.0658  train=19.6  val=149.5  test=75.0  best_val=126.5  lr=6.5e-04
+11:10:16 INFO src.model_v6_conv2d:   fold10 ep 90  eval_loss=0.0561  train=16.7  val=153.4  test=73.1  best_val=126.5  lr=6.2e-04
+11:10:22 INFO src.model_v6_conv2d:   fold10 ep 95  eval_loss=0.0588  train=17.5  val=150.7  test=72.1  best_val=126.5  lr=5.7e-04
+11:10:28 INFO src.model_v6_conv2d:   fold10 ep100  eval_loss=0.0559  train=16.6  val=151.9  test=71.2  best_val=126.5  lr=5.3e-04
+11:10:34 INFO src.model_v6_conv2d:   fold10 ep105  eval_loss=0.0528  train=15.7  val=156.4  test=75.0  best_val=126.5  lr=4.9e-04
+11:10:42 INFO src.model_v6_conv2d:   fold10 ep110  eval_loss=0.0463  train=13.8  val=147.9  test=76.2  best_val=126.5  lr=4.5e-04
+11:10:48 INFO src.model_v6_conv2d:   fold10 ep115  eval_loss=0.0447  train=13.3  val=148.9  test=75.1  best_val=126.5  lr=4.1e-04
+11:10:54 INFO src.model_v6_conv2d:   fold10 ep120  eval_loss=0.0469  train=14.0  val=148.9  test=73.5  best_val=126.5  lr=3.7e-04
+11:11:00 INFO src.model_v6_conv2d:   fold10 ep125  eval_loss=0.0388  train=11.5  val=149.2  test=75.5  best_val=126.5  lr=3.3e-04
+11:11:06 INFO src.model_v6_conv2d:   fold10 ep130  eval_loss=0.0375  train=11.2  val=146.8  test=71.6  best_val=126.5  lr=2.9e-04
+11:11:12 INFO src.model_v6_conv2d:   fold10 ep135  eval_loss=0.0369  train=11.0  val=148.0  test=72.6  best_val=126.5  lr=2.6e-04
+11:11:18 INFO src.model_v6_conv2d:   fold10 ep140  eval_loss=0.0338  train=10.1  val=145.3  test=71.9  best_val=126.5  lr=2.2e-04
+11:11:24 INFO src.model_v6_conv2d:   fold10 ep145  eval_loss=0.0291  train=8.7  val=148.0  test=72.4  best_val=126.5  lr=1.9e-04
+11:11:30 INFO src.model_v6_conv2d:   fold10 ep150  eval_loss=0.0266  train=7.9  val=148.9  test=72.7  best_val=126.5  lr=1.6e-04
+11:11:37 INFO src.model_v6_conv2d:   fold10 ep155  eval_loss=0.0257  train=7.7  val=146.3  test=71.8  best_val=126.5  lr=1.3e-04
+11:11:43 INFO src.model_v6_conv2d:   fold10 ep160  eval_loss=0.0252  train=7.5  val=147.0  test=72.3  best_val=126.5  lr=1.0e-04
+11:11:49 INFO src.model_v6_conv2d:   fold10 ep165  eval_loss=0.0207  train=6.2  val=146.8  test=70.9  best_val=126.5  lr=7.8e-05
+11:11:55 INFO src.model_v6_conv2d:   fold10 ep170  eval_loss=0.0188  train=5.6  val=148.2  test=71.1  best_val=126.5  lr=5.7e-05
+11:12:01 INFO src.model_v6_conv2d:   fold10 ep175  eval_loss=0.0177  train=5.3  val=147.8  test=71.9  best_val=126.5  lr=4.0e-05
+11:12:07 INFO src.model_v6_conv2d:   fold10 ep180  eval_loss=0.0157  train=4.7  val=148.7  test=70.9  best_val=126.5  lr=2.5e-05
+11:12:13 INFO src.model_v6_conv2d:   fold10 ep185  eval_loss=0.0147  train=4.4  val=148.8  test=72.0  best_val=126.5  lr=1.4e-05
+11:12:19 INFO src.model_v6_conv2d:   fold10 ep190  eval_loss=0.0146  train=4.3  val=148.3  test=72.0  best_val=126.5  lr=6.5e-06
+11:12:26 INFO src.model_v6_conv2d:   fold10 ep195  eval_loss=0.0146  train=4.3  val=148.1  test=71.8  best_val=126.5  lr=2.1e-06
+11:12:30 INFO src.model_v6_conv2d:   fold10 ep199  eval_loss=0.0139  train=4.2  val=148.0  test=71.5  best_val=126.5  lr=1.0e-06
+11:12:31 INFO src.model_v6_conv2d: Fold 10 done | val=126.5  test_MAE=71.1  test_RMSE=94.2
+11:12:31 INFO src.model_v6_conv2d: Fold 11 | train=4392 (2025-04-27~2025-10-27) val=336 test=168 | test 2025-11-10 ~ 2025-11-16
+11:12:32 INFO src.model_v6_conv2d:   fold11 ep  0  eval_loss=0.3975  train=118.1  val=108.8  test=62.4  best_val=108.8  lr=1.9e-04
+11:12:38 INFO src.model_v6_conv2d:   fold11 ep  5  eval_loss=0.2423  train=72.0  val=106.8  test=68.0  best_val=106.8  lr=6.4e-04
+11:12:44 INFO src.model_v6_conv2d:   fold11 ep 10  eval_loss=0.2236  train=66.4  val=115.0  test=83.6  best_val=106.8  lr=1.0e-03
+11:12:50 INFO src.model_v6_conv2d:   fold11 ep 15  eval_loss=0.1782  train=52.9  val=106.9  test=61.5  best_val=102.3  lr=1.0e-03
+11:12:56 INFO src.model_v6_conv2d:   fold11 ep 20  eval_loss=0.1634  train=48.6  val=104.3  test=75.8  best_val=102.3  lr=9.9e-04
+11:13:02 INFO src.model_v6_conv2d:   fold11 ep 25  eval_loss=0.1358  train=40.3  val=95.7  test=63.2  best_val=95.7  lr=9.8e-04
+11:13:09 INFO src.model_v6_conv2d:   fold11 ep 30  eval_loss=0.1233  train=36.6  val=108.4  test=68.0  best_val=92.7  lr=9.7e-04
+11:13:15 INFO src.model_v6_conv2d:   fold11 ep 35  eval_loss=0.1104  train=32.8  val=109.4  test=60.4  best_val=92.7  lr=9.5e-04
+11:13:21 INFO src.model_v6_conv2d:   fold11 ep 40  eval_loss=0.1150  train=34.2  val=106.8  test=55.9  best_val=92.2  lr=9.4e-04
+11:13:28 INFO src.model_v6_conv2d:   fold11 ep 45  eval_loss=0.0966  train=28.7  val=101.3  test=74.4  best_val=92.2  lr=9.1e-04
+11:13:33 INFO src.model_v6_conv2d:   fold11 ep 50  eval_loss=0.0920  train=27.3  val=94.3  test=68.5  best_val=92.2  lr=8.9e-04
+11:13:39 INFO src.model_v6_conv2d:   fold11 ep 55  eval_loss=0.0881  train=26.2  val=93.6  test=61.8  best_val=92.2  lr=8.6e-04
+11:13:46 INFO src.model_v6_conv2d:   fold11 ep 60  eval_loss=0.0850  train=25.3  val=95.5  test=59.5  best_val=91.9  lr=8.3e-04
+11:13:52 INFO src.model_v6_conv2d:   fold11 ep 65  eval_loss=0.0856  train=25.4  val=98.5  test=73.3  best_val=87.9  lr=8.0e-04
+11:13:58 INFO src.model_v6_conv2d:   fold11 ep 70  eval_loss=0.0771  train=22.9  val=92.6  test=60.9  best_val=87.9  lr=7.7e-04
+11:14:04 INFO src.model_v6_conv2d:   fold11 ep 75  eval_loss=0.0737  train=21.9  val=95.3  test=64.8  best_val=87.9  lr=7.3e-04
+11:14:10 INFO src.model_v6_conv2d:   fold11 ep 80  eval_loss=0.0670  train=19.9  val=98.4  test=69.8  best_val=87.9  lr=6.9e-04
+11:14:16 INFO src.model_v6_conv2d:   fold11 ep 85  eval_loss=0.0655  train=19.5  val=95.9  test=75.2  best_val=87.9  lr=6.5e-04
+11:14:22 INFO src.model_v6_conv2d:   fold11 ep 90  eval_loss=0.0568  train=16.9  val=99.0  test=72.2  best_val=87.9  lr=6.2e-04
+11:14:28 INFO src.model_v6_conv2d:   fold11 ep 95  eval_loss=0.0596  train=17.7  val=99.4  test=76.0  best_val=87.9  lr=5.7e-04
+11:14:34 INFO src.model_v6_conv2d:   fold11 ep100  eval_loss=0.0540  train=16.0  val=95.5  test=71.7  best_val=87.9  lr=5.3e-04
+11:14:40 INFO src.model_v6_conv2d:   fold11 ep105  eval_loss=0.0542  train=16.1  val=97.9  test=64.8  best_val=87.9  lr=4.9e-04
+11:14:46 INFO src.model_v6_conv2d:   fold11 ep110  eval_loss=0.0531  train=15.8  val=95.3  test=66.3  best_val=87.9  lr=4.5e-04
+11:14:52 INFO src.model_v6_conv2d:   fold11 ep115  eval_loss=0.0444  train=13.2  val=95.6  test=63.9  best_val=87.9  lr=4.1e-04
+11:14:58 INFO src.model_v6_conv2d:   fold11 ep120  eval_loss=0.0423  train=12.6  val=92.4  test=67.3  best_val=87.9  lr=3.7e-04
+11:15:04 INFO src.model_v6_conv2d:   fold11 ep125  eval_loss=0.0378  train=11.2  val=93.3  test=69.6  best_val=87.9  lr=3.3e-04
+11:15:10 INFO src.model_v6_conv2d:   fold11 ep130  eval_loss=0.0369  train=11.0  val=93.6  test=65.3  best_val=87.9  lr=2.9e-04
+11:15:16 INFO src.model_v6_conv2d:   fold11 ep135  eval_loss=0.0351  train=10.4  val=94.9  test=65.1  best_val=87.9  lr=2.6e-04
+11:15:22 INFO src.model_v6_conv2d:   fold11 ep140  eval_loss=0.0328  train=9.8  val=95.5  test=66.3  best_val=87.9  lr=2.2e-04
+11:15:28 INFO src.model_v6_conv2d:   fold11 ep145  eval_loss=0.0295  train=8.8  val=93.3  test=68.5  best_val=87.9  lr=1.9e-04
+11:15:34 INFO src.model_v6_conv2d:   fold11 ep150  eval_loss=0.0290  train=8.6  val=92.1  test=68.5  best_val=87.9  lr=1.6e-04
+11:15:40 INFO src.model_v6_conv2d:   fold11 ep155  eval_loss=0.0289  train=8.6  val=93.6  test=72.9  best_val=87.9  lr=1.3e-04
+11:15:46 INFO src.model_v6_conv2d:   fold11 ep160  eval_loss=0.0250  train=7.4  val=93.4  test=70.5  best_val=87.9  lr=1.0e-04
+11:15:52 INFO src.model_v6_conv2d:   fold11 ep165  eval_loss=0.0218  train=6.5  val=92.9  test=66.9  best_val=87.9  lr=7.8e-05
+11:15:58 INFO src.model_v6_conv2d:   fold11 ep170  eval_loss=0.0194  train=5.8  val=92.6  test=69.3  best_val=87.9  lr=5.7e-05
+11:16:04 INFO src.model_v6_conv2d:   fold11 ep175  eval_loss=0.0180  train=5.3  val=93.5  test=68.6  best_val=87.9  lr=4.0e-05
+11:16:10 INFO src.model_v6_conv2d:   fold11 ep180  eval_loss=0.0159  train=4.7  val=93.4  test=69.7  best_val=87.9  lr=2.5e-05
+11:16:16 INFO src.model_v6_conv2d:   fold11 ep185  eval_loss=0.0150  train=4.5  val=93.8  test=69.6  best_val=87.9  lr=1.4e-05
+11:16:22 INFO src.model_v6_conv2d:   fold11 ep190  eval_loss=0.0154  train=4.6  val=92.8  test=69.6  best_val=87.9  lr=6.5e-06
+11:16:28 INFO src.model_v6_conv2d:   fold11 ep195  eval_loss=0.0146  train=4.3  val=92.8  test=68.9  best_val=87.9  lr=2.1e-06
+11:16:33 INFO src.model_v6_conv2d:   fold11 ep199  eval_loss=0.0154  train=4.6  val=92.5  test=69.3  best_val=87.9  lr=1.0e-06
+11:16:33 INFO src.model_v6_conv2d: Fold 11 done | val=87.9  test_MAE=72.0  test_RMSE=86.8
+11:16:33 INFO src.model_v6_conv2d: Fold 12 | train=4416 (2025-05-03~2025-11-03) val=336 test=168 | test 2025-11-17 ~ 2025-11-23
+11:16:35 INFO src.model_v6_conv2d:   fold12 ep  0  eval_loss=0.3979  train=117.4  val=85.3  test=146.0  best_val=85.3  lr=1.9e-04
+11:16:41 INFO src.model_v6_conv2d:   fold12 ep  5  eval_loss=0.2457  train=72.5  val=80.5  test=140.8  best_val=77.5  lr=6.4e-04
+11:16:47 INFO src.model_v6_conv2d:   fold12 ep 10  eval_loss=0.2204  train=65.1  val=146.2  test=219.3  best_val=77.5  lr=1.0e-03
+11:16:53 INFO src.model_v6_conv2d:   fold12 ep 15  eval_loss=0.1892  train=55.9  val=83.2  test=126.9  best_val=77.5  lr=1.0e-03
+11:16:59 INFO src.model_v6_conv2d:   fold12 ep 20  eval_loss=0.1592  train=47.0  val=105.1  test=157.9  best_val=77.5  lr=9.9e-04
+11:17:05 INFO src.model_v6_conv2d:   fold12 ep 25  eval_loss=0.1361  train=40.2  val=96.5  test=176.0  best_val=77.5  lr=9.8e-04
+11:17:11 INFO src.model_v6_conv2d:   fold12 ep 30  eval_loss=0.1257  train=37.1  val=92.7  test=137.6  best_val=77.5  lr=9.7e-04
+11:17:17 INFO src.model_v6_conv2d:   fold12 ep 35  eval_loss=0.1226  train=36.2  val=94.2  test=167.9  best_val=77.5  lr=9.5e-04
+11:17:23 INFO src.model_v6_conv2d:   fold12 ep 40  eval_loss=0.1091  train=32.2  val=80.7  test=125.2  best_val=77.5  lr=9.4e-04
+11:17:29 INFO src.model_v6_conv2d:   fold12 ep 45  eval_loss=0.1031  train=30.4  val=97.5  test=159.6  best_val=77.5  lr=9.1e-04
+11:17:35 INFO src.model_v6_conv2d:   fold12 ep 50  eval_loss=0.0928  train=27.4  val=98.2  test=163.0  best_val=77.5  lr=8.9e-04
+11:17:42 INFO src.model_v6_conv2d:   fold12 ep 55  eval_loss=0.0885  train=26.1  val=101.8  test=164.6  best_val=77.5  lr=8.6e-04
+11:17:48 INFO src.model_v6_conv2d:   fold12 ep 60  eval_loss=0.0817  train=24.1  val=96.8  test=148.3  best_val=77.5  lr=8.3e-04
+11:17:54 INFO src.model_v6_conv2d:   fold12 ep 65  eval_loss=0.0760  train=22.4  val=96.9  test=155.3  best_val=77.5  lr=8.0e-04
+11:18:00 INFO src.model_v6_conv2d:   fold12 ep 70  eval_loss=0.0745  train=22.0  val=86.4  test=139.7  best_val=77.5  lr=7.7e-04
+11:18:06 INFO src.model_v6_conv2d:   fold12 ep 75  eval_loss=0.0644  train=19.0  val=95.4  test=142.6  best_val=77.5  lr=7.3e-04
+11:18:13 INFO src.model_v6_conv2d:   fold12 ep 80  eval_loss=0.0696  train=20.6  val=105.5  test=152.5  best_val=77.5  lr=6.9e-04
+11:18:19 INFO src.model_v6_conv2d:   fold12 ep 85  eval_loss=0.0659  train=19.4  val=91.5  test=139.5  best_val=77.5  lr=6.5e-04
+11:18:25 INFO src.model_v6_conv2d:   fold12 ep 90  eval_loss=0.0597  train=17.6  val=95.6  test=156.8  best_val=77.5  lr=6.2e-04
+11:18:30 INFO src.model_v6_conv2d:   fold12 ep 95  eval_loss=0.0590  train=17.4  val=94.2  test=139.5  best_val=77.5  lr=5.7e-04
+11:18:36 INFO src.model_v6_conv2d:   fold12 ep100  eval_loss=0.0557  train=16.4  val=90.1  test=137.7  best_val=77.5  lr=5.3e-04
+11:18:42 INFO src.model_v6_conv2d:   fold12 ep105  eval_loss=0.0529  train=15.6  val=94.3  test=145.5  best_val=77.5  lr=4.9e-04
+11:18:48 INFO src.model_v6_conv2d:   fold12 ep110  eval_loss=0.0471  train=13.9  val=89.4  test=139.1  best_val=77.5  lr=4.5e-04
+11:18:54 INFO src.model_v6_conv2d:   fold12 ep115  eval_loss=0.0464  train=13.7  val=93.7  test=141.5  best_val=77.5  lr=4.1e-04
+11:19:00 INFO src.model_v6_conv2d:   fold12 ep120  eval_loss=0.0439  train=13.0  val=92.2  test=137.2  best_val=77.5  lr=3.7e-04
+11:19:06 INFO src.model_v6_conv2d:   fold12 ep125  eval_loss=0.0386  train=11.4  val=92.0  test=144.3  best_val=77.5  lr=3.3e-04
+11:19:12 INFO src.model_v6_conv2d:   fold12 ep130  eval_loss=0.0383  train=11.3  val=93.0  test=146.9  best_val=77.5  lr=2.9e-04
+11:19:18 INFO src.model_v6_conv2d:   fold12 ep135  eval_loss=0.0345  train=10.2  val=87.7  test=141.6  best_val=77.5  lr=2.6e-04
+11:19:24 INFO src.model_v6_conv2d:   fold12 ep140  eval_loss=0.0308  train=9.1  val=87.3  test=137.9  best_val=77.5  lr=2.2e-04
+11:19:30 INFO src.model_v6_conv2d:   fold12 ep145  eval_loss=0.0316  train=9.3  val=90.3  test=145.3  best_val=77.5  lr=1.9e-04
+11:19:36 INFO src.model_v6_conv2d:   fold12 ep150  eval_loss=0.0271  train=8.0  val=88.9  test=141.5  best_val=77.5  lr=1.6e-04
+11:19:42 INFO src.model_v6_conv2d:   fold12 ep155  eval_loss=0.0253  train=7.5  val=90.2  test=143.5  best_val=77.5  lr=1.3e-04
+11:19:48 INFO src.model_v6_conv2d:   fold12 ep160  eval_loss=0.0243  train=7.2  val=87.1  test=141.1  best_val=77.5  lr=1.0e-04
+11:19:54 INFO src.model_v6_conv2d:   fold12 ep165  eval_loss=0.0214  train=6.3  val=86.8  test=141.6  best_val=77.5  lr=7.8e-05
+11:20:00 INFO src.model_v6_conv2d:   fold12 ep170  eval_loss=0.0186  train=5.5  val=88.3  test=143.5  best_val=77.5  lr=5.7e-05
+11:20:06 INFO src.model_v6_conv2d:   fold12 ep175  eval_loss=0.0179  train=5.3  val=88.8  test=144.0  best_val=77.5  lr=4.0e-05
+11:20:12 INFO src.model_v6_conv2d:   fold12 ep180  eval_loss=0.0162  train=4.8  val=87.6  test=143.2  best_val=77.5  lr=2.5e-05
+11:20:18 INFO src.model_v6_conv2d:   fold12 ep185  eval_loss=0.0159  train=4.7  val=88.3  test=143.2  best_val=77.5  lr=1.4e-05
+11:20:24 INFO src.model_v6_conv2d:   fold12 ep190  eval_loss=0.0144  train=4.3  val=88.9  test=145.2  best_val=77.5  lr=6.5e-06
+11:20:30 INFO src.model_v6_conv2d:   fold12 ep195  eval_loss=0.0149  train=4.4  val=88.0  test=143.1  best_val=77.5  lr=2.1e-06
+11:20:35 INFO src.model_v6_conv2d:   fold12 ep199  eval_loss=0.0137  train=4.0  val=88.2  test=143.0  best_val=77.5  lr=1.0e-06
+11:20:35 INFO src.model_v6_conv2d: Fold 12 done | val=77.5  test_MAE=80.8  test_RMSE=95.0
+11:20:35 INFO src.model_v6_conv2d: Fold 13 | train=4416 (2025-05-10~2025-11-10) val=336 test=168 | test 2025-11-24 ~ 2025-11-30
+11:20:37 INFO src.model_v6_conv2d:   fold13 ep  0  eval_loss=0.4010  train=117.1  val=73.6  test=126.9  best_val=73.6  lr=1.9e-04
+11:20:43 INFO src.model_v6_conv2d:   fold13 ep  5  eval_loss=0.2594  train=75.7  val=93.0  test=113.3  best_val=71.1  lr=6.4e-04
+11:20:49 INFO src.model_v6_conv2d:   fold13 ep 10  eval_loss=0.2145  train=62.6  val=101.2  test=155.9  best_val=71.1  lr=1.0e-03
+11:20:55 INFO src.model_v6_conv2d:   fold13 ep 15  eval_loss=0.1621  train=47.3  val=101.8  test=137.4  best_val=71.1  lr=1.0e-03
+11:21:01 INFO src.model_v6_conv2d:   fold13 ep 20  eval_loss=0.1529  train=44.6  val=99.5  test=166.4  best_val=71.1  lr=9.9e-04
+11:21:07 INFO src.model_v6_conv2d:   fold13 ep 25  eval_loss=0.1378  train=40.2  val=93.0  test=153.6  best_val=71.1  lr=9.8e-04
+11:21:13 INFO src.model_v6_conv2d:   fold13 ep 30  eval_loss=0.1234  train=36.0  val=91.0  test=142.3  best_val=71.1  lr=9.7e-04
+11:21:19 INFO src.model_v6_conv2d:   fold13 ep 35  eval_loss=0.1162  train=33.9  val=95.4  test=158.1  best_val=71.1  lr=9.5e-04
+11:21:25 INFO src.model_v6_conv2d:   fold13 ep 40  eval_loss=0.1078  train=31.5  val=93.0  test=155.5  best_val=71.1  lr=9.4e-04
+11:21:31 INFO src.model_v6_conv2d:   fold13 ep 45  eval_loss=0.0967  train=28.2  val=91.0  test=151.3  best_val=71.1  lr=9.1e-04
+11:21:37 INFO src.model_v6_conv2d:   fold13 ep 50  eval_loss=0.0871  train=25.4  val=93.1  test=157.0  best_val=71.1  lr=8.9e-04
+11:21:43 INFO src.model_v6_conv2d:   fold13 ep 55  eval_loss=0.0853  train=24.9  val=95.9  test=164.6  best_val=71.1  lr=8.6e-04
+11:21:49 INFO src.model_v6_conv2d:   fold13 ep 60  eval_loss=0.0842  train=24.6  val=88.9  test=140.6  best_val=71.1  lr=8.3e-04
+11:21:55 INFO src.model_v6_conv2d:   fold13 ep 65  eval_loss=0.0801  train=23.4  val=97.8  test=164.3  best_val=71.1  lr=8.0e-04
+11:22:01 INFO src.model_v6_conv2d:   fold13 ep 70  eval_loss=0.0769  train=22.5  val=94.7  test=152.4  best_val=71.1  lr=7.7e-04
+11:22:07 INFO src.model_v6_conv2d:   fold13 ep 75  eval_loss=0.0690  train=20.1  val=90.0  test=157.2  best_val=71.1  lr=7.3e-04
+11:22:13 INFO src.model_v6_conv2d:   fold13 ep 80  eval_loss=0.0707  train=20.6  val=90.4  test=147.0  best_val=71.1  lr=6.9e-04
+11:22:18 INFO src.model_v6_conv2d:   fold13 ep 85  eval_loss=0.0618  train=18.1  val=92.4  test=150.7  best_val=71.1  lr=6.5e-04
+11:22:25 INFO src.model_v6_conv2d:   fold13 ep 90  eval_loss=0.0596  train=17.4  val=89.5  test=153.7  best_val=71.1  lr=6.2e-04
+11:22:30 INFO src.model_v6_conv2d:   fold13 ep 95  eval_loss=0.0571  train=16.7  val=91.4  test=150.8  best_val=71.1  lr=5.7e-04
+11:22:36 INFO src.model_v6_conv2d:   fold13 ep100  eval_loss=0.0544  train=15.9  val=89.1  test=151.7  best_val=71.1  lr=5.3e-04
+11:22:42 INFO src.model_v6_conv2d:   fold13 ep105  eval_loss=0.0489  train=14.3  val=87.4  test=146.3  best_val=71.1  lr=4.9e-04
+11:22:48 INFO src.model_v6_conv2d:   fold13 ep110  eval_loss=0.0500  train=14.6  val=88.3  test=148.2  best_val=71.1  lr=4.5e-04
+11:22:54 INFO src.model_v6_conv2d:   fold13 ep115  eval_loss=0.0463  train=13.5  val=89.6  test=148.6  best_val=71.1  lr=4.1e-04
+11:23:00 INFO src.model_v6_conv2d:   fold13 ep120  eval_loss=0.0395  train=11.5  val=90.6  test=149.1  best_val=71.1  lr=3.7e-04
+11:23:07 INFO src.model_v6_conv2d:   fold13 ep125  eval_loss=0.0404  train=11.8  val=89.3  test=147.9  best_val=71.1  lr=3.3e-04
+11:23:13 INFO src.model_v6_conv2d:   fold13 ep130  eval_loss=0.0352  train=10.3  val=87.5  test=145.5  best_val=71.1  lr=2.9e-04
+11:23:19 INFO src.model_v6_conv2d:   fold13 ep135  eval_loss=0.0358  train=10.5  val=93.7  test=154.4  best_val=71.1  lr=2.6e-04
+11:23:25 INFO src.model_v6_conv2d:   fold13 ep140  eval_loss=0.0339  train=9.9  val=89.4  test=147.0  best_val=71.1  lr=2.2e-04
+11:23:31 INFO src.model_v6_conv2d:   fold13 ep145  eval_loss=0.0289  train=8.4  val=87.9  test=142.2  best_val=71.1  lr=1.9e-04
+11:23:36 INFO src.model_v6_conv2d:   fold13 ep150  eval_loss=0.0268  train=7.8  val=87.6  test=143.9  best_val=71.1  lr=1.6e-04
+11:23:42 INFO src.model_v6_conv2d:   fold13 ep155  eval_loss=0.0253  train=7.4  val=92.2  test=150.0  best_val=71.1  lr=1.3e-04
+11:23:48 INFO src.model_v6_conv2d:   fold13 ep160  eval_loss=0.0219  train=6.4  val=88.3  test=143.2  best_val=71.1  lr=1.0e-04
+11:23:54 INFO src.model_v6_conv2d:   fold13 ep165  eval_loss=0.0211  train=6.2  val=90.1  test=144.4  best_val=71.1  lr=7.8e-05
+11:24:00 INFO src.model_v6_conv2d:   fold13 ep170  eval_loss=0.0212  train=6.2  val=88.0  test=141.7  best_val=71.1  lr=5.7e-05
+11:24:06 INFO src.model_v6_conv2d:   fold13 ep175  eval_loss=0.0175  train=5.1  val=87.3  test=140.9  best_val=71.1  lr=4.0e-05
+11:24:12 INFO src.model_v6_conv2d:   fold13 ep180  eval_loss=0.0169  train=4.9  val=88.6  test=142.0  best_val=71.1  lr=2.5e-05
+11:24:18 INFO src.model_v6_conv2d:   fold13 ep185  eval_loss=0.0165  train=4.8  val=89.2  test=143.5  best_val=71.1  lr=1.4e-05
+11:24:24 INFO src.model_v6_conv2d:   fold13 ep190  eval_loss=0.0144  train=4.2  val=89.5  test=143.2  best_val=71.1  lr=6.5e-06
+11:24:30 INFO src.model_v6_conv2d:   fold13 ep195  eval_loss=0.0144  train=4.2  val=88.9  test=142.4  best_val=71.1  lr=2.1e-06
+11:24:34 INFO src.model_v6_conv2d:   fold13 ep199  eval_loss=0.0143  train=4.2  val=89.0  test=142.9  best_val=71.1  lr=1.0e-06
+11:24:34 INFO src.model_v6_conv2d: Fold 13 done | val=71.1  test_MAE=96.0  test_RMSE=118.0
+11:24:35 INFO src.model_v6_conv2d: Fold 14 | train=4416 (2025-05-17~2025-11-17) val=336 test=168 | test 2025-12-01 ~ 2025-12-07
+11:24:36 INFO src.model_v6_conv2d:   fold14 ep  0  eval_loss=0.3890  train=113.4  val=112.4  test=96.1  best_val=112.4  lr=1.9e-04
+11:24:42 INFO src.model_v6_conv2d:   fold14 ep  5  eval_loss=0.2496  train=72.8  val=93.0  test=105.5  best_val=73.1  lr=6.4e-04
+11:24:48 INFO src.model_v6_conv2d:   fold14 ep 10  eval_loss=0.2202  train=64.2  val=103.5  test=127.4  best_val=73.1  lr=1.0e-03
+11:24:54 INFO src.model_v6_conv2d:   fold14 ep 15  eval_loss=0.1734  train=50.6  val=97.0  test=97.2  best_val=73.1  lr=1.0e-03
+11:24:59 INFO src.model_v6_conv2d:   fold14 ep 20  eval_loss=0.1531  train=44.6  val=111.2  test=107.9  best_val=73.1  lr=9.9e-04
+11:25:05 INFO src.model_v6_conv2d:   fold14 ep 25  eval_loss=0.1370  train=39.9  val=99.0  test=103.9  best_val=66.8  lr=9.8e-04
+11:25:11 INFO src.model_v6_conv2d:   fold14 ep 30  eval_loss=0.1223  train=35.7  val=83.5  test=91.8  best_val=66.8  lr=9.7e-04
+11:25:17 INFO src.model_v6_conv2d:   fold14 ep 35  eval_loss=0.1096  train=32.0  val=103.5  test=105.2  best_val=66.8  lr=9.5e-04
+11:25:23 INFO src.model_v6_conv2d:   fold14 ep 40  eval_loss=0.1054  train=30.7  val=81.6  test=98.7  best_val=66.8  lr=9.4e-04
+11:25:28 INFO src.model_v6_conv2d:   fold14 ep 45  eval_loss=0.0998  train=29.1  val=105.2  test=101.5  best_val=66.8  lr=9.1e-04
+11:25:34 INFO src.model_v6_conv2d:   fold14 ep 50  eval_loss=0.0901  train=26.3  val=93.3  test=102.0  best_val=66.8  lr=8.9e-04
+11:25:40 INFO src.model_v6_conv2d:   fold14 ep 55  eval_loss=0.0823  train=24.0  val=98.3  test=102.9  best_val=66.8  lr=8.6e-04
+11:25:46 INFO src.model_v6_conv2d:   fold14 ep 60  eval_loss=0.0853  train=24.9  val=83.4  test=95.7  best_val=66.8  lr=8.3e-04
+11:25:52 INFO src.model_v6_conv2d:   fold14 ep 65  eval_loss=0.0812  train=23.7  val=100.0  test=102.4  best_val=66.8  lr=8.0e-04
+11:25:58 INFO src.model_v6_conv2d:   fold14 ep 70  eval_loss=0.0773  train=22.5  val=101.6  test=101.3  best_val=66.8  lr=7.7e-04
+11:26:04 INFO src.model_v6_conv2d:   fold14 ep 75  eval_loss=0.0698  train=20.3  val=87.1  test=98.8  best_val=66.8  lr=7.3e-04
+11:26:10 INFO src.model_v6_conv2d:   fold14 ep 80  eval_loss=0.0666  train=19.4  val=92.4  test=103.4  best_val=66.8  lr=6.9e-04
+11:26:15 INFO src.model_v6_conv2d:   fold14 ep 85  eval_loss=0.0616  train=18.0  val=98.9  test=100.0  best_val=66.8  lr=6.5e-04
+11:26:21 INFO src.model_v6_conv2d:   fold14 ep 90  eval_loss=0.0613  train=17.9  val=95.6  test=101.9  best_val=66.8  lr=6.2e-04
+11:26:27 INFO src.model_v6_conv2d:   fold14 ep 95  eval_loss=0.0538  train=15.7  val=92.6  test=99.5  best_val=66.8  lr=5.7e-04
+11:26:33 INFO src.model_v6_conv2d:   fold14 ep100  eval_loss=0.0546  train=15.9  val=102.8  test=100.2  best_val=66.8  lr=5.3e-04
+11:26:39 INFO src.model_v6_conv2d:   fold14 ep105  eval_loss=0.0516  train=15.0  val=102.1  test=99.7  best_val=66.8  lr=4.9e-04
+11:26:44 INFO src.model_v6_conv2d:   fold14 ep110  eval_loss=0.0471  train=13.7  val=96.7  test=100.9  best_val=66.8  lr=4.5e-04
+11:26:50 INFO src.model_v6_conv2d:   fold14 ep115  eval_loss=0.0462  train=13.5  val=105.4  test=103.4  best_val=66.8  lr=4.1e-04
+11:26:56 INFO src.model_v6_conv2d:   fold14 ep120  eval_loss=0.0424  train=12.4  val=95.6  test=100.1  best_val=66.8  lr=3.7e-04
+11:27:02 INFO src.model_v6_conv2d:   fold14 ep125  eval_loss=0.0412  train=12.0  val=90.9  test=97.7  best_val=66.8  lr=3.3e-04
+11:27:08 INFO src.model_v6_conv2d:   fold14 ep130  eval_loss=0.0377  train=11.0  val=97.4  test=102.5  best_val=66.8  lr=2.9e-04
+11:27:14 INFO src.model_v6_conv2d:   fold14 ep135  eval_loss=0.0338  train=9.9  val=95.1  test=100.7  best_val=66.8  lr=2.6e-04
+11:27:19 INFO src.model_v6_conv2d:   fold14 ep140  eval_loss=0.0327  train=9.5  val=93.7  test=96.8  best_val=66.8  lr=2.2e-04
+11:27:27 INFO src.model_v6_conv2d:   fold14 ep145  eval_loss=0.0294  train=8.6  val=97.3  test=100.8  best_val=66.8  lr=1.9e-04
+11:27:34 INFO src.model_v6_conv2d:   fold14 ep150  eval_loss=0.0277  train=8.1  val=98.3  test=101.6  best_val=66.8  lr=1.6e-04
+11:27:40 INFO src.model_v6_conv2d:   fold14 ep155  eval_loss=0.0246  train=7.2  val=98.2  test=101.3  best_val=66.8  lr=1.3e-04
+11:27:46 INFO src.model_v6_conv2d:   fold14 ep160  eval_loss=0.0249  train=7.3  val=93.3  test=99.4  best_val=66.8  lr=1.0e-04
+11:27:52 INFO src.model_v6_conv2d:   fold14 ep165  eval_loss=0.0205  train=6.0  val=96.8  test=100.9  best_val=66.8  lr=7.8e-05
+11:27:58 INFO src.model_v6_conv2d:   fold14 ep170  eval_loss=0.0205  train=6.0  val=97.2  test=101.5  best_val=66.8  lr=5.7e-05
+11:28:04 INFO src.model_v6_conv2d:   fold14 ep175  eval_loss=0.0169  train=4.9  val=96.5  test=101.2  best_val=66.8  lr=4.0e-05
+11:28:10 INFO src.model_v6_conv2d:   fold14 ep180  eval_loss=0.0168  train=4.9  val=96.1  test=100.8  best_val=66.8  lr=2.5e-05
+11:28:16 INFO src.model_v6_conv2d:   fold14 ep185  eval_loss=0.0161  train=4.7  val=97.0  test=101.0  best_val=66.8  lr=1.4e-05
+11:28:22 INFO src.model_v6_conv2d:   fold14 ep190  eval_loss=0.0154  train=4.5  val=96.8  test=101.1  best_val=66.8  lr=6.5e-06
+11:28:28 INFO src.model_v6_conv2d:   fold14 ep195  eval_loss=0.0146  train=4.3  val=96.9  test=101.2  best_val=66.8  lr=2.1e-06
+11:28:33 INFO src.model_v6_conv2d:   fold14 ep199  eval_loss=0.0152  train=4.4  val=97.7  test=101.5  best_val=66.8  lr=1.0e-06
+11:28:33 INFO src.model_v6_conv2d: Fold 14 done | val=66.8  test_MAE=92.3  test_RMSE=124.8
+11:28:33 INFO src.model_v6_conv2d: Fold 15 | train=4416 (2025-05-24~2025-11-24) val=336 test=168 | test 2025-12-08 ~ 2025-12-14
+11:28:35 INFO src.model_v6_conv2d:   fold15 ep  0  eval_loss=0.3948  train=115.2  val=104.9  test=170.8  best_val=104.9  lr=1.9e-04
+11:28:41 INFO src.model_v6_conv2d:   fold15 ep  5  eval_loss=0.2213  train=64.5  val=90.9  test=156.6  best_val=87.4  lr=6.4e-04
+11:28:47 INFO src.model_v6_conv2d:   fold15 ep 10  eval_loss=0.2445  train=71.3  val=87.4  test=134.2  best_val=87.4  lr=1.0e-03
+11:28:53 INFO src.model_v6_conv2d:   fold15 ep 15  eval_loss=0.1728  train=50.4  val=96.1  test=144.2  best_val=87.4  lr=1.0e-03
+11:28:59 INFO src.model_v6_conv2d:   fold15 ep 20  eval_loss=0.1437  train=41.9  val=89.6  test=133.2  best_val=84.9  lr=9.9e-04
+11:29:05 INFO src.model_v6_conv2d:   fold15 ep 25  eval_loss=0.1315  train=38.4  val=90.0  test=140.6  best_val=83.7  lr=9.8e-04
+11:29:11 INFO src.model_v6_conv2d:   fold15 ep 30  eval_loss=0.1282  train=37.4  val=88.8  test=143.3  best_val=83.1  lr=9.7e-04
+11:29:17 INFO src.model_v6_conv2d:   fold15 ep 35  eval_loss=0.1082  train=31.6  val=86.4  test=143.7  best_val=81.8  lr=9.5e-04
+11:29:23 INFO src.model_v6_conv2d:   fold15 ep 40  eval_loss=0.1029  train=30.0  val=90.7  test=140.3  best_val=81.8  lr=9.4e-04
+11:29:29 INFO src.model_v6_conv2d:   fold15 ep 45  eval_loss=0.0968  train=28.2  val=83.9  test=136.5  best_val=81.8  lr=9.1e-04
+11:29:35 INFO src.model_v6_conv2d:   fold15 ep 50  eval_loss=0.0909  train=26.5  val=89.8  test=142.0  best_val=81.8  lr=8.9e-04
+11:29:41 INFO src.model_v6_conv2d:   fold15 ep 55  eval_loss=0.0844  train=24.6  val=87.8  test=136.9  best_val=81.8  lr=8.6e-04
+11:29:47 INFO src.model_v6_conv2d:   fold15 ep 60  eval_loss=0.0836  train=24.4  val=87.6  test=134.9  best_val=81.8  lr=8.3e-04
+11:29:53 INFO src.model_v6_conv2d:   fold15 ep 65  eval_loss=0.0785  train=22.9  val=84.2  test=136.0  best_val=80.4  lr=8.0e-04
+11:29:59 INFO src.model_v6_conv2d:   fold15 ep 70  eval_loss=0.0712  train=20.8  val=89.1  test=141.3  best_val=80.4  lr=7.7e-04
+11:30:05 INFO src.model_v6_conv2d:   fold15 ep 75  eval_loss=0.0703  train=20.5  val=83.8  test=132.8  best_val=80.4  lr=7.3e-04
+11:30:11 INFO src.model_v6_conv2d:   fold15 ep 80  eval_loss=0.0628  train=18.3  val=82.3  test=127.8  best_val=80.4  lr=6.9e-04
+11:30:17 INFO src.model_v6_conv2d:   fold15 ep 85  eval_loss=0.0628  train=18.3  val=89.9  test=132.0  best_val=80.4  lr=6.5e-04
+11:30:24 INFO src.model_v6_conv2d:   fold15 ep 90  eval_loss=0.0605  train=17.7  val=86.9  test=131.4  best_val=79.6  lr=6.2e-04
+11:30:31 INFO src.model_v6_conv2d:   fold15 ep 95  eval_loss=0.0556  train=16.2  val=83.9  test=133.2  best_val=79.6  lr=5.7e-04
+11:30:37 INFO src.model_v6_conv2d:   fold15 ep100  eval_loss=0.0504  train=14.7  val=82.1  test=132.7  best_val=79.6  lr=5.3e-04
+11:30:43 INFO src.model_v6_conv2d:   fold15 ep105  eval_loss=0.0495  train=14.4  val=88.1  test=135.0  best_val=79.3  lr=4.9e-04
+11:30:49 INFO src.model_v6_conv2d:   fold15 ep110  eval_loss=0.0469  train=13.7  val=81.4  test=131.3  best_val=79.3  lr=4.5e-04
+11:30:55 INFO src.model_v6_conv2d:   fold15 ep115  eval_loss=0.0503  train=14.7  val=84.3  test=134.3  best_val=79.3  lr=4.1e-04
+11:31:02 INFO src.model_v6_conv2d:   fold15 ep120  eval_loss=0.0398  train=11.6  val=83.6  test=133.7  best_val=79.3  lr=3.7e-04
+11:31:08 INFO src.model_v6_conv2d:   fold15 ep125  eval_loss=0.0386  train=11.3  val=83.9  test=132.1  best_val=79.3  lr=3.3e-04
+11:31:14 INFO src.model_v6_conv2d:   fold15 ep130  eval_loss=0.0404  train=11.8  val=85.4  test=133.0  best_val=79.3  lr=2.9e-04
+11:31:21 INFO src.model_v6_conv2d:   fold15 ep135  eval_loss=0.0335  train=9.8  val=83.3  test=132.3  best_val=79.3  lr=2.6e-04
+11:31:27 INFO src.model_v6_conv2d:   fold15 ep140  eval_loss=0.0302  train=8.8  val=82.2  test=128.0  best_val=79.3  lr=2.2e-04
+11:31:33 INFO src.model_v6_conv2d:   fold15 ep145  eval_loss=0.0287  train=8.4  val=82.5  test=130.5  best_val=79.3  lr=1.9e-04
+11:31:39 INFO src.model_v6_conv2d:   fold15 ep150  eval_loss=0.0290  train=8.5  val=83.7  test=131.9  best_val=79.3  lr=1.6e-04
+11:31:45 INFO src.model_v6_conv2d:   fold15 ep155  eval_loss=0.0254  train=7.4  val=83.6  test=131.1  best_val=79.3  lr=1.3e-04
+11:31:51 INFO src.model_v6_conv2d:   fold15 ep160  eval_loss=0.0225  train=6.6  val=82.8  test=129.8  best_val=79.3  lr=1.0e-04
+11:31:57 INFO src.model_v6_conv2d:   fold15 ep165  eval_loss=0.0203  train=5.9  val=83.2  test=132.0  best_val=79.3  lr=7.8e-05
+11:32:03 INFO src.model_v6_conv2d:   fold15 ep170  eval_loss=0.0189  train=5.5  val=83.9  test=132.8  best_val=79.3  lr=5.7e-05
+11:32:09 INFO src.model_v6_conv2d:   fold15 ep175  eval_loss=0.0177  train=5.2  val=82.0  test=131.6  best_val=79.3  lr=4.0e-05
+11:32:16 INFO src.model_v6_conv2d:   fold15 ep180  eval_loss=0.0164  train=4.8  val=82.5  test=131.4  best_val=79.3  lr=2.5e-05
+11:32:21 INFO src.model_v6_conv2d:   fold15 ep185  eval_loss=0.0157  train=4.6  val=84.0  test=132.3  best_val=79.3  lr=1.4e-05
+11:32:28 INFO src.model_v6_conv2d:   fold15 ep190  eval_loss=0.0151  train=4.4  val=83.0  test=132.0  best_val=79.3  lr=6.5e-06
+11:32:34 INFO src.model_v6_conv2d:   fold15 ep195  eval_loss=0.0152  train=4.4  val=83.4  test=132.1  best_val=79.3  lr=2.1e-06
+11:32:38 INFO src.model_v6_conv2d:   fold15 ep199  eval_loss=0.0136  train=4.0  val=83.1  test=132.0  best_val=79.3  lr=1.0e-06
+11:32:39 INFO src.model_v6_conv2d: Fold 15 done | val=79.3  test_MAE=129.4  test_RMSE=231.4
+11:32:39 INFO src.model_v6_conv2d: Fold 16 | train=4392 (2025-06-01~2025-12-01) val=336 test=168 | test 2025-12-15 ~ 2025-12-21
+11:32:40 INFO src.model_v6_conv2d:   fold16 ep  0  eval_loss=0.3914  train=115.4  val=133.4  test=83.5  best_val=133.4  lr=1.9e-04
+11:32:46 INFO src.model_v6_conv2d:   fold16 ep  5  eval_loss=0.2347  train=69.2  val=124.0  test=77.8  best_val=119.2  lr=6.4e-04
+11:32:52 INFO src.model_v6_conv2d:   fold16 ep 10  eval_loss=0.2054  train=60.6  val=111.7  test=77.9  best_val=111.7  lr=1.0e-03
+11:32:58 INFO src.model_v6_conv2d:   fold16 ep 15  eval_loss=0.1781  train=52.5  val=118.4  test=79.6  best_val=111.7  lr=1.0e-03
+11:33:04 INFO src.model_v6_conv2d:   fold16 ep 20  eval_loss=0.1469  train=43.3  val=116.1  test=95.0  best_val=111.7  lr=9.9e-04
+11:33:10 INFO src.model_v6_conv2d:   fold16 ep 25  eval_loss=0.1320  train=38.9  val=115.5  test=70.8  best_val=111.7  lr=9.8e-04
+11:33:16 INFO src.model_v6_conv2d:   fold16 ep 30  eval_loss=0.1213  train=35.8  val=112.1  test=86.4  best_val=111.7  lr=9.7e-04
+11:33:22 INFO src.model_v6_conv2d:   fold16 ep 35  eval_loss=0.1095  train=32.3  val=118.0  test=85.6  best_val=111.7  lr=9.5e-04
+11:33:29 INFO src.model_v6_conv2d:   fold16 ep 40  eval_loss=0.0997  train=29.4  val=114.3  test=79.7  best_val=111.7  lr=9.4e-04
+11:33:35 INFO src.model_v6_conv2d:   fold16 ep 45  eval_loss=0.0980  train=28.9  val=116.6  test=76.5  best_val=111.7  lr=9.1e-04
+11:33:41 INFO src.model_v6_conv2d:   fold16 ep 50  eval_loss=0.0864  train=25.5  val=117.9  test=73.7  best_val=111.7  lr=8.9e-04
+11:33:47 INFO src.model_v6_conv2d:   fold16 ep 55  eval_loss=0.0857  train=25.3  val=116.9  test=76.0  best_val=111.7  lr=8.6e-04
+11:33:53 INFO src.model_v6_conv2d:   fold16 ep 60  eval_loss=0.0853  train=25.2  val=116.8  test=72.3  best_val=111.1  lr=8.3e-04
+11:33:59 INFO src.model_v6_conv2d:   fold16 ep 65  eval_loss=0.0751  train=22.2  val=114.4  test=72.2  best_val=111.1  lr=8.0e-04
+11:34:05 INFO src.model_v6_conv2d:   fold16 ep 70  eval_loss=0.0725  train=21.4  val=113.0  test=72.9  best_val=111.1  lr=7.7e-04
+11:34:11 INFO src.model_v6_conv2d:   fold16 ep 75  eval_loss=0.0641  train=18.9  val=116.9  test=75.7  best_val=111.1  lr=7.3e-04
+11:34:17 INFO src.model_v6_conv2d:   fold16 ep 80  eval_loss=0.0598  train=17.6  val=118.2  test=76.7  best_val=111.1  lr=6.9e-04
+11:34:24 INFO src.model_v6_conv2d:   fold16 ep 85  eval_loss=0.0588  train=17.3  val=112.5  test=78.5  best_val=111.1  lr=6.5e-04
+11:34:30 INFO src.model_v6_conv2d:   fold16 ep 90  eval_loss=0.0554  train=16.3  val=116.7  test=74.5  best_val=111.1  lr=6.2e-04
+11:34:36 INFO src.model_v6_conv2d:   fold16 ep 95  eval_loss=0.0568  train=16.7  val=113.7  test=70.7  best_val=110.5  lr=5.7e-04
+11:34:42 INFO src.model_v6_conv2d:   fold16 ep100  eval_loss=0.0505  train=14.9  val=111.8  test=71.1  best_val=110.5  lr=5.3e-04
+11:34:48 INFO src.model_v6_conv2d:   fold16 ep105  eval_loss=0.0544  train=16.0  val=113.3  test=73.0  best_val=110.5  lr=4.9e-04
+11:34:54 INFO src.model_v6_conv2d:   fold16 ep110  eval_loss=0.0452  train=13.3  val=115.4  test=74.6  best_val=110.5  lr=4.5e-04
+11:35:00 INFO src.model_v6_conv2d:   fold16 ep115  eval_loss=0.0450  train=13.3  val=116.3  test=76.6  best_val=110.5  lr=4.1e-04
+11:35:06 INFO src.model_v6_conv2d:   fold16 ep120  eval_loss=0.0450  train=13.3  val=115.1  test=74.5  best_val=110.5  lr=3.7e-04
+11:35:12 INFO src.model_v6_conv2d:   fold16 ep125  eval_loss=0.0423  train=12.5  val=117.9  test=73.7  best_val=110.5  lr=3.3e-04
+11:35:18 INFO src.model_v6_conv2d:   fold16 ep130  eval_loss=0.0346  train=10.2  val=114.5  test=74.3  best_val=110.5  lr=2.9e-04
+11:35:24 INFO src.model_v6_conv2d:   fold16 ep135  eval_loss=0.0348  train=10.2  val=117.0  test=74.4  best_val=110.5  lr=2.6e-04
+11:35:30 INFO src.model_v6_conv2d:   fold16 ep140  eval_loss=0.0322  train=9.5  val=114.5  test=72.1  best_val=110.5  lr=2.2e-04
+11:35:36 INFO src.model_v6_conv2d:   fold16 ep145  eval_loss=0.0297  train=8.7  val=113.6  test=73.4  best_val=110.5  lr=1.9e-04
+11:35:42 INFO src.model_v6_conv2d:   fold16 ep150  eval_loss=0.0283  train=8.4  val=113.3  test=72.8  best_val=110.5  lr=1.6e-04
+11:35:48 INFO src.model_v6_conv2d:   fold16 ep155  eval_loss=0.0255  train=7.5  val=115.4  test=74.1  best_val=110.5  lr=1.3e-04
+11:35:54 INFO src.model_v6_conv2d:   fold16 ep160  eval_loss=0.0239  train=7.0  val=116.9  test=75.7  best_val=110.5  lr=1.0e-04
+11:36:00 INFO src.model_v6_conv2d:   fold16 ep165  eval_loss=0.0204  train=6.0  val=115.3  test=74.4  best_val=110.5  lr=7.8e-05
+11:36:06 INFO src.model_v6_conv2d:   fold16 ep170  eval_loss=0.0197  train=5.8  val=115.3  test=74.1  best_val=110.5  lr=5.7e-05
+11:36:12 INFO src.model_v6_conv2d:   fold16 ep175  eval_loss=0.0178  train=5.3  val=114.8  test=74.1  best_val=110.5  lr=4.0e-05
+11:36:18 INFO src.model_v6_conv2d:   fold16 ep180  eval_loss=0.0163  train=4.8  val=115.0  test=74.1  best_val=110.5  lr=2.5e-05
+11:36:24 INFO src.model_v6_conv2d:   fold16 ep185  eval_loss=0.0154  train=4.5  val=115.2  test=74.2  best_val=110.5  lr=1.4e-05
+11:36:30 INFO src.model_v6_conv2d:   fold16 ep190  eval_loss=0.0158  train=4.7  val=115.3  test=74.5  best_val=110.5  lr=6.5e-06
+11:36:36 INFO src.model_v6_conv2d:   fold16 ep195  eval_loss=0.0152  train=4.5  val=115.3  test=74.8  best_val=110.5  lr=2.1e-06
+11:36:41 INFO src.model_v6_conv2d:   fold16 ep199  eval_loss=0.0148  train=4.4  val=115.4  test=74.0  best_val=110.5  lr=1.0e-06
+11:36:41 INFO src.model_v6_conv2d: Fold 16 done | val=110.5  test_MAE=81.8  test_RMSE=104.3
+11:36:41 INFO src.model_v6_conv2d: ============================================================
+11:36:41 INFO src.model_v6_conv2d: V6.0 RESULTS
+11:36:41 INFO src.model_v6_conv2d:   MAE:  128.13
+11:36:41 INFO src.model_v6_conv2d:   RMSE: 204.99
+11:36:41 INFO src.model_v6_conv2d:   Predictions: 2688 hours (112 days)
+11:36:41 INFO src.model_v6_conv2d:   Output: /Users/tim/pythonwork/neimeng_prj/output/experiments/v6.0
+11:36:41 INFO src.model_v6_conv2d: ============================================================
+11:36:42 INFO src.model_v6_conv2d: Saved: da_week1.png
+11:36:42 INFO src.model_v6_conv2d: Saved: da_week2.png
+11:36:43 INFO src.model_v6_conv2d: Saved: da_week3.png
+11:36:43 INFO src.model_v6_conv2d: Saved: da_week4.png
+11:36:43 INFO src.model_v6_conv2d: Saved: da_week5.png
+11:36:43 INFO src.model_v6_conv2d: Saved: da_week6.png
+11:36:43 INFO src.model_v6_conv2d: Saved: da_week7.png
+11:36:43 INFO src.model_v6_conv2d: Saved: da_week8.png
+11:36:43 INFO src.model_v6_conv2d: Saved: da_week9.png
+11:36:44 INFO src.model_v6_conv2d: Saved: da_week10.png
+11:36:44 INFO src.model_v6_conv2d: Saved: da_week11.png
+11:36:44 INFO src.model_v6_conv2d: Saved: da_week12.png
+11:36:44 INFO src.model_v6_conv2d: Saved: da_week13.png
+11:36:44 INFO src.model_v6_conv2d: Saved: da_week14.png
+11:36:44 INFO src.model_v6_conv2d: Saved: da_week15.png
+11:36:45 INFO src.model_v6_conv2d: Saved: da_week16.png

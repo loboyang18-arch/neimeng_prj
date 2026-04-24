@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# macOS
+.DS_Store
+
+# Large data / output (track via DVC or manual sync)
+output/dws_15min_features.csv
+output/dws_15min_features.csv.bak*
+output/dws_15min_features.parquet
+source_data/
+
+# All PNG images in output
+output/**/*.png
+
+# Large generated CSVs
+output/feature_price_unified.csv
+output/dws_15min_features*
+
+# RL training artifacts
+output/rl/*.zip
+output/rl/*.pt
+output/rl/*.npz
+output/rl/sac_v8_logs/
+output/rl/sac_logs/
+
+# V8 model weights & norm
+output/experiments/*/model_weights.pt
+output/experiments/*/norm_*.npy
+output/experiments/*/target_stats.npz

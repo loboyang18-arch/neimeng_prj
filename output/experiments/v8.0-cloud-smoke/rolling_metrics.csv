@@ -1,0 +1,2 @@
+fold,train_start,test_start,test_end,train_n,val_n,test_n,val_MAE,test_MAE,test_RMSE,test_dir_acc
+1,2025-02-18,2025-09-01,2025-09-07,4344,336,168,82.43,104.12,134.1,0.7083

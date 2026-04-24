@@ -1,0 +1,56 @@
+{
+  "validation": {
+    "ok": true,
+    "errors": [],
+    "n_rows": 2664,
+    "n_point_valid": 2664,
+    "valid_point_count": 2664,
+    "n_shape_valid_days": 111,
+    "valid_shape_days": 111,
+    "n_shape_invalid_days": 0,
+    "invalid_shape_days": 0,
+    "invalid_shape_day_ratio": 0.0,
+    "total_calendar_days": 111
+  },
+  "point_metrics": {
+    "mae": 94.183643,
+    "rmse": 135.342334,
+    "valid_point_count": 2664
+  },
+  "shape_metrics": {
+    "profile_corr": 0.7278,
+    "neg_corr_day_ratio": 0.018018,
+    "neg_corr_day_count": 2,
+    "amplitude_err": 133.4761,
+    "direction_acc": 0.5691,
+    "normalized_profile_mae": 0.5431,
+    "peak_hour_error": 5.3874,
+    "valley_hour_error": 3.6937,
+    "valid_shape_days": 111,
+    "total_calendar_days": 111,
+    "invalid_shape_days": 0,
+    "invalid_shape_day_ratio": 0.0,
+    "turning_point_match_rate": 0.7646,
+    "turning_point_offset_mean": 0.4899,
+    "block_rank_acc": 0.564,
+    "block_mae_overnight": 115.3611,
+    "block_mae_morning_peak": 81.2877,
+    "block_mae_midday": 81.1342,
+    "block_mae_evening_peak": 94.2844,
+    "block_mae_night": 101.711,
+    "block_amp_err_overnight": 104.0911,
+    "block_amp_err_morning_peak": 84.7501,
+    "block_amp_err_midday": 69.2387,
+    "block_amp_err_evening_peak": 89.5254,
+    "block_amp_err_night": 46.5917
+  },
+  "segments": {},
+  "composite": {
+    "composite_score": 0.885169,
+    "mae_norm": 0.540677,
+    "corr_loss_norm": 1.0,
+    "neg_corr_norm": 1.0,
+    "amp_err_norm": 1.0,
+    "dir_loss_norm": 1.0
+  }
+}

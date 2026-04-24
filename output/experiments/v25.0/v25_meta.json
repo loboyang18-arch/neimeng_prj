@@ -1,0 +1,10 @@
+{
+  "model": "DualHeadConv2dV8BackboneNet",
+  "backbone": "Conv2d×3 同 V8 Conv2dMultiTaskNet (block1/2/3)",
+  "dual_task": true,
+  "delta_lambda": 0.3,
+  "context_before": 1,
+  "context_after": 1,
+  "h_slots": 12,
+  "c_total": 18
+}

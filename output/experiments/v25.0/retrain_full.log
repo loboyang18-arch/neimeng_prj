@@ -1,0 +1,728 @@
+15:27:30 INFO src.model_v25_resconv: ============================================================
+15:27:30 INFO src.model_v25_resconv: V25.0 Dual-Head ResConv (内蒙，对齐重庆 V25)
+15:27:30 INFO src.model_v25_resconv:   input=(18 ch, 12 slots, 7 days)  ctx=[-1h..+1h]  λ_Δ=0.300
+15:27:30 INFO src.model_v25_resconv:   epochs=200  bs=64  train_window=6M
+15:27:30 INFO src.model_v25_resconv: PyTorch 2.5.1+cu121 | device=cuda
+15:27:30 INFO src.model_v25_resconv: Padded 1395 midnight entries (00:00 <- 00:15)
+15:27:30 INFO src.model_v25_resconv: DWS: 131151 rows x 14 cols (2022-06-01 00:00:00 ~ 2026-03-26 23:15:00)
+15:27:31 INFO src.model_v25_resconv: Daily arrays (15min): 1303 days, 1303 with target
+15:27:31 INFO src.model_v25_resconv: Model params: 906498
+15:27:31 INFO src.model_v25_resconv: Fold  1 | train=4344 val=336 test=168 | test 2025-09-01 ~ 2025-09-07
+15:27:33 INFO src.model_v25_resconv:   fold01 ep  0  loss=0.6047  train=98.8  val=116.1  test=94.9  best_val=116.1  λ_Δ=0.30  lr=1.9e-04
+15:27:34 INFO src.model_v25_resconv:   fold01 ep  5  loss=0.4078  train=81.7  val=91.5  test=108.4  best_val=91.5  λ_Δ=0.30  lr=6.4e-04
+15:27:35 INFO src.model_v25_resconv:   fold01 ep 10  loss=0.3692  train=63.0  val=92.1  test=99.6  best_val=83.2  λ_Δ=0.30  lr=1.0e-03
+15:27:37 INFO src.model_v25_resconv:   fold01 ep 15  loss=0.2989  train=52.2  val=90.9  test=98.3  best_val=83.0  λ_Δ=0.30  lr=1.0e-03
+15:27:38 INFO src.model_v25_resconv:   fold01 ep 20  loss=0.2618  train=48.2  val=96.6  test=113.7  best_val=81.1  λ_Δ=0.30  lr=9.9e-04
+15:27:39 INFO src.model_v25_resconv:   fold01 ep 25  loss=0.2292  train=37.7  val=89.4  test=99.6  best_val=81.1  λ_Δ=0.30  lr=9.8e-04
+15:27:41 INFO src.model_v25_resconv:   fold01 ep 30  loss=0.1983  train=33.2  val=90.3  test=94.0  best_val=81.1  λ_Δ=0.30  lr=9.7e-04
+15:27:42 INFO src.model_v25_resconv:   fold01 ep 35  loss=0.1804  train=29.1  val=90.7  test=109.1  best_val=81.1  λ_Δ=0.30  lr=9.5e-04
+15:27:43 INFO src.model_v25_resconv:   fold01 ep 40  loss=0.1633  train=27.4  val=85.6  test=106.7  best_val=81.1  λ_Δ=0.30  lr=9.4e-04
+15:27:45 INFO src.model_v25_resconv:   fold01 ep 45  loss=0.1470  train=25.6  val=90.9  test=98.6  best_val=81.1  λ_Δ=0.30  lr=9.1e-04
+15:27:46 INFO src.model_v25_resconv:   fold01 ep 50  loss=0.1329  train=22.3  val=81.8  test=96.4  best_val=81.1  λ_Δ=0.30  lr=8.9e-04
+15:27:47 INFO src.model_v25_resconv:   fold01 ep 55  loss=0.1266  train=21.9  val=86.2  test=99.4  best_val=81.1  λ_Δ=0.30  lr=8.6e-04
+15:27:49 INFO src.model_v25_resconv:   fold01 ep 60  loss=0.1168  train=18.1  val=90.0  test=99.3  best_val=81.1  λ_Δ=0.30  lr=8.3e-04
+15:27:50 INFO src.model_v25_resconv:   fold01 ep 65  loss=0.1107  train=17.6  val=87.5  test=98.3  best_val=81.1  λ_Δ=0.30  lr=8.0e-04
+15:27:51 INFO src.model_v25_resconv:   fold01 ep 70  loss=0.1079  train=15.6  val=85.3  test=97.3  best_val=81.1  λ_Δ=0.30  lr=7.7e-04
+15:27:53 INFO src.model_v25_resconv:   fold01 ep 75  loss=0.0973  train=15.0  val=90.1  test=101.9  best_val=80.4  λ_Δ=0.30  lr=7.3e-04
+15:27:54 INFO src.model_v25_resconv:   fold01 ep 80  loss=0.0913  train=14.7  val=86.8  test=94.7  best_val=80.4  λ_Δ=0.30  lr=6.9e-04
+15:27:55 INFO src.model_v25_resconv:   fold01 ep 85  loss=0.0871  train=14.9  val=87.6  test=99.3  best_val=80.4  λ_Δ=0.30  lr=6.5e-04
+15:27:57 INFO src.model_v25_resconv:   fold01 ep 90  loss=0.0848  train=11.6  val=89.1  test=99.6  best_val=80.4  λ_Δ=0.30  lr=6.2e-04
+15:27:58 INFO src.model_v25_resconv:   fold01 ep 95  loss=0.0822  train=12.4  val=90.7  test=103.5  best_val=80.4  λ_Δ=0.30  lr=5.7e-04
+15:28:00 INFO src.model_v25_resconv:   fold01 ep100  loss=0.0760  train=12.3  val=83.3  test=97.5  best_val=80.4  λ_Δ=0.30  lr=5.3e-04
+15:28:01 INFO src.model_v25_resconv:   fold01 ep105  loss=0.0727  train=10.9  val=88.6  test=99.1  best_val=80.4  λ_Δ=0.30  lr=4.9e-04
+15:28:02 INFO src.model_v25_resconv:   fold01 ep110  loss=0.0680  train=10.5  val=87.2  test=95.0  best_val=80.4  λ_Δ=0.30  lr=4.5e-04
+15:28:04 INFO src.model_v25_resconv:   fold01 ep115  loss=0.0659  train=9.5  val=86.5  test=98.8  best_val=80.4  λ_Δ=0.30  lr=4.1e-04
+15:28:05 INFO src.model_v25_resconv:   fold01 ep120  loss=0.0628  train=8.4  val=89.1  test=100.1  best_val=80.4  λ_Δ=0.30  lr=3.7e-04
+15:28:06 INFO src.model_v25_resconv:   fold01 ep125  loss=0.0596  train=8.2  val=87.0  test=96.3  best_val=80.4  λ_Δ=0.30  lr=3.3e-04
+15:28:08 INFO src.model_v25_resconv:   fold01 ep130  loss=0.0566  train=8.1  val=88.1  test=96.9  best_val=80.4  λ_Δ=0.30  lr=2.9e-04
+15:28:09 INFO src.model_v25_resconv:   fold01 ep135  loss=0.0547  train=8.2  val=88.5  test=99.9  best_val=80.4  λ_Δ=0.30  lr=2.6e-04
+15:28:10 INFO src.model_v25_resconv:   fold01 ep140  loss=0.0516  train=6.3  val=84.7  test=97.8  best_val=80.4  λ_Δ=0.30  lr=2.2e-04
+15:28:12 INFO src.model_v25_resconv:   fold01 ep145  loss=0.0494  train=5.9  val=85.7  test=95.9  best_val=80.4  λ_Δ=0.30  lr=1.9e-04
+15:28:13 INFO src.model_v25_resconv:   fold01 ep150  loss=0.0473  train=5.3  val=88.3  test=98.6  best_val=80.4  λ_Δ=0.30  lr=1.6e-04
+15:28:14 INFO src.model_v25_resconv:   fold01 ep155  loss=0.0463  train=4.7  val=88.3  test=98.3  best_val=80.4  λ_Δ=0.30  lr=1.3e-04
+15:28:16 INFO src.model_v25_resconv:   fold01 ep160  loss=0.0443  train=4.2  val=89.0  test=97.4  best_val=80.4  λ_Δ=0.30  lr=1.0e-04
+15:28:17 INFO src.model_v25_resconv:   fold01 ep165  loss=0.0430  train=3.8  val=88.1  test=96.6  best_val=80.4  λ_Δ=0.30  lr=7.8e-05
+15:28:18 INFO src.model_v25_resconv:   fold01 ep170  loss=0.0415  train=3.3  val=86.9  test=96.3  best_val=80.4  λ_Δ=0.30  lr=5.7e-05
+15:28:20 INFO src.model_v25_resconv:   fold01 ep175  loss=0.0407  train=3.0  val=87.8  test=97.4  best_val=80.4  λ_Δ=0.30  lr=4.0e-05
+15:28:21 INFO src.model_v25_resconv:   fold01 ep180  loss=0.0398  train=2.5  val=88.0  test=97.8  best_val=80.4  λ_Δ=0.30  lr=2.5e-05
+15:28:23 INFO src.model_v25_resconv:   fold01 ep185  loss=0.0390  train=2.5  val=87.6  test=97.4  best_val=80.4  λ_Δ=0.30  lr=1.4e-05
+15:28:24 INFO src.model_v25_resconv:   fold01 ep190  loss=0.0387  train=2.2  val=87.4  test=97.0  best_val=80.4  λ_Δ=0.30  lr=6.5e-06
+15:28:25 INFO src.model_v25_resconv:   fold01 ep195  loss=0.0382  train=2.1  val=87.7  test=98.2  best_val=80.4  λ_Δ=0.30  lr=2.1e-06
+15:28:26 INFO src.model_v25_resconv:   fold01 ep199  loss=0.0389  train=2.1  val=87.9  test=97.6  best_val=80.4  λ_Δ=0.30  lr=1.0e-06
+15:28:26 INFO src.model_v25_resconv: Fold  1 done | val=80.4  test_MAE=97.6  test_RMSE=135.6
+15:28:27 INFO src.model_v25_resconv: Fold  2 | train=4344 val=336 test=168 | test 2025-09-08 ~ 2025-09-14
+15:28:27 INFO src.model_v25_resconv:   fold02 ep  0  loss=0.6140  train=94.7  val=122.7  test=100.5  best_val=122.7  λ_Δ=0.30  lr=1.9e-04
+15:28:28 INFO src.model_v25_resconv:   fold02 ep  5  loss=0.3973  train=82.8  val=97.9  test=108.8  best_val=97.5  λ_Δ=0.30  lr=6.4e-04
+15:28:30 INFO src.model_v25_resconv:   fold02 ep 10  loss=0.3735  train=68.1  val=90.1  test=103.6  best_val=80.4  λ_Δ=0.30  lr=1.0e-03
+15:28:31 INFO src.model_v25_resconv:   fold02 ep 15  loss=0.3008  train=44.4  val=91.0  test=96.9  best_val=80.4  λ_Δ=0.30  lr=1.0e-03
+15:28:33 INFO src.model_v25_resconv:   fold02 ep 20  loss=0.2598  train=42.7  val=93.6  test=85.7  best_val=80.4  λ_Δ=0.30  lr=9.9e-04
+15:28:34 INFO src.model_v25_resconv:   fold02 ep 25  loss=0.2285  train=34.5  val=94.3  test=87.8  best_val=80.4  λ_Δ=0.30  lr=9.8e-04
+15:28:35 INFO src.model_v25_resconv:   fold02 ep 30  loss=0.2019  train=30.1  val=95.0  test=92.7  best_val=80.4  λ_Δ=0.30  lr=9.7e-04
+15:28:37 INFO src.model_v25_resconv:   fold02 ep 35  loss=0.1693  train=24.7  val=97.2  test=89.9  best_val=80.4  λ_Δ=0.30  lr=9.5e-04
+15:28:38 INFO src.model_v25_resconv:   fold02 ep 40  loss=0.1600  train=24.5  val=94.5  test=97.5  best_val=80.4  λ_Δ=0.30  lr=9.4e-04
+15:28:39 INFO src.model_v25_resconv:   fold02 ep 45  loss=0.1458  train=22.4  val=94.7  test=94.6  best_val=80.4  λ_Δ=0.30  lr=9.1e-04
+15:28:41 INFO src.model_v25_resconv:   fold02 ep 50  loss=0.1312  train=19.7  val=103.4  test=99.3  best_val=80.4  λ_Δ=0.30  lr=8.9e-04
+15:28:42 INFO src.model_v25_resconv:   fold02 ep 55  loss=0.1249  train=17.5  val=91.5  test=89.8  best_val=80.4  λ_Δ=0.30  lr=8.6e-04
+15:28:43 INFO src.model_v25_resconv:   fold02 ep 60  loss=0.1201  train=17.1  val=99.1  test=99.9  best_val=80.4  λ_Δ=0.30  lr=8.3e-04
+15:28:45 INFO src.model_v25_resconv:   fold02 ep 65  loss=0.1114  train=18.1  val=100.3  test=94.6  best_val=80.4  λ_Δ=0.30  lr=8.0e-04
+15:28:46 INFO src.model_v25_resconv:   fold02 ep 70  loss=0.1024  train=17.0  val=90.4  test=95.2  best_val=80.4  λ_Δ=0.30  lr=7.7e-04
+15:28:48 INFO src.model_v25_resconv:   fold02 ep 75  loss=0.1000  train=16.6  val=93.8  test=93.6  best_val=80.4  λ_Δ=0.30  lr=7.3e-04
+15:28:49 INFO src.model_v25_resconv:   fold02 ep 80  loss=0.0964  train=13.0  val=98.5  test=94.1  best_val=80.4  λ_Δ=0.30  lr=6.9e-04
+15:28:50 INFO src.model_v25_resconv:   fold02 ep 85  loss=0.0896  train=14.4  val=94.4  test=92.2  best_val=80.4  λ_Δ=0.30  lr=6.5e-04
+15:28:52 INFO src.model_v25_resconv:   fold02 ep 90  loss=0.0831  train=11.4  val=96.5  test=90.7  best_val=80.4  λ_Δ=0.30  lr=6.2e-04
+15:28:53 INFO src.model_v25_resconv:   fold02 ep 95  loss=0.0796  train=12.9  val=90.7  test=94.1  best_val=80.4  λ_Δ=0.30  lr=5.7e-04
+15:28:55 INFO src.model_v25_resconv:   fold02 ep100  loss=0.0802  train=11.2  val=91.8  test=93.2  best_val=80.4  λ_Δ=0.30  lr=5.3e-04
+15:28:56 INFO src.model_v25_resconv:   fold02 ep105  loss=0.0749  train=10.3  val=95.1  test=95.7  best_val=80.4  λ_Δ=0.30  lr=4.9e-04
+15:28:57 INFO src.model_v25_resconv:   fold02 ep110  loss=0.0698  train=9.7  val=96.3  test=99.2  best_val=80.4  λ_Δ=0.30  lr=4.5e-04
+15:28:59 INFO src.model_v25_resconv:   fold02 ep115  loss=0.0673  train=8.4  val=96.5  test=94.5  best_val=80.4  λ_Δ=0.30  lr=4.1e-04
+15:29:00 INFO src.model_v25_resconv:   fold02 ep120  loss=0.0639  train=8.1  val=93.6  test=97.2  best_val=80.4  λ_Δ=0.30  lr=3.7e-04
+15:29:02 INFO src.model_v25_resconv:   fold02 ep125  loss=0.0597  train=8.0  val=95.1  test=93.6  best_val=80.4  λ_Δ=0.30  lr=3.3e-04
+15:29:03 INFO src.model_v25_resconv:   fold02 ep130  loss=0.0574  train=7.6  val=96.6  test=95.8  best_val=80.4  λ_Δ=0.30  lr=2.9e-04
+15:29:04 INFO src.model_v25_resconv:   fold02 ep135  loss=0.0563  train=7.0  val=94.6  test=94.7  best_val=80.4  λ_Δ=0.30  lr=2.6e-04
+15:29:06 INFO src.model_v25_resconv:   fold02 ep140  loss=0.0526  train=6.7  val=93.9  test=97.0  best_val=80.4  λ_Δ=0.30  lr=2.2e-04
+15:29:07 INFO src.model_v25_resconv:   fold02 ep145  loss=0.0501  train=5.6  val=93.7  test=94.7  best_val=80.4  λ_Δ=0.30  lr=1.9e-04
+15:29:09 INFO src.model_v25_resconv:   fold02 ep150  loss=0.0493  train=5.0  val=94.6  test=95.4  best_val=80.4  λ_Δ=0.30  lr=1.6e-04
+15:29:10 INFO src.model_v25_resconv:   fold02 ep155  loss=0.0463  train=4.6  val=96.3  test=96.7  best_val=80.4  λ_Δ=0.30  lr=1.3e-04
+15:29:11 INFO src.model_v25_resconv:   fold02 ep160  loss=0.0442  train=4.1  val=94.5  test=95.6  best_val=80.4  λ_Δ=0.30  lr=1.0e-04
+15:29:13 INFO src.model_v25_resconv:   fold02 ep165  loss=0.0431  train=3.4  val=95.5  test=94.7  best_val=80.4  λ_Δ=0.30  lr=7.8e-05
+15:29:14 INFO src.model_v25_resconv:   fold02 ep170  loss=0.0407  train=3.4  val=94.1  test=94.6  best_val=80.4  λ_Δ=0.30  lr=5.7e-05
+15:29:15 INFO src.model_v25_resconv:   fold02 ep175  loss=0.0412  train=2.6  val=94.1  test=94.7  best_val=80.4  λ_Δ=0.30  lr=4.0e-05
+15:29:17 INFO src.model_v25_resconv:   fold02 ep180  loss=0.0409  train=2.5  val=94.8  test=94.2  best_val=80.4  λ_Δ=0.30  lr=2.5e-05
+15:29:18 INFO src.model_v25_resconv:   fold02 ep185  loss=0.0393  train=2.4  val=94.2  test=94.6  best_val=80.4  λ_Δ=0.30  lr=1.4e-05
+15:29:20 INFO src.model_v25_resconv:   fold02 ep190  loss=0.0392  train=2.2  val=94.1  test=94.1  best_val=80.4  λ_Δ=0.30  lr=6.5e-06
+15:29:21 INFO src.model_v25_resconv:   fold02 ep195  loss=0.0383  train=2.1  val=94.3  test=93.6  best_val=80.4  λ_Δ=0.30  lr=2.1e-06
+15:29:22 INFO src.model_v25_resconv:   fold02 ep199  loss=0.0392  train=2.0  val=94.1  test=94.1  best_val=80.4  λ_Δ=0.30  lr=1.0e-06
+15:29:22 INFO src.model_v25_resconv: Fold  2 done | val=80.4  test_MAE=94.1  test_RMSE=152.9
+15:29:22 INFO src.model_v25_resconv: Fold  3 | train=4416 val=336 test=168 | test 2025-09-15 ~ 2025-09-21
+15:29:23 INFO src.model_v25_resconv:   fold03 ep  0  loss=0.6252  train=89.4  val=90.8  test=209.2  best_val=90.8  λ_Δ=0.30  lr=1.9e-04
+15:29:24 INFO src.model_v25_resconv:   fold03 ep  5  loss=0.4082  train=73.1  val=88.1  test=197.2  best_val=88.1  λ_Δ=0.30  lr=6.4e-04
+15:29:25 INFO src.model_v25_resconv:   fold03 ep 10  loss=0.3750  train=67.4  val=99.7  test=188.6  best_val=88.1  λ_Δ=0.30  lr=1.0e-03
+15:29:27 INFO src.model_v25_resconv:   fold03 ep 15  loss=0.3124  train=49.1  val=81.3  test=197.9  best_val=81.3  λ_Δ=0.30  lr=1.0e-03
+15:29:28 INFO src.model_v25_resconv:   fold03 ep 20  loss=0.2630  train=38.1  val=78.0  test=182.1  best_val=78.0  λ_Δ=0.30  lr=9.9e-04
+15:29:30 INFO src.model_v25_resconv:   fold03 ep 25  loss=0.2210  train=32.5  val=87.9  test=200.8  best_val=78.0  λ_Δ=0.30  lr=9.8e-04
+15:29:31 INFO src.model_v25_resconv:   fold03 ep 30  loss=0.2019  train=29.2  val=92.0  test=195.1  best_val=78.0  λ_Δ=0.30  lr=9.7e-04
+15:29:32 INFO src.model_v25_resconv:   fold03 ep 35  loss=0.1794  train=24.6  val=86.6  test=196.4  best_val=78.0  λ_Δ=0.30  lr=9.5e-04
+15:29:34 INFO src.model_v25_resconv:   fold03 ep 40  loss=0.1580  train=23.1  val=88.3  test=191.7  best_val=78.0  λ_Δ=0.30  lr=9.4e-04
+15:29:35 INFO src.model_v25_resconv:   fold03 ep 45  loss=0.1446  train=22.9  val=84.5  test=185.5  best_val=78.0  λ_Δ=0.30  lr=9.1e-04
+15:29:37 INFO src.model_v25_resconv:   fold03 ep 50  loss=0.1328  train=20.8  val=92.8  test=193.1  best_val=78.0  λ_Δ=0.30  lr=8.9e-04
+15:29:38 INFO src.model_v25_resconv:   fold03 ep 55  loss=0.1273  train=18.2  val=88.6  test=187.0  best_val=78.0  λ_Δ=0.30  lr=8.6e-04
+15:29:39 INFO src.model_v25_resconv:   fold03 ep 60  loss=0.1186  train=17.8  val=89.1  test=194.1  best_val=78.0  λ_Δ=0.30  lr=8.3e-04
+15:29:41 INFO src.model_v25_resconv:   fold03 ep 65  loss=0.1116  train=16.0  val=86.8  test=191.1  best_val=78.0  λ_Δ=0.30  lr=8.0e-04
+15:29:42 INFO src.model_v25_resconv:   fold03 ep 70  loss=0.1030  train=14.1  val=85.3  test=182.8  best_val=78.0  λ_Δ=0.30  lr=7.7e-04
+15:29:43 INFO src.model_v25_resconv:   fold03 ep 75  loss=0.1006  train=14.1  val=88.6  test=191.4  best_val=78.0  λ_Δ=0.30  lr=7.3e-04
+15:29:45 INFO src.model_v25_resconv:   fold03 ep 80  loss=0.0927  train=14.8  val=88.5  test=186.5  best_val=78.0  λ_Δ=0.30  lr=6.9e-04
+15:29:46 INFO src.model_v25_resconv:   fold03 ep 85  loss=0.0867  train=13.5  val=91.7  test=190.1  best_val=78.0  λ_Δ=0.30  lr=6.5e-04
+15:29:48 INFO src.model_v25_resconv:   fold03 ep 90  loss=0.0827  train=10.7  val=88.2  test=188.6  best_val=78.0  λ_Δ=0.30  lr=6.2e-04
+15:29:49 INFO src.model_v25_resconv:   fold03 ep 95  loss=0.0794  train=11.9  val=87.1  test=190.9  best_val=78.0  λ_Δ=0.30  lr=5.7e-04
+15:29:50 INFO src.model_v25_resconv:   fold03 ep100  loss=0.0775  train=9.8  val=88.2  test=189.3  best_val=78.0  λ_Δ=0.30  lr=5.3e-04
+15:29:52 INFO src.model_v25_resconv:   fold03 ep105  loss=0.0730  train=9.9  val=87.5  test=194.5  best_val=78.0  λ_Δ=0.30  lr=4.9e-04
+15:29:53 INFO src.model_v25_resconv:   fold03 ep110  loss=0.0684  train=9.7  val=87.3  test=190.9  best_val=78.0  λ_Δ=0.30  lr=4.5e-04
+15:29:54 INFO src.model_v25_resconv:   fold03 ep115  loss=0.0660  train=9.2  val=87.2  test=190.2  best_val=78.0  λ_Δ=0.30  lr=4.1e-04
+15:29:56 INFO src.model_v25_resconv:   fold03 ep120  loss=0.0612  train=8.0  val=87.8  test=188.8  best_val=78.0  λ_Δ=0.30  lr=3.7e-04
+15:29:57 INFO src.model_v25_resconv:   fold03 ep125  loss=0.0602  train=6.8  val=87.1  test=189.0  best_val=78.0  λ_Δ=0.30  lr=3.3e-04
+15:29:59 INFO src.model_v25_resconv:   fold03 ep130  loss=0.0572  train=6.4  val=86.4  test=190.1  best_val=78.0  λ_Δ=0.30  lr=2.9e-04
+15:30:00 INFO src.model_v25_resconv:   fold03 ep135  loss=0.0540  train=6.0  val=87.6  test=190.8  best_val=78.0  λ_Δ=0.30  lr=2.6e-04
+15:30:01 INFO src.model_v25_resconv:   fold03 ep140  loss=0.0524  train=6.5  val=87.5  test=189.6  best_val=78.0  λ_Δ=0.30  lr=2.2e-04
+15:30:03 INFO src.model_v25_resconv:   fold03 ep145  loss=0.0497  train=4.9  val=87.0  test=190.0  best_val=78.0  λ_Δ=0.30  lr=1.9e-04
+15:30:04 INFO src.model_v25_resconv:   fold03 ep150  loss=0.0472  train=5.6  val=88.1  test=190.3  best_val=78.0  λ_Δ=0.30  lr=1.6e-04
+15:30:06 INFO src.model_v25_resconv:   fold03 ep155  loss=0.0466  train=4.5  val=87.1  test=190.5  best_val=78.0  λ_Δ=0.30  lr=1.3e-04
+15:30:07 INFO src.model_v25_resconv:   fold03 ep160  loss=0.0434  train=3.9  val=87.7  test=191.1  best_val=78.0  λ_Δ=0.30  lr=1.0e-04
+15:30:08 INFO src.model_v25_resconv:   fold03 ep165  loss=0.0430  train=3.3  val=87.3  test=190.3  best_val=78.0  λ_Δ=0.30  lr=7.8e-05
+15:30:10 INFO src.model_v25_resconv:   fold03 ep170  loss=0.0414  train=3.3  val=88.2  test=190.0  best_val=78.0  λ_Δ=0.30  lr=5.7e-05
+15:30:11 INFO src.model_v25_resconv:   fold03 ep175  loss=0.0399  train=2.8  val=87.5  test=189.5  best_val=78.0  λ_Δ=0.30  lr=4.0e-05
+15:30:12 INFO src.model_v25_resconv:   fold03 ep180  loss=0.0412  train=2.3  val=87.1  test=190.2  best_val=78.0  λ_Δ=0.30  lr=2.5e-05
+15:30:14 INFO src.model_v25_resconv:   fold03 ep185  loss=0.0398  train=2.1  val=87.3  test=189.7  best_val=78.0  λ_Δ=0.30  lr=1.4e-05
+15:30:15 INFO src.model_v25_resconv:   fold03 ep190  loss=0.0384  train=2.0  val=87.2  test=190.2  best_val=78.0  λ_Δ=0.30  lr=6.5e-06
+15:30:17 INFO src.model_v25_resconv:   fold03 ep195  loss=0.0392  train=2.0  val=87.5  test=190.0  best_val=78.0  λ_Δ=0.30  lr=2.1e-06
+15:30:18 INFO src.model_v25_resconv:   fold03 ep199  loss=0.0396  train=1.9  val=87.2  test=190.0  best_val=78.0  λ_Δ=0.30  lr=1.0e-06
+15:30:18 INFO src.model_v25_resconv: Fold  3 done | val=78.0  test_MAE=190.0  test_RMSE=344.6
+15:30:18 INFO src.model_v25_resconv: Fold  4 | train=4416 val=336 test=168 | test 2025-09-22 ~ 2025-09-28
+15:30:19 INFO src.model_v25_resconv:   fold04 ep  0  loss=0.6144  train=85.9  val=151.6  test=138.5  best_val=151.6  λ_Δ=0.30  lr=1.9e-04
+15:30:20 INFO src.model_v25_resconv:   fold04 ep  5  loss=0.4002  train=73.5  val=163.4  test=128.2  best_val=141.6  λ_Δ=0.30  lr=6.4e-04
+15:30:21 INFO src.model_v25_resconv:   fold04 ep 10  loss=0.3776  train=59.1  val=149.7  test=127.0  best_val=139.9  λ_Δ=0.30  lr=1.0e-03
+15:30:23 INFO src.model_v25_resconv:   fold04 ep 15  loss=0.3019  train=43.9  val=145.3  test=122.5  best_val=139.9  λ_Δ=0.30  lr=1.0e-03
+15:30:24 INFO src.model_v25_resconv:   fold04 ep 20  loss=0.2704  train=40.7  val=152.2  test=134.2  best_val=139.9  λ_Δ=0.30  lr=9.9e-04
+15:30:25 INFO src.model_v25_resconv:   fold04 ep 25  loss=0.2320  train=30.4  val=148.8  test=120.0  best_val=139.9  λ_Δ=0.30  lr=9.8e-04
+15:30:27 INFO src.model_v25_resconv:   fold04 ep 30  loss=0.2046  train=30.2  val=144.7  test=123.8  best_val=139.9  λ_Δ=0.30  lr=9.7e-04
+15:30:28 INFO src.model_v25_resconv:   fold04 ep 35  loss=0.1811  train=23.8  val=148.4  test=125.8  best_val=139.9  λ_Δ=0.30  lr=9.5e-04
+15:30:30 INFO src.model_v25_resconv:   fold04 ep 40  loss=0.1619  train=21.2  val=147.1  test=125.9  best_val=139.9  λ_Δ=0.30  lr=9.4e-04
+15:30:31 INFO src.model_v25_resconv:   fold04 ep 45  loss=0.1531  train=22.8  val=148.7  test=127.5  best_val=138.3  λ_Δ=0.30  lr=9.1e-04
+15:30:32 INFO src.model_v25_resconv:   fold04 ep 50  loss=0.1332  train=19.5  val=145.6  test=117.5  best_val=138.3  λ_Δ=0.30  lr=8.9e-04
+15:30:34 INFO src.model_v25_resconv:   fold04 ep 55  loss=0.1301  train=18.6  val=145.9  test=124.7  best_val=138.3  λ_Δ=0.30  lr=8.6e-04
+15:30:35 INFO src.model_v25_resconv:   fold04 ep 60  loss=0.1176  train=18.7  val=148.1  test=125.7  best_val=138.3  λ_Δ=0.30  lr=8.3e-04
+15:30:36 INFO src.model_v25_resconv:   fold04 ep 65  loss=0.1149  train=15.7  val=147.2  test=125.2  best_val=138.3  λ_Δ=0.30  lr=8.0e-04
+15:30:38 INFO src.model_v25_resconv:   fold04 ep 70  loss=0.1060  train=15.0  val=145.4  test=128.8  best_val=138.3  λ_Δ=0.30  lr=7.7e-04
+15:30:39 INFO src.model_v25_resconv:   fold04 ep 75  loss=0.1022  train=14.4  val=147.0  test=118.9  best_val=138.3  λ_Δ=0.30  lr=7.3e-04
+15:30:41 INFO src.model_v25_resconv:   fold04 ep 80  loss=0.0952  train=13.6  val=142.3  test=124.3  best_val=138.3  λ_Δ=0.30  lr=6.9e-04
+15:30:42 INFO src.model_v25_resconv:   fold04 ep 85  loss=0.0913  train=12.6  val=143.9  test=123.3  best_val=138.3  λ_Δ=0.30  lr=6.5e-04
+15:30:43 INFO src.model_v25_resconv:   fold04 ep 90  loss=0.0838  train=12.5  val=149.6  test=125.5  best_val=138.3  λ_Δ=0.30  lr=6.2e-04
+15:30:45 INFO src.model_v25_resconv:   fold04 ep 95  loss=0.0830  train=10.4  val=144.2  test=124.9  best_val=138.3  λ_Δ=0.30  lr=5.7e-04
+15:30:46 INFO src.model_v25_resconv:   fold04 ep100  loss=0.0765  train=12.3  val=147.4  test=120.6  best_val=138.3  λ_Δ=0.30  lr=5.3e-04
+15:30:48 INFO src.model_v25_resconv:   fold04 ep105  loss=0.0725  train=8.9  val=145.4  test=122.9  best_val=138.3  λ_Δ=0.30  lr=4.9e-04
+15:30:49 INFO src.model_v25_resconv:   fold04 ep110  loss=0.0705  train=9.2  val=143.2  test=120.4  best_val=138.3  λ_Δ=0.30  lr=4.5e-04
+15:30:50 INFO src.model_v25_resconv:   fold04 ep115  loss=0.0679  train=9.0  val=143.9  test=119.9  best_val=138.3  λ_Δ=0.30  lr=4.1e-04
+15:30:52 INFO src.model_v25_resconv:   fold04 ep120  loss=0.0641  train=7.3  val=146.3  test=119.8  best_val=138.3  λ_Δ=0.30  lr=3.7e-04
+15:30:53 INFO src.model_v25_resconv:   fold04 ep125  loss=0.0605  train=6.9  val=145.1  test=118.7  best_val=138.3  λ_Δ=0.30  lr=3.3e-04
+15:30:54 INFO src.model_v25_resconv:   fold04 ep130  loss=0.0575  train=6.5  val=146.1  test=122.5  best_val=138.3  λ_Δ=0.30  lr=2.9e-04
+15:30:56 INFO src.model_v25_resconv:   fold04 ep135  loss=0.0548  train=5.8  val=144.4  test=121.2  best_val=138.3  λ_Δ=0.30  lr=2.6e-04
+15:30:57 INFO src.model_v25_resconv:   fold04 ep140  loss=0.0527  train=5.8  val=144.9  test=123.5  best_val=138.3  λ_Δ=0.30  lr=2.2e-04
+15:30:59 INFO src.model_v25_resconv:   fold04 ep145  loss=0.0506  train=5.4  val=143.1  test=122.9  best_val=138.3  λ_Δ=0.30  lr=1.9e-04
+15:31:00 INFO src.model_v25_resconv:   fold04 ep150  loss=0.0502  train=4.9  val=144.2  test=121.8  best_val=138.3  λ_Δ=0.30  lr=1.6e-04
+15:31:01 INFO src.model_v25_resconv:   fold04 ep155  loss=0.0462  train=4.6  val=145.6  test=122.8  best_val=138.3  λ_Δ=0.30  lr=1.3e-04
+15:31:03 INFO src.model_v25_resconv:   fold04 ep160  loss=0.0443  train=3.7  val=144.6  test=121.4  best_val=138.3  λ_Δ=0.30  lr=1.0e-04
+15:31:04 INFO src.model_v25_resconv:   fold04 ep165  loss=0.0423  train=3.5  val=144.6  test=121.9  best_val=138.3  λ_Δ=0.30  lr=7.8e-05
+15:31:06 INFO src.model_v25_resconv:   fold04 ep170  loss=0.0424  train=3.1  val=143.9  test=121.0  best_val=138.3  λ_Δ=0.30  lr=5.7e-05
+15:31:07 INFO src.model_v25_resconv:   fold04 ep175  loss=0.0418  train=2.9  val=144.3  test=121.7  best_val=138.3  λ_Δ=0.30  lr=4.0e-05
+15:31:08 INFO src.model_v25_resconv:   fold04 ep180  loss=0.0406  train=2.5  val=144.3  test=123.0  best_val=138.3  λ_Δ=0.30  lr=2.5e-05
+15:31:10 INFO src.model_v25_resconv:   fold04 ep185  loss=0.0392  train=2.4  val=143.8  test=122.3  best_val=138.3  λ_Δ=0.30  lr=1.4e-05
+15:31:11 INFO src.model_v25_resconv:   fold04 ep190  loss=0.0402  train=2.0  val=144.0  test=122.0  best_val=138.3  λ_Δ=0.30  lr=6.5e-06
+15:31:13 INFO src.model_v25_resconv:   fold04 ep195  loss=0.0390  train=1.9  val=144.1  test=122.2  best_val=138.3  λ_Δ=0.30  lr=2.1e-06
+15:31:14 INFO src.model_v25_resconv:   fold04 ep199  loss=0.0393  train=1.9  val=143.7  test=121.8  best_val=138.3  λ_Δ=0.30  lr=1.0e-06
+15:31:14 INFO src.model_v25_resconv: Fold  4 done | val=138.3  test_MAE=121.8  test_RMSE=183.8
+15:31:14 INFO src.model_v25_resconv: Fold  5 | train=4416 val=336 test=168 | test 2025-09-29 ~ 2025-10-05
+15:31:14 INFO src.model_v25_resconv:   fold05 ep  0  loss=0.6236  train=88.8  val=187.7  test=148.8  best_val=187.7  λ_Δ=0.30  lr=1.9e-04
+15:31:16 INFO src.model_v25_resconv:   fold05 ep  5  loss=0.4149  train=69.9  val=177.1  test=119.6  best_val=167.0  λ_Δ=0.30  lr=6.4e-04
+15:31:17 INFO src.model_v25_resconv:   fold05 ep 10  loss=0.3773  train=62.5  val=177.0  test=113.4  best_val=167.0  λ_Δ=0.30  lr=1.0e-03
+15:31:18 INFO src.model_v25_resconv:   fold05 ep 15  loss=0.3015  train=44.5  val=178.5  test=131.9  best_val=162.8  λ_Δ=0.30  lr=1.0e-03
+15:31:20 INFO src.model_v25_resconv:   fold05 ep 20  loss=0.2686  train=39.5  val=164.0  test=132.9  best_val=162.8  λ_Δ=0.30  lr=9.9e-04
+15:31:21 INFO src.model_v25_resconv:   fold05 ep 25  loss=0.2219  train=31.8  val=163.1  test=112.5  best_val=162.0  λ_Δ=0.30  lr=9.8e-04
+15:31:23 INFO src.model_v25_resconv:   fold05 ep 30  loss=0.1980  train=28.1  val=172.1  test=121.0  best_val=162.0  λ_Δ=0.30  lr=9.7e-04
+15:31:24 INFO src.model_v25_resconv:   fold05 ep 35  loss=0.1770  train=27.5  val=168.4  test=120.0  best_val=162.0  λ_Δ=0.30  lr=9.5e-04
+15:31:25 INFO src.model_v25_resconv:   fold05 ep 40  loss=0.1637  train=23.9  val=172.8  test=120.2  best_val=162.0  λ_Δ=0.30  lr=9.4e-04
+15:31:27 INFO src.model_v25_resconv:   fold05 ep 45  loss=0.1517  train=22.2  val=165.5  test=121.6  best_val=162.0  λ_Δ=0.30  lr=9.1e-04
+15:31:28 INFO src.model_v25_resconv:   fold05 ep 50  loss=0.1366  train=20.5  val=166.4  test=119.9  best_val=162.0  λ_Δ=0.30  lr=8.9e-04
+15:31:30 INFO src.model_v25_resconv:   fold05 ep 55  loss=0.1308  train=18.3  val=166.2  test=119.2  best_val=160.3  λ_Δ=0.30  lr=8.6e-04
+15:31:31 INFO src.model_v25_resconv:   fold05 ep 60  loss=0.1181  train=16.9  val=171.1  test=119.7  best_val=160.3  λ_Δ=0.30  lr=8.3e-04
+15:31:32 INFO src.model_v25_resconv:   fold05 ep 65  loss=0.1091  train=16.6  val=168.3  test=123.5  best_val=160.3  λ_Δ=0.30  lr=8.0e-04
+15:31:34 INFO src.model_v25_resconv:   fold05 ep 70  loss=0.1078  train=14.5  val=166.9  test=119.6  best_val=160.3  λ_Δ=0.30  lr=7.7e-04
+15:31:35 INFO src.model_v25_resconv:   fold05 ep 75  loss=0.1029  train=13.7  val=169.1  test=114.4  best_val=160.3  λ_Δ=0.30  lr=7.3e-04
+15:31:37 INFO src.model_v25_resconv:   fold05 ep 80  loss=0.0947  train=12.8  val=169.1  test=127.0  best_val=160.3  λ_Δ=0.30  lr=6.9e-04
+15:31:38 INFO src.model_v25_resconv:   fold05 ep 85  loss=0.0917  train=13.6  val=168.3  test=118.3  best_val=160.3  λ_Δ=0.30  lr=6.5e-04
+15:31:39 INFO src.model_v25_resconv:   fold05 ep 90  loss=0.0859  train=11.4  val=165.5  test=122.7  best_val=160.3  λ_Δ=0.30  lr=6.2e-04
+15:31:41 INFO src.model_v25_resconv:   fold05 ep 95  loss=0.0816  train=11.2  val=168.8  test=123.9  best_val=160.3  λ_Δ=0.30  lr=5.7e-04
+15:31:42 INFO src.model_v25_resconv:   fold05 ep100  loss=0.0756  train=10.3  val=168.8  test=124.2  best_val=160.3  λ_Δ=0.30  lr=5.3e-04
+15:31:43 INFO src.model_v25_resconv:   fold05 ep105  loss=0.0735  train=9.7  val=167.2  test=123.7  best_val=160.3  λ_Δ=0.30  lr=4.9e-04
+15:31:45 INFO src.model_v25_resconv:   fold05 ep110  loss=0.0685  train=9.1  val=165.4  test=127.6  best_val=160.3  λ_Δ=0.30  lr=4.5e-04
+15:31:46 INFO src.model_v25_resconv:   fold05 ep115  loss=0.0675  train=8.9  val=166.9  test=126.8  best_val=160.3  λ_Δ=0.30  lr=4.1e-04
+15:31:48 INFO src.model_v25_resconv:   fold05 ep120  loss=0.0627  train=7.4  val=166.7  test=127.3  best_val=160.3  λ_Δ=0.30  lr=3.7e-04
+15:31:49 INFO src.model_v25_resconv:   fold05 ep125  loss=0.0606  train=6.7  val=167.3  test=128.6  best_val=160.3  λ_Δ=0.30  lr=3.3e-04
+15:31:50 INFO src.model_v25_resconv:   fold05 ep130  loss=0.0579  train=6.4  val=167.7  test=126.1  best_val=160.3  λ_Δ=0.30  lr=2.9e-04
+15:31:52 INFO src.model_v25_resconv:   fold05 ep135  loss=0.0548  train=6.2  val=167.2  test=121.8  best_val=160.3  λ_Δ=0.30  lr=2.6e-04
+15:31:53 INFO src.model_v25_resconv:   fold05 ep140  loss=0.0523  train=5.2  val=166.1  test=123.1  best_val=160.3  λ_Δ=0.30  lr=2.2e-04
+15:31:55 INFO src.model_v25_resconv:   fold05 ep145  loss=0.0497  train=5.2  val=166.7  test=124.7  best_val=160.3  λ_Δ=0.30  lr=1.9e-04
+15:31:56 INFO src.model_v25_resconv:   fold05 ep150  loss=0.0476  train=5.3  val=166.6  test=125.5  best_val=160.3  λ_Δ=0.30  lr=1.6e-04
+15:31:57 INFO src.model_v25_resconv:   fold05 ep155  loss=0.0450  train=4.1  val=166.8  test=125.6  best_val=160.3  λ_Δ=0.30  lr=1.3e-04
+15:31:59 INFO src.model_v25_resconv:   fold05 ep160  loss=0.0441  train=3.8  val=166.7  test=124.7  best_val=160.3  λ_Δ=0.30  lr=1.0e-04
+15:32:00 INFO src.model_v25_resconv:   fold05 ep165  loss=0.0430  train=3.2  val=166.7  test=124.8  best_val=160.3  λ_Δ=0.30  lr=7.8e-05
+15:32:01 INFO src.model_v25_resconv:   fold05 ep170  loss=0.0415  train=3.4  val=166.2  test=124.6  best_val=160.3  λ_Δ=0.30  lr=5.7e-05
+15:32:03 INFO src.model_v25_resconv:   fold05 ep175  loss=0.0407  train=2.7  val=166.2  test=124.4  best_val=160.3  λ_Δ=0.30  lr=4.0e-05
+15:32:04 INFO src.model_v25_resconv:   fold05 ep180  loss=0.0397  train=2.6  val=166.4  test=124.5  best_val=160.3  λ_Δ=0.30  lr=2.5e-05
+15:32:06 INFO src.model_v25_resconv:   fold05 ep185  loss=0.0399  train=2.4  val=165.8  test=124.6  best_val=160.3  λ_Δ=0.30  lr=1.4e-05
+15:32:07 INFO src.model_v25_resconv:   fold05 ep190  loss=0.0394  train=1.9  val=166.2  test=124.4  best_val=160.3  λ_Δ=0.30  lr=6.5e-06
+15:32:08 INFO src.model_v25_resconv:   fold05 ep195  loss=0.0389  train=2.0  val=166.2  test=124.9  best_val=160.3  λ_Δ=0.30  lr=2.1e-06
+15:32:09 INFO src.model_v25_resconv:   fold05 ep199  loss=0.0389  train=1.9  val=166.4  test=125.1  best_val=160.3  λ_Δ=0.30  lr=1.0e-06
+15:32:09 INFO src.model_v25_resconv: Fold  5 done | val=160.3  test_MAE=125.1  test_RMSE=193.1
+15:32:10 INFO src.model_v25_resconv: Fold  6 | train=4416 val=336 test=168 | test 2025-10-06 ~ 2025-10-12
+15:32:10 INFO src.model_v25_resconv:   fold06 ep  0  loss=0.6137  train=91.6  val=143.7  test=379.8  best_val=143.7  λ_Δ=0.30  lr=1.9e-04
+15:32:11 INFO src.model_v25_resconv:   fold06 ep  5  loss=0.4287  train=69.6  val=114.1  test=322.7  best_val=114.1  λ_Δ=0.30  lr=6.4e-04
+15:32:13 INFO src.model_v25_resconv:   fold06 ep 10  loss=0.3854  train=62.9  val=135.0  test=316.0  best_val=114.1  λ_Δ=0.30  lr=1.0e-03
+15:32:14 INFO src.model_v25_resconv:   fold06 ep 15  loss=0.3093  train=48.8  val=132.1  test=299.5  best_val=114.1  λ_Δ=0.30  lr=1.0e-03
+15:32:16 INFO src.model_v25_resconv:   fold06 ep 20  loss=0.2632  train=38.3  val=122.5  test=316.7  best_val=114.1  λ_Δ=0.30  lr=9.9e-04
+15:32:17 INFO src.model_v25_resconv:   fold06 ep 25  loss=0.2299  train=36.0  val=133.8  test=317.4  best_val=114.1  λ_Δ=0.30  lr=9.8e-04
+15:32:18 INFO src.model_v25_resconv:   fold06 ep 30  loss=0.1993  train=31.2  val=129.2  test=301.3  best_val=114.1  λ_Δ=0.30  lr=9.7e-04
+15:32:20 INFO src.model_v25_resconv:   fold06 ep 35  loss=0.1809  train=25.0  val=128.5  test=311.7  best_val=114.1  λ_Δ=0.30  lr=9.5e-04
+15:32:21 INFO src.model_v25_resconv:   fold06 ep 40  loss=0.1567  train=23.4  val=129.5  test=309.3  best_val=114.1  λ_Δ=0.30  lr=9.4e-04
+15:32:23 INFO src.model_v25_resconv:   fold06 ep 45  loss=0.1487  train=22.8  val=130.9  test=329.7  best_val=114.1  λ_Δ=0.30  lr=9.1e-04
+15:32:24 INFO src.model_v25_resconv:   fold06 ep 50  loss=0.1311  train=20.4  val=130.0  test=307.9  best_val=114.1  λ_Δ=0.30  lr=8.9e-04
+15:32:25 INFO src.model_v25_resconv:   fold06 ep 55  loss=0.1272  train=20.2  val=128.4  test=319.9  best_val=114.1  λ_Δ=0.30  lr=8.6e-04
+15:32:27 INFO src.model_v25_resconv:   fold06 ep 60  loss=0.1175  train=16.7  val=124.4  test=304.9  best_val=114.1  λ_Δ=0.30  lr=8.3e-04
+15:32:28 INFO src.model_v25_resconv:   fold06 ep 65  loss=0.1130  train=16.3  val=127.2  test=323.2  best_val=114.1  λ_Δ=0.30  lr=8.0e-04
+15:32:30 INFO src.model_v25_resconv:   fold06 ep 70  loss=0.1045  train=15.4  val=124.5  test=310.2  best_val=114.1  λ_Δ=0.30  lr=7.7e-04
+15:32:31 INFO src.model_v25_resconv:   fold06 ep 75  loss=0.1032  train=16.8  val=124.7  test=317.9  best_val=114.1  λ_Δ=0.30  lr=7.3e-04
+15:32:32 INFO src.model_v25_resconv:   fold06 ep 80  loss=0.0943  train=14.3  val=130.7  test=322.0  best_val=114.1  λ_Δ=0.30  lr=6.9e-04
+15:32:34 INFO src.model_v25_resconv:   fold06 ep 85  loss=0.0913  train=12.4  val=125.9  test=321.6  best_val=114.1  λ_Δ=0.30  lr=6.5e-04
+15:32:35 INFO src.model_v25_resconv:   fold06 ep 90  loss=0.0877  train=11.5  val=124.4  test=320.4  best_val=114.1  λ_Δ=0.30  lr=6.2e-04
+15:32:37 INFO src.model_v25_resconv:   fold06 ep 95  loss=0.0826  train=12.4  val=125.5  test=336.1  best_val=114.1  λ_Δ=0.30  lr=5.7e-04
+15:32:38 INFO src.model_v25_resconv:   fold06 ep100  loss=0.0801  train=13.8  val=124.6  test=333.3  best_val=114.1  λ_Δ=0.30  lr=5.3e-04
+15:32:39 INFO src.model_v25_resconv:   fold06 ep105  loss=0.0766  train=10.1  val=124.6  test=321.4  best_val=114.1  λ_Δ=0.30  lr=4.9e-04
+15:32:41 INFO src.model_v25_resconv:   fold06 ep110  loss=0.0706  train=9.7  val=125.6  test=326.5  best_val=114.1  λ_Δ=0.30  lr=4.5e-04
+15:32:42 INFO src.model_v25_resconv:   fold06 ep115  loss=0.0665  train=8.8  val=126.5  test=323.3  best_val=114.1  λ_Δ=0.30  lr=4.1e-04
+15:32:44 INFO src.model_v25_resconv:   fold06 ep120  loss=0.0643  train=8.3  val=126.1  test=324.5  best_val=114.1  λ_Δ=0.30  lr=3.7e-04
+15:32:45 INFO src.model_v25_resconv:   fold06 ep125  loss=0.0626  train=7.8  val=124.4  test=320.7  best_val=114.1  λ_Δ=0.30  lr=3.3e-04
+15:32:46 INFO src.model_v25_resconv:   fold06 ep130  loss=0.0589  train=6.5  val=125.7  test=317.4  best_val=114.1  λ_Δ=0.30  lr=2.9e-04
+15:32:48 INFO src.model_v25_resconv:   fold06 ep135  loss=0.0551  train=7.0  val=126.7  test=322.4  best_val=114.1  λ_Δ=0.30  lr=2.6e-04
+15:32:49 INFO src.model_v25_resconv:   fold06 ep140  loss=0.0533  train=5.4  val=125.1  test=328.5  best_val=114.1  λ_Δ=0.30  lr=2.2e-04
+15:32:51 INFO src.model_v25_resconv:   fold06 ep145  loss=0.0514  train=5.8  val=125.8  test=323.4  best_val=114.1  λ_Δ=0.30  lr=1.9e-04
+15:32:52 INFO src.model_v25_resconv:   fold06 ep150  loss=0.0496  train=5.0  val=125.7  test=319.6  best_val=114.1  λ_Δ=0.30  lr=1.6e-04
+15:32:53 INFO src.model_v25_resconv:   fold06 ep155  loss=0.0477  train=4.6  val=125.8  test=324.0  best_val=114.1  λ_Δ=0.30  lr=1.3e-04
+15:32:55 INFO src.model_v25_resconv:   fold06 ep160  loss=0.0458  train=3.9  val=125.9  test=323.6  best_val=114.1  λ_Δ=0.30  lr=1.0e-04
+15:32:56 INFO src.model_v25_resconv:   fold06 ep165  loss=0.0440  train=3.2  val=125.7  test=323.0  best_val=114.1  λ_Δ=0.30  lr=7.8e-05
+15:32:58 INFO src.model_v25_resconv:   fold06 ep170  loss=0.0426  train=3.1  val=125.8  test=325.3  best_val=114.1  λ_Δ=0.30  lr=5.7e-05
+15:32:59 INFO src.model_v25_resconv:   fold06 ep175  loss=0.0417  train=2.8  val=125.6  test=323.4  best_val=114.1  λ_Δ=0.30  lr=4.0e-05
+15:33:00 INFO src.model_v25_resconv:   fold06 ep180  loss=0.0409  train=2.4  val=126.8  test=322.6  best_val=114.1  λ_Δ=0.30  lr=2.5e-05
+15:33:02 INFO src.model_v25_resconv:   fold06 ep185  loss=0.0405  train=2.5  val=126.3  test=323.5  best_val=114.1  λ_Δ=0.30  lr=1.4e-05
+15:33:03 INFO src.model_v25_resconv:   fold06 ep190  loss=0.0397  train=2.2  val=126.2  test=323.6  best_val=114.1  λ_Δ=0.30  lr=6.5e-06
+15:33:04 INFO src.model_v25_resconv:   fold06 ep195  loss=0.0403  train=2.0  val=126.7  test=323.4  best_val=114.1  λ_Δ=0.30  lr=2.1e-06
+15:33:06 INFO src.model_v25_resconv:   fold06 ep199  loss=0.0402  train=2.0  val=126.3  test=322.7  best_val=114.1  λ_Δ=0.30  lr=1.0e-06
+15:33:06 INFO src.model_v25_resconv: Fold  6 done | val=114.1  test_MAE=322.7  test_RMSE=445.9
+15:33:06 INFO src.model_v25_resconv: Fold  7 | train=4416 val=336 test=168 | test 2025-10-13 ~ 2025-10-19
+15:33:06 INFO src.model_v25_resconv:   fold07 ep  0  loss=0.6227  train=89.9  val=243.2  test=180.0  best_val=243.2  λ_Δ=0.30  lr=1.9e-04
+15:33:08 INFO src.model_v25_resconv:   fold07 ep  5  loss=0.4266  train=69.7  val=223.2  test=201.4  best_val=214.8  λ_Δ=0.30  lr=6.4e-04
+15:33:09 INFO src.model_v25_resconv:   fold07 ep 10  loss=0.3773  train=65.0  val=225.7  test=248.8  best_val=212.5  λ_Δ=0.30  lr=1.0e-03
+15:33:10 INFO src.model_v25_resconv:   fold07 ep 15  loss=0.3198  train=46.5  val=221.1  test=226.0  best_val=199.6  λ_Δ=0.30  lr=1.0e-03
+15:33:12 INFO src.model_v25_resconv:   fold07 ep 20  loss=0.2682  train=39.4  val=203.0  test=201.8  best_val=199.6  λ_Δ=0.30  lr=9.9e-04
+15:33:13 INFO src.model_v25_resconv:   fold07 ep 25  loss=0.2294  train=33.2  val=205.0  test=206.8  best_val=199.6  λ_Δ=0.30  lr=9.8e-04
+15:33:15 INFO src.model_v25_resconv:   fold07 ep 30  loss=0.2076  train=33.1  val=220.0  test=207.0  best_val=199.6  λ_Δ=0.30  lr=9.7e-04
+15:33:16 INFO src.model_v25_resconv:   fold07 ep 35  loss=0.1774  train=26.2  val=212.4  test=200.0  best_val=199.6  λ_Δ=0.30  lr=9.5e-04
+15:33:17 INFO src.model_v25_resconv:   fold07 ep 40  loss=0.1641  train=21.7  val=216.9  test=213.0  best_val=199.6  λ_Δ=0.30  lr=9.4e-04
+15:33:19 INFO src.model_v25_resconv:   fold07 ep 45  loss=0.1478  train=22.7  val=214.3  test=206.7  best_val=199.6  λ_Δ=0.30  lr=9.1e-04
+15:33:20 INFO src.model_v25_resconv:   fold07 ep 50  loss=0.1394  train=21.4  val=224.2  test=226.0  best_val=199.6  λ_Δ=0.30  lr=8.9e-04
+15:33:21 INFO src.model_v25_resconv:   fold07 ep 55  loss=0.1291  train=18.7  val=225.0  test=212.5  best_val=199.6  λ_Δ=0.30  lr=8.6e-04
+15:33:23 INFO src.model_v25_resconv:   fold07 ep 60  loss=0.1234  train=18.2  val=227.2  test=210.4  best_val=199.6  λ_Δ=0.30  lr=8.3e-04
+15:33:24 INFO src.model_v25_resconv:   fold07 ep 65  loss=0.1133  train=15.8  val=215.7  test=210.5  best_val=199.6  λ_Δ=0.30  lr=8.0e-04
+15:33:26 INFO src.model_v25_resconv:   fold07 ep 70  loss=0.1057  train=14.8  val=218.5  test=212.0  best_val=199.6  λ_Δ=0.30  lr=7.7e-04
+15:33:27 INFO src.model_v25_resconv:   fold07 ep 75  loss=0.1028  train=13.5  val=216.2  test=209.1  best_val=199.6  λ_Δ=0.30  lr=7.3e-04
+15:33:28 INFO src.model_v25_resconv:   fold07 ep 80  loss=0.0958  train=13.5  val=224.5  test=206.2  best_val=199.6  λ_Δ=0.30  lr=6.9e-04
+15:33:30 INFO src.model_v25_resconv:   fold07 ep 85  loss=0.0918  train=12.5  val=214.9  test=197.0  best_val=199.6  λ_Δ=0.30  lr=6.5e-04
+15:33:31 INFO src.model_v25_resconv:   fold07 ep 90  loss=0.0858  train=12.2  val=223.0  test=215.5  best_val=199.6  λ_Δ=0.30  lr=6.2e-04
+15:33:33 INFO src.model_v25_resconv:   fold07 ep 95  loss=0.0834  train=12.0  val=227.3  test=205.9  best_val=199.6  λ_Δ=0.30  lr=5.7e-04
+15:33:34 INFO src.model_v25_resconv:   fold07 ep100  loss=0.0768  train=11.4  val=221.1  test=209.6  best_val=199.6  λ_Δ=0.30  lr=5.3e-04
+15:33:35 INFO src.model_v25_resconv:   fold07 ep105  loss=0.0748  train=11.0  val=223.2  test=210.1  best_val=199.6  λ_Δ=0.30  lr=4.9e-04
+15:33:37 INFO src.model_v25_resconv:   fold07 ep110  loss=0.0714  train=9.4  val=221.7  test=210.1  best_val=199.6  λ_Δ=0.30  lr=4.5e-04
+15:33:38 INFO src.model_v25_resconv:   fold07 ep115  loss=0.0687  train=8.8  val=215.5  test=202.9  best_val=199.6  λ_Δ=0.30  lr=4.1e-04
+15:33:40 INFO src.model_v25_resconv:   fold07 ep120  loss=0.0644  train=9.0  val=218.1  test=211.2  best_val=199.6  λ_Δ=0.30  lr=3.7e-04
+15:33:41 INFO src.model_v25_resconv:   fold07 ep125  loss=0.0610  train=6.9  val=217.7  test=207.4  best_val=199.6  λ_Δ=0.30  lr=3.3e-04
+15:33:42 INFO src.model_v25_resconv:   fold07 ep130  loss=0.0593  train=7.6  val=218.6  test=212.4  best_val=199.6  λ_Δ=0.30  lr=2.9e-04
+15:33:44 INFO src.model_v25_resconv:   fold07 ep135  loss=0.0555  train=6.0  val=220.1  test=207.6  best_val=199.6  λ_Δ=0.30  lr=2.6e-04
+15:33:45 INFO src.model_v25_resconv:   fold07 ep140  loss=0.0546  train=6.8  val=216.7  test=209.1  best_val=199.6  λ_Δ=0.30  lr=2.2e-04
+15:33:47 INFO src.model_v25_resconv:   fold07 ep145  loss=0.0511  train=6.4  val=214.9  test=207.4  best_val=199.6  λ_Δ=0.30  lr=1.9e-04
+15:33:48 INFO src.model_v25_resconv:   fold07 ep150  loss=0.0497  train=4.5  val=218.3  test=208.7  best_val=199.6  λ_Δ=0.30  lr=1.6e-04
+15:33:49 INFO src.model_v25_resconv:   fold07 ep155  loss=0.0473  train=4.5  val=215.9  test=209.9  best_val=199.6  λ_Δ=0.30  lr=1.3e-04
+15:33:51 INFO src.model_v25_resconv:   fold07 ep160  loss=0.0457  train=4.6  val=213.6  test=209.3  best_val=199.6  λ_Δ=0.30  lr=1.0e-04
+15:33:52 INFO src.model_v25_resconv:   fold07 ep165  loss=0.0435  train=3.8  val=218.9  test=209.6  best_val=199.6  λ_Δ=0.30  lr=7.8e-05
+15:33:53 INFO src.model_v25_resconv:   fold07 ep170  loss=0.0427  train=3.3  val=217.2  test=209.3  best_val=199.6  λ_Δ=0.30  lr=5.7e-05
+15:33:55 INFO src.model_v25_resconv:   fold07 ep175  loss=0.0422  train=2.9  val=216.5  test=211.4  best_val=199.6  λ_Δ=0.30  lr=4.0e-05
+15:33:56 INFO src.model_v25_resconv:   fold07 ep180  loss=0.0406  train=2.7  val=217.6  test=211.4  best_val=199.6  λ_Δ=0.30  lr=2.5e-05
+15:33:58 INFO src.model_v25_resconv:   fold07 ep185  loss=0.0410  train=2.7  val=216.7  test=211.1  best_val=199.6  λ_Δ=0.30  lr=1.4e-05
+15:33:59 INFO src.model_v25_resconv:   fold07 ep190  loss=0.0405  train=2.2  val=217.1  test=211.1  best_val=199.6  λ_Δ=0.30  lr=6.5e-06
+15:34:00 INFO src.model_v25_resconv:   fold07 ep195  loss=0.0392  train=2.1  val=217.4  test=211.4  best_val=199.6  λ_Δ=0.30  lr=2.1e-06
+15:34:01 INFO src.model_v25_resconv:   fold07 ep199  loss=0.0402  train=2.1  val=218.1  test=210.8  best_val=199.6  λ_Δ=0.30  lr=1.0e-06
+15:34:01 INFO src.model_v25_resconv: Fold  7 done | val=199.6  test_MAE=210.8  test_RMSE=296.5
+15:34:02 INFO src.model_v25_resconv: Fold  8 | train=4392 val=336 test=168 | test 2025-10-20 ~ 2025-10-26
+15:34:02 INFO src.model_v25_resconv:   fold08 ep  0  loss=0.6296  train=90.9  val=268.8  test=146.0  best_val=268.8  λ_Δ=0.30  lr=1.9e-04
+15:34:03 INFO src.model_v25_resconv:   fold08 ep  5  loss=0.4313  train=70.7  val=260.4  test=218.4  best_val=249.3  λ_Δ=0.30  lr=6.4e-04
+15:34:05 INFO src.model_v25_resconv:   fold08 ep 10  loss=0.3908  train=74.9  val=272.7  test=217.9  best_val=222.8  λ_Δ=0.30  lr=1.0e-03
+15:34:06 INFO src.model_v25_resconv:   fold08 ep 15  loss=0.3197  train=48.4  val=246.6  test=194.6  best_val=222.8  λ_Δ=0.30  lr=1.0e-03
+15:34:08 INFO src.model_v25_resconv:   fold08 ep 20  loss=0.2711  train=36.3  val=247.6  test=199.3  best_val=222.8  λ_Δ=0.30  lr=9.9e-04
+15:34:09 INFO src.model_v25_resconv:   fold08 ep 25  loss=0.2337  train=36.2  val=260.2  test=200.6  best_val=222.8  λ_Δ=0.30  lr=9.8e-04
+15:34:10 INFO src.model_v25_resconv:   fold08 ep 30  loss=0.2092  train=32.2  val=250.3  test=194.2  best_val=222.8  λ_Δ=0.30  lr=9.7e-04
+15:34:12 INFO src.model_v25_resconv:   fold08 ep 35  loss=0.1886  train=27.7  val=245.0  test=194.6  best_val=222.8  λ_Δ=0.30  lr=9.5e-04
+15:34:13 INFO src.model_v25_resconv:   fold08 ep 40  loss=0.1686  train=23.7  val=250.2  test=190.3  best_val=222.8  λ_Δ=0.30  lr=9.4e-04
+15:34:14 INFO src.model_v25_resconv:   fold08 ep 45  loss=0.1529  train=23.7  val=246.8  test=183.4  best_val=222.8  λ_Δ=0.30  lr=9.1e-04
+15:34:16 INFO src.model_v25_resconv:   fold08 ep 50  loss=0.1453  train=20.9  val=243.1  test=195.1  best_val=222.8  λ_Δ=0.30  lr=8.9e-04
+15:34:17 INFO src.model_v25_resconv:   fold08 ep 55  loss=0.1343  train=20.9  val=242.7  test=192.9  best_val=222.8  λ_Δ=0.30  lr=8.6e-04
+15:34:18 INFO src.model_v25_resconv:   fold08 ep 60  loss=0.1257  train=17.9  val=246.3  test=182.3  best_val=222.8  λ_Δ=0.30  lr=8.3e-04
+15:34:20 INFO src.model_v25_resconv:   fold08 ep 65  loss=0.1156  train=16.4  val=244.7  test=197.8  best_val=222.8  λ_Δ=0.30  lr=8.0e-04
+15:34:21 INFO src.model_v25_resconv:   fold08 ep 70  loss=0.1063  train=14.5  val=235.1  test=196.5  best_val=222.8  λ_Δ=0.30  lr=7.7e-04
+15:34:22 INFO src.model_v25_resconv:   fold08 ep 75  loss=0.1013  train=14.1  val=245.4  test=193.1  best_val=222.8  λ_Δ=0.30  lr=7.3e-04
+15:34:24 INFO src.model_v25_resconv:   fold08 ep 80  loss=0.0966  train=13.4  val=238.6  test=192.3  best_val=222.8  λ_Δ=0.30  lr=6.9e-04
+15:34:25 INFO src.model_v25_resconv:   fold08 ep 85  loss=0.0949  train=13.8  val=250.6  test=192.1  best_val=222.8  λ_Δ=0.30  lr=6.5e-04
+15:34:27 INFO src.model_v25_resconv:   fold08 ep 90  loss=0.0875  train=13.0  val=247.2  test=190.7  best_val=222.8  λ_Δ=0.30  lr=6.2e-04
+15:34:28 INFO src.model_v25_resconv:   fold08 ep 95  loss=0.0851  train=10.7  val=245.3  test=182.8  best_val=222.8  λ_Δ=0.30  lr=5.7e-04
+15:34:29 INFO src.model_v25_resconv:   fold08 ep100  loss=0.0802  train=11.3  val=247.0  test=188.0  best_val=222.8  λ_Δ=0.30  lr=5.3e-04
+15:34:31 INFO src.model_v25_resconv:   fold08 ep105  loss=0.0736  train=10.6  val=244.7  test=196.0  best_val=222.8  λ_Δ=0.30  lr=4.9e-04
+15:34:32 INFO src.model_v25_resconv:   fold08 ep110  loss=0.0702  train=8.9  val=240.3  test=183.7  best_val=222.8  λ_Δ=0.30  lr=4.5e-04
+15:34:33 INFO src.model_v25_resconv:   fold08 ep115  loss=0.0672  train=9.9  val=242.9  test=189.5  best_val=222.8  λ_Δ=0.30  lr=4.1e-04
+15:34:35 INFO src.model_v25_resconv:   fold08 ep120  loss=0.0648  train=8.0  val=243.9  test=192.1  best_val=222.8  λ_Δ=0.30  lr=3.7e-04
+15:34:36 INFO src.model_v25_resconv:   fold08 ep125  loss=0.0620  train=8.3  val=241.1  test=190.6  best_val=222.8  λ_Δ=0.30  lr=3.3e-04
+15:34:37 INFO src.model_v25_resconv:   fold08 ep130  loss=0.0593  train=6.7  val=240.2  test=187.5  best_val=222.8  λ_Δ=0.30  lr=2.9e-04
+15:34:39 INFO src.model_v25_resconv:   fold08 ep135  loss=0.0562  train=6.4  val=246.2  test=192.4  best_val=222.8  λ_Δ=0.30  lr=2.6e-04
+15:34:40 INFO src.model_v25_resconv:   fold08 ep140  loss=0.0539  train=5.7  val=239.1  test=189.9  best_val=222.8  λ_Δ=0.30  lr=2.2e-04
+15:34:42 INFO src.model_v25_resconv:   fold08 ep145  loss=0.0515  train=5.4  val=243.3  test=187.3  best_val=222.8  λ_Δ=0.30  lr=1.9e-04
+15:34:43 INFO src.model_v25_resconv:   fold08 ep150  loss=0.0481  train=4.8  val=241.6  test=191.5  best_val=222.8  λ_Δ=0.30  lr=1.6e-04
+15:34:44 INFO src.model_v25_resconv:   fold08 ep155  loss=0.0465  train=4.4  val=240.6  test=190.2  best_val=222.8  λ_Δ=0.30  lr=1.3e-04
+15:34:46 INFO src.model_v25_resconv:   fold08 ep160  loss=0.0467  train=3.9  val=240.6  test=191.6  best_val=222.8  λ_Δ=0.30  lr=1.0e-04
+15:34:47 INFO src.model_v25_resconv:   fold08 ep165  loss=0.0454  train=3.8  val=242.3  test=187.0  best_val=222.8  λ_Δ=0.30  lr=7.8e-05
+15:34:48 INFO src.model_v25_resconv:   fold08 ep170  loss=0.0427  train=3.4  val=241.3  test=187.7  best_val=222.8  λ_Δ=0.30  lr=5.7e-05
+15:34:50 INFO src.model_v25_resconv:   fold08 ep175  loss=0.0420  train=2.8  val=242.4  test=188.8  best_val=222.8  λ_Δ=0.30  lr=4.0e-05
+15:34:51 INFO src.model_v25_resconv:   fold08 ep180  loss=0.0399  train=2.3  val=242.1  test=190.1  best_val=222.8  λ_Δ=0.30  lr=2.5e-05
+15:34:53 INFO src.model_v25_resconv:   fold08 ep185  loss=0.0410  train=2.2  val=242.6  test=189.4  best_val=222.8  λ_Δ=0.30  lr=1.4e-05
+15:34:54 INFO src.model_v25_resconv:   fold08 ep190  loss=0.0402  train=2.2  val=242.1  test=189.9  best_val=222.8  λ_Δ=0.30  lr=6.5e-06
+15:34:55 INFO src.model_v25_resconv:   fold08 ep195  loss=0.0402  train=2.1  val=242.4  test=188.6  best_val=222.8  λ_Δ=0.30  lr=2.1e-06
+15:34:56 INFO src.model_v25_resconv:   fold08 ep199  loss=0.0404  train=2.0  val=241.8  test=189.4  best_val=222.8  λ_Δ=0.30  lr=1.0e-06
+15:34:56 INFO src.model_v25_resconv: Fold  8 done | val=222.8  test_MAE=189.4  test_RMSE=258.4
+15:34:57 INFO src.model_v25_resconv: Fold  9 | train=4392 val=336 test=168 | test 2025-10-27 ~ 2025-11-02
+15:34:57 INFO src.model_v25_resconv:   fold09 ep  0  loss=0.6342  train=98.9  val=177.7  test=143.7  best_val=177.7  λ_Δ=0.30  lr=1.9e-04
+15:34:58 INFO src.model_v25_resconv:   fold09 ep  5  loss=0.4498  train=81.7  val=187.9  test=143.1  best_val=169.4  λ_Δ=0.30  lr=6.4e-04
+15:35:00 INFO src.model_v25_resconv:   fold09 ep 10  loss=0.3919  train=81.9  val=206.4  test=155.8  best_val=153.7  λ_Δ=0.30  lr=1.0e-03
+15:35:01 INFO src.model_v25_resconv:   fold09 ep 15  loss=0.3188  train=51.7  val=181.5  test=185.2  best_val=153.7  λ_Δ=0.30  lr=1.0e-03
+15:35:03 INFO src.model_v25_resconv:   fold09 ep 20  loss=0.2757  train=45.1  val=196.0  test=188.4  best_val=153.7  λ_Δ=0.30  lr=9.9e-04
+15:35:04 INFO src.model_v25_resconv:   fold09 ep 25  loss=0.2339  train=37.6  val=190.1  test=157.1  best_val=153.7  λ_Δ=0.30  lr=9.8e-04
+15:35:05 INFO src.model_v25_resconv:   fold09 ep 30  loss=0.2067  train=31.1  val=206.5  test=150.7  best_val=153.7  λ_Δ=0.30  lr=9.7e-04
+15:35:07 INFO src.model_v25_resconv:   fold09 ep 35  loss=0.1815  train=30.4  val=196.3  test=163.0  best_val=153.7  λ_Δ=0.30  lr=9.5e-04
+15:35:08 INFO src.model_v25_resconv:   fold09 ep 40  loss=0.1628  train=25.3  val=185.5  test=163.8  best_val=153.7  λ_Δ=0.30  lr=9.4e-04
+15:35:09 INFO src.model_v25_resconv:   fold09 ep 45  loss=0.1518  train=24.1  val=180.6  test=163.3  best_val=153.7  λ_Δ=0.30  lr=9.1e-04
+15:35:11 INFO src.model_v25_resconv:   fold09 ep 50  loss=0.1339  train=20.5  val=187.7  test=162.5  best_val=153.7  λ_Δ=0.30  lr=8.9e-04
+15:35:12 INFO src.model_v25_resconv:   fold09 ep 55  loss=0.1260  train=18.9  val=181.3  test=172.8  best_val=153.7  λ_Δ=0.30  lr=8.6e-04
+15:35:13 INFO src.model_v25_resconv:   fold09 ep 60  loss=0.1201  train=19.3  val=177.2  test=165.9  best_val=153.7  λ_Δ=0.30  lr=8.3e-04
+15:35:15 INFO src.model_v25_resconv:   fold09 ep 65  loss=0.1136  train=18.6  val=191.1  test=154.6  best_val=153.7  λ_Δ=0.30  lr=8.0e-04
+15:35:16 INFO src.model_v25_resconv:   fold09 ep 70  loss=0.1075  train=16.8  val=186.4  test=167.1  best_val=153.7  λ_Δ=0.30  lr=7.7e-04
+15:35:18 INFO src.model_v25_resconv:   fold09 ep 75  loss=0.1038  train=15.5  val=178.0  test=158.7  best_val=153.7  λ_Δ=0.30  lr=7.3e-04
+15:35:19 INFO src.model_v25_resconv:   fold09 ep 80  loss=0.0937  train=14.4  val=187.5  test=156.4  best_val=153.7  λ_Δ=0.30  lr=6.9e-04
+15:35:20 INFO src.model_v25_resconv:   fold09 ep 85  loss=0.0902  train=14.2  val=194.5  test=156.9  best_val=153.7  λ_Δ=0.30  lr=6.5e-04
+15:35:22 INFO src.model_v25_resconv:   fold09 ep 90  loss=0.0841  train=13.0  val=181.7  test=163.5  best_val=153.7  λ_Δ=0.30  lr=6.2e-04
+15:35:23 INFO src.model_v25_resconv:   fold09 ep 95  loss=0.0845  train=12.8  val=179.7  test=151.2  best_val=153.7  λ_Δ=0.30  lr=5.7e-04
+15:35:24 INFO src.model_v25_resconv:   fold09 ep100  loss=0.0772  train=11.8  val=179.6  test=151.6  best_val=153.7  λ_Δ=0.30  lr=5.3e-04
+15:35:26 INFO src.model_v25_resconv:   fold09 ep105  loss=0.0743  train=11.3  val=175.6  test=148.3  best_val=153.7  λ_Δ=0.30  lr=4.9e-04
+15:35:27 INFO src.model_v25_resconv:   fold09 ep110  loss=0.0709  train=10.6  val=179.2  test=152.2  best_val=153.7  λ_Δ=0.30  lr=4.5e-04
+15:35:29 INFO src.model_v25_resconv:   fold09 ep115  loss=0.0678  train=9.7  val=184.4  test=152.8  best_val=153.7  λ_Δ=0.30  lr=4.1e-04
+15:35:30 INFO src.model_v25_resconv:   fold09 ep120  loss=0.0650  train=9.4  val=181.2  test=156.4  best_val=153.7  λ_Δ=0.30  lr=3.7e-04
+15:35:31 INFO src.model_v25_resconv:   fold09 ep125  loss=0.0624  train=8.2  val=179.1  test=152.5  best_val=153.7  λ_Δ=0.30  lr=3.3e-04
+15:35:33 INFO src.model_v25_resconv:   fold09 ep130  loss=0.0576  train=7.1  val=179.7  test=150.2  best_val=153.7  λ_Δ=0.30  lr=2.9e-04
+15:35:34 INFO src.model_v25_resconv:   fold09 ep135  loss=0.0554  train=6.4  val=177.2  test=150.9  best_val=153.7  λ_Δ=0.30  lr=2.6e-04
+15:35:36 INFO src.model_v25_resconv:   fold09 ep140  loss=0.0528  train=6.6  val=178.8  test=151.9  best_val=153.7  λ_Δ=0.30  lr=2.2e-04
+15:35:37 INFO src.model_v25_resconv:   fold09 ep145  loss=0.0511  train=6.1  val=180.9  test=151.5  best_val=153.7  λ_Δ=0.30  lr=1.9e-04
+15:35:38 INFO src.model_v25_resconv:   fold09 ep150  loss=0.0484  train=5.1  val=178.8  test=148.5  best_val=153.7  λ_Δ=0.30  lr=1.6e-04
+15:35:40 INFO src.model_v25_resconv:   fold09 ep155  loss=0.0484  train=4.8  val=177.5  test=146.7  best_val=153.7  λ_Δ=0.30  lr=1.3e-04
+15:35:41 INFO src.model_v25_resconv:   fold09 ep160  loss=0.0449  train=4.3  val=179.2  test=145.2  best_val=153.7  λ_Δ=0.30  lr=1.0e-04
+15:35:42 INFO src.model_v25_resconv:   fold09 ep165  loss=0.0444  train=3.9  val=178.5  test=149.6  best_val=153.7  λ_Δ=0.30  lr=7.8e-05
+15:35:44 INFO src.model_v25_resconv:   fold09 ep170  loss=0.0426  train=3.1  val=179.8  test=148.6  best_val=153.7  λ_Δ=0.30  lr=5.7e-05
+15:35:45 INFO src.model_v25_resconv:   fold09 ep175  loss=0.0418  train=3.0  val=179.2  test=149.4  best_val=153.7  λ_Δ=0.30  lr=4.0e-05
+15:35:47 INFO src.model_v25_resconv:   fold09 ep180  loss=0.0412  train=2.6  val=179.1  test=148.9  best_val=153.7  λ_Δ=0.30  lr=2.5e-05
+15:35:48 INFO src.model_v25_resconv:   fold09 ep185  loss=0.0403  train=2.3  val=179.3  test=149.7  best_val=153.7  λ_Δ=0.30  lr=1.4e-05
+15:35:49 INFO src.model_v25_resconv:   fold09 ep190  loss=0.0394  train=2.3  val=179.9  test=149.0  best_val=153.7  λ_Δ=0.30  lr=6.5e-06
+15:35:51 INFO src.model_v25_resconv:   fold09 ep195  loss=0.0398  train=2.1  val=179.1  test=146.7  best_val=153.7  λ_Δ=0.30  lr=2.1e-06
+15:35:52 INFO src.model_v25_resconv:   fold09 ep199  loss=0.0400  train=2.2  val=178.8  test=148.2  best_val=153.7  λ_Δ=0.30  lr=1.0e-06
+15:35:52 INFO src.model_v25_resconv: Fold  9 done | val=153.7  test_MAE=148.2  test_RMSE=193.1
+15:35:52 INFO src.model_v25_resconv: Fold 10 | train=4392 val=336 test=168 | test 2025-11-03 ~ 2025-11-09
+15:35:52 INFO src.model_v25_resconv:   fold10 ep  0  loss=0.6303  train=101.4  val=143.7  test=86.9  best_val=143.7  λ_Δ=0.30  lr=1.9e-04
+15:35:54 INFO src.model_v25_resconv:   fold10 ep  5  loss=0.4370  train=86.3  val=182.9  test=89.4  best_val=143.7  λ_Δ=0.30  lr=6.4e-04
+15:35:55 INFO src.model_v25_resconv:   fold10 ep 10  loss=0.4085  train=73.5  val=161.0  test=66.5  best_val=143.7  λ_Δ=0.30  lr=1.0e-03
+15:35:57 INFO src.model_v25_resconv:   fold10 ep 15  loss=0.3249  train=52.9  val=172.0  test=91.6  best_val=143.7  λ_Δ=0.30  lr=1.0e-03
+15:35:58 INFO src.model_v25_resconv:   fold10 ep 20  loss=0.2669  train=41.9  val=154.1  test=77.7  best_val=143.7  λ_Δ=0.30  lr=9.9e-04
+15:35:59 INFO src.model_v25_resconv:   fold10 ep 25  loss=0.2345  train=44.5  val=195.9  test=103.5  best_val=143.7  λ_Δ=0.30  lr=9.8e-04
+15:36:01 INFO src.model_v25_resconv:   fold10 ep 30  loss=0.1997  train=29.1  val=177.9  test=89.3  best_val=143.7  λ_Δ=0.30  lr=9.7e-04
+15:36:02 INFO src.model_v25_resconv:   fold10 ep 35  loss=0.1783  train=28.0  val=180.5  test=86.3  best_val=143.7  λ_Δ=0.30  lr=9.5e-04
+15:36:03 INFO src.model_v25_resconv:   fold10 ep 40  loss=0.1583  train=25.8  val=160.9  test=82.4  best_val=143.7  λ_Δ=0.30  lr=9.4e-04
+15:36:05 INFO src.model_v25_resconv:   fold10 ep 45  loss=0.1513  train=24.9  val=156.8  test=82.8  best_val=143.7  λ_Δ=0.30  lr=9.1e-04
+15:36:06 INFO src.model_v25_resconv:   fold10 ep 50  loss=0.1381  train=21.2  val=162.4  test=91.7  best_val=143.7  λ_Δ=0.30  lr=8.9e-04
+15:36:08 INFO src.model_v25_resconv:   fold10 ep 55  loss=0.1243  train=20.6  val=158.4  test=81.7  best_val=143.7  λ_Δ=0.30  lr=8.6e-04
+15:36:09 INFO src.model_v25_resconv:   fold10 ep 60  loss=0.1190  train=17.5  val=167.2  test=95.9  best_val=143.7  λ_Δ=0.30  lr=8.3e-04
+15:36:10 INFO src.model_v25_resconv:   fold10 ep 65  loss=0.1120  train=17.2  val=161.3  test=95.6  best_val=143.7  λ_Δ=0.30  lr=8.0e-04
+15:36:12 INFO src.model_v25_resconv:   fold10 ep 70  loss=0.1059  train=17.4  val=162.1  test=85.0  best_val=143.7  λ_Δ=0.30  lr=7.7e-04
+15:36:13 INFO src.model_v25_resconv:   fold10 ep 75  loss=0.1053  train=19.5  val=155.4  test=87.0  best_val=143.7  λ_Δ=0.30  lr=7.3e-04
+15:36:14 INFO src.model_v25_resconv:   fold10 ep 80  loss=0.0950  train=16.6  val=173.7  test=86.9  best_val=143.7  λ_Δ=0.30  lr=6.9e-04
+15:36:16 INFO src.model_v25_resconv:   fold10 ep 85  loss=0.0914  train=12.8  val=166.1  test=92.2  best_val=143.7  λ_Δ=0.30  lr=6.5e-04
+15:36:17 INFO src.model_v25_resconv:   fold10 ep 90  loss=0.0860  train=14.0  val=165.9  test=80.7  best_val=143.7  λ_Δ=0.30  lr=6.2e-04
+15:36:18 INFO src.model_v25_resconv:   fold10 ep 95  loss=0.0836  train=12.6  val=159.6  test=82.7  best_val=143.7  λ_Δ=0.30  lr=5.7e-04
+15:36:20 INFO src.model_v25_resconv:   fold10 ep100  loss=0.0782  train=12.6  val=165.7  test=84.3  best_val=143.7  λ_Δ=0.30  lr=5.3e-04
+15:36:21 INFO src.model_v25_resconv:   fold10 ep105  loss=0.0740  train=10.9  val=160.6  test=79.7  best_val=143.7  λ_Δ=0.30  lr=4.9e-04
+15:36:23 INFO src.model_v25_resconv:   fold10 ep110  loss=0.0725  train=10.6  val=156.3  test=77.8  best_val=143.7  λ_Δ=0.30  lr=4.5e-04
+15:36:24 INFO src.model_v25_resconv:   fold10 ep115  loss=0.0658  train=9.3  val=166.8  test=83.2  best_val=143.7  λ_Δ=0.30  lr=4.1e-04
+15:36:25 INFO src.model_v25_resconv:   fold10 ep120  loss=0.0637  train=9.0  val=163.0  test=76.3  best_val=143.7  λ_Δ=0.30  lr=3.7e-04
+15:36:27 INFO src.model_v25_resconv:   fold10 ep125  loss=0.0622  train=8.3  val=160.1  test=74.1  best_val=143.7  λ_Δ=0.30  lr=3.3e-04
+15:36:28 INFO src.model_v25_resconv:   fold10 ep130  loss=0.0588  train=7.9  val=154.8  test=77.5  best_val=143.7  λ_Δ=0.30  lr=2.9e-04
+15:36:29 INFO src.model_v25_resconv:   fold10 ep135  loss=0.0551  train=7.5  val=155.0  test=78.7  best_val=143.7  λ_Δ=0.30  lr=2.6e-04
+15:36:31 INFO src.model_v25_resconv:   fold10 ep140  loss=0.0535  train=7.0  val=157.6  test=79.9  best_val=143.7  λ_Δ=0.30  lr=2.2e-04
+15:36:32 INFO src.model_v25_resconv:   fold10 ep145  loss=0.0512  train=6.2  val=156.4  test=80.0  best_val=143.7  λ_Δ=0.30  lr=1.9e-04
+15:36:34 INFO src.model_v25_resconv:   fold10 ep150  loss=0.0478  train=5.3  val=158.2  test=75.9  best_val=143.7  λ_Δ=0.30  lr=1.6e-04
+15:36:35 INFO src.model_v25_resconv:   fold10 ep155  loss=0.0473  train=4.6  val=156.8  test=79.2  best_val=143.7  λ_Δ=0.30  lr=1.3e-04
+15:36:36 INFO src.model_v25_resconv:   fold10 ep160  loss=0.0455  train=4.5  val=156.5  test=77.8  best_val=143.7  λ_Δ=0.30  lr=1.0e-04
+15:36:38 INFO src.model_v25_resconv:   fold10 ep165  loss=0.0440  train=3.9  val=155.5  test=75.9  best_val=143.7  λ_Δ=0.30  lr=7.8e-05
+15:36:39 INFO src.model_v25_resconv:   fold10 ep170  loss=0.0417  train=3.4  val=155.5  test=77.6  best_val=143.7  λ_Δ=0.30  lr=5.7e-05
+15:36:40 INFO src.model_v25_resconv:   fold10 ep175  loss=0.0419  train=3.0  val=155.0  test=75.9  best_val=143.7  λ_Δ=0.30  lr=4.0e-05
+15:36:42 INFO src.model_v25_resconv:   fold10 ep180  loss=0.0401  train=2.6  val=157.4  test=77.0  best_val=143.7  λ_Δ=0.30  lr=2.5e-05
+15:36:43 INFO src.model_v25_resconv:   fold10 ep185  loss=0.0396  train=2.4  val=156.9  test=75.1  best_val=143.7  λ_Δ=0.30  lr=1.4e-05
+15:36:44 INFO src.model_v25_resconv:   fold10 ep190  loss=0.0398  train=2.3  val=157.0  test=76.6  best_val=143.7  λ_Δ=0.30  lr=6.5e-06
+15:36:46 INFO src.model_v25_resconv:   fold10 ep195  loss=0.0381  train=2.2  val=156.3  test=75.1  best_val=143.7  λ_Δ=0.30  lr=2.1e-06
+15:36:47 INFO src.model_v25_resconv:   fold10 ep199  loss=0.0398  train=2.3  val=156.2  test=77.2  best_val=143.7  λ_Δ=0.30  lr=1.0e-06
+15:36:47 INFO src.model_v25_resconv: Fold 10 done | val=143.7  test_MAE=77.2  test_RMSE=111.5
+15:36:47 INFO src.model_v25_resconv: Fold 11 | train=4392 val=336 test=168 | test 2025-11-10 ~ 2025-11-16
+15:36:47 INFO src.model_v25_resconv:   fold11 ep  0  loss=0.6266  train=101.0  val=128.7  test=136.8  best_val=128.7  λ_Δ=0.30  lr=1.9e-04
+15:36:49 INFO src.model_v25_resconv:   fold11 ep  5  loss=0.4235  train=82.8  val=123.6  test=57.0  best_val=101.1  λ_Δ=0.30  lr=6.4e-04
+15:36:50 INFO src.model_v25_resconv:   fold11 ep 10  loss=0.3941  train=72.6  val=110.6  test=59.2  best_val=101.1  λ_Δ=0.30  lr=1.0e-03
+15:36:52 INFO src.model_v25_resconv:   fold11 ep 15  loss=0.3178  train=55.1  val=140.9  test=49.7  best_val=101.1  λ_Δ=0.30  lr=1.0e-03
+15:36:53 INFO src.model_v25_resconv:   fold11 ep 20  loss=0.2743  train=42.3  val=130.2  test=47.1  best_val=101.1  λ_Δ=0.30  lr=9.9e-04
+15:36:54 INFO src.model_v25_resconv:   fold11 ep 25  loss=0.2306  train=38.7  val=119.8  test=51.7  best_val=101.1  λ_Δ=0.30  lr=9.8e-04
+15:36:56 INFO src.model_v25_resconv:   fold11 ep 30  loss=0.2081  train=34.2  val=110.1  test=71.4  best_val=101.1  λ_Δ=0.30  lr=9.7e-04
+15:36:57 INFO src.model_v25_resconv:   fold11 ep 35  loss=0.1814  train=29.3  val=105.7  test=58.9  best_val=101.1  λ_Δ=0.30  lr=9.5e-04
+15:36:58 INFO src.model_v25_resconv:   fold11 ep 40  loss=0.1651  train=24.9  val=120.5  test=55.7  best_val=101.1  λ_Δ=0.30  lr=9.4e-04
+15:37:00 INFO src.model_v25_resconv:   fold11 ep 45  loss=0.1489  train=25.0  val=120.5  test=48.1  best_val=101.1  λ_Δ=0.30  lr=9.1e-04
+15:37:01 INFO src.model_v25_resconv:   fold11 ep 50  loss=0.1417  train=21.5  val=116.3  test=54.4  best_val=98.9  λ_Δ=0.30  lr=8.9e-04
+15:37:02 INFO src.model_v25_resconv:   fold11 ep 55  loss=0.1313  train=20.6  val=111.4  test=56.6  best_val=98.9  λ_Δ=0.30  lr=8.6e-04
+15:37:04 INFO src.model_v25_resconv:   fold11 ep 60  loss=0.1240  train=18.6  val=109.4  test=54.2  best_val=98.9  λ_Δ=0.30  lr=8.3e-04
+15:37:05 INFO src.model_v25_resconv:   fold11 ep 65  loss=0.1155  train=18.7  val=106.2  test=48.6  best_val=98.9  λ_Δ=0.30  lr=8.0e-04
+15:37:07 INFO src.model_v25_resconv:   fold11 ep 70  loss=0.1087  train=17.0  val=112.2  test=52.3  best_val=98.9  λ_Δ=0.30  lr=7.7e-04
+15:37:08 INFO src.model_v25_resconv:   fold11 ep 75  loss=0.1044  train=16.9  val=105.1  test=54.6  best_val=98.9  λ_Δ=0.30  lr=7.3e-04
+15:37:09 INFO src.model_v25_resconv:   fold11 ep 80  loss=0.0975  train=14.5  val=111.4  test=55.3  best_val=98.9  λ_Δ=0.30  lr=6.9e-04
+15:37:11 INFO src.model_v25_resconv:   fold11 ep 85  loss=0.0911  train=12.9  val=105.0  test=53.9  best_val=98.9  λ_Δ=0.30  lr=6.5e-04
+15:37:12 INFO src.model_v25_resconv:   fold11 ep 90  loss=0.0872  train=13.0  val=113.1  test=56.4  best_val=98.9  λ_Δ=0.30  lr=6.2e-04
+15:37:13 INFO src.model_v25_resconv:   fold11 ep 95  loss=0.0831  train=13.7  val=104.1  test=55.7  best_val=98.9  λ_Δ=0.30  lr=5.7e-04
+15:37:15 INFO src.model_v25_resconv:   fold11 ep100  loss=0.0808  train=12.7  val=117.0  test=53.1  best_val=98.9  λ_Δ=0.30  lr=5.3e-04
+15:37:16 INFO src.model_v25_resconv:   fold11 ep105  loss=0.0743  train=11.2  val=111.9  test=51.2  best_val=98.9  λ_Δ=0.30  lr=4.9e-04
+15:37:17 INFO src.model_v25_resconv:   fold11 ep110  loss=0.0716  train=10.8  val=108.2  test=55.5  best_val=98.9  λ_Δ=0.30  lr=4.5e-04
+15:37:19 INFO src.model_v25_resconv:   fold11 ep115  loss=0.0703  train=9.4  val=106.5  test=57.2  best_val=98.9  λ_Δ=0.30  lr=4.1e-04
+15:37:20 INFO src.model_v25_resconv:   fold11 ep120  loss=0.0660  train=8.9  val=112.1  test=52.8  best_val=98.9  λ_Δ=0.30  lr=3.7e-04
+15:37:22 INFO src.model_v25_resconv:   fold11 ep125  loss=0.0636  train=9.1  val=108.8  test=56.8  best_val=98.9  λ_Δ=0.30  lr=3.3e-04
+15:37:23 INFO src.model_v25_resconv:   fold11 ep130  loss=0.0602  train=7.7  val=109.3  test=55.2  best_val=98.9  λ_Δ=0.30  lr=2.9e-04
+15:37:24 INFO src.model_v25_resconv:   fold11 ep135  loss=0.0562  train=6.8  val=105.7  test=55.1  best_val=98.9  λ_Δ=0.30  lr=2.6e-04
+15:37:26 INFO src.model_v25_resconv:   fold11 ep140  loss=0.0540  train=7.5  val=109.6  test=54.5  best_val=98.9  λ_Δ=0.30  lr=2.2e-04
+15:37:27 INFO src.model_v25_resconv:   fold11 ep145  loss=0.0530  train=6.0  val=106.7  test=56.3  best_val=98.9  λ_Δ=0.30  lr=1.9e-04
+15:37:28 INFO src.model_v25_resconv:   fold11 ep150  loss=0.0506  train=6.0  val=108.8  test=55.1  best_val=98.9  λ_Δ=0.30  lr=1.6e-04
+15:37:30 INFO src.model_v25_resconv:   fold11 ep155  loss=0.0479  train=5.0  val=107.4  test=54.0  best_val=98.9  λ_Δ=0.30  lr=1.3e-04
+15:37:31 INFO src.model_v25_resconv:   fold11 ep160  loss=0.0458  train=4.6  val=107.3  test=54.1  best_val=98.9  λ_Δ=0.30  lr=1.0e-04
+15:37:32 INFO src.model_v25_resconv:   fold11 ep165  loss=0.0455  train=4.0  val=105.8  test=55.9  best_val=98.9  λ_Δ=0.30  lr=7.8e-05
+15:37:34 INFO src.model_v25_resconv:   fold11 ep170  loss=0.0432  train=3.5  val=106.3  test=55.4  best_val=98.9  λ_Δ=0.30  lr=5.7e-05
+15:37:35 INFO src.model_v25_resconv:   fold11 ep175  loss=0.0432  train=3.3  val=106.8  test=54.6  best_val=98.9  λ_Δ=0.30  lr=4.0e-05
+15:37:36 INFO src.model_v25_resconv:   fold11 ep180  loss=0.0413  train=2.8  val=106.8  test=54.8  best_val=98.9  λ_Δ=0.30  lr=2.5e-05
+15:37:38 INFO src.model_v25_resconv:   fold11 ep185  loss=0.0400  train=2.7  val=107.8  test=54.8  best_val=98.9  λ_Δ=0.30  lr=1.4e-05
+15:37:39 INFO src.model_v25_resconv:   fold11 ep190  loss=0.0407  train=2.5  val=108.5  test=54.8  best_val=98.9  λ_Δ=0.30  lr=6.5e-06
+15:37:41 INFO src.model_v25_resconv:   fold11 ep195  loss=0.0388  train=2.3  val=107.6  test=55.1  best_val=98.9  λ_Δ=0.30  lr=2.1e-06
+15:37:42 INFO src.model_v25_resconv:   fold11 ep199  loss=0.0397  train=2.2  val=108.0  test=54.8  best_val=98.9  λ_Δ=0.30  lr=1.0e-06
+15:37:42 INFO src.model_v25_resconv: Fold 11 done | val=98.9  test_MAE=54.8  test_RMSE=71.4
+15:37:42 INFO src.model_v25_resconv: Fold 12 | train=4416 val=336 test=168 | test 2025-11-17 ~ 2025-11-23
+15:37:42 INFO src.model_v25_resconv:   fold12 ep  0  loss=0.6346  train=96.3  val=161.1  test=256.5  best_val=161.1  λ_Δ=0.30  lr=1.9e-04
+15:37:44 INFO src.model_v25_resconv:   fold12 ep  5  loss=0.4333  train=78.5  val=145.0  test=254.2  best_val=98.7  λ_Δ=0.30  lr=6.4e-04
+15:37:45 INFO src.model_v25_resconv:   fold12 ep 10  loss=0.3993  train=75.9  val=96.5  test=154.8  best_val=83.3  λ_Δ=0.30  lr=1.0e-03
+15:37:46 INFO src.model_v25_resconv:   fold12 ep 15  loss=0.3238  train=54.5  val=68.9  test=107.1  best_val=68.9  λ_Δ=0.30  lr=1.0e-03
+15:37:48 INFO src.model_v25_resconv:   fold12 ep 20  loss=0.2679  train=42.5  val=103.9  test=185.5  best_val=68.9  λ_Δ=0.30  lr=9.9e-04
+15:37:49 INFO src.model_v25_resconv:   fold12 ep 25  loss=0.2329  train=37.8  val=108.3  test=201.5  best_val=68.9  λ_Δ=0.30  lr=9.8e-04
+15:37:51 INFO src.model_v25_resconv:   fold12 ep 30  loss=0.2028  train=32.1  val=86.3  test=170.6  best_val=68.9  λ_Δ=0.30  lr=9.7e-04
+15:37:52 INFO src.model_v25_resconv:   fold12 ep 35  loss=0.1828  train=28.7  val=83.5  test=166.5  best_val=68.9  λ_Δ=0.30  lr=9.5e-04
+15:37:53 INFO src.model_v25_resconv:   fold12 ep 40  loss=0.1647  train=27.6  val=83.8  test=151.7  best_val=68.9  λ_Δ=0.30  lr=9.4e-04
+15:37:55 INFO src.model_v25_resconv:   fold12 ep 45  loss=0.1503  train=22.4  val=90.8  test=170.6  best_val=68.9  λ_Δ=0.30  lr=9.1e-04
+15:37:56 INFO src.model_v25_resconv:   fold12 ep 50  loss=0.1438  train=22.7  val=90.3  test=176.5  best_val=68.9  λ_Δ=0.30  lr=8.9e-04
+15:37:57 INFO src.model_v25_resconv:   fold12 ep 55  loss=0.1297  train=20.4  val=89.1  test=164.7  best_val=68.9  λ_Δ=0.30  lr=8.6e-04
+15:37:59 INFO src.model_v25_resconv:   fold12 ep 60  loss=0.1204  train=18.3  val=94.8  test=186.7  best_val=68.9  λ_Δ=0.30  lr=8.3e-04
+15:38:00 INFO src.model_v25_resconv:   fold12 ep 65  loss=0.1152  train=20.4  val=97.0  test=186.7  best_val=68.9  λ_Δ=0.30  lr=8.0e-04
+15:38:02 INFO src.model_v25_resconv:   fold12 ep 70  loss=0.1068  train=16.5  val=82.2  test=161.6  best_val=68.9  λ_Δ=0.30  lr=7.7e-04
+15:38:03 INFO src.model_v25_resconv:   fold12 ep 75  loss=0.1023  train=16.0  val=80.3  test=166.8  best_val=68.9  λ_Δ=0.30  lr=7.3e-04
+15:38:04 INFO src.model_v25_resconv:   fold12 ep 80  loss=0.0976  train=14.6  val=95.5  test=190.9  best_val=68.9  λ_Δ=0.30  lr=6.9e-04
+15:38:06 INFO src.model_v25_resconv:   fold12 ep 85  loss=0.0936  train=15.1  val=85.1  test=172.0  best_val=68.9  λ_Δ=0.30  lr=6.5e-04
+15:38:07 INFO src.model_v25_resconv:   fold12 ep 90  loss=0.0879  train=13.4  val=81.0  test=161.2  best_val=68.9  λ_Δ=0.30  lr=6.2e-04
+15:38:08 INFO src.model_v25_resconv:   fold12 ep 95  loss=0.0851  train=15.2  val=96.3  test=181.6  best_val=68.9  λ_Δ=0.30  lr=5.7e-04
+15:38:10 INFO src.model_v25_resconv:   fold12 ep100  loss=0.0819  train=13.5  val=83.1  test=161.9  best_val=68.9  λ_Δ=0.30  lr=5.3e-04
+15:38:11 INFO src.model_v25_resconv:   fold12 ep105  loss=0.0755  train=10.7  val=86.4  test=168.7  best_val=68.9  λ_Δ=0.30  lr=4.9e-04
+15:38:13 INFO src.model_v25_resconv:   fold12 ep110  loss=0.0718  train=10.5  val=88.5  test=169.3  best_val=68.9  λ_Δ=0.30  lr=4.5e-04
+15:38:14 INFO src.model_v25_resconv:   fold12 ep115  loss=0.0694  train=10.3  val=86.8  test=172.7  best_val=68.9  λ_Δ=0.30  lr=4.1e-04
+15:38:15 INFO src.model_v25_resconv:   fold12 ep120  loss=0.0676  train=8.8  val=82.8  test=166.4  best_val=68.9  λ_Δ=0.30  lr=3.7e-04
+15:38:17 INFO src.model_v25_resconv:   fold12 ep125  loss=0.0641  train=9.8  val=85.5  test=165.2  best_val=68.9  λ_Δ=0.30  lr=3.3e-04
+15:38:18 INFO src.model_v25_resconv:   fold12 ep130  loss=0.0584  train=8.5  val=84.1  test=169.9  best_val=68.9  λ_Δ=0.30  lr=2.9e-04
+15:38:20 INFO src.model_v25_resconv:   fold12 ep135  loss=0.0575  train=7.6  val=84.2  test=164.0  best_val=68.9  λ_Δ=0.30  lr=2.6e-04
+15:38:21 INFO src.model_v25_resconv:   fold12 ep140  loss=0.0566  train=6.4  val=87.0  test=168.9  best_val=68.9  λ_Δ=0.30  lr=2.2e-04
+15:38:22 INFO src.model_v25_resconv:   fold12 ep145  loss=0.0526  train=6.8  val=86.4  test=171.4  best_val=68.9  λ_Δ=0.30  lr=1.9e-04
+15:38:24 INFO src.model_v25_resconv:   fold12 ep150  loss=0.0500  train=6.0  val=85.0  test=166.8  best_val=68.9  λ_Δ=0.30  lr=1.6e-04
+15:38:25 INFO src.model_v25_resconv:   fold12 ep155  loss=0.0483  train=5.3  val=83.0  test=163.7  best_val=68.9  λ_Δ=0.30  lr=1.3e-04
+15:38:26 INFO src.model_v25_resconv:   fold12 ep160  loss=0.0458  train=4.2  val=85.0  test=168.3  best_val=68.9  λ_Δ=0.30  lr=1.0e-04
+15:38:28 INFO src.model_v25_resconv:   fold12 ep165  loss=0.0450  train=4.0  val=84.3  test=166.5  best_val=68.9  λ_Δ=0.30  lr=7.8e-05
+15:38:29 INFO src.model_v25_resconv:   fold12 ep170  loss=0.0439  train=3.3  val=85.1  test=168.2  best_val=68.9  λ_Δ=0.30  lr=5.7e-05
+15:38:31 INFO src.model_v25_resconv:   fold12 ep175  loss=0.0425  train=3.4  val=85.3  test=168.7  best_val=68.9  λ_Δ=0.30  lr=4.0e-05
+15:38:32 INFO src.model_v25_resconv:   fold12 ep180  loss=0.0417  train=2.7  val=84.8  test=167.7  best_val=68.9  λ_Δ=0.30  lr=2.5e-05
+15:38:33 INFO src.model_v25_resconv:   fold12 ep185  loss=0.0407  train=2.4  val=85.1  test=168.4  best_val=68.9  λ_Δ=0.30  lr=1.4e-05
+15:38:35 INFO src.model_v25_resconv:   fold12 ep190  loss=0.0410  train=2.2  val=85.4  test=168.4  best_val=68.9  λ_Δ=0.30  lr=6.5e-06
+15:38:36 INFO src.model_v25_resconv:   fold12 ep195  loss=0.0408  train=2.3  val=84.9  test=167.6  best_val=68.9  λ_Δ=0.30  lr=2.1e-06
+15:38:37 INFO src.model_v25_resconv:   fold12 ep199  loss=0.0404  train=2.2  val=85.7  test=168.7  best_val=68.9  λ_Δ=0.30  lr=1.0e-06
+15:38:37 INFO src.model_v25_resconv: Fold 12 done | val=68.9  test_MAE=168.7  test_RMSE=197.6
+15:38:37 INFO src.model_v25_resconv: Fold 13 | train=4416 val=336 test=168 | test 2025-11-24 ~ 2025-11-30
+15:38:38 INFO src.model_v25_resconv:   fold13 ep  0  loss=0.6281  train=101.1  val=129.5  test=183.1  best_val=129.5  λ_Δ=0.30  lr=1.9e-04
+15:38:39 INFO src.model_v25_resconv:   fold13 ep  5  loss=0.4333  train=80.6  val=106.8  test=182.2  best_val=86.1  λ_Δ=0.30  lr=6.4e-04
+15:38:41 INFO src.model_v25_resconv:   fold13 ep 10  loss=0.3867  train=65.7  val=82.0  test=146.1  best_val=76.3  λ_Δ=0.30  lr=1.0e-03
+15:38:42 INFO src.model_v25_resconv:   fold13 ep 15  loss=0.3187  train=54.3  val=77.3  test=140.0  best_val=76.3  λ_Δ=0.30  lr=1.0e-03
+15:38:43 INFO src.model_v25_resconv:   fold13 ep 20  loss=0.2685  train=45.5  val=97.4  test=149.6  best_val=76.3  λ_Δ=0.30  lr=9.9e-04
+15:38:45 INFO src.model_v25_resconv:   fold13 ep 25  loss=0.2317  train=34.0  val=101.8  test=168.6  best_val=76.3  λ_Δ=0.30  lr=9.8e-04
+15:38:46 INFO src.model_v25_resconv:   fold13 ep 30  loss=0.2054  train=29.7  val=93.8  test=156.8  best_val=76.3  λ_Δ=0.30  lr=9.7e-04
+15:38:48 INFO src.model_v25_resconv:   fold13 ep 35  loss=0.1850  train=28.0  val=104.3  test=174.5  best_val=76.3  λ_Δ=0.30  lr=9.5e-04
+15:38:49 INFO src.model_v25_resconv:   fold13 ep 40  loss=0.1649  train=28.8  val=105.8  test=175.7  best_val=76.3  λ_Δ=0.30  lr=9.4e-04
+15:38:50 INFO src.model_v25_resconv:   fold13 ep 45  loss=0.1487  train=25.3  val=115.1  test=190.4  best_val=76.3  λ_Δ=0.30  lr=9.1e-04
+15:38:52 INFO src.model_v25_resconv:   fold13 ep 50  loss=0.1369  train=22.5  val=123.2  test=201.8  best_val=76.3  λ_Δ=0.30  lr=8.9e-04
+15:38:53 INFO src.model_v25_resconv:   fold13 ep 55  loss=0.1308  train=22.9  val=108.1  test=177.2  best_val=76.3  λ_Δ=0.30  lr=8.6e-04
+15:38:54 INFO src.model_v25_resconv:   fold13 ep 60  loss=0.1201  train=19.2  val=96.9  test=159.4  best_val=76.3  λ_Δ=0.30  lr=8.3e-04
+15:38:56 INFO src.model_v25_resconv:   fold13 ep 65  loss=0.1165  train=18.5  val=105.5  test=171.2  best_val=76.3  λ_Δ=0.30  lr=8.0e-04
+15:38:57 INFO src.model_v25_resconv:   fold13 ep 70  loss=0.1099  train=15.9  val=109.2  test=180.8  best_val=76.3  λ_Δ=0.30  lr=7.7e-04
+15:38:59 INFO src.model_v25_resconv:   fold13 ep 75  loss=0.1041  train=19.1  val=103.9  test=166.4  best_val=76.3  λ_Δ=0.30  lr=7.3e-04
+15:39:00 INFO src.model_v25_resconv:   fold13 ep 80  loss=0.0985  train=15.2  val=106.0  test=171.8  best_val=76.3  λ_Δ=0.30  lr=6.9e-04
+15:39:01 INFO src.model_v25_resconv:   fold13 ep 85  loss=0.0943  train=14.5  val=107.3  test=169.0  best_val=76.3  λ_Δ=0.30  lr=6.5e-04
+15:39:03 INFO src.model_v25_resconv:   fold13 ep 90  loss=0.0883  train=13.4  val=102.6  test=166.8  best_val=76.3  λ_Δ=0.30  lr=6.2e-04
+15:39:04 INFO src.model_v25_resconv:   fold13 ep 95  loss=0.0840  train=13.6  val=108.2  test=175.6  best_val=76.3  λ_Δ=0.30  lr=5.7e-04
+15:39:05 INFO src.model_v25_resconv:   fold13 ep100  loss=0.0810  train=11.4  val=102.0  test=161.6  best_val=76.3  λ_Δ=0.30  lr=5.3e-04
+15:39:07 INFO src.model_v25_resconv:   fold13 ep105  loss=0.0769  train=10.9  val=106.3  test=172.8  best_val=76.3  λ_Δ=0.30  lr=4.9e-04
+15:39:08 INFO src.model_v25_resconv:   fold13 ep110  loss=0.0716  train=10.5  val=110.3  test=176.2  best_val=76.3  λ_Δ=0.30  lr=4.5e-04
+15:39:10 INFO src.model_v25_resconv:   fold13 ep115  loss=0.0686  train=10.0  val=113.0  test=180.4  best_val=76.3  λ_Δ=0.30  lr=4.1e-04
+15:39:11 INFO src.model_v25_resconv:   fold13 ep120  loss=0.0663  train=8.4  val=106.2  test=170.4  best_val=76.3  λ_Δ=0.30  lr=3.7e-04
+15:39:12 INFO src.model_v25_resconv:   fold13 ep125  loss=0.0604  train=8.0  val=110.5  test=177.3  best_val=76.3  λ_Δ=0.30  lr=3.3e-04
+15:39:14 INFO src.model_v25_resconv:   fold13 ep130  loss=0.0590  train=7.7  val=99.6  test=160.9  best_val=76.3  λ_Δ=0.30  lr=2.9e-04
+15:39:15 INFO src.model_v25_resconv:   fold13 ep135  loss=0.0560  train=7.8  val=104.8  test=168.7  best_val=76.3  λ_Δ=0.30  lr=2.6e-04
+15:39:17 INFO src.model_v25_resconv:   fold13 ep140  loss=0.0544  train=6.5  val=104.9  test=167.1  best_val=76.3  λ_Δ=0.30  lr=2.2e-04
+15:39:18 INFO src.model_v25_resconv:   fold13 ep145  loss=0.0530  train=5.8  val=105.5  test=169.8  best_val=76.3  λ_Δ=0.30  lr=1.9e-04
+15:39:19 INFO src.model_v25_resconv:   fold13 ep150  loss=0.0511  train=7.3  val=108.3  test=172.7  best_val=76.3  λ_Δ=0.30  lr=1.6e-04
+15:39:21 INFO src.model_v25_resconv:   fold13 ep155  loss=0.0467  train=4.6  val=104.4  test=166.9  best_val=76.3  λ_Δ=0.30  lr=1.3e-04
+15:39:22 INFO src.model_v25_resconv:   fold13 ep160  loss=0.0466  train=4.4  val=101.7  test=164.0  best_val=76.3  λ_Δ=0.30  lr=1.0e-04
+15:39:23 INFO src.model_v25_resconv:   fold13 ep165  loss=0.0449  train=3.7  val=103.6  test=166.2  best_val=76.3  λ_Δ=0.30  lr=7.8e-05
+15:39:25 INFO src.model_v25_resconv:   fold13 ep170  loss=0.0429  train=3.6  val=104.5  test=166.6  best_val=76.3  λ_Δ=0.30  lr=5.7e-05
+15:39:26 INFO src.model_v25_resconv:   fold13 ep175  loss=0.0421  train=3.0  val=104.0  test=166.2  best_val=76.3  λ_Δ=0.30  lr=4.0e-05
+15:39:28 INFO src.model_v25_resconv:   fold13 ep180  loss=0.0421  train=2.7  val=104.0  test=166.6  best_val=76.3  λ_Δ=0.30  lr=2.5e-05
+15:39:29 INFO src.model_v25_resconv:   fold13 ep185  loss=0.0402  train=2.5  val=104.9  test=167.5  best_val=76.3  λ_Δ=0.30  lr=1.4e-05
+15:39:30 INFO src.model_v25_resconv:   fold13 ep190  loss=0.0400  train=2.3  val=104.7  test=167.5  best_val=76.3  λ_Δ=0.30  lr=6.5e-06
+15:39:32 INFO src.model_v25_resconv:   fold13 ep195  loss=0.0403  train=2.1  val=103.8  test=166.4  best_val=76.3  λ_Δ=0.30  lr=2.1e-06
+15:39:33 INFO src.model_v25_resconv:   fold13 ep199  loss=0.0407  train=2.2  val=104.5  test=166.8  best_val=76.3  λ_Δ=0.30  lr=1.0e-06
+15:39:33 INFO src.model_v25_resconv: Fold 13 done | val=76.3  test_MAE=166.8  test_RMSE=186.7
+15:39:33 INFO src.model_v25_resconv: Fold 14 | train=4416 val=336 test=168 | test 2025-12-01 ~ 2025-12-07
+15:39:34 INFO src.model_v25_resconv:   fold14 ep  0  loss=0.6297  train=99.6  val=122.9  test=139.4  best_val=122.9  λ_Δ=0.30  lr=1.9e-04
+15:39:35 INFO src.model_v25_resconv:   fold14 ep  5  loss=0.4291  train=76.2  val=143.3  test=124.5  best_val=83.5  λ_Δ=0.30  lr=6.4e-04
+15:39:36 INFO src.model_v25_resconv:   fold14 ep 10  loss=0.3763  train=67.9  val=73.5  test=93.5  best_val=73.5  λ_Δ=0.30  lr=1.0e-03
+15:39:38 INFO src.model_v25_resconv:   fold14 ep 15  loss=0.3150  train=47.6  val=81.6  test=103.3  best_val=73.5  λ_Δ=0.30  lr=1.0e-03
+15:39:39 INFO src.model_v25_resconv:   fold14 ep 20  loss=0.2630  train=41.9  val=98.6  test=101.6  best_val=73.5  λ_Δ=0.30  lr=9.9e-04
+15:39:40 INFO src.model_v25_resconv:   fold14 ep 25  loss=0.2301  train=36.5  val=83.4  test=92.4  best_val=73.5  λ_Δ=0.30  lr=9.8e-04
+15:39:42 INFO src.model_v25_resconv:   fold14 ep 30  loss=0.2055  train=30.7  val=110.6  test=106.0  best_val=73.5  λ_Δ=0.30  lr=9.7e-04
+15:39:43 INFO src.model_v25_resconv:   fold14 ep 35  loss=0.1822  train=27.6  val=92.5  test=97.6  best_val=73.5  λ_Δ=0.30  lr=9.5e-04
+15:39:45 INFO src.model_v25_resconv:   fold14 ep 40  loss=0.1607  train=25.2  val=100.5  test=104.4  best_val=73.5  λ_Δ=0.30  lr=9.4e-04
+15:39:46 INFO src.model_v25_resconv:   fold14 ep 45  loss=0.1516  train=23.9  val=109.7  test=107.1  best_val=73.5  λ_Δ=0.30  lr=9.1e-04
+15:39:47 INFO src.model_v25_resconv:   fold14 ep 50  loss=0.1421  train=21.9  val=90.6  test=101.0  best_val=73.5  λ_Δ=0.30  lr=8.9e-04
+15:39:49 INFO src.model_v25_resconv:   fold14 ep 55  loss=0.1317  train=20.8  val=103.6  test=106.0  best_val=73.5  λ_Δ=0.30  lr=8.6e-04
+15:39:50 INFO src.model_v25_resconv:   fold14 ep 60  loss=0.1211  train=19.9  val=98.5  test=102.5  best_val=73.5  λ_Δ=0.30  lr=8.3e-04
+15:39:51 INFO src.model_v25_resconv:   fold14 ep 65  loss=0.1158  train=19.1  val=101.1  test=110.1  best_val=73.5  λ_Δ=0.30  lr=8.0e-04
+15:39:53 INFO src.model_v25_resconv:   fold14 ep 70  loss=0.1047  train=17.4  val=91.5  test=103.1  best_val=73.5  λ_Δ=0.30  lr=7.7e-04
+15:39:54 INFO src.model_v25_resconv:   fold14 ep 75  loss=0.1003  train=15.1  val=92.0  test=102.0  best_val=73.5  λ_Δ=0.30  lr=7.3e-04
+15:39:56 INFO src.model_v25_resconv:   fold14 ep 80  loss=0.1000  train=13.5  val=96.1  test=99.6  best_val=73.5  λ_Δ=0.30  lr=6.9e-04
+15:39:57 INFO src.model_v25_resconv:   fold14 ep 85  loss=0.0924  train=14.9  val=99.9  test=102.8  best_val=73.5  λ_Δ=0.30  lr=6.5e-04
+15:39:58 INFO src.model_v25_resconv:   fold14 ep 90  loss=0.0881  train=12.7  val=98.9  test=98.5  best_val=73.5  λ_Δ=0.30  lr=6.2e-04
+15:40:00 INFO src.model_v25_resconv:   fold14 ep 95  loss=0.0831  train=14.5  val=104.5  test=105.1  best_val=73.5  λ_Δ=0.30  lr=5.7e-04
+15:40:01 INFO src.model_v25_resconv:   fold14 ep100  loss=0.0784  train=11.3  val=101.4  test=102.9  best_val=73.5  λ_Δ=0.30  lr=5.3e-04
+15:40:02 INFO src.model_v25_resconv:   fold14 ep105  loss=0.0782  train=11.2  val=100.4  test=101.1  best_val=73.5  λ_Δ=0.30  lr=4.9e-04
+15:40:04 INFO src.model_v25_resconv:   fold14 ep110  loss=0.0728  train=10.8  val=94.0  test=100.9  best_val=73.5  λ_Δ=0.30  lr=4.5e-04
+15:40:05 INFO src.model_v25_resconv:   fold14 ep115  loss=0.0689  train=10.5  val=105.6  test=104.9  best_val=73.5  λ_Δ=0.30  lr=4.1e-04
+15:40:07 INFO src.model_v25_resconv:   fold14 ep120  loss=0.0665  train=8.8  val=102.0  test=101.0  best_val=73.5  λ_Δ=0.30  lr=3.7e-04
+15:40:08 INFO src.model_v25_resconv:   fold14 ep125  loss=0.0627  train=9.5  val=97.9  test=101.0  best_val=73.5  λ_Δ=0.30  lr=3.3e-04
+15:40:09 INFO src.model_v25_resconv:   fold14 ep130  loss=0.0596  train=7.7  val=100.2  test=101.4  best_val=73.5  λ_Δ=0.30  lr=2.9e-04
+15:40:11 INFO src.model_v25_resconv:   fold14 ep135  loss=0.0582  train=7.5  val=101.8  test=102.3  best_val=73.5  λ_Δ=0.30  lr=2.6e-04
+15:40:12 INFO src.model_v25_resconv:   fold14 ep140  loss=0.0538  train=8.1  val=108.3  test=106.4  best_val=73.5  λ_Δ=0.30  lr=2.2e-04
+15:40:13 INFO src.model_v25_resconv:   fold14 ep145  loss=0.0538  train=6.6  val=99.9  test=103.6  best_val=73.5  λ_Δ=0.30  lr=1.9e-04
+15:40:15 INFO src.model_v25_resconv:   fold14 ep150  loss=0.0502  train=5.5  val=100.1  test=101.9  best_val=73.5  λ_Δ=0.30  lr=1.6e-04
+15:40:16 INFO src.model_v25_resconv:   fold14 ep155  loss=0.0483  train=4.9  val=101.9  test=103.0  best_val=73.5  λ_Δ=0.30  lr=1.3e-04
+15:40:18 INFO src.model_v25_resconv:   fold14 ep160  loss=0.0459  train=4.3  val=99.7  test=100.8  best_val=73.5  λ_Δ=0.30  lr=1.0e-04
+15:40:19 INFO src.model_v25_resconv:   fold14 ep165  loss=0.0450  train=4.1  val=101.6  test=102.0  best_val=73.5  λ_Δ=0.30  lr=7.8e-05
+15:40:20 INFO src.model_v25_resconv:   fold14 ep170  loss=0.0438  train=3.4  val=102.0  test=102.1  best_val=73.5  λ_Δ=0.30  lr=5.7e-05
+15:40:22 INFO src.model_v25_resconv:   fold14 ep175  loss=0.0426  train=3.4  val=106.2  test=103.9  best_val=73.5  λ_Δ=0.30  lr=4.0e-05
+15:40:23 INFO src.model_v25_resconv:   fold14 ep180  loss=0.0417  train=3.1  val=104.3  test=103.3  best_val=73.5  λ_Δ=0.30  lr=2.5e-05
+15:40:24 INFO src.model_v25_resconv:   fold14 ep185  loss=0.0410  train=2.5  val=102.9  test=102.3  best_val=73.5  λ_Δ=0.30  lr=1.4e-05
+15:40:26 INFO src.model_v25_resconv:   fold14 ep190  loss=0.0401  train=2.3  val=102.1  test=101.7  best_val=73.5  λ_Δ=0.30  lr=6.5e-06
+15:40:27 INFO src.model_v25_resconv:   fold14 ep195  loss=0.0405  train=2.2  val=102.0  test=101.9  best_val=73.5  λ_Δ=0.30  lr=2.1e-06
+15:40:28 INFO src.model_v25_resconv:   fold14 ep199  loss=0.0403  train=2.2  val=103.0  test=101.6  best_val=73.5  λ_Δ=0.30  lr=1.0e-06
+15:40:28 INFO src.model_v25_resconv: Fold 14 done | val=73.5  test_MAE=101.6  test_RMSE=132.3
+15:40:28 INFO src.model_v25_resconv: Fold 15 | train=4416 val=336 test=168 | test 2025-12-08 ~ 2025-12-14
+15:40:29 INFO src.model_v25_resconv:   fold15 ep  0  loss=0.6277  train=104.5  val=112.2  test=169.2  best_val=112.2  λ_Δ=0.30  lr=1.9e-04
+15:40:30 INFO src.model_v25_resconv:   fold15 ep  5  loss=0.4170  train=71.5  val=101.4  test=158.3  best_val=88.0  λ_Δ=0.30  lr=6.4e-04
+15:40:31 INFO src.model_v25_resconv:   fold15 ep 10  loss=0.3793  train=70.0  val=96.2  test=148.7  best_val=80.3  λ_Δ=0.30  lr=1.0e-03
+15:40:33 INFO src.model_v25_resconv:   fold15 ep 15  loss=0.3156  train=54.0  val=78.0  test=136.2  best_val=78.0  λ_Δ=0.30  lr=1.0e-03
+15:40:34 INFO src.model_v25_resconv:   fold15 ep 20  loss=0.2705  train=42.3  val=89.7  test=150.4  best_val=78.0  λ_Δ=0.30  lr=9.9e-04
+15:40:35 INFO src.model_v25_resconv:   fold15 ep 25  loss=0.2323  train=38.1  val=73.7  test=134.0  best_val=73.7  λ_Δ=0.30  lr=9.8e-04
+15:40:37 INFO src.model_v25_resconv:   fold15 ep 30  loss=0.2079  train=31.3  val=79.7  test=134.8  best_val=73.7  λ_Δ=0.30  lr=9.7e-04
+15:40:38 INFO src.model_v25_resconv:   fold15 ep 35  loss=0.1852  train=31.6  val=84.0  test=142.6  best_val=73.7  λ_Δ=0.30  lr=9.5e-04
+15:40:40 INFO src.model_v25_resconv:   fold15 ep 40  loss=0.1731  train=25.2  val=78.5  test=140.1  best_val=73.7  λ_Δ=0.30  lr=9.4e-04
+15:40:41 INFO src.model_v25_resconv:   fold15 ep 45  loss=0.1509  train=22.1  val=73.3  test=133.7  best_val=73.3  λ_Δ=0.30  lr=9.1e-04
+15:40:42 INFO src.model_v25_resconv:   fold15 ep 50  loss=0.1385  train=24.6  val=76.5  test=134.2  best_val=73.3  λ_Δ=0.30  lr=8.9e-04
+15:40:44 INFO src.model_v25_resconv:   fold15 ep 55  loss=0.1333  train=20.1  val=76.3  test=135.8  best_val=73.3  λ_Δ=0.30  lr=8.6e-04
+15:40:45 INFO src.model_v25_resconv:   fold15 ep 60  loss=0.1219  train=17.8  val=72.9  test=138.7  best_val=72.9  λ_Δ=0.30  lr=8.3e-04
+15:40:46 INFO src.model_v25_resconv:   fold15 ep 65  loss=0.1154  train=17.6  val=71.6  test=136.7  best_val=71.6  λ_Δ=0.30  lr=8.0e-04
+15:40:48 INFO src.model_v25_resconv:   fold15 ep 70  loss=0.1081  train=15.9  val=73.8  test=134.8  best_val=71.6  λ_Δ=0.30  lr=7.7e-04
+15:40:49 INFO src.model_v25_resconv:   fold15 ep 75  loss=0.1037  train=17.7  val=73.2  test=138.4  best_val=71.6  λ_Δ=0.30  lr=7.3e-04
+15:40:50 INFO src.model_v25_resconv:   fold15 ep 80  loss=0.1023  train=15.7  val=73.7  test=140.8  best_val=71.6  λ_Δ=0.30  lr=6.9e-04
+15:40:52 INFO src.model_v25_resconv:   fold15 ep 85  loss=0.0948  train=13.8  val=78.5  test=136.9  best_val=71.6  λ_Δ=0.30  lr=6.5e-04
+15:40:53 INFO src.model_v25_resconv:   fold15 ep 90  loss=0.0878  train=13.4  val=70.6  test=140.1  best_val=70.6  λ_Δ=0.30  lr=6.2e-04
+15:40:55 INFO src.model_v25_resconv:   fold15 ep 95  loss=0.0815  train=12.0  val=75.5  test=140.8  best_val=70.6  λ_Δ=0.30  lr=5.7e-04
+15:40:56 INFO src.model_v25_resconv:   fold15 ep100  loss=0.0799  train=11.4  val=76.0  test=140.6  best_val=70.6  λ_Δ=0.30  lr=5.3e-04
+15:40:57 INFO src.model_v25_resconv:   fold15 ep105  loss=0.0763  train=11.0  val=74.1  test=136.3  best_val=70.6  λ_Δ=0.30  lr=4.9e-04
+15:40:59 INFO src.model_v25_resconv:   fold15 ep110  loss=0.0720  train=10.2  val=77.0  test=141.9  best_val=70.6  λ_Δ=0.30  lr=4.5e-04
+15:41:00 INFO src.model_v25_resconv:   fold15 ep115  loss=0.0677  train=9.8  val=78.2  test=143.7  best_val=70.6  λ_Δ=0.30  lr=4.1e-04
+15:41:01 INFO src.model_v25_resconv:   fold15 ep120  loss=0.0667  train=9.1  val=75.5  test=140.1  best_val=70.6  λ_Δ=0.30  lr=3.7e-04
+15:41:03 INFO src.model_v25_resconv:   fold15 ep125  loss=0.0617  train=9.4  val=74.0  test=139.2  best_val=70.6  λ_Δ=0.30  lr=3.3e-04
+15:41:04 INFO src.model_v25_resconv:   fold15 ep130  loss=0.0596  train=9.5  val=75.4  test=141.6  best_val=70.6  λ_Δ=0.30  lr=2.9e-04
+15:41:05 INFO src.model_v25_resconv:   fold15 ep135  loss=0.0569  train=6.9  val=72.3  test=139.9  best_val=70.6  λ_Δ=0.30  lr=2.6e-04
+15:41:07 INFO src.model_v25_resconv:   fold15 ep140  loss=0.0550  train=6.1  val=73.1  test=140.2  best_val=70.6  λ_Δ=0.30  lr=2.2e-04
+15:41:08 INFO src.model_v25_resconv:   fold15 ep145  loss=0.0523  train=6.7  val=77.2  test=141.1  best_val=70.6  λ_Δ=0.30  lr=1.9e-04
+15:41:10 INFO src.model_v25_resconv:   fold15 ep150  loss=0.0508  train=5.6  val=76.1  test=140.6  best_val=70.6  λ_Δ=0.30  lr=1.6e-04
+15:41:11 INFO src.model_v25_resconv:   fold15 ep155  loss=0.0485  train=4.8  val=74.3  test=139.1  best_val=70.6  λ_Δ=0.30  lr=1.3e-04
+15:41:12 INFO src.model_v25_resconv:   fold15 ep160  loss=0.0461  train=4.1  val=73.7  test=139.9  best_val=70.6  λ_Δ=0.30  lr=1.0e-04
+15:41:14 INFO src.model_v25_resconv:   fold15 ep165  loss=0.0451  train=3.8  val=73.4  test=138.9  best_val=70.6  λ_Δ=0.30  lr=7.8e-05
+15:41:15 INFO src.model_v25_resconv:   fold15 ep170  loss=0.0440  train=3.5  val=75.0  test=139.1  best_val=70.6  λ_Δ=0.30  lr=5.7e-05
+15:41:16 INFO src.model_v25_resconv:   fold15 ep175  loss=0.0434  train=3.1  val=74.9  test=139.4  best_val=70.6  λ_Δ=0.30  lr=4.0e-05
+15:41:18 INFO src.model_v25_resconv:   fold15 ep180  loss=0.0428  train=2.8  val=75.0  test=138.5  best_val=70.6  λ_Δ=0.30  lr=2.5e-05
+15:41:19 INFO src.model_v25_resconv:   fold15 ep185  loss=0.0415  train=2.5  val=74.8  test=138.8  best_val=70.6  λ_Δ=0.30  lr=1.4e-05
+15:41:20 INFO src.model_v25_resconv:   fold15 ep190  loss=0.0408  train=2.3  val=75.0  test=138.9  best_val=70.6  λ_Δ=0.30  lr=6.5e-06
+15:41:22 INFO src.model_v25_resconv:   fold15 ep195  loss=0.0410  train=2.1  val=75.0  test=139.0  best_val=70.6  λ_Δ=0.30  lr=2.1e-06
+15:41:23 INFO src.model_v25_resconv:   fold15 ep199  loss=0.0408  train=2.1  val=74.7  test=139.3  best_val=70.6  λ_Δ=0.30  lr=1.0e-06
+15:41:23 INFO src.model_v25_resconv: Fold 15 done | val=70.6  test_MAE=139.3  test_RMSE=235.4
+15:41:23 INFO src.model_v25_resconv: Fold 16 | train=4392 val=336 test=168 | test 2025-12-15 ~ 2025-12-21
+15:41:23 INFO src.model_v25_resconv:   fold16 ep  0  loss=0.6110  train=95.0  val=130.5  test=82.5  best_val=130.5  λ_Δ=0.30  lr=1.9e-04
+15:41:25 INFO src.model_v25_resconv:   fold16 ep  5  loss=0.4167  train=72.6  val=122.9  test=78.6  best_val=114.7  λ_Δ=0.30  lr=6.4e-04
+15:41:26 INFO src.model_v25_resconv:   fold16 ep 10  loss=0.3810  train=69.3  val=109.6  test=74.9  best_val=109.6  λ_Δ=0.30  lr=1.0e-03
+15:41:27 INFO src.model_v25_resconv:   fold16 ep 15  loss=0.3061  train=47.2  val=119.0  test=80.8  best_val=103.9  λ_Δ=0.30  lr=1.0e-03
+15:41:29 INFO src.model_v25_resconv:   fold16 ep 20  loss=0.2625  train=40.6  val=110.7  test=84.9  best_val=103.9  λ_Δ=0.30  lr=9.9e-04
+15:41:30 INFO src.model_v25_resconv:   fold16 ep 25  loss=0.2238  train=33.7  val=103.9  test=68.6  best_val=103.0  λ_Δ=0.30  lr=9.8e-04
+15:41:31 INFO src.model_v25_resconv:   fold16 ep 30  loss=0.2050  train=30.6  val=103.9  test=81.0  best_val=101.8  λ_Δ=0.30  lr=9.7e-04
+15:41:33 INFO src.model_v25_resconv:   fold16 ep 35  loss=0.1876  train=26.2  val=102.2  test=75.2  best_val=101.8  λ_Δ=0.30  lr=9.5e-04
+15:41:34 INFO src.model_v25_resconv:   fold16 ep 40  loss=0.1627  train=25.8  val=103.6  test=73.7  best_val=101.8  λ_Δ=0.30  lr=9.4e-04
+15:41:35 INFO src.model_v25_resconv:   fold16 ep 45  loss=0.1530  train=21.7  val=103.9  test=73.6  best_val=101.8  λ_Δ=0.30  lr=9.1e-04
+15:41:37 INFO src.model_v25_resconv:   fold16 ep 50  loss=0.1414  train=21.7  val=103.5  test=76.5  best_val=101.8  λ_Δ=0.30  lr=8.9e-04
+15:41:38 INFO src.model_v25_resconv:   fold16 ep 55  loss=0.1309  train=20.0  val=107.7  test=78.6  best_val=100.3  λ_Δ=0.30  lr=8.6e-04
+15:41:39 INFO src.model_v25_resconv:   fold16 ep 60  loss=0.1228  train=18.7  val=103.0  test=76.9  best_val=100.3  λ_Δ=0.30  lr=8.3e-04
+15:41:41 INFO src.model_v25_resconv:   fold16 ep 65  loss=0.1189  train=17.5  val=107.2  test=71.0  best_val=100.3  λ_Δ=0.30  lr=8.0e-04
+15:41:42 INFO src.model_v25_resconv:   fold16 ep 70  loss=0.1076  train=16.6  val=105.0  test=78.2  best_val=100.3  λ_Δ=0.30  lr=7.7e-04
+15:41:43 INFO src.model_v25_resconv:   fold16 ep 75  loss=0.1032  train=14.7  val=105.1  test=76.1  best_val=100.3  λ_Δ=0.30  lr=7.3e-04
+15:41:45 INFO src.model_v25_resconv:   fold16 ep 80  loss=0.0978  train=16.5  val=105.7  test=75.7  best_val=100.3  λ_Δ=0.30  lr=6.9e-04
+15:41:46 INFO src.model_v25_resconv:   fold16 ep 85  loss=0.0936  train=13.5  val=102.2  test=75.4  best_val=100.3  λ_Δ=0.30  lr=6.5e-04
+15:41:48 INFO src.model_v25_resconv:   fold16 ep 90  loss=0.0893  train=12.9  val=105.3  test=78.2  best_val=100.3  λ_Δ=0.30  lr=6.2e-04
+15:41:49 INFO src.model_v25_resconv:   fold16 ep 95  loss=0.0822  train=11.9  val=106.7  test=75.9  best_val=100.3  λ_Δ=0.30  lr=5.7e-04
+15:41:50 INFO src.model_v25_resconv:   fold16 ep100  loss=0.0809  train=11.3  val=105.0  test=73.1  best_val=100.3  λ_Δ=0.30  lr=5.3e-04
+15:41:52 INFO src.model_v25_resconv:   fold16 ep105  loss=0.0766  train=9.9  val=103.2  test=74.5  best_val=100.3  λ_Δ=0.30  lr=4.9e-04
+15:41:53 INFO src.model_v25_resconv:   fold16 ep110  loss=0.0741  train=10.5  val=106.1  test=73.7  best_val=100.3  λ_Δ=0.30  lr=4.5e-04
+15:41:54 INFO src.model_v25_resconv:   fold16 ep115  loss=0.0692  train=8.7  val=105.2  test=75.3  best_val=100.3  λ_Δ=0.30  lr=4.1e-04
+15:41:55 INFO src.model_v25_resconv:   fold16 ep120  loss=0.0655  train=8.3  val=103.8  test=73.2  best_val=100.3  λ_Δ=0.30  lr=3.7e-04
+15:41:57 INFO src.model_v25_resconv:   fold16 ep125  loss=0.0624  train=7.7  val=103.6  test=73.8  best_val=100.3  λ_Δ=0.30  lr=3.3e-04
+15:41:58 INFO src.model_v25_resconv:   fold16 ep130  loss=0.0601  train=8.3  val=103.0  test=71.5  best_val=100.3  λ_Δ=0.30  lr=2.9e-04
+15:42:00 INFO src.model_v25_resconv:   fold16 ep135  loss=0.0566  train=7.3  val=105.4  test=72.3  best_val=100.3  λ_Δ=0.30  lr=2.6e-04
+15:42:01 INFO src.model_v25_resconv:   fold16 ep140  loss=0.0542  train=6.0  val=105.1  test=74.6  best_val=100.3  λ_Δ=0.30  lr=2.2e-04
+15:42:02 INFO src.model_v25_resconv:   fold16 ep145  loss=0.0528  train=6.1  val=106.3  test=72.9  best_val=100.3  λ_Δ=0.30  lr=1.9e-04
+15:42:04 INFO src.model_v25_resconv:   fold16 ep150  loss=0.0495  train=5.6  val=105.6  test=73.8  best_val=100.3  λ_Δ=0.30  lr=1.6e-04
+15:42:05 INFO src.model_v25_resconv:   fold16 ep155  loss=0.0479  train=5.0  val=106.5  test=75.7  best_val=100.3  λ_Δ=0.30  lr=1.3e-04
+15:42:06 INFO src.model_v25_resconv:   fold16 ep160  loss=0.0469  train=4.5  val=105.4  test=72.9  best_val=100.3  λ_Δ=0.30  lr=1.0e-04
+15:42:08 INFO src.model_v25_resconv:   fold16 ep165  loss=0.0447  train=3.9  val=104.8  test=73.6  best_val=100.3  λ_Δ=0.30  lr=7.8e-05
+15:42:09 INFO src.model_v25_resconv:   fold16 ep170  loss=0.0449  train=3.5  val=105.3  test=73.1  best_val=100.3  λ_Δ=0.30  lr=5.7e-05
+15:42:10 INFO src.model_v25_resconv:   fold16 ep175  loss=0.0424  train=3.0  val=105.9  test=73.7  best_val=100.3  λ_Δ=0.30  lr=4.0e-05
+15:42:12 INFO src.model_v25_resconv:   fold16 ep180  loss=0.0422  train=2.7  val=105.1  test=72.8  best_val=100.3  λ_Δ=0.30  lr=2.5e-05
+15:42:13 INFO src.model_v25_resconv:   fold16 ep185  loss=0.0416  train=2.5  val=105.5  test=73.4  best_val=100.3  λ_Δ=0.30  lr=1.4e-05
+15:42:14 INFO src.model_v25_resconv:   fold16 ep190  loss=0.0410  train=2.3  val=105.6  test=73.5  best_val=100.3  λ_Δ=0.30  lr=6.5e-06
+15:42:16 INFO src.model_v25_resconv:   fold16 ep195  loss=0.0411  train=2.2  val=105.7  test=73.8  best_val=100.3  λ_Δ=0.30  lr=2.1e-06
+15:42:17 INFO src.model_v25_resconv:   fold16 ep199  loss=0.0411  train=2.3  val=105.3  test=73.7  best_val=100.3  λ_Δ=0.30  lr=1.0e-06
+15:42:17 INFO src.model_v25_resconv: Fold 16 done | val=100.3  test_MAE=73.7  test_RMSE=94.1
+15:42:17 INFO src.model_v25_resconv: ============================================================
+15:42:17 INFO src.model_v25_resconv: V25.0 RESULTS
+15:42:17 INFO src.model_v25_resconv:   MAE:  142.61
+15:42:17 INFO src.model_v25_resconv:   RMSE: 223.00
+15:42:17 INFO src.model_v25_resconv:   Output: /root/workspace/neimeng_prj/output/experiments/v25.0
+15:42:17 INFO src.model_v25_resconv: ============================================================
+15:42:18 INFO price_forecast_eval.viz.plotting: Saved: /root/workspace/neimeng_prj/output/experiments/v25.0/plots/da_vol_typical_days.png
+15:42:18 INFO price_forecast_eval.viz.plotting: Saved: /root/workspace/neimeng_prj/output/experiments/v25.0/plots/da_vol_mid_days.png
+15:42:19 INFO price_forecast_eval.viz.plotting: Saved: /root/workspace/neimeng_prj/output/experiments/v25.0/plots/da_vol_high_vol_days.png
+15:42:19 INFO price_forecast_eval.viz.plotting: Saved: /root/workspace/neimeng_prj/output/experiments/v25.0/plots/da_weekend_days.png
+15:42:20 INFO price_forecast_eval.viz.plotting: Saved: /root/workspace/neimeng_prj/output/experiments/v25.0/plots/da_weekday_days.png
+15:42:21 INFO price_forecast_eval.viz.plotting: Saved: /root/workspace/neimeng_prj/output/experiments/v25.0/plots/da_extreme_days.png
+15:42:21 INFO price_forecast_eval.viz.standard: 无节假日样本，跳过 da_holiday_days.png
+15:42:21 INFO price_forecast_eval.viz.plotting: Saved: /root/workspace/neimeng_prj/output/experiments/v25.0/plots/da_week1.png
+15:42:21 INFO price_forecast_eval.viz.plotting: Saved: /root/workspace/neimeng_prj/output/experiments/v25.0/plots/da_week2.png
+15:42:21 INFO price_forecast_eval.viz.plotting: Saved: /root/workspace/neimeng_prj/output/experiments/v25.0/plots/da_week3.png
+15:42:21 INFO price_forecast_eval.viz.plotting: Saved: /root/workspace/neimeng_prj/output/experiments/v25.0/plots/da_week4.png
+15:42:21 INFO price_forecast_eval.viz.plotting: Saved: /root/workspace/neimeng_prj/output/experiments/v25.0/plots/da_week5.png
+15:42:22 INFO price_forecast_eval.viz.plotting: Saved: /root/workspace/neimeng_prj/output/experiments/v25.0/plots/da_week6.png
+15:42:22 INFO price_forecast_eval.viz.plotting: Saved: /root/workspace/neimeng_prj/output/experiments/v25.0/plots/da_week7.png
+15:42:22 INFO price_forecast_eval.viz.plotting: Saved: /root/workspace/neimeng_prj/output/experiments/v25.0/plots/da_week8.png
+15:42:22 INFO price_forecast_eval.viz.plotting: Saved: /root/workspace/neimeng_prj/output/experiments/v25.0/plots/da_week9.png
+15:42:22 INFO price_forecast_eval.viz.plotting: Saved: /root/workspace/neimeng_prj/output/experiments/v25.0/plots/da_week10.png
+15:42:22 INFO price_forecast_eval.viz.plotting: Saved: /root/workspace/neimeng_prj/output/experiments/v25.0/plots/da_week11.png
+15:42:23 INFO price_forecast_eval.viz.plotting: Saved: /root/workspace/neimeng_prj/output/experiments/v25.0/plots/da_week12.png
+15:42:23 INFO price_forecast_eval.viz.plotting: Saved: /root/workspace/neimeng_prj/output/experiments/v25.0/plots/da_week13.png
+15:42:23 INFO price_forecast_eval.viz.plotting: Saved: /root/workspace/neimeng_prj/output/experiments/v25.0/plots/da_week14.png
+15:42:23 INFO price_forecast_eval.viz.plotting: Saved: /root/workspace/neimeng_prj/output/experiments/v25.0/plots/da_week15.png
+15:42:23 INFO price_forecast_eval.viz.plotting: Saved: /root/workspace/neimeng_prj/output/experiments/v25.0/plots/da_week16.png
+15:42:23 INFO price_forecast_eval.viz.plotting: Saved: /root/workspace/neimeng_prj/output/experiments/v25.0/plots/da_full_test.png
+15:42:23 INFO src.model_v25_resconv: Standard visualization (appendix) → /root/workspace/neimeng_prj/output/experiments/v25.0/plots

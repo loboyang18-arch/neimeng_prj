@@ -1,0 +1,2 @@
+model_key,pred_col,mae,rmse,valid_point_count,profile_corr,neg_corr_day_ratio,neg_corr_day_count,amplitude_err,direction_acc,normalized_profile_mae,peak_hour_error,valley_hour_error,valid_shape_days,turning_point_match_rate,block_rank_acc,composite_score,mae_norm,corr_loss_norm,neg_corr_norm,amp_err_norm,dir_loss_norm
+test_predictions_hourly.csv,pred,99.371239,140.972519,2664,0.6925,0.018018,2,150.3398,0.5088,0.5798,5.1351,4.7027,111,0.8315,0.5568,0.555952,0.606764,0.50609,0.165165,0.742177,1.080748

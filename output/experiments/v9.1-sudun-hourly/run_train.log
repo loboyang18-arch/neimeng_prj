@@ -1,0 +1,1047 @@
+13:46:49 INFO __main__: ============================================================
+13:46:49 INFO __main__: V9.1 Conv2D Daywise-Hourly (input 96×8, output 24h mean4)
+13:46:49 INFO __main__:   target=price_sudun_500kv1m_nodal  (mean4 agg → 24h)
+13:46:49 INFO __main__:   LAG1=('price_sudun_500kv1m_nodal', 'price_unified', 'price_hbd', 'price_hbx', 'price_sudun_500kv1m_energy', 'price_sudun_500kv1m_cong')
+13:46:49 INFO __main__:   input=(22 ch, 96 slots, 8 days) → pool → 24h output
+13:46:49 INFO __main__:   λ_dir=0.30,  epochs=200,  bs=16
+13:46:49 INFO __main__:   LR=1.0e-03 (warmup 10 ep → Cosine), train_window=12M
+13:46:49 INFO __main__: PyTorch 2.5.1+cu121 | device=cuda
+13:47:14 INFO __main__: 苏敦缺测补齐: 15min 格点 NaN 106872 -> 528（填补 106344）；整日用 price_unified 共 367 日
+13:47:14 INFO __main__: DWS: 134400 rows x 18 cols (2022-06-21 00:00:00 ~ 2026-04-20 23:45:00)
+13:47:15 INFO __main__: Daily arrays: 1400 days built, 492 with valid hourly target
+13:47:15 INFO __main__: Valid days: 492
+13:47:15 INFO __main__: Model params: 140612
+13:47:15 INFO __main__: Rolling folds: 16 (fold 1 ~ 16)
+13:47:15 INFO __main__: Fold  1 | train=365 days (2024-12-14~2025-12-14) val=14 test=7 | test 2025-12-28 ~ 2026-01-03
+13:47:16 INFO __main__:   fold01 ep  0  L1=0.6774 CE=1.083 dir_acc=0.385 | train=207.2 val=196.1 test=157.7 best=196.1 | v_dir=0.363  lr=1.9e-04
+13:47:16 INFO __main__:   fold01 ep  5  L1=0.4109 CE=0.866 dir_acc=0.589 | train=120.0 val=76.5 test=116.5 best=76.5 | v_dir=0.494  lr=6.4e-04
+/root/miniconda3/envs/power/lib/python3.10/site-packages/torch/optim/lr_scheduler.py:240: UserWarning: The epoch parameter in `scheduler.step()` was not necessary and is being deprecated where possible. Please use `scheduler.step()` to step the scheduler. During the deprecation, if epoch is different from None, the closed form is used instead of the new chainable form, where available. Please open an issue if you are unable to replicate your use case: https://github.com/pytorch/pytorch/issues/new/choose.
+  warnings.warn(EPOCH_DEPRECATION_WARNING, UserWarning)
+13:47:17 INFO __main__:   fold01 ep 10  L1=0.3727 CE=0.799 dir_acc=0.619 | train=109.3 val=111.7 test=122.3 best=76.5 | v_dir=0.542  lr=1.0e-03
+13:47:17 INFO __main__:   fold01 ep 15  L1=0.3150 CE=0.735 dir_acc=0.653 | train=89.6 val=85.9 test=111.1 best=67.4 | v_dir=0.527  lr=1.0e-03
+13:47:17 INFO __main__:   fold01 ep 20  L1=0.2924 CE=0.674 dir_acc=0.693 | train=78.6 val=74.8 test=105.2 best=67.4 | v_dir=0.548  lr=9.9e-04
+13:47:17 INFO __main__:   fold01 ep 25  L1=0.2704 CE=0.617 dir_acc=0.715 | train=73.8 val=75.2 test=111.2 best=67.4 | v_dir=0.530  lr=9.8e-04
+13:47:18 INFO __main__:   fold01 ep 30  L1=0.2409 CE=0.553 dir_acc=0.754 | train=64.4 val=82.9 test=124.0 best=67.4 | v_dir=0.500  lr=9.7e-04
+13:47:18 INFO __main__:   fold01 ep 35  L1=0.2214 CE=0.503 dir_acc=0.778 | train=60.3 val=72.6 test=112.4 best=67.4 | v_dir=0.518  lr=9.5e-04
+13:47:18 INFO __main__:   fold01 ep 40  L1=0.2051 CE=0.441 dir_acc=0.807 | train=56.0 val=86.1 test=120.7 best=67.4 | v_dir=0.518  lr=9.4e-04
+13:47:18 INFO __main__:   fold01 ep 45  L1=0.1946 CE=0.421 dir_acc=0.817 | train=53.8 val=91.8 test=124.7 best=67.4 | v_dir=0.542  lr=9.1e-04
+13:47:19 INFO __main__:   fold01 ep 50  L1=0.1860 CE=0.399 dir_acc=0.827 | train=50.8 val=85.7 test=110.4 best=67.4 | v_dir=0.551  lr=8.9e-04
+13:47:19 INFO __main__:   fold01 ep 55  L1=0.1735 CE=0.360 dir_acc=0.848 | train=47.0 val=89.9 test=120.5 best=67.4 | v_dir=0.524  lr=8.6e-04
+13:47:19 INFO __main__:   fold01 ep 60  L1=0.1952 CE=0.327 dir_acc=0.859 | train=52.7 val=96.0 test=126.5 best=67.4 | v_dir=0.509  lr=8.3e-04
+13:47:20 INFO __main__:   fold01 ep 65  L1=0.1668 CE=0.301 dir_acc=0.873 | train=40.8 val=77.9 test=114.9 best=67.4 | v_dir=0.512  lr=8.0e-04
+13:47:20 INFO __main__:   fold01 ep 70  L1=0.1554 CE=0.274 dir_acc=0.886 | train=38.3 val=83.7 test=131.4 best=67.4 | v_dir=0.491  lr=7.7e-04
+13:47:20 INFO __main__:   fold01 ep 75  L1=0.1521 CE=0.237 dir_acc=0.904 | train=37.7 val=83.0 test=122.3 best=67.4 | v_dir=0.527  lr=7.3e-04
+13:47:20 INFO __main__:   fold01 ep 80  L1=0.1539 CE=0.225 dir_acc=0.911 | train=39.7 val=84.8 test=120.0 best=67.4 | v_dir=0.515  lr=6.9e-04
+13:47:21 INFO __main__:   fold01 ep 85  L1=0.1453 CE=0.196 dir_acc=0.918 | train=33.3 val=88.7 test=126.5 best=67.4 | v_dir=0.524  lr=6.5e-04
+13:47:21 INFO __main__:   fold01 ep 90  L1=0.1441 CE=0.177 dir_acc=0.929 | train=34.3 val=95.5 test=121.9 best=67.4 | v_dir=0.503  lr=6.2e-04
+13:47:21 INFO __main__:   fold01 ep 95  L1=0.1320 CE=0.164 dir_acc=0.932 | train=33.6 val=105.4 test=125.5 best=67.4 | v_dir=0.527  lr=5.7e-04
+13:47:21 INFO __main__:   fold01 ep100  L1=0.1384 CE=0.154 dir_acc=0.937 | train=31.2 val=88.0 test=126.3 best=67.4 | v_dir=0.491  lr=5.3e-04
+13:47:22 INFO __main__:   fold01 ep105  L1=0.1289 CE=0.132 dir_acc=0.945 | train=29.1 val=96.8 test=121.6 best=67.4 | v_dir=0.509  lr=4.9e-04
+13:47:22 INFO __main__:   fold01 ep110  L1=0.1216 CE=0.111 dir_acc=0.958 | train=27.1 val=91.7 test=126.0 best=67.4 | v_dir=0.497  lr=4.5e-04
+13:47:22 INFO __main__:   fold01 ep115  L1=0.1216 CE=0.102 dir_acc=0.961 | train=26.9 val=91.5 test=126.1 best=67.4 | v_dir=0.494  lr=4.1e-04
+13:47:23 INFO __main__:   fold01 ep120  L1=0.1171 CE=0.094 dir_acc=0.965 | train=26.6 val=91.1 test=119.7 best=67.4 | v_dir=0.488  lr=3.7e-04
+13:47:23 INFO __main__:   fold01 ep125  L1=0.1207 CE=0.078 dir_acc=0.970 | train=23.7 val=89.3 test=121.2 best=67.4 | v_dir=0.476  lr=3.3e-04
+13:47:23 INFO __main__:   fold01 ep130  L1=0.1120 CE=0.071 dir_acc=0.974 | train=23.0 val=94.9 test=125.3 best=67.4 | v_dir=0.497  lr=2.9e-04
+13:47:23 INFO __main__:   fold01 ep135  L1=0.1104 CE=0.061 dir_acc=0.976 | train=22.7 val=95.7 test=122.5 best=67.4 | v_dir=0.509  lr=2.6e-04
+13:47:24 INFO __main__:   fold01 ep140  L1=0.1060 CE=0.055 dir_acc=0.980 | train=21.5 val=99.4 test=124.3 best=67.4 | v_dir=0.503  lr=2.2e-04
+13:47:24 INFO __main__:   fold01 ep145  L1=0.1058 CE=0.050 dir_acc=0.984 | train=20.0 val=98.1 test=123.2 best=67.4 | v_dir=0.506  lr=1.9e-04
+13:47:24 INFO __main__:   fold01 ep150  L1=0.0957 CE=0.044 dir_acc=0.985 | train=19.6 val=95.6 test=122.4 best=67.4 | v_dir=0.506  lr=1.6e-04
+13:47:24 INFO __main__:   fold01 ep155  L1=0.1055 CE=0.042 dir_acc=0.987 | train=18.5 val=93.9 test=123.0 best=67.4 | v_dir=0.506  lr=1.3e-04
+13:47:25 INFO __main__:   fold01 ep160  L1=0.0957 CE=0.034 dir_acc=0.990 | train=18.1 val=94.6 test=119.9 best=67.4 | v_dir=0.491  lr=1.0e-04
+13:47:25 INFO __main__:   fold01 ep165  L1=0.0975 CE=0.029 dir_acc=0.992 | train=16.7 val=98.3 test=120.1 best=67.4 | v_dir=0.491  lr=7.8e-05
+13:47:25 INFO __main__:   fold01 ep170  L1=0.0935 CE=0.031 dir_acc=0.990 | train=16.2 val=97.0 test=119.8 best=67.4 | v_dir=0.488  lr=5.7e-05
+13:47:26 INFO __main__:   fold01 ep175  L1=0.0975 CE=0.031 dir_acc=0.992 | train=16.1 val=96.3 test=120.7 best=67.4 | v_dir=0.497  lr=4.0e-05
+13:47:26 INFO __main__:   fold01 ep180  L1=0.1013 CE=0.029 dir_acc=0.992 | train=15.8 val=97.9 test=120.6 best=67.4 | v_dir=0.503  lr=2.5e-05
+13:47:26 INFO __main__:   fold01 ep185  L1=0.0904 CE=0.027 dir_acc=0.993 | train=15.4 val=95.3 test=120.5 best=67.4 | v_dir=0.503  lr=1.4e-05
+13:47:26 INFO __main__:   fold01 ep190  L1=0.0899 CE=0.026 dir_acc=0.993 | train=14.7 val=96.4 test=120.1 best=67.4 | v_dir=0.503  lr=6.5e-06
+13:47:27 INFO __main__:   fold01 ep195  L1=0.0936 CE=0.026 dir_acc=0.993 | train=14.7 val=96.6 test=120.1 best=67.4 | v_dir=0.500  lr=2.1e-06
+13:47:27 INFO __main__:   fold01 ep199  L1=0.0914 CE=0.027 dir_acc=0.992 | train=14.9 val=95.7 test=121.3 best=67.4 | v_dir=0.509  lr=1.0e-06
+13:47:27 INFO __main__: Fold  1 done | val=67.4  test_MAE=121.3  test_RMSE=203.3  dir=0.512
+13:47:27 INFO __main__: Fold  2 | train=365 days (2024-12-21~2025-12-21) val=14 test=7 | test 2026-01-04 ~ 2026-01-10
+13:47:27 INFO __main__:   fold02 ep  0  L1=0.6823 CE=1.083 dir_acc=0.384 | train=208.5 val=161.2 test=205.4 best=161.2 | v_dir=0.440  lr=1.9e-04
+13:47:27 INFO __main__:   fold02 ep  5  L1=0.4034 CE=0.868 dir_acc=0.583 | train=115.4 val=107.2 test=105.3 best=88.7 | v_dir=0.500  lr=6.4e-04
+13:47:28 INFO __main__:   fold02 ep 10  L1=0.3753 CE=0.797 dir_acc=0.615 | train=106.3 val=105.6 test=98.9 best=86.2 | v_dir=0.521  lr=1.0e-03
+13:47:28 INFO __main__:   fold02 ep 15  L1=0.3363 CE=0.735 dir_acc=0.644 | train=87.4 val=100.6 test=100.4 best=86.2 | v_dir=0.524  lr=1.0e-03
+13:47:28 INFO __main__:   fold02 ep 20  L1=0.2967 CE=0.676 dir_acc=0.684 | train=77.3 val=89.1 test=87.3 best=86.2 | v_dir=0.461  lr=9.9e-04
+13:47:28 INFO __main__:   fold02 ep 25  L1=0.2625 CE=0.608 dir_acc=0.723 | train=72.7 val=103.7 test=99.7 best=86.2 | v_dir=0.530  lr=9.8e-04
+13:47:29 INFO __main__:   fold02 ep 30  L1=0.2496 CE=0.559 dir_acc=0.751 | train=64.0 val=89.3 test=96.5 best=86.2 | v_dir=0.500  lr=9.7e-04
+13:47:29 INFO __main__:   fold02 ep 35  L1=0.2275 CE=0.500 dir_acc=0.778 | train=66.4 val=89.4 test=99.5 best=86.2 | v_dir=0.488  lr=9.5e-04
+13:47:29 INFO __main__:   fold02 ep 40  L1=0.2090 CE=0.460 dir_acc=0.792 | train=56.6 val=92.9 test=97.4 best=86.2 | v_dir=0.482  lr=9.4e-04
+13:47:29 INFO __main__:   fold02 ep 45  L1=0.1956 CE=0.430 dir_acc=0.811 | train=55.7 val=90.3 test=95.0 best=86.2 | v_dir=0.500  lr=9.1e-04
+13:47:30 INFO __main__:   fold02 ep 50  L1=0.1857 CE=0.379 dir_acc=0.832 | train=50.2 val=93.5 test=95.2 best=86.2 | v_dir=0.503  lr=8.9e-04
+13:47:30 INFO __main__:   fold02 ep 55  L1=0.1822 CE=0.355 dir_acc=0.846 | train=45.3 val=96.5 test=90.7 best=86.2 | v_dir=0.518  lr=8.6e-04
+13:47:30 INFO __main__:   fold02 ep 60  L1=0.1763 CE=0.320 dir_acc=0.865 | train=45.7 val=97.5 test=98.3 best=86.2 | v_dir=0.485  lr=8.3e-04
+13:47:31 INFO __main__:   fold02 ep 65  L1=0.1645 CE=0.291 dir_acc=0.879 | train=46.4 val=103.7 test=107.7 best=86.2 | v_dir=0.518  lr=8.0e-04
+13:47:31 INFO __main__:   fold02 ep 70  L1=0.1622 CE=0.273 dir_acc=0.883 | train=40.6 val=98.1 test=104.8 best=86.2 | v_dir=0.512  lr=7.7e-04
+13:47:31 INFO __main__:   fold02 ep 75  L1=0.1530 CE=0.243 dir_acc=0.901 | train=38.0 val=96.3 test=94.3 best=86.2 | v_dir=0.548  lr=7.3e-04
+13:47:31 INFO __main__:   fold02 ep 80  L1=0.1514 CE=0.221 dir_acc=0.906 | train=36.4 val=101.7 test=99.6 best=86.2 | v_dir=0.500  lr=6.9e-04
+13:47:32 INFO __main__:   fold02 ep 85  L1=0.1479 CE=0.192 dir_acc=0.921 | train=35.7 val=100.9 test=102.7 best=86.2 | v_dir=0.509  lr=6.5e-04
+13:47:32 INFO __main__:   fold02 ep 90  L1=0.1374 CE=0.174 dir_acc=0.926 | train=34.2 val=103.0 test=90.8 best=86.2 | v_dir=0.542  lr=6.2e-04
+13:47:32 INFO __main__:   fold02 ep 95  L1=0.1347 CE=0.177 dir_acc=0.926 | train=32.1 val=94.7 test=94.9 best=86.2 | v_dir=0.533  lr=5.7e-04
+13:47:32 INFO __main__:   fold02 ep100  L1=0.1293 CE=0.156 dir_acc=0.937 | train=31.6 val=100.2 test=93.8 best=86.2 | v_dir=0.527  lr=5.3e-04
+13:47:33 INFO __main__:   fold02 ep105  L1=0.1239 CE=0.129 dir_acc=0.949 | train=28.7 val=101.1 test=96.9 best=86.2 | v_dir=0.518  lr=4.9e-04
+13:47:33 INFO __main__:   fold02 ep110  L1=0.1284 CE=0.130 dir_acc=0.946 | train=28.3 val=99.3 test=91.3 best=86.2 | v_dir=0.515  lr=4.5e-04
+13:47:33 INFO __main__:   fold02 ep115  L1=0.1243 CE=0.096 dir_acc=0.965 | train=28.1 val=96.3 test=95.8 best=86.2 | v_dir=0.539  lr=4.1e-04
+13:47:34 INFO __main__:   fold02 ep120  L1=0.1179 CE=0.095 dir_acc=0.963 | train=27.8 val=100.3 test=97.7 best=86.2 | v_dir=0.509  lr=3.7e-04
+13:47:34 INFO __main__:   fold02 ep125  L1=0.1139 CE=0.086 dir_acc=0.968 | train=24.4 val=102.1 test=96.2 best=86.2 | v_dir=0.524  lr=3.3e-04
+13:47:34 INFO __main__:   fold02 ep130  L1=0.1115 CE=0.072 dir_acc=0.972 | train=24.1 val=98.6 test=102.4 best=86.2 | v_dir=0.530  lr=2.9e-04
+13:47:34 INFO __main__:   fold02 ep135  L1=0.1104 CE=0.064 dir_acc=0.977 | train=21.5 val=100.7 test=95.2 best=86.2 | v_dir=0.521  lr=2.6e-04
+13:47:35 INFO __main__:   fold02 ep140  L1=0.1006 CE=0.057 dir_acc=0.981 | train=21.4 val=98.6 test=94.3 best=86.2 | v_dir=0.509  lr=2.2e-04
+13:47:35 INFO __main__:   fold02 ep145  L1=0.1007 CE=0.051 dir_acc=0.984 | train=19.8 val=98.0 test=97.4 best=86.2 | v_dir=0.509  lr=1.9e-04
+13:47:35 INFO __main__:   fold02 ep150  L1=0.0977 CE=0.046 dir_acc=0.984 | train=18.8 val=100.3 test=95.5 best=86.2 | v_dir=0.497  lr=1.6e-04
+13:47:35 INFO __main__:   fold02 ep155  L1=0.0980 CE=0.042 dir_acc=0.987 | train=17.8 val=100.7 test=96.9 best=86.2 | v_dir=0.500  lr=1.3e-04
+13:47:36 INFO __main__:   fold02 ep160  L1=0.1010 CE=0.038 dir_acc=0.989 | train=17.7 val=101.6 test=94.8 best=86.2 | v_dir=0.509  lr=1.0e-04
+13:47:36 INFO __main__:   fold02 ep165  L1=0.0927 CE=0.036 dir_acc=0.989 | train=16.7 val=99.7 test=96.5 best=86.2 | v_dir=0.509  lr=7.8e-05
+13:47:36 INFO __main__:   fold02 ep170  L1=0.0948 CE=0.036 dir_acc=0.988 | train=16.9 val=98.6 test=96.0 best=86.2 | v_dir=0.512  lr=5.7e-05
+13:47:36 INFO __main__:   fold02 ep175  L1=0.0972 CE=0.030 dir_acc=0.991 | train=16.4 val=99.6 test=96.0 best=86.2 | v_dir=0.509  lr=4.0e-05
+13:47:37 INFO __main__:   fold02 ep180  L1=0.0981 CE=0.032 dir_acc=0.990 | train=15.4 val=101.1 test=95.6 best=86.2 | v_dir=0.506  lr=2.5e-05
+13:47:37 INFO __main__:   fold02 ep185  L1=0.0890 CE=0.029 dir_acc=0.992 | train=14.8 val=102.0 test=95.7 best=86.2 | v_dir=0.509  lr=1.4e-05
+13:47:37 INFO __main__:   fold02 ep190  L1=0.0915 CE=0.030 dir_acc=0.992 | train=14.6 val=101.6 test=96.1 best=86.2 | v_dir=0.497  lr=6.5e-06
+13:47:38 INFO __main__:   fold02 ep195  L1=0.0945 CE=0.029 dir_acc=0.992 | train=14.6 val=102.0 test=95.7 best=86.2 | v_dir=0.500  lr=2.1e-06
+13:47:38 INFO __main__:   fold02 ep199  L1=0.0881 CE=0.028 dir_acc=0.993 | train=14.6 val=101.2 test=95.9 best=86.2 | v_dir=0.509  lr=1.0e-06
+13:47:38 INFO __main__: Fold  2 done | val=86.2  test_MAE=95.9  test_RMSE=129.8  dir=0.387
+13:47:38 INFO __main__: Fold  3 | train=365 days (2024-12-28~2025-12-28) val=14 test=7 | test 2026-01-11 ~ 2026-01-17
+13:47:38 INFO __main__:   fold03 ep  0  L1=0.6746 CE=1.083 dir_acc=0.383 | train=208.1 val=181.0 test=188.9 best=181.0 | v_dir=0.476  lr=1.9e-04
+13:47:38 INFO __main__:   fold03 ep  5  L1=0.4082 CE=0.867 dir_acc=0.586 | train=114.5 val=106.4 test=103.4 best=105.9 | v_dir=0.524  lr=6.4e-04
+13:47:38 INFO __main__:   fold03 ep 10  L1=0.3689 CE=0.801 dir_acc=0.615 | train=103.3 val=104.0 test=127.2 best=97.0 | v_dir=0.542  lr=1.0e-03
+13:47:39 INFO __main__:   fold03 ep 15  L1=0.3363 CE=0.740 dir_acc=0.654 | train=90.9 val=98.8 test=89.0 best=97.0 | v_dir=0.542  lr=1.0e-03
+13:47:39 INFO __main__:   fold03 ep 20  L1=0.2788 CE=0.667 dir_acc=0.698 | train=79.1 val=93.3 test=105.8 best=93.3 | v_dir=0.515  lr=9.9e-04
+13:47:39 INFO __main__:   fold03 ep 25  L1=0.2565 CE=0.599 dir_acc=0.734 | train=71.9 val=112.5 test=113.3 best=93.3 | v_dir=0.509  lr=9.8e-04
+13:47:40 INFO __main__:   fold03 ep 30  L1=0.2311 CE=0.543 dir_acc=0.762 | train=63.1 val=96.6 test=106.3 best=93.3 | v_dir=0.500  lr=9.7e-04
+13:47:40 INFO __main__:   fold03 ep 35  L1=0.2280 CE=0.481 dir_acc=0.789 | train=62.3 val=101.8 test=116.6 best=93.3 | v_dir=0.476  lr=9.5e-04
+13:47:40 INFO __main__:   fold03 ep 40  L1=0.2110 CE=0.453 dir_acc=0.801 | train=61.3 val=96.6 test=119.5 best=93.3 | v_dir=0.491  lr=9.4e-04
+13:47:40 INFO __main__:   fold03 ep 45  L1=0.2015 CE=0.422 dir_acc=0.820 | train=52.9 val=95.8 test=121.9 best=93.3 | v_dir=0.446  lr=9.1e-04
+13:47:41 INFO __main__:   fold03 ep 50  L1=0.1880 CE=0.381 dir_acc=0.836 | train=48.4 val=100.9 test=114.3 best=93.3 | v_dir=0.467  lr=8.9e-04
+13:47:41 INFO __main__:   fold03 ep 55  L1=0.1838 CE=0.342 dir_acc=0.851 | train=45.7 val=107.2 test=114.1 best=93.3 | v_dir=0.482  lr=8.6e-04
+13:47:41 INFO __main__:   fold03 ep 60  L1=0.1696 CE=0.307 dir_acc=0.870 | train=44.3 val=104.5 test=112.8 best=93.3 | v_dir=0.443  lr=8.3e-04
+13:47:41 INFO __main__:   fold03 ep 65  L1=0.1708 CE=0.304 dir_acc=0.875 | train=39.6 val=111.8 test=115.2 best=93.3 | v_dir=0.435  lr=8.0e-04
+13:47:42 INFO __main__:   fold03 ep 70  L1=0.1603 CE=0.246 dir_acc=0.895 | train=40.0 val=110.3 test=104.9 best=93.3 | v_dir=0.476  lr=7.7e-04
+13:47:42 INFO __main__:   fold03 ep 75  L1=0.1462 CE=0.236 dir_acc=0.901 | train=38.7 val=107.8 test=116.0 best=93.3 | v_dir=0.458  lr=7.3e-04
+13:47:42 INFO __main__:   fold03 ep 80  L1=0.1522 CE=0.209 dir_acc=0.917 | train=35.2 val=111.7 test=114.1 best=93.3 | v_dir=0.488  lr=6.9e-04
+13:47:42 INFO __main__:   fold03 ep 85  L1=0.1457 CE=0.188 dir_acc=0.926 | train=35.4 val=108.1 test=115.0 best=93.3 | v_dir=0.458  lr=6.5e-04
+13:47:43 INFO __main__:   fold03 ep 90  L1=0.1339 CE=0.150 dir_acc=0.942 | train=31.8 val=103.1 test=114.7 best=93.3 | v_dir=0.476  lr=6.2e-04
+13:47:43 INFO __main__:   fold03 ep 95  L1=0.1340 CE=0.159 dir_acc=0.936 | train=32.4 val=108.7 test=121.4 best=93.3 | v_dir=0.464  lr=5.7e-04
+13:47:43 INFO __main__:   fold03 ep100  L1=0.1317 CE=0.134 dir_acc=0.948 | train=30.1 val=113.6 test=112.3 best=93.3 | v_dir=0.485  lr=5.3e-04
+13:47:44 INFO __main__:   fold03 ep105  L1=0.1305 CE=0.127 dir_acc=0.949 | train=28.5 val=108.5 test=117.5 best=93.3 | v_dir=0.470  lr=4.9e-04
+13:47:44 INFO __main__:   fold03 ep110  L1=0.1244 CE=0.106 dir_acc=0.960 | train=28.1 val=109.8 test=118.2 best=93.3 | v_dir=0.464  lr=4.5e-04
+13:47:44 INFO __main__:   fold03 ep115  L1=0.1208 CE=0.091 dir_acc=0.966 | train=26.2 val=111.5 test=114.0 best=93.3 | v_dir=0.473  lr=4.1e-04
+13:47:44 INFO __main__:   fold03 ep120  L1=0.1217 CE=0.080 dir_acc=0.970 | train=26.4 val=112.1 test=119.6 best=93.3 | v_dir=0.449  lr=3.7e-04
+13:47:45 INFO __main__:   fold03 ep125  L1=0.1162 CE=0.076 dir_acc=0.971 | train=24.6 val=111.8 test=116.5 best=93.3 | v_dir=0.458  lr=3.3e-04
+13:47:45 INFO __main__:   fold03 ep130  L1=0.1076 CE=0.061 dir_acc=0.977 | train=24.6 val=110.2 test=118.9 best=93.3 | v_dir=0.467  lr=2.9e-04
+13:47:45 INFO __main__:   fold03 ep135  L1=0.1089 CE=0.057 dir_acc=0.979 | train=21.4 val=111.1 test=115.1 best=93.3 | v_dir=0.461  lr=2.6e-04
+13:47:45 INFO __main__:   fold03 ep140  L1=0.1017 CE=0.048 dir_acc=0.982 | train=20.3 val=114.7 test=115.6 best=93.3 | v_dir=0.476  lr=2.2e-04
+13:47:46 INFO __main__:   fold03 ep145  L1=0.1047 CE=0.047 dir_acc=0.982 | train=20.7 val=111.3 test=114.8 best=93.3 | v_dir=0.479  lr=1.9e-04
+13:47:46 INFO __main__:   fold03 ep150  L1=0.1078 CE=0.041 dir_acc=0.986 | train=18.6 val=111.5 test=118.4 best=93.3 | v_dir=0.464  lr=1.6e-04
+13:47:46 INFO __main__:   fold03 ep155  L1=0.0972 CE=0.034 dir_acc=0.989 | train=18.8 val=109.9 test=115.9 best=93.3 | v_dir=0.455  lr=1.3e-04
+13:47:47 INFO __main__:   fold03 ep160  L1=0.0956 CE=0.032 dir_acc=0.990 | train=17.5 val=111.7 test=117.1 best=93.3 | v_dir=0.461  lr=1.0e-04
+13:47:47 INFO __main__:   fold03 ep165  L1=0.1001 CE=0.034 dir_acc=0.989 | train=16.6 val=111.4 test=119.3 best=93.3 | v_dir=0.461  lr=7.8e-05
+13:47:47 INFO __main__:   fold03 ep170  L1=0.0942 CE=0.029 dir_acc=0.991 | train=15.8 val=111.5 test=117.8 best=93.3 | v_dir=0.464  lr=5.7e-05
+13:47:47 INFO __main__:   fold03 ep175  L1=0.0919 CE=0.026 dir_acc=0.993 | train=15.9 val=110.0 test=117.8 best=93.3 | v_dir=0.467  lr=4.0e-05
+13:47:48 INFO __main__:   fold03 ep180  L1=0.0967 CE=0.027 dir_acc=0.992 | train=16.5 val=110.3 test=118.3 best=93.3 | v_dir=0.467  lr=2.5e-05
+13:47:48 INFO __main__:   fold03 ep185  L1=0.0902 CE=0.024 dir_acc=0.994 | train=15.5 val=110.7 test=118.1 best=93.3 | v_dir=0.464  lr=1.4e-05
+13:47:48 INFO __main__:   fold03 ep190  L1=0.0943 CE=0.026 dir_acc=0.993 | train=15.1 val=110.8 test=117.2 best=93.3 | v_dir=0.467  lr=6.5e-06
+13:47:48 INFO __main__:   fold03 ep195  L1=0.0925 CE=0.024 dir_acc=0.994 | train=14.5 val=111.8 test=117.7 best=93.3 | v_dir=0.467  lr=2.1e-06
+13:47:49 INFO __main__:   fold03 ep199  L1=0.0932 CE=0.026 dir_acc=0.993 | train=14.8 val=112.2 test=118.1 best=93.3 | v_dir=0.470  lr=1.0e-06
+13:47:49 INFO __main__: Fold  3 done | val=93.3  test_MAE=118.1  test_RMSE=158.6  dir=0.411
+13:47:49 INFO __main__: Fold  4 | train=365 days (2025-01-04~2026-01-04) val=14 test=7 | test 2026-01-18 ~ 2026-01-24
+13:47:49 INFO __main__:   fold04 ep  0  L1=0.6791 CE=1.083 dir_acc=0.384 | train=207.9 val=200.2 test=90.5 best=200.2 | v_dir=0.443  lr=1.9e-04
+13:47:49 INFO __main__:   fold04 ep  5  L1=0.4057 CE=0.870 dir_acc=0.588 | train=120.2 val=90.5 test=85.4 best=90.5 | v_dir=0.530  lr=6.4e-04
+13:47:49 INFO __main__:   fold04 ep 10  L1=0.3596 CE=0.801 dir_acc=0.613 | train=100.2 val=85.3 test=80.3 best=85.3 | v_dir=0.476  lr=1.0e-03
+13:47:50 INFO __main__:   fold04 ep 15  L1=0.3227 CE=0.744 dir_acc=0.652 | train=87.4 val=100.3 test=101.5 best=85.3 | v_dir=0.414  lr=1.0e-03
+13:47:50 INFO __main__:   fold04 ep 20  L1=0.3063 CE=0.684 dir_acc=0.686 | train=84.5 val=107.2 test=91.6 best=85.3 | v_dir=0.426  lr=9.9e-04
+13:47:50 INFO __main__:   fold04 ep 25  L1=0.2616 CE=0.616 dir_acc=0.721 | train=69.1 val=103.1 test=90.0 best=85.3 | v_dir=0.461  lr=9.8e-04
+13:47:50 INFO __main__:   fold04 ep 30  L1=0.2403 CE=0.544 dir_acc=0.757 | train=65.3 val=97.8 test=115.8 best=85.3 | v_dir=0.485  lr=9.7e-04
+13:47:51 INFO __main__:   fold04 ep 35  L1=0.2275 CE=0.510 dir_acc=0.770 | train=61.4 val=99.4 test=115.7 best=85.3 | v_dir=0.420  lr=9.5e-04
+13:47:51 INFO __main__:   fold04 ep 40  L1=0.1979 CE=0.448 dir_acc=0.806 | train=54.3 val=101.6 test=93.4 best=85.3 | v_dir=0.393  lr=9.4e-04
+13:47:51 INFO __main__:   fold04 ep 45  L1=0.1961 CE=0.413 dir_acc=0.821 | train=53.9 val=103.0 test=94.2 best=85.3 | v_dir=0.414  lr=9.1e-04
+13:47:51 INFO __main__:   fold04 ep 50  L1=0.1943 CE=0.382 dir_acc=0.838 | train=50.6 val=98.7 test=91.9 best=85.3 | v_dir=0.387  lr=8.9e-04
+13:47:52 INFO __main__:   fold04 ep 55  L1=0.1800 CE=0.341 dir_acc=0.854 | train=46.9 val=108.6 test=87.9 best=85.3 | v_dir=0.405  lr=8.6e-04
+13:47:52 INFO __main__:   fold04 ep 60  L1=0.1771 CE=0.317 dir_acc=0.866 | train=42.1 val=100.8 test=84.0 best=85.3 | v_dir=0.479  lr=8.3e-04
+13:47:52 INFO __main__:   fold04 ep 65  L1=0.1630 CE=0.283 dir_acc=0.879 | train=40.0 val=101.4 test=93.2 best=85.3 | v_dir=0.458  lr=8.0e-04
+13:47:53 INFO __main__:   fold04 ep 70  L1=0.1653 CE=0.252 dir_acc=0.896 | train=38.2 val=99.3 test=86.2 best=85.3 | v_dir=0.452  lr=7.7e-04
+13:47:53 INFO __main__:   fold04 ep 75  L1=0.1514 CE=0.248 dir_acc=0.895 | train=35.4 val=101.0 test=88.8 best=85.3 | v_dir=0.473  lr=7.3e-04
+13:47:53 INFO __main__:   fold04 ep 80  L1=0.1451 CE=0.208 dir_acc=0.913 | train=36.7 val=101.2 test=87.0 best=85.3 | v_dir=0.423  lr=6.9e-04
+13:47:53 INFO __main__:   fold04 ep 85  L1=0.1412 CE=0.192 dir_acc=0.924 | train=33.0 val=100.9 test=87.3 best=85.3 | v_dir=0.461  lr=6.5e-04
+13:47:54 INFO __main__:   fold04 ep 90  L1=0.1392 CE=0.171 dir_acc=0.931 | train=34.6 val=98.1 test=91.9 best=85.3 | v_dir=0.429  lr=6.2e-04
+13:47:54 INFO __main__:   fold04 ep 95  L1=0.1372 CE=0.164 dir_acc=0.931 | train=33.7 val=102.4 test=85.0 best=85.3 | v_dir=0.473  lr=5.7e-04
+13:47:54 INFO __main__:   fold04 ep100  L1=0.1369 CE=0.127 dir_acc=0.953 | train=32.8 val=101.5 test=97.7 best=85.3 | v_dir=0.455  lr=5.3e-04
+13:47:54 INFO __main__:   fold04 ep105  L1=0.1248 CE=0.119 dir_acc=0.953 | train=29.3 val=101.9 test=92.2 best=85.3 | v_dir=0.467  lr=4.9e-04
+13:47:55 INFO __main__:   fold04 ep110  L1=0.1272 CE=0.122 dir_acc=0.951 | train=27.8 val=97.7 test=93.0 best=85.3 | v_dir=0.479  lr=4.5e-04
+13:47:55 INFO __main__:   fold04 ep115  L1=0.1240 CE=0.090 dir_acc=0.966 | train=26.5 val=98.0 test=102.6 best=85.3 | v_dir=0.438  lr=4.1e-04
+13:47:55 INFO __main__:   fold04 ep120  L1=0.1165 CE=0.083 dir_acc=0.968 | train=25.3 val=102.3 test=82.7 best=85.3 | v_dir=0.467  lr=3.7e-04
+13:47:56 INFO __main__:   fold04 ep125  L1=0.1187 CE=0.079 dir_acc=0.970 | train=24.1 val=103.1 test=97.3 best=85.3 | v_dir=0.426  lr=3.3e-04
+13:47:56 INFO __main__:   fold04 ep130  L1=0.1192 CE=0.070 dir_acc=0.975 | train=23.0 val=101.1 test=94.0 best=85.3 | v_dir=0.449  lr=2.9e-04
+13:47:56 INFO __main__:   fold04 ep135  L1=0.1072 CE=0.053 dir_acc=0.983 | train=21.1 val=99.5 test=97.4 best=85.3 | v_dir=0.449  lr=2.6e-04
+13:47:56 INFO __main__:   fold04 ep140  L1=0.1053 CE=0.054 dir_acc=0.981 | train=21.8 val=100.5 test=96.5 best=85.3 | v_dir=0.423  lr=2.2e-04
+13:47:57 INFO __main__:   fold04 ep145  L1=0.1033 CE=0.044 dir_acc=0.984 | train=20.6 val=101.1 test=89.1 best=85.3 | v_dir=0.446  lr=1.9e-04
+13:47:57 INFO __main__:   fold04 ep150  L1=0.1012 CE=0.036 dir_acc=0.989 | train=19.0 val=99.3 test=91.1 best=85.3 | v_dir=0.435  lr=1.6e-04
+13:47:57 INFO __main__:   fold04 ep155  L1=0.0966 CE=0.035 dir_acc=0.988 | train=18.3 val=101.9 test=90.8 best=85.3 | v_dir=0.452  lr=1.3e-04
+13:47:57 INFO __main__:   fold04 ep160  L1=0.1032 CE=0.035 dir_acc=0.988 | train=18.6 val=101.9 test=93.8 best=85.3 | v_dir=0.446  lr=1.0e-04
+13:47:58 INFO __main__:   fold04 ep165  L1=0.1049 CE=0.035 dir_acc=0.988 | train=18.4 val=100.6 test=96.2 best=85.3 | v_dir=0.429  lr=7.8e-05
+13:47:58 INFO __main__:   fold04 ep170  L1=0.1015 CE=0.031 dir_acc=0.989 | train=16.7 val=100.5 test=95.2 best=85.3 | v_dir=0.449  lr=5.7e-05
+13:47:58 INFO __main__:   fold04 ep175  L1=0.0886 CE=0.026 dir_acc=0.994 | train=15.6 val=101.5 test=94.5 best=85.3 | v_dir=0.443  lr=4.0e-05
+13:47:59 INFO __main__:   fold04 ep180  L1=0.0972 CE=0.027 dir_acc=0.993 | train=15.5 val=100.6 test=92.8 best=85.3 | v_dir=0.443  lr=2.5e-05
+13:47:59 INFO __main__:   fold04 ep185  L1=0.0931 CE=0.025 dir_acc=0.993 | train=14.9 val=101.1 test=92.9 best=85.3 | v_dir=0.443  lr=1.4e-05
+13:47:59 INFO __main__:   fold04 ep190  L1=0.0933 CE=0.025 dir_acc=0.993 | train=14.7 val=101.1 test=93.8 best=85.3 | v_dir=0.443  lr=6.5e-06
+13:47:59 INFO __main__:   fold04 ep195  L1=0.0978 CE=0.026 dir_acc=0.992 | train=14.9 val=102.1 test=91.7 best=85.3 | v_dir=0.440  lr=2.1e-06
+13:48:00 INFO __main__:   fold04 ep199  L1=0.0937 CE=0.026 dir_acc=0.992 | train=14.7 val=102.1 test=93.3 best=85.3 | v_dir=0.440  lr=1.0e-06
+13:48:00 INFO __main__: Fold  4 done | val=85.3  test_MAE=93.3  test_RMSE=122.8  dir=0.512
+13:48:00 INFO __main__: Fold  5 | train=365 days (2025-01-11~2026-01-11) val=14 test=7 | test 2026-01-25 ~ 2026-01-31
+13:48:00 INFO __main__:   fold05 ep  0  L1=0.6799 CE=1.080 dir_acc=0.384 | train=206.9 val=140.2 test=241.9 best=140.2 | v_dir=0.417  lr=1.9e-04
+13:48:00 INFO __main__:   fold05 ep  5  L1=0.4075 CE=0.868 dir_acc=0.584 | train=112.2 val=102.8 test=188.1 best=95.9 | v_dir=0.509  lr=6.4e-04
+13:48:00 INFO __main__:   fold05 ep 10  L1=0.3545 CE=0.805 dir_acc=0.610 | train=103.2 val=102.1 test=171.9 best=95.9 | v_dir=0.530  lr=1.0e-03
+13:48:01 INFO __main__:   fold05 ep 15  L1=0.3261 CE=0.740 dir_acc=0.654 | train=92.8 val=111.8 test=211.6 best=94.0 | v_dir=0.521  lr=1.0e-03
+13:48:01 INFO __main__:   fold05 ep 20  L1=0.2930 CE=0.674 dir_acc=0.702 | train=81.2 val=100.7 test=199.6 best=92.8 | v_dir=0.503  lr=9.9e-04
+13:48:01 INFO __main__:   fold05 ep 25  L1=0.2667 CE=0.608 dir_acc=0.727 | train=71.2 val=109.1 test=195.3 best=92.8 | v_dir=0.494  lr=9.8e-04
+13:48:01 INFO __main__:   fold05 ep 30  L1=0.2439 CE=0.550 dir_acc=0.756 | train=70.6 val=98.2 test=202.2 best=92.8 | v_dir=0.536  lr=9.7e-04
+13:48:02 INFO __main__:   fold05 ep 35  L1=0.2301 CE=0.504 dir_acc=0.777 | train=63.7 val=94.7 test=203.7 best=92.8 | v_dir=0.476  lr=9.5e-04
+13:48:02 INFO __main__:   fold05 ep 40  L1=0.2252 CE=0.456 dir_acc=0.800 | train=57.5 val=107.2 test=208.4 best=92.8 | v_dir=0.491  lr=9.4e-04
+13:48:02 INFO __main__:   fold05 ep 45  L1=0.2052 CE=0.411 dir_acc=0.817 | train=52.1 val=97.5 test=202.3 best=92.8 | v_dir=0.455  lr=9.1e-04
+13:48:02 INFO __main__:   fold05 ep 50  L1=0.1931 CE=0.391 dir_acc=0.834 | train=51.8 val=98.8 test=204.5 best=92.8 | v_dir=0.473  lr=8.9e-04
+13:48:03 INFO __main__:   fold05 ep 55  L1=0.1756 CE=0.344 dir_acc=0.854 | train=48.8 val=96.3 test=203.2 best=92.8 | v_dir=0.497  lr=8.6e-04
+13:48:03 INFO __main__:   fold05 ep 60  L1=0.1654 CE=0.304 dir_acc=0.873 | train=44.6 val=100.7 test=203.3 best=92.8 | v_dir=0.482  lr=8.3e-04
+13:48:03 INFO __main__:   fold05 ep 65  L1=0.1677 CE=0.298 dir_acc=0.874 | train=40.0 val=97.9 test=204.8 best=92.8 | v_dir=0.491  lr=8.0e-04
+13:48:03 INFO __main__:   fold05 ep 70  L1=0.1598 CE=0.243 dir_acc=0.898 | train=46.4 val=97.9 test=201.6 best=92.8 | v_dir=0.488  lr=7.7e-04
+13:48:04 INFO __main__:   fold05 ep 75  L1=0.1530 CE=0.241 dir_acc=0.898 | train=37.1 val=101.9 test=204.9 best=92.8 | v_dir=0.476  lr=7.3e-04
+13:48:04 INFO __main__:   fold05 ep 80  L1=0.1515 CE=0.227 dir_acc=0.905 | train=37.1 val=97.8 test=200.4 best=92.4 | v_dir=0.503  lr=6.9e-04
+13:48:04 INFO __main__:   fold05 ep 85  L1=0.1407 CE=0.182 dir_acc=0.925 | train=34.9 val=105.2 test=217.6 best=92.4 | v_dir=0.479  lr=6.5e-04
+13:48:05 INFO __main__:   fold05 ep 90  L1=0.1529 CE=0.168 dir_acc=0.933 | train=35.1 val=98.1 test=209.0 best=92.2 | v_dir=0.530  lr=6.2e-04
+13:48:05 INFO __main__:   fold05 ep 95  L1=0.1360 CE=0.160 dir_acc=0.936 | train=32.5 val=98.3 test=203.3 best=92.2 | v_dir=0.497  lr=5.7e-04
+13:48:05 INFO __main__:   fold05 ep100  L1=0.1319 CE=0.142 dir_acc=0.945 | train=32.3 val=99.1 test=207.2 best=92.2 | v_dir=0.494  lr=5.3e-04
+13:48:05 INFO __main__:   fold05 ep105  L1=0.1242 CE=0.122 dir_acc=0.953 | train=28.5 val=99.7 test=209.1 best=92.2 | v_dir=0.512  lr=4.9e-04
+13:48:06 INFO __main__:   fold05 ep110  L1=0.1308 CE=0.108 dir_acc=0.957 | train=28.6 val=98.1 test=209.9 best=92.2 | v_dir=0.488  lr=4.5e-04
+13:48:06 INFO __main__:   fold05 ep115  L1=0.1247 CE=0.096 dir_acc=0.965 | train=25.9 val=96.6 test=212.5 best=92.2 | v_dir=0.500  lr=4.1e-04
+13:48:06 INFO __main__:   fold05 ep120  L1=0.1178 CE=0.090 dir_acc=0.967 | train=25.3 val=96.5 test=209.8 best=92.2 | v_dir=0.488  lr=3.7e-04
+13:48:06 INFO __main__:   fold05 ep125  L1=0.1162 CE=0.079 dir_acc=0.970 | train=24.7 val=99.0 test=217.3 best=92.2 | v_dir=0.494  lr=3.3e-04
+13:48:07 INFO __main__:   fold05 ep130  L1=0.1114 CE=0.070 dir_acc=0.975 | train=24.1 val=102.7 test=210.8 best=92.2 | v_dir=0.491  lr=2.9e-04
+13:48:07 INFO __main__:   fold05 ep135  L1=0.1116 CE=0.056 dir_acc=0.981 | train=21.6 val=96.4 test=215.6 best=92.2 | v_dir=0.503  lr=2.6e-04
+13:48:07 INFO __main__:   fold05 ep140  L1=0.1124 CE=0.050 dir_acc=0.983 | train=21.8 val=98.6 test=213.1 best=92.2 | v_dir=0.500  lr=2.2e-04
+13:48:07 INFO __main__:   fold05 ep145  L1=0.1055 CE=0.049 dir_acc=0.984 | train=20.6 val=99.3 test=213.6 best=92.2 | v_dir=0.506  lr=1.9e-04
+13:48:08 INFO __main__:   fold05 ep150  L1=0.1024 CE=0.038 dir_acc=0.988 | train=19.8 val=99.6 test=214.4 best=92.2 | v_dir=0.515  lr=1.6e-04
+13:48:08 INFO __main__:   fold05 ep155  L1=0.1008 CE=0.033 dir_acc=0.990 | train=18.4 val=100.1 test=214.1 best=92.2 | v_dir=0.503  lr=1.3e-04
+13:48:08 INFO __main__:   fold05 ep160  L1=0.0998 CE=0.035 dir_acc=0.988 | train=17.7 val=99.4 test=215.0 best=92.2 | v_dir=0.485  lr=1.0e-04
+13:48:09 INFO __main__:   fold05 ep165  L1=0.1029 CE=0.032 dir_acc=0.990 | train=16.9 val=100.4 test=211.1 best=92.2 | v_dir=0.506  lr=7.8e-05
+13:48:09 INFO __main__:   fold05 ep170  L1=0.0975 CE=0.032 dir_acc=0.990 | train=16.0 val=100.2 test=212.7 best=92.2 | v_dir=0.494  lr=5.7e-05
+13:48:09 INFO __main__:   fold05 ep175  L1=0.0934 CE=0.027 dir_acc=0.992 | train=15.8 val=100.4 test=213.5 best=92.2 | v_dir=0.497  lr=4.0e-05
+13:48:09 INFO __main__:   fold05 ep180  L1=0.0941 CE=0.026 dir_acc=0.993 | train=15.1 val=99.3 test=213.2 best=92.2 | v_dir=0.494  lr=2.5e-05
+13:48:10 INFO __main__:   fold05 ep185  L1=0.0939 CE=0.028 dir_acc=0.992 | train=15.0 val=99.6 test=214.3 best=92.2 | v_dir=0.491  lr=1.4e-05
+13:48:10 INFO __main__:   fold05 ep190  L1=0.0925 CE=0.026 dir_acc=0.993 | train=14.5 val=99.4 test=213.8 best=92.2 | v_dir=0.497  lr=6.5e-06
+13:48:10 INFO __main__:   fold05 ep195  L1=0.0956 CE=0.025 dir_acc=0.994 | train=14.6 val=99.5 test=212.9 best=92.2 | v_dir=0.488  lr=2.1e-06
+13:48:10 INFO __main__:   fold05 ep199  L1=0.0905 CE=0.024 dir_acc=0.993 | train=14.5 val=100.0 test=212.7 best=92.2 | v_dir=0.488  lr=1.0e-06
+13:48:10 INFO __main__: Fold  5 done | val=92.2  test_MAE=212.7  test_RMSE=289.1  dir=0.506
+13:48:10 INFO __main__: Fold  6 | train=365 days (2025-01-18~2026-01-18) val=14 test=7 | test 2026-02-01 ~ 2026-02-07
+13:48:11 INFO __main__:   fold06 ep  0  L1=0.6898 CE=1.080 dir_acc=0.387 | train=209.6 val=166.3 test=230.9 best=166.3 | v_dir=0.435  lr=1.9e-04
+13:48:11 INFO __main__:   fold06 ep  5  L1=0.4093 CE=0.876 dir_acc=0.582 | train=116.9 val=133.0 test=113.4 best=133.0 | v_dir=0.530  lr=6.4e-04
+13:48:11 INFO __main__:   fold06 ep 10  L1=0.3638 CE=0.811 dir_acc=0.609 | train=110.9 val=134.2 test=103.6 best=133.0 | v_dir=0.557  lr=1.0e-03
+13:48:11 INFO __main__:   fold06 ep 15  L1=0.3443 CE=0.748 dir_acc=0.644 | train=94.3 val=138.7 test=104.0 best=132.2 | v_dir=0.551  lr=1.0e-03
+13:48:12 INFO __main__:   fold06 ep 20  L1=0.3010 CE=0.685 dir_acc=0.686 | train=81.7 val=153.0 test=111.1 best=132.2 | v_dir=0.545  lr=9.9e-04
+13:48:12 INFO __main__:   fold06 ep 25  L1=0.2734 CE=0.615 dir_acc=0.722 | train=82.0 val=150.2 test=129.0 best=132.2 | v_dir=0.539  lr=9.8e-04
+13:48:12 INFO __main__:   fold06 ep 30  L1=0.2391 CE=0.565 dir_acc=0.743 | train=67.4 val=143.8 test=101.5 best=132.2 | v_dir=0.521  lr=9.7e-04
+13:48:12 INFO __main__:   fold06 ep 35  L1=0.2239 CE=0.520 dir_acc=0.766 | train=59.0 val=145.9 test=116.1 best=132.2 | v_dir=0.521  lr=9.5e-04
+13:48:13 INFO __main__:   fold06 ep 40  L1=0.2218 CE=0.482 dir_acc=0.788 | train=57.7 val=159.0 test=109.7 best=132.2 | v_dir=0.500  lr=9.4e-04
+13:48:13 INFO __main__:   fold06 ep 45  L1=0.2061 CE=0.437 dir_acc=0.811 | train=55.6 val=152.8 test=115.8 best=132.2 | v_dir=0.577  lr=9.1e-04
+13:48:13 INFO __main__:   fold06 ep 50  L1=0.1904 CE=0.419 dir_acc=0.818 | train=53.1 val=159.7 test=124.9 best=132.2 | v_dir=0.524  lr=8.9e-04
+13:48:14 INFO __main__:   fold06 ep 55  L1=0.1857 CE=0.353 dir_acc=0.849 | train=45.4 val=157.3 test=116.4 best=132.2 | v_dir=0.500  lr=8.6e-04
+13:48:14 INFO __main__:   fold06 ep 60  L1=0.1732 CE=0.340 dir_acc=0.852 | train=45.0 val=147.1 test=114.7 best=132.2 | v_dir=0.509  lr=8.3e-04
+13:48:14 INFO __main__:   fold06 ep 65  L1=0.1683 CE=0.304 dir_acc=0.871 | train=42.2 val=152.3 test=115.0 best=132.2 | v_dir=0.515  lr=8.0e-04
+13:48:14 INFO __main__:   fold06 ep 70  L1=0.1607 CE=0.275 dir_acc=0.886 | train=40.7 val=157.4 test=114.7 best=132.2 | v_dir=0.488  lr=7.7e-04
+13:48:15 INFO __main__:   fold06 ep 75  L1=0.1591 CE=0.249 dir_acc=0.899 | train=40.9 val=153.2 test=108.9 best=132.2 | v_dir=0.545  lr=7.3e-04
+13:48:15 INFO __main__:   fold06 ep 80  L1=0.1491 CE=0.224 dir_acc=0.911 | train=35.2 val=156.7 test=114.9 best=132.2 | v_dir=0.512  lr=6.9e-04
+13:48:15 INFO __main__:   fold06 ep 85  L1=0.1469 CE=0.204 dir_acc=0.914 | train=37.0 val=170.4 test=123.8 best=132.2 | v_dir=0.476  lr=6.5e-04
+13:48:15 INFO __main__:   fold06 ep 90  L1=0.1448 CE=0.193 dir_acc=0.921 | train=36.2 val=158.0 test=119.0 best=132.2 | v_dir=0.479  lr=6.2e-04
+13:48:16 INFO __main__:   fold06 ep 95  L1=0.1393 CE=0.159 dir_acc=0.936 | train=31.4 val=155.0 test=110.9 best=132.2 | v_dir=0.494  lr=5.7e-04
+13:48:16 INFO __main__:   fold06 ep100  L1=0.1352 CE=0.148 dir_acc=0.944 | train=30.4 val=155.1 test=109.8 best=132.2 | v_dir=0.500  lr=5.3e-04
+13:48:16 INFO __main__:   fold06 ep105  L1=0.1348 CE=0.139 dir_acc=0.946 | train=29.2 val=160.2 test=116.3 best=132.2 | v_dir=0.476  lr=4.9e-04
+13:48:17 INFO __main__:   fold06 ep110  L1=0.1207 CE=0.113 dir_acc=0.951 | train=28.3 val=157.4 test=115.3 best=132.2 | v_dir=0.491  lr=4.5e-04
+13:48:17 INFO __main__:   fold06 ep115  L1=0.1194 CE=0.101 dir_acc=0.963 | train=25.4 val=156.6 test=112.2 best=132.2 | v_dir=0.479  lr=4.1e-04
+13:48:17 INFO __main__:   fold06 ep120  L1=0.1156 CE=0.092 dir_acc=0.966 | train=24.8 val=156.5 test=116.2 best=132.2 | v_dir=0.503  lr=3.7e-04
+13:48:17 INFO __main__:   fold06 ep125  L1=0.1122 CE=0.085 dir_acc=0.968 | train=24.4 val=156.2 test=115.5 best=132.2 | v_dir=0.503  lr=3.3e-04
+13:48:18 INFO __main__:   fold06 ep130  L1=0.1128 CE=0.074 dir_acc=0.973 | train=22.7 val=157.8 test=112.0 best=132.2 | v_dir=0.467  lr=2.9e-04
+13:48:18 INFO __main__:   fold06 ep135  L1=0.1067 CE=0.065 dir_acc=0.975 | train=21.5 val=155.7 test=116.8 best=132.2 | v_dir=0.500  lr=2.6e-04
+13:48:18 INFO __main__:   fold06 ep140  L1=0.1069 CE=0.064 dir_acc=0.976 | train=20.6 val=158.3 test=114.8 best=132.2 | v_dir=0.494  lr=2.2e-04
+13:48:18 INFO __main__:   fold06 ep145  L1=0.1035 CE=0.057 dir_acc=0.979 | train=20.3 val=160.3 test=118.6 best=132.2 | v_dir=0.497  lr=1.9e-04
+13:48:19 INFO __main__:   fold06 ep150  L1=0.1003 CE=0.041 dir_acc=0.987 | train=19.1 val=155.9 test=117.1 best=132.2 | v_dir=0.497  lr=1.6e-04
+13:48:19 INFO __main__:   fold06 ep155  L1=0.0954 CE=0.040 dir_acc=0.988 | train=17.5 val=157.7 test=116.6 best=132.2 | v_dir=0.497  lr=1.3e-04
+13:48:19 INFO __main__:   fold06 ep160  L1=0.1001 CE=0.041 dir_acc=0.986 | train=17.3 val=158.4 test=119.9 best=132.2 | v_dir=0.494  lr=1.0e-04
+13:48:20 INFO __main__:   fold06 ep165  L1=0.1014 CE=0.036 dir_acc=0.988 | train=17.0 val=156.7 test=118.5 best=132.2 | v_dir=0.482  lr=7.8e-05
+13:48:20 INFO __main__:   fold06 ep170  L1=0.0945 CE=0.030 dir_acc=0.991 | train=15.7 val=158.0 test=117.8 best=132.2 | v_dir=0.485  lr=5.7e-05
+13:48:20 INFO __main__:   fold06 ep175  L1=0.0916 CE=0.028 dir_acc=0.991 | train=15.2 val=156.6 test=117.9 best=132.2 | v_dir=0.485  lr=4.0e-05
+13:48:20 INFO __main__:   fold06 ep180  L1=0.0970 CE=0.028 dir_acc=0.992 | train=15.0 val=158.0 test=119.2 best=132.2 | v_dir=0.482  lr=2.5e-05
+13:48:21 INFO __main__:   fold06 ep185  L1=0.0958 CE=0.029 dir_acc=0.992 | train=15.1 val=156.6 test=117.4 best=132.2 | v_dir=0.479  lr=1.4e-05
+13:48:21 INFO __main__:   fold06 ep190  L1=0.0945 CE=0.032 dir_acc=0.992 | train=14.5 val=157.7 test=116.3 best=132.2 | v_dir=0.485  lr=6.5e-06
+13:48:21 INFO __main__:   fold06 ep195  L1=0.0999 CE=0.031 dir_acc=0.990 | train=14.5 val=157.6 test=116.4 best=132.2 | v_dir=0.497  lr=2.1e-06
+13:48:21 INFO __main__:   fold06 ep199  L1=0.0947 CE=0.028 dir_acc=0.992 | train=14.4 val=157.5 test=116.4 best=132.2 | v_dir=0.491  lr=1.0e-06
+13:48:21 INFO __main__: Fold  6 done | val=132.2  test_MAE=116.4  test_RMSE=160.1  dir=0.417
+13:48:21 INFO __main__: Fold  7 | train=365 days (2025-01-25~2026-01-25) val=14 test=7 | test 2026-02-08 ~ 2026-02-14
+13:48:22 INFO __main__:   fold07 ep  0  L1=0.6808 CE=1.081 dir_acc=0.385 | train=202.4 val=234.2 test=241.4 best=234.2 | v_dir=0.399  lr=1.9e-04
+13:48:22 INFO __main__:   fold07 ep  5  L1=0.4085 CE=0.869 dir_acc=0.579 | train=113.6 val=146.8 test=92.0 best=146.2 | v_dir=0.533  lr=6.4e-04
+13:48:22 INFO __main__:   fold07 ep 10  L1=0.3785 CE=0.813 dir_acc=0.602 | train=118.6 val=154.9 test=95.4 best=140.7 | v_dir=0.545  lr=1.0e-03
+13:48:22 INFO __main__:   fold07 ep 15  L1=0.3298 CE=0.756 dir_acc=0.639 | train=90.8 val=156.0 test=82.3 best=140.7 | v_dir=0.557  lr=1.0e-03
+13:48:23 INFO __main__:   fold07 ep 20  L1=0.2892 CE=0.697 dir_acc=0.673 | train=78.2 val=155.7 test=91.2 best=140.7 | v_dir=0.542  lr=9.9e-04
+13:48:23 INFO __main__:   fold07 ep 25  L1=0.2629 CE=0.632 dir_acc=0.716 | train=70.0 val=148.2 test=91.7 best=140.7 | v_dir=0.521  lr=9.8e-04
+13:48:23 INFO __main__:   fold07 ep 30  L1=0.2486 CE=0.577 dir_acc=0.739 | train=69.0 val=151.9 test=90.6 best=140.7 | v_dir=0.533  lr=9.7e-04
+13:48:23 INFO __main__:   fold07 ep 35  L1=0.2407 CE=0.507 dir_acc=0.778 | train=62.7 val=152.1 test=98.4 best=140.7 | v_dir=0.515  lr=9.5e-04
+13:48:24 INFO __main__:   fold07 ep 40  L1=0.2213 CE=0.481 dir_acc=0.787 | train=57.1 val=153.4 test=98.6 best=140.7 | v_dir=0.533  lr=9.4e-04
+13:48:24 INFO __main__:   fold07 ep 45  L1=0.2053 CE=0.431 dir_acc=0.816 | train=53.0 val=145.4 test=94.6 best=140.7 | v_dir=0.512  lr=9.1e-04
+13:48:24 INFO __main__:   fold07 ep 50  L1=0.1977 CE=0.393 dir_acc=0.829 | train=52.9 val=151.9 test=105.4 best=140.7 | v_dir=0.515  lr=8.9e-04
+13:48:24 INFO __main__:   fold07 ep 55  L1=0.1842 CE=0.378 dir_acc=0.839 | train=47.6 val=150.7 test=107.1 best=140.7 | v_dir=0.503  lr=8.6e-04
+13:48:25 INFO __main__:   fold07 ep 60  L1=0.1735 CE=0.318 dir_acc=0.868 | train=50.3 val=151.1 test=92.8 best=140.7 | v_dir=0.485  lr=8.3e-04
+13:48:25 INFO __main__:   fold07 ep 65  L1=0.1773 CE=0.297 dir_acc=0.878 | train=42.3 val=156.1 test=95.4 best=140.7 | v_dir=0.497  lr=8.0e-04
+13:48:25 INFO __main__:   fold07 ep 70  L1=0.1615 CE=0.285 dir_acc=0.880 | train=40.3 val=152.7 test=101.5 best=140.7 | v_dir=0.494  lr=7.7e-04
+13:48:26 INFO __main__:   fold07 ep 75  L1=0.1615 CE=0.251 dir_acc=0.895 | train=38.5 val=154.3 test=101.0 best=140.7 | v_dir=0.503  lr=7.3e-04
+13:48:26 INFO __main__:   fold07 ep 80  L1=0.1600 CE=0.229 dir_acc=0.907 | train=38.9 val=157.2 test=95.0 best=140.7 | v_dir=0.482  lr=6.9e-04
+13:48:26 INFO __main__:   fold07 ep 85  L1=0.1372 CE=0.202 dir_acc=0.915 | train=37.1 val=157.1 test=93.8 best=140.7 | v_dir=0.491  lr=6.5e-04
+13:48:26 INFO __main__:   fold07 ep 90  L1=0.1449 CE=0.188 dir_acc=0.923 | train=33.4 val=155.9 test=109.6 best=140.7 | v_dir=0.488  lr=6.2e-04
+13:48:27 INFO __main__:   fold07 ep 95  L1=0.1377 CE=0.159 dir_acc=0.935 | train=32.7 val=156.1 test=95.0 best=140.7 | v_dir=0.494  lr=5.7e-04
+13:48:27 INFO __main__:   fold07 ep100  L1=0.1323 CE=0.141 dir_acc=0.948 | train=30.8 val=158.3 test=110.6 best=140.7 | v_dir=0.482  lr=5.3e-04
+13:48:27 INFO __main__:   fold07 ep105  L1=0.1239 CE=0.129 dir_acc=0.948 | train=27.3 val=155.8 test=99.0 best=140.7 | v_dir=0.500  lr=4.9e-04
+13:48:27 INFO __main__:   fold07 ep110  L1=0.1327 CE=0.123 dir_acc=0.949 | train=27.1 val=154.7 test=109.8 best=140.7 | v_dir=0.467  lr=4.5e-04
+13:48:28 INFO __main__:   fold07 ep115  L1=0.1215 CE=0.102 dir_acc=0.961 | train=27.6 val=154.4 test=106.0 best=140.7 | v_dir=0.500  lr=4.1e-04
+13:48:28 INFO __main__:   fold07 ep120  L1=0.1161 CE=0.086 dir_acc=0.970 | train=24.8 val=156.8 test=98.4 best=140.7 | v_dir=0.479  lr=3.7e-04
+13:48:28 INFO __main__:   fold07 ep125  L1=0.1144 CE=0.078 dir_acc=0.969 | train=23.5 val=155.0 test=98.2 best=140.7 | v_dir=0.482  lr=3.3e-04
+13:48:29 INFO __main__:   fold07 ep130  L1=0.1209 CE=0.071 dir_acc=0.973 | train=23.5 val=157.6 test=102.3 best=140.7 | v_dir=0.482  lr=2.9e-04
+13:48:29 INFO __main__:   fold07 ep135  L1=0.1128 CE=0.062 dir_acc=0.978 | train=22.6 val=156.4 test=104.2 best=140.7 | v_dir=0.467  lr=2.6e-04
+13:48:29 INFO __main__:   fold07 ep140  L1=0.1079 CE=0.053 dir_acc=0.983 | train=20.9 val=157.2 test=106.6 best=140.7 | v_dir=0.488  lr=2.2e-04
+13:48:29 INFO __main__:   fold07 ep145  L1=0.1028 CE=0.050 dir_acc=0.983 | train=19.9 val=154.9 test=104.1 best=140.7 | v_dir=0.503  lr=1.9e-04
+13:48:30 INFO __main__:   fold07 ep150  L1=0.1043 CE=0.044 dir_acc=0.984 | train=19.2 val=157.9 test=104.3 best=140.7 | v_dir=0.497  lr=1.6e-04
+13:48:30 INFO __main__:   fold07 ep155  L1=0.0992 CE=0.037 dir_acc=0.989 | train=18.4 val=156.2 test=101.9 best=140.7 | v_dir=0.476  lr=1.3e-04
+13:48:30 INFO __main__:   fold07 ep160  L1=0.0983 CE=0.036 dir_acc=0.990 | train=18.0 val=154.2 test=104.0 best=140.7 | v_dir=0.494  lr=1.0e-04
+13:48:30 INFO __main__:   fold07 ep165  L1=0.0993 CE=0.032 dir_acc=0.991 | train=16.9 val=156.2 test=101.8 best=140.7 | v_dir=0.479  lr=7.8e-05
+13:48:31 INFO __main__:   fold07 ep170  L1=0.0950 CE=0.031 dir_acc=0.991 | train=16.4 val=156.4 test=105.6 best=140.7 | v_dir=0.485  lr=5.7e-05
+13:48:31 INFO __main__:   fold07 ep175  L1=0.0922 CE=0.028 dir_acc=0.993 | train=15.5 val=157.2 test=103.9 best=140.7 | v_dir=0.476  lr=4.0e-05
+13:48:31 INFO __main__:   fold07 ep180  L1=0.1024 CE=0.029 dir_acc=0.992 | train=16.2 val=157.5 test=103.6 best=140.7 | v_dir=0.485  lr=2.5e-05
+13:48:32 INFO __main__:   fold07 ep185  L1=0.0958 CE=0.026 dir_acc=0.993 | train=15.0 val=156.0 test=106.2 best=140.7 | v_dir=0.482  lr=1.4e-05
+13:48:32 INFO __main__:   fold07 ep190  L1=0.0993 CE=0.027 dir_acc=0.993 | train=15.0 val=156.7 test=104.5 best=140.7 | v_dir=0.485  lr=6.5e-06
+13:48:32 INFO __main__:   fold07 ep195  L1=0.0964 CE=0.028 dir_acc=0.992 | train=15.0 val=157.0 test=103.8 best=140.7 | v_dir=0.488  lr=2.1e-06
+13:48:32 INFO __main__:   fold07 ep199  L1=0.0920 CE=0.026 dir_acc=0.992 | train=14.8 val=156.5 test=103.2 best=140.7 | v_dir=0.485  lr=1.0e-06
+13:48:32 INFO __main__: Fold  7 done | val=140.7  test_MAE=103.2  test_RMSE=134.4  dir=0.482
+13:48:32 INFO __main__: Fold  8 | train=365 days (2025-02-01~2026-02-01) val=14 test=7 | test 2026-02-15 ~ 2026-02-21
+13:48:32 INFO __main__:   fold08 ep  0  L1=0.6880 CE=1.078 dir_acc=0.391 | train=205.0 val=239.4 test=236.6 best=239.4 | v_dir=0.336  lr=1.9e-04
+13:48:33 INFO __main__:   fold08 ep  5  L1=0.4162 CE=0.877 dir_acc=0.576 | train=115.4 val=107.0 test=87.3 best=99.9 | v_dir=0.515  lr=6.4e-04
+13:48:33 INFO __main__:   fold08 ep 10  L1=0.3733 CE=0.818 dir_acc=0.594 | train=111.0 val=86.0 test=73.6 best=86.0 | v_dir=0.533  lr=1.0e-03
+13:48:33 INFO __main__:   fold08 ep 15  L1=0.3353 CE=0.760 dir_acc=0.637 | train=83.7 val=99.2 test=78.2 best=86.0 | v_dir=0.509  lr=1.0e-03
+13:48:34 INFO __main__:   fold08 ep 20  L1=0.2886 CE=0.689 dir_acc=0.677 | train=82.8 val=94.1 test=74.2 best=86.0 | v_dir=0.467  lr=9.9e-04
+13:48:34 INFO __main__:   fold08 ep 25  L1=0.2771 CE=0.629 dir_acc=0.714 | train=82.5 val=84.8 test=59.1 best=84.8 | v_dir=0.506  lr=9.8e-04
+13:48:34 INFO __main__:   fold08 ep 30  L1=0.2541 CE=0.570 dir_acc=0.741 | train=69.6 val=97.5 test=84.4 best=84.8 | v_dir=0.512  lr=9.7e-04
+13:48:34 INFO __main__:   fold08 ep 35  L1=0.2371 CE=0.523 dir_acc=0.765 | train=63.1 val=92.2 test=76.5 best=84.8 | v_dir=0.443  lr=9.5e-04
+13:48:35 INFO __main__:   fold08 ep 40  L1=0.2034 CE=0.483 dir_acc=0.784 | train=52.7 val=96.6 test=111.2 best=84.8 | v_dir=0.509  lr=9.4e-04
+13:48:35 INFO __main__:   fold08 ep 45  L1=0.2039 CE=0.447 dir_acc=0.801 | train=52.5 val=87.3 test=84.0 best=84.8 | v_dir=0.497  lr=9.1e-04
+13:48:35 INFO __main__:   fold08 ep 50  L1=0.1907 CE=0.397 dir_acc=0.825 | train=46.7 val=92.0 test=91.2 best=84.8 | v_dir=0.518  lr=8.9e-04
+13:48:35 INFO __main__:   fold08 ep 55  L1=0.1948 CE=0.360 dir_acc=0.845 | train=58.5 val=92.8 test=65.3 best=84.8 | v_dir=0.506  lr=8.6e-04
+13:48:36 INFO __main__:   fold08 ep 60  L1=0.1791 CE=0.343 dir_acc=0.852 | train=46.4 val=93.6 test=95.4 best=84.8 | v_dir=0.494  lr=8.3e-04
+13:48:36 INFO __main__:   fold08 ep 65  L1=0.1733 CE=0.310 dir_acc=0.866 | train=43.8 val=101.2 test=118.5 best=84.8 | v_dir=0.497  lr=8.0e-04
+13:48:36 INFO __main__:   fold08 ep 70  L1=0.1616 CE=0.273 dir_acc=0.885 | train=37.6 val=96.2 test=89.7 best=84.8 | v_dir=0.533  lr=7.7e-04
+13:48:37 INFO __main__:   fold08 ep 75  L1=0.1532 CE=0.264 dir_acc=0.890 | train=43.3 val=95.5 test=73.2 best=84.8 | v_dir=0.518  lr=7.3e-04
+13:48:37 INFO __main__:   fold08 ep 80  L1=0.1485 CE=0.227 dir_acc=0.907 | train=34.6 val=101.2 test=92.3 best=84.8 | v_dir=0.500  lr=6.9e-04
+13:48:37 INFO __main__:   fold08 ep 85  L1=0.1405 CE=0.193 dir_acc=0.922 | train=34.1 val=93.3 test=79.6 best=84.8 | v_dir=0.500  lr=6.5e-04
+13:48:37 INFO __main__:   fold08 ep 90  L1=0.1436 CE=0.187 dir_acc=0.923 | train=32.6 val=101.1 test=80.8 best=84.8 | v_dir=0.518  lr=6.2e-04
+13:48:38 INFO __main__:   fold08 ep 95  L1=0.1409 CE=0.164 dir_acc=0.933 | train=32.4 val=99.8 test=94.3 best=84.8 | v_dir=0.482  lr=5.7e-04
+13:48:38 INFO __main__:   fold08 ep100  L1=0.1347 CE=0.146 dir_acc=0.941 | train=29.5 val=98.2 test=87.6 best=84.8 | v_dir=0.488  lr=5.3e-04
+13:48:38 INFO __main__:   fold08 ep105  L1=0.1276 CE=0.122 dir_acc=0.954 | train=30.6 val=94.7 test=79.1 best=84.8 | v_dir=0.536  lr=4.9e-04
+13:48:38 INFO __main__:   fold08 ep110  L1=0.1309 CE=0.118 dir_acc=0.954 | train=29.9 val=99.3 test=83.8 best=84.8 | v_dir=0.482  lr=4.5e-04
+13:48:39 INFO __main__:   fold08 ep115  L1=0.1244 CE=0.108 dir_acc=0.958 | train=25.8 val=98.1 test=88.4 best=84.8 | v_dir=0.491  lr=4.1e-04
+13:48:39 INFO __main__:   fold08 ep120  L1=0.1180 CE=0.090 dir_acc=0.966 | train=25.4 val=97.7 test=78.3 best=84.8 | v_dir=0.491  lr=3.7e-04
+13:48:39 INFO __main__:   fold08 ep125  L1=0.1138 CE=0.076 dir_acc=0.971 | train=23.9 val=96.1 test=83.8 best=84.8 | v_dir=0.494  lr=3.3e-04
+13:48:40 INFO __main__:   fold08 ep130  L1=0.1116 CE=0.067 dir_acc=0.975 | train=22.6 val=99.7 test=83.1 best=84.8 | v_dir=0.515  lr=2.9e-04
+13:48:40 INFO __main__:   fold08 ep135  L1=0.1111 CE=0.057 dir_acc=0.980 | train=23.0 val=97.4 test=82.3 best=84.8 | v_dir=0.509  lr=2.6e-04
+13:48:40 INFO __main__:   fold08 ep140  L1=0.1046 CE=0.051 dir_acc=0.982 | train=21.0 val=98.4 test=81.5 best=84.8 | v_dir=0.521  lr=2.2e-04
+13:48:40 INFO __main__:   fold08 ep145  L1=0.1025 CE=0.048 dir_acc=0.984 | train=19.8 val=99.3 test=76.9 best=84.8 | v_dir=0.500  lr=1.9e-04
+13:48:41 INFO __main__:   fold08 ep150  L1=0.1001 CE=0.041 dir_acc=0.988 | train=20.0 val=99.0 test=82.4 best=84.8 | v_dir=0.497  lr=1.6e-04
+13:48:41 INFO __main__:   fold08 ep155  L1=0.0971 CE=0.038 dir_acc=0.988 | train=18.5 val=101.2 test=79.7 best=84.8 | v_dir=0.494  lr=1.3e-04
+13:48:41 INFO __main__:   fold08 ep160  L1=0.0999 CE=0.034 dir_acc=0.990 | train=17.0 val=100.7 test=79.6 best=84.8 | v_dir=0.512  lr=1.0e-04
+13:48:41 INFO __main__:   fold08 ep165  L1=0.1050 CE=0.033 dir_acc=0.989 | train=16.8 val=100.0 test=80.0 best=84.8 | v_dir=0.497  lr=7.8e-05
+13:48:42 INFO __main__:   fold08 ep170  L1=0.0961 CE=0.028 dir_acc=0.992 | train=16.5 val=101.9 test=83.1 best=84.8 | v_dir=0.521  lr=5.7e-05
+13:48:42 INFO __main__:   fold08 ep175  L1=0.0941 CE=0.026 dir_acc=0.993 | train=15.7 val=100.8 test=82.9 best=84.8 | v_dir=0.497  lr=4.0e-05
+13:48:42 INFO __main__:   fold08 ep180  L1=0.1001 CE=0.028 dir_acc=0.991 | train=15.2 val=101.4 test=84.0 best=84.8 | v_dir=0.497  lr=2.5e-05
+13:48:43 INFO __main__:   fold08 ep185  L1=0.0966 CE=0.024 dir_acc=0.994 | train=14.8 val=102.0 test=84.8 best=84.8 | v_dir=0.506  lr=1.4e-05
+13:48:43 INFO __main__:   fold08 ep190  L1=0.0910 CE=0.025 dir_acc=0.994 | train=14.5 val=101.9 test=83.6 best=84.8 | v_dir=0.503  lr=6.5e-06
+13:48:43 INFO __main__:   fold08 ep195  L1=0.0954 CE=0.025 dir_acc=0.994 | train=14.4 val=102.1 test=84.4 best=84.8 | v_dir=0.509  lr=2.1e-06
+13:48:43 INFO __main__:   fold08 ep199  L1=0.0905 CE=0.024 dir_acc=0.994 | train=14.6 val=101.4 test=82.3 best=84.8 | v_dir=0.515  lr=1.0e-06
+13:48:43 INFO __main__: Fold  8 done | val=84.8  test_MAE=82.3  test_RMSE=100.8  dir=0.399
+13:48:43 INFO __main__: Fold  9 | train=365 days (2025-02-08~2026-02-08) val=14 test=7 | test 2026-02-22 ~ 2026-02-28
+13:48:43 INFO __main__:   fold09 ep  0  L1=0.6901 CE=1.082 dir_acc=0.388 | train=206.0 val=242.8 test=180.3 best=242.8 | v_dir=0.277  lr=1.9e-04
+13:48:44 INFO __main__:   fold09 ep  5  L1=0.4080 CE=0.883 dir_acc=0.573 | train=115.3 val=95.4 test=115.4 best=95.4 | v_dir=0.423  lr=6.4e-04
+13:48:44 INFO __main__:   fold09 ep 10  L1=0.3681 CE=0.823 dir_acc=0.596 | train=102.8 val=78.8 test=96.5 best=78.8 | v_dir=0.500  lr=1.0e-03
+13:48:44 INFO __main__:   fold09 ep 15  L1=0.3240 CE=0.763 dir_acc=0.635 | train=86.1 val=82.2 test=115.1 best=78.8 | v_dir=0.521  lr=1.0e-03
+13:48:44 INFO __main__:   fold09 ep 20  L1=0.3132 CE=0.709 dir_acc=0.668 | train=84.9 val=76.8 test=116.7 best=74.8 | v_dir=0.384  lr=9.9e-04
+13:48:45 INFO __main__:   fold09 ep 25  L1=0.2693 CE=0.631 dir_acc=0.714 | train=70.7 val=85.2 test=112.3 best=74.8 | v_dir=0.494  lr=9.8e-04
+13:48:45 INFO __main__:   fold09 ep 30  L1=0.2468 CE=0.568 dir_acc=0.741 | train=67.1 val=87.5 test=122.3 best=74.8 | v_dir=0.417  lr=9.7e-04
+13:48:45 INFO __main__:   fold09 ep 35  L1=0.2303 CE=0.515 dir_acc=0.772 | train=58.7 val=92.2 test=117.6 best=74.8 | v_dir=0.414  lr=9.5e-04
+13:48:46 INFO __main__:   fold09 ep 40  L1=0.2210 CE=0.478 dir_acc=0.787 | train=57.7 val=87.1 test=117.5 best=74.8 | v_dir=0.491  lr=9.4e-04
+13:48:46 INFO __main__:   fold09 ep 45  L1=0.2118 CE=0.437 dir_acc=0.807 | train=58.3 val=97.1 test=131.4 best=74.8 | v_dir=0.464  lr=9.1e-04
+13:48:46 INFO __main__:   fold09 ep 50  L1=0.1990 CE=0.402 dir_acc=0.822 | train=47.7 val=82.3 test=113.2 best=74.8 | v_dir=0.473  lr=8.9e-04
+13:48:46 INFO __main__:   fold09 ep 55  L1=0.1805 CE=0.359 dir_acc=0.847 | train=48.5 val=97.8 test=96.9 best=74.8 | v_dir=0.458  lr=8.6e-04
+13:48:47 INFO __main__:   fold09 ep 60  L1=0.1732 CE=0.328 dir_acc=0.863 | train=45.6 val=99.8 test=104.9 best=74.8 | v_dir=0.446  lr=8.3e-04
+13:48:47 INFO __main__:   fold09 ep 65  L1=0.1685 CE=0.314 dir_acc=0.868 | train=40.8 val=94.0 test=100.5 best=74.8 | v_dir=0.446  lr=8.0e-04
+13:48:47 INFO __main__:   fold09 ep 70  L1=0.1592 CE=0.273 dir_acc=0.884 | train=40.8 val=93.0 test=112.3 best=74.8 | v_dir=0.467  lr=7.7e-04
+13:48:47 INFO __main__:   fold09 ep 75  L1=0.1549 CE=0.255 dir_acc=0.898 | train=40.1 val=93.7 test=114.1 best=74.8 | v_dir=0.470  lr=7.3e-04
+13:48:48 INFO __main__:   fold09 ep 80  L1=0.1548 CE=0.230 dir_acc=0.908 | train=34.5 val=95.2 test=118.0 best=74.8 | v_dir=0.479  lr=6.9e-04
+13:48:48 INFO __main__:   fold09 ep 85  L1=0.1500 CE=0.211 dir_acc=0.914 | train=35.7 val=95.4 test=116.0 best=74.8 | v_dir=0.440  lr=6.5e-04
+13:48:48 INFO __main__:   fold09 ep 90  L1=0.1462 CE=0.180 dir_acc=0.925 | train=33.7 val=94.6 test=103.1 best=74.8 | v_dir=0.435  lr=6.2e-04
+13:48:49 INFO __main__:   fold09 ep 95  L1=0.1407 CE=0.172 dir_acc=0.929 | train=33.6 val=100.5 test=119.1 best=74.8 | v_dir=0.440  lr=5.7e-04
+13:48:49 INFO __main__:   fold09 ep100  L1=0.1338 CE=0.147 dir_acc=0.942 | train=31.7 val=101.9 test=120.5 best=74.8 | v_dir=0.432  lr=5.3e-04
+13:48:49 INFO __main__:   fold09 ep105  L1=0.1335 CE=0.134 dir_acc=0.951 | train=34.0 val=96.7 test=120.5 best=74.8 | v_dir=0.458  lr=4.9e-04
+13:48:49 INFO __main__:   fold09 ep110  L1=0.1329 CE=0.117 dir_acc=0.956 | train=29.8 val=105.2 test=111.9 best=74.8 | v_dir=0.438  lr=4.5e-04
+13:48:50 INFO __main__:   fold09 ep115  L1=0.1205 CE=0.104 dir_acc=0.959 | train=27.5 val=94.3 test=112.3 best=74.8 | v_dir=0.458  lr=4.1e-04
+13:48:50 INFO __main__:   fold09 ep120  L1=0.1176 CE=0.080 dir_acc=0.972 | train=26.2 val=101.2 test=115.6 best=74.8 | v_dir=0.461  lr=3.7e-04
+13:48:50 INFO __main__:   fold09 ep125  L1=0.1204 CE=0.081 dir_acc=0.970 | train=23.7 val=99.0 test=118.8 best=74.8 | v_dir=0.479  lr=3.3e-04
+13:48:50 INFO __main__:   fold09 ep130  L1=0.1096 CE=0.069 dir_acc=0.974 | train=22.1 val=100.4 test=114.2 best=74.8 | v_dir=0.449  lr=2.9e-04
+13:48:51 INFO __main__:   fold09 ep135  L1=0.1109 CE=0.061 dir_acc=0.979 | train=23.2 val=94.1 test=108.5 best=74.8 | v_dir=0.461  lr=2.6e-04
+13:48:51 INFO __main__:   fold09 ep140  L1=0.1058 CE=0.044 dir_acc=0.985 | train=21.1 val=100.9 test=114.2 best=74.8 | v_dir=0.461  lr=2.2e-04
+13:48:51 INFO __main__:   fold09 ep145  L1=0.1045 CE=0.048 dir_acc=0.983 | train=20.0 val=101.8 test=114.3 best=74.8 | v_dir=0.461  lr=1.9e-04
+13:48:51 INFO __main__:   fold09 ep150  L1=0.1039 CE=0.040 dir_acc=0.987 | train=19.1 val=94.7 test=107.7 best=74.8 | v_dir=0.458  lr=1.6e-04
+13:48:52 INFO __main__:   fold09 ep155  L1=0.1013 CE=0.036 dir_acc=0.988 | train=17.5 val=95.9 test=110.9 best=74.8 | v_dir=0.458  lr=1.3e-04
+13:48:52 INFO __main__:   fold09 ep160  L1=0.0989 CE=0.030 dir_acc=0.991 | train=17.4 val=101.0 test=117.4 best=74.8 | v_dir=0.452  lr=1.0e-04
+13:48:52 INFO __main__:   fold09 ep165  L1=0.0953 CE=0.030 dir_acc=0.991 | train=16.7 val=96.2 test=112.5 best=74.8 | v_dir=0.467  lr=7.8e-05
+13:48:52 INFO __main__:   fold09 ep170  L1=0.0958 CE=0.030 dir_acc=0.992 | train=16.3 val=99.0 test=116.3 best=74.8 | v_dir=0.458  lr=5.7e-05
+13:48:53 INFO __main__:   fold09 ep175  L1=0.0947 CE=0.028 dir_acc=0.992 | train=15.6 val=97.2 test=114.0 best=74.8 | v_dir=0.452  lr=4.0e-05
+13:48:53 INFO __main__:   fold09 ep180  L1=0.0984 CE=0.027 dir_acc=0.994 | train=15.1 val=98.0 test=113.7 best=74.8 | v_dir=0.452  lr=2.5e-05
+13:48:53 INFO __main__:   fold09 ep185  L1=0.0889 CE=0.023 dir_acc=0.994 | train=14.8 val=98.1 test=113.5 best=74.8 | v_dir=0.458  lr=1.4e-05
+13:48:54 INFO __main__:   fold09 ep190  L1=0.0921 CE=0.025 dir_acc=0.993 | train=14.5 val=97.1 test=112.8 best=74.8 | v_dir=0.455  lr=6.5e-06
+13:48:54 INFO __main__:   fold09 ep195  L1=0.0998 CE=0.026 dir_acc=0.993 | train=14.5 val=98.4 test=114.6 best=74.8 | v_dir=0.452  lr=2.1e-06
+13:48:54 INFO __main__:   fold09 ep199  L1=0.0948 CE=0.025 dir_acc=0.993 | train=14.7 val=99.2 test=115.1 best=74.8 | v_dir=0.449  lr=1.0e-06
+13:48:54 INFO __main__: Fold  9 done | val=74.8  test_MAE=115.1  test_RMSE=150.3  dir=0.494
+13:48:54 INFO __main__: Fold 10 | train=365 days (2025-02-15~2026-02-15) val=14 test=7 | test 2026-03-01 ~ 2026-03-07
+13:48:54 INFO __main__:   fold10 ep  0  L1=0.6873 CE=1.083 dir_acc=0.389 | train=206.2 val=210.3 test=166.5 best=210.3 | v_dir=0.384  lr=1.9e-04
+13:48:54 INFO __main__:   fold10 ep  5  L1=0.4219 CE=0.883 dir_acc=0.570 | train=118.2 val=109.1 test=114.5 best=95.4 | v_dir=0.440  lr=6.4e-04
+13:48:55 INFO __main__:   fold10 ep 10  L1=0.3714 CE=0.824 dir_acc=0.592 | train=102.2 val=108.0 test=108.9 best=84.4 | v_dir=0.521  lr=1.0e-03
+13:48:55 INFO __main__:   fold10 ep 15  L1=0.3335 CE=0.766 dir_acc=0.634 | train=87.7 val=104.6 test=106.6 best=83.3 | v_dir=0.464  lr=1.0e-03
+13:48:55 INFO __main__:   fold10 ep 20  L1=0.2875 CE=0.697 dir_acc=0.675 | train=80.4 val=86.3 test=107.3 best=83.3 | v_dir=0.467  lr=9.9e-04
+13:48:56 INFO __main__:   fold10 ep 25  L1=0.2749 CE=0.631 dir_acc=0.705 | train=76.4 val=81.0 test=115.0 best=81.0 | v_dir=0.446  lr=9.8e-04
+13:48:56 INFO __main__:   fold10 ep 30  L1=0.2585 CE=0.575 dir_acc=0.741 | train=66.4 val=87.2 test=109.0 best=81.0 | v_dir=0.452  lr=9.7e-04
+13:48:56 INFO __main__:   fold10 ep 35  L1=0.2528 CE=0.528 dir_acc=0.762 | train=66.2 val=85.7 test=103.6 best=81.0 | v_dir=0.500  lr=9.5e-04
+13:48:56 INFO __main__:   fold10 ep 40  L1=0.2255 CE=0.471 dir_acc=0.791 | train=60.0 val=94.8 test=116.8 best=81.0 | v_dir=0.452  lr=9.4e-04
+13:48:57 INFO __main__:   fold10 ep 45  L1=0.2103 CE=0.432 dir_acc=0.810 | train=58.8 val=102.8 test=111.9 best=81.0 | v_dir=0.500  lr=9.1e-04
+13:48:57 INFO __main__:   fold10 ep 50  L1=0.2018 CE=0.424 dir_acc=0.817 | train=52.8 val=101.0 test=109.1 best=81.0 | v_dir=0.449  lr=8.9e-04
+13:48:57 INFO __main__:   fold10 ep 55  L1=0.1867 CE=0.353 dir_acc=0.846 | train=49.1 val=89.5 test=107.6 best=81.0 | v_dir=0.449  lr=8.6e-04
+13:48:57 INFO __main__:   fold10 ep 60  L1=0.1869 CE=0.351 dir_acc=0.851 | train=46.4 val=94.8 test=116.8 best=81.0 | v_dir=0.485  lr=8.3e-04
+13:48:58 INFO __main__:   fold10 ep 65  L1=0.1712 CE=0.314 dir_acc=0.867 | train=42.8 val=98.5 test=114.9 best=81.0 | v_dir=0.396  lr=8.0e-04
+13:48:58 INFO __main__:   fold10 ep 70  L1=0.1587 CE=0.259 dir_acc=0.889 | train=41.8 val=109.8 test=123.1 best=81.0 | v_dir=0.449  lr=7.7e-04
+13:48:58 INFO __main__:   fold10 ep 75  L1=0.1569 CE=0.258 dir_acc=0.896 | train=38.2 val=93.0 test=118.8 best=81.0 | v_dir=0.458  lr=7.3e-04
+13:48:58 INFO __main__:   fold10 ep 80  L1=0.1533 CE=0.222 dir_acc=0.908 | train=39.5 val=110.2 test=117.9 best=81.0 | v_dir=0.476  lr=6.9e-04
+13:48:59 INFO __main__:   fold10 ep 85  L1=0.1469 CE=0.211 dir_acc=0.913 | train=36.2 val=91.3 test=109.8 best=81.0 | v_dir=0.461  lr=6.5e-04
+13:48:59 INFO __main__:   fold10 ep 90  L1=0.1426 CE=0.181 dir_acc=0.926 | train=34.5 val=112.0 test=122.4 best=81.0 | v_dir=0.506  lr=6.2e-04
+13:48:59 INFO __main__:   fold10 ep 95  L1=0.1366 CE=0.161 dir_acc=0.936 | train=31.6 val=112.1 test=120.3 best=81.0 | v_dir=0.458  lr=5.7e-04
+13:49:00 INFO __main__:   fold10 ep100  L1=0.1349 CE=0.144 dir_acc=0.944 | train=30.5 val=98.3 test=119.2 best=81.0 | v_dir=0.435  lr=5.3e-04
+13:49:00 INFO __main__:   fold10 ep105  L1=0.1330 CE=0.125 dir_acc=0.949 | train=29.6 val=126.7 test=130.7 best=81.0 | v_dir=0.399  lr=4.9e-04
+13:49:00 INFO __main__:   fold10 ep110  L1=0.1279 CE=0.119 dir_acc=0.956 | train=27.6 val=103.9 test=127.4 best=81.0 | v_dir=0.473  lr=4.5e-04
+13:49:00 INFO __main__:   fold10 ep115  L1=0.1235 CE=0.097 dir_acc=0.963 | train=27.1 val=106.1 test=127.0 best=81.0 | v_dir=0.455  lr=4.1e-04
+13:49:01 INFO __main__:   fold10 ep120  L1=0.1208 CE=0.086 dir_acc=0.969 | train=26.6 val=113.6 test=128.3 best=81.0 | v_dir=0.438  lr=3.7e-04
+13:49:01 INFO __main__:   fold10 ep125  L1=0.1164 CE=0.075 dir_acc=0.972 | train=25.5 val=109.6 test=126.1 best=81.0 | v_dir=0.435  lr=3.3e-04
+13:49:01 INFO __main__:   fold10 ep130  L1=0.1126 CE=0.061 dir_acc=0.978 | train=22.6 val=114.5 test=129.3 best=81.0 | v_dir=0.432  lr=2.9e-04
+13:49:01 INFO __main__:   fold10 ep135  L1=0.1164 CE=0.056 dir_acc=0.981 | train=21.4 val=112.7 test=125.4 best=81.0 | v_dir=0.408  lr=2.6e-04
+13:49:02 INFO __main__:   fold10 ep140  L1=0.1146 CE=0.051 dir_acc=0.984 | train=21.7 val=114.0 test=129.1 best=81.0 | v_dir=0.429  lr=2.2e-04
+13:49:02 INFO __main__:   fold10 ep145  L1=0.1093 CE=0.046 dir_acc=0.984 | train=20.9 val=116.8 test=129.7 best=81.0 | v_dir=0.432  lr=1.9e-04
+13:49:02 INFO __main__:   fold10 ep150  L1=0.1044 CE=0.039 dir_acc=0.986 | train=18.7 val=113.6 test=124.3 best=81.0 | v_dir=0.408  lr=1.6e-04
+13:49:03 INFO __main__:   fold10 ep155  L1=0.1101 CE=0.034 dir_acc=0.992 | train=18.5 val=117.7 test=123.4 best=81.0 | v_dir=0.420  lr=1.3e-04
+13:49:03 INFO __main__:   fold10 ep160  L1=0.1009 CE=0.031 dir_acc=0.991 | train=17.5 val=119.0 test=125.9 best=81.0 | v_dir=0.420  lr=1.0e-04
+13:49:03 INFO __main__:   fold10 ep165  L1=0.0963 CE=0.032 dir_acc=0.989 | train=16.7 val=117.2 test=126.3 best=81.0 | v_dir=0.408  lr=7.8e-05
+13:49:03 INFO __main__:   fold10 ep170  L1=0.1029 CE=0.031 dir_acc=0.991 | train=16.5 val=121.3 test=128.2 best=81.0 | v_dir=0.411  lr=5.7e-05
+13:49:04 INFO __main__:   fold10 ep175  L1=0.1012 CE=0.026 dir_acc=0.993 | train=15.6 val=115.6 test=127.9 best=81.0 | v_dir=0.411  lr=4.0e-05
+13:49:04 INFO __main__:   fold10 ep180  L1=0.0972 CE=0.028 dir_acc=0.992 | train=15.6 val=114.4 test=126.9 best=81.0 | v_dir=0.411  lr=2.5e-05
+13:49:04 INFO __main__:   fold10 ep185  L1=0.0942 CE=0.025 dir_acc=0.993 | train=14.9 val=116.2 test=127.1 best=81.0 | v_dir=0.417  lr=1.4e-05
+13:49:04 INFO __main__:   fold10 ep190  L1=0.0942 CE=0.026 dir_acc=0.992 | train=14.8 val=117.9 test=127.3 best=81.0 | v_dir=0.420  lr=6.5e-06
+13:49:05 INFO __main__:   fold10 ep195  L1=0.1017 CE=0.025 dir_acc=0.993 | train=14.8 val=119.2 test=128.5 best=81.0 | v_dir=0.414  lr=2.1e-06
+13:49:05 INFO __main__:   fold10 ep199  L1=0.0927 CE=0.024 dir_acc=0.993 | train=14.6 val=115.0 test=127.0 best=81.0 | v_dir=0.411  lr=1.0e-06
+13:49:05 INFO __main__: Fold 10 done | val=81.0  test_MAE=127.0  test_RMSE=174.7  dir=0.512
+13:49:05 INFO __main__: Fold 11 | train=365 days (2025-02-22~2026-02-22) val=14 test=7 | test 2026-03-08 ~ 2026-03-14
+13:49:05 INFO __main__:   fold11 ep  0  L1=0.6877 CE=1.080 dir_acc=0.386 | train=200.4 val=166.9 test=178.5 best=166.9 | v_dir=0.473  lr=1.9e-04
+13:49:05 INFO __main__:   fold11 ep  5  L1=0.4235 CE=0.893 dir_acc=0.551 | train=118.1 val=118.5 test=120.4 best=106.3 | v_dir=0.515  lr=6.4e-04
+13:49:06 INFO __main__:   fold11 ep 10  L1=0.3754 CE=0.828 dir_acc=0.597 | train=103.0 val=102.4 test=116.7 best=102.4 | v_dir=0.530  lr=1.0e-03
+13:49:06 INFO __main__:   fold11 ep 15  L1=0.3409 CE=0.763 dir_acc=0.633 | train=88.7 val=105.8 test=106.9 best=102.4 | v_dir=0.503  lr=1.0e-03
+13:49:06 INFO __main__:   fold11 ep 20  L1=0.2956 CE=0.716 dir_acc=0.659 | train=74.6 val=106.6 test=112.7 best=102.4 | v_dir=0.497  lr=9.9e-04
+13:49:06 INFO __main__:   fold11 ep 25  L1=0.2851 CE=0.658 dir_acc=0.698 | train=70.7 val=125.8 test=98.2 best=101.7 | v_dir=0.545  lr=9.8e-04
+13:49:07 INFO __main__:   fold11 ep 30  L1=0.2554 CE=0.592 dir_acc=0.727 | train=63.3 val=110.4 test=101.5 best=101.7 | v_dir=0.512  lr=9.7e-04
+13:49:07 INFO __main__:   fold11 ep 35  L1=0.2343 CE=0.534 dir_acc=0.761 | train=61.0 val=111.1 test=106.8 best=101.7 | v_dir=0.440  lr=9.5e-04
+13:49:07 INFO __main__:   fold11 ep 40  L1=0.2191 CE=0.494 dir_acc=0.780 | train=58.4 val=121.6 test=113.1 best=101.7 | v_dir=0.476  lr=9.4e-04
+13:49:07 INFO __main__:   fold11 ep 45  L1=0.2233 CE=0.446 dir_acc=0.799 | train=51.5 val=110.5 test=104.4 best=101.7 | v_dir=0.500  lr=9.1e-04
+13:49:08 INFO __main__:   fold11 ep 50  L1=0.1993 CE=0.417 dir_acc=0.817 | train=46.8 val=112.5 test=109.6 best=101.7 | v_dir=0.473  lr=8.9e-04
+13:49:08 INFO __main__:   fold11 ep 55  L1=0.1781 CE=0.358 dir_acc=0.844 | train=47.5 val=112.2 test=103.0 best=101.7 | v_dir=0.479  lr=8.6e-04
+13:49:08 INFO __main__:   fold11 ep 60  L1=0.1743 CE=0.338 dir_acc=0.857 | train=51.3 val=125.5 test=111.8 best=101.7 | v_dir=0.449  lr=8.3e-04
+13:49:09 INFO __main__:   fold11 ep 65  L1=0.1726 CE=0.311 dir_acc=0.874 | train=41.3 val=125.1 test=115.9 best=101.7 | v_dir=0.440  lr=8.0e-04
+13:49:09 INFO __main__:   fold11 ep 70  L1=0.1777 CE=0.271 dir_acc=0.886 | train=41.2 val=116.3 test=107.8 best=101.7 | v_dir=0.491  lr=7.7e-04
+13:49:09 INFO __main__:   fold11 ep 75  L1=0.1528 CE=0.247 dir_acc=0.899 | train=39.9 val=113.8 test=109.8 best=101.7 | v_dir=0.440  lr=7.3e-04
+13:49:09 INFO __main__:   fold11 ep 80  L1=0.1541 CE=0.210 dir_acc=0.917 | train=37.1 val=118.9 test=111.4 best=101.7 | v_dir=0.485  lr=6.9e-04
+13:49:10 INFO __main__:   fold11 ep 85  L1=0.1515 CE=0.200 dir_acc=0.922 | train=33.8 val=121.0 test=117.9 best=101.7 | v_dir=0.464  lr=6.5e-04
+13:49:10 INFO __main__:   fold11 ep 90  L1=0.1470 CE=0.184 dir_acc=0.925 | train=33.5 val=125.9 test=113.5 best=101.7 | v_dir=0.452  lr=6.2e-04
+13:49:10 INFO __main__:   fold11 ep 95  L1=0.1418 CE=0.158 dir_acc=0.939 | train=32.9 val=123.5 test=118.3 best=101.7 | v_dir=0.491  lr=5.7e-04
+13:49:10 INFO __main__:   fold11 ep100  L1=0.1249 CE=0.138 dir_acc=0.946 | train=27.9 val=128.9 test=118.9 best=101.7 | v_dir=0.473  lr=5.3e-04
+13:49:11 INFO __main__:   fold11 ep105  L1=0.1383 CE=0.130 dir_acc=0.949 | train=29.1 val=123.7 test=114.3 best=101.7 | v_dir=0.491  lr=4.9e-04
+13:49:11 INFO __main__:   fold11 ep110  L1=0.1236 CE=0.117 dir_acc=0.956 | train=27.6 val=131.8 test=119.8 best=101.7 | v_dir=0.473  lr=4.5e-04
+13:49:11 INFO __main__:   fold11 ep115  L1=0.1216 CE=0.099 dir_acc=0.964 | train=25.3 val=134.6 test=119.5 best=101.7 | v_dir=0.497  lr=4.1e-04
+13:49:11 INFO __main__:   fold11 ep120  L1=0.1184 CE=0.083 dir_acc=0.969 | train=24.8 val=126.6 test=114.2 best=101.7 | v_dir=0.494  lr=3.7e-04
+13:49:12 INFO __main__:   fold11 ep125  L1=0.1223 CE=0.078 dir_acc=0.972 | train=25.0 val=125.3 test=120.4 best=101.7 | v_dir=0.467  lr=3.3e-04
+13:49:12 INFO __main__:   fold11 ep130  L1=0.1180 CE=0.072 dir_acc=0.973 | train=22.9 val=129.2 test=117.2 best=101.7 | v_dir=0.467  lr=2.9e-04
+13:49:12 INFO __main__:   fold11 ep135  L1=0.1145 CE=0.058 dir_acc=0.979 | train=21.9 val=133.4 test=116.9 best=101.7 | v_dir=0.476  lr=2.6e-04
+13:49:13 INFO __main__:   fold11 ep140  L1=0.1087 CE=0.056 dir_acc=0.980 | train=20.8 val=132.7 test=119.2 best=101.7 | v_dir=0.470  lr=2.2e-04
+13:49:13 INFO __main__:   fold11 ep145  L1=0.1060 CE=0.046 dir_acc=0.987 | train=20.4 val=133.8 test=121.7 best=101.7 | v_dir=0.452  lr=1.9e-04
+13:49:13 INFO __main__:   fold11 ep150  L1=0.1057 CE=0.040 dir_acc=0.988 | train=19.5 val=132.4 test=119.9 best=101.7 | v_dir=0.491  lr=1.6e-04
+13:49:13 INFO __main__:   fold11 ep155  L1=0.1059 CE=0.039 dir_acc=0.988 | train=17.7 val=129.5 test=119.6 best=101.7 | v_dir=0.455  lr=1.3e-04
+13:49:14 INFO __main__:   fold11 ep160  L1=0.1119 CE=0.045 dir_acc=0.984 | train=17.5 val=134.8 test=120.3 best=101.7 | v_dir=0.461  lr=1.0e-04
+13:49:14 INFO __main__:   fold11 ep165  L1=0.1015 CE=0.032 dir_acc=0.990 | train=17.0 val=131.2 test=121.5 best=101.7 | v_dir=0.470  lr=7.8e-05
+13:49:14 INFO __main__:   fold11 ep170  L1=0.0963 CE=0.028 dir_acc=0.992 | train=16.0 val=131.4 test=120.0 best=101.7 | v_dir=0.461  lr=5.7e-05
+13:49:14 INFO __main__:   fold11 ep175  L1=0.0995 CE=0.031 dir_acc=0.991 | train=15.8 val=133.6 test=120.6 best=101.7 | v_dir=0.467  lr=4.0e-05
+13:49:15 INFO __main__:   fold11 ep180  L1=0.1039 CE=0.029 dir_acc=0.991 | train=15.5 val=132.8 test=120.8 best=101.7 | v_dir=0.464  lr=2.5e-05
+13:49:15 INFO __main__:   fold11 ep185  L1=0.1009 CE=0.025 dir_acc=0.994 | train=15.0 val=130.9 test=121.2 best=101.7 | v_dir=0.467  lr=1.4e-05
+13:49:15 INFO __main__:   fold11 ep190  L1=0.1011 CE=0.028 dir_acc=0.992 | train=15.2 val=133.9 test=121.7 best=101.7 | v_dir=0.470  lr=6.5e-06
+13:49:15 INFO __main__:   fold11 ep195  L1=0.1088 CE=0.030 dir_acc=0.991 | train=15.1 val=132.8 test=120.8 best=101.7 | v_dir=0.461  lr=2.1e-06
+13:49:16 INFO __main__:   fold11 ep199  L1=0.1121 CE=0.030 dir_acc=0.991 | train=14.6 val=132.7 test=121.2 best=101.7 | v_dir=0.470  lr=1.0e-06
+13:49:16 INFO __main__: Fold 11 done | val=101.7  test_MAE=121.2  test_RMSE=167.0  dir=0.381
+13:49:16 INFO __main__: Fold 12 | train=365 days (2025-03-01~2026-03-01) val=14 test=7 | test 2026-03-15 ~ 2026-03-21
+13:49:16 INFO __main__:   fold12 ep  0  L1=0.6953 CE=1.079 dir_acc=0.388 | train=199.1 val=170.2 test=185.2 best=170.2 | v_dir=0.408  lr=1.9e-04
+13:49:16 INFO __main__:   fold12 ep  5  L1=0.4124 CE=0.894 dir_acc=0.560 | train=109.9 val=103.1 test=94.0 best=103.1 | v_dir=0.518  lr=6.4e-04
+13:49:16 INFO __main__:   fold12 ep 10  L1=0.3742 CE=0.820 dir_acc=0.601 | train=103.5 val=108.8 test=100.7 best=103.1 | v_dir=0.503  lr=1.0e-03
+13:49:17 INFO __main__:   fold12 ep 15  L1=0.3308 CE=0.760 dir_acc=0.637 | train=89.5 val=103.5 test=93.0 best=103.1 | v_dir=0.497  lr=1.0e-03
+13:49:17 INFO __main__:   fold12 ep 20  L1=0.2940 CE=0.696 dir_acc=0.676 | train=76.0 val=114.7 test=100.7 best=103.1 | v_dir=0.485  lr=9.9e-04
+13:49:17 INFO __main__:   fold12 ep 25  L1=0.2863 CE=0.638 dir_acc=0.701 | train=79.6 val=122.4 test=112.4 best=103.1 | v_dir=0.464  lr=9.8e-04
+13:49:18 INFO __main__:   fold12 ep 30  L1=0.2488 CE=0.582 dir_acc=0.733 | train=65.7 val=116.7 test=113.0 best=103.1 | v_dir=0.446  lr=9.7e-04
+13:49:18 INFO __main__:   fold12 ep 35  L1=0.2280 CE=0.525 dir_acc=0.763 | train=57.3 val=118.2 test=104.4 best=103.1 | v_dir=0.473  lr=9.5e-04
+13:49:18 INFO __main__:   fold12 ep 40  L1=0.2288 CE=0.490 dir_acc=0.781 | train=57.9 val=111.6 test=110.4 best=103.1 | v_dir=0.455  lr=9.4e-04
+13:49:18 INFO __main__:   fold12 ep 45  L1=0.2043 CE=0.448 dir_acc=0.798 | train=51.4 val=112.3 test=115.6 best=103.1 | v_dir=0.438  lr=9.1e-04
+13:49:19 INFO __main__:   fold12 ep 50  L1=0.1924 CE=0.416 dir_acc=0.818 | train=45.8 val=117.7 test=110.7 best=103.1 | v_dir=0.491  lr=8.9e-04
+13:49:19 INFO __main__:   fold12 ep 55  L1=0.1925 CE=0.364 dir_acc=0.842 | train=45.4 val=112.1 test=134.1 best=103.1 | v_dir=0.464  lr=8.6e-04
+13:49:19 INFO __main__:   fold12 ep 60  L1=0.1751 CE=0.353 dir_acc=0.849 | train=42.6 val=114.7 test=109.9 best=103.1 | v_dir=0.488  lr=8.3e-04
+13:49:19 INFO __main__:   fold12 ep 65  L1=0.1732 CE=0.317 dir_acc=0.866 | train=39.2 val=113.9 test=114.8 best=103.1 | v_dir=0.458  lr=8.0e-04
+13:49:20 INFO __main__:   fold12 ep 70  L1=0.1662 CE=0.268 dir_acc=0.889 | train=37.9 val=117.2 test=114.2 best=103.1 | v_dir=0.494  lr=7.7e-04
+13:49:20 INFO __main__:   fold12 ep 75  L1=0.1571 CE=0.250 dir_acc=0.897 | train=40.5 val=125.7 test=142.3 best=103.1 | v_dir=0.509  lr=7.3e-04
+13:49:20 INFO __main__:   fold12 ep 80  L1=0.1539 CE=0.227 dir_acc=0.903 | train=38.3 val=125.0 test=134.0 best=103.1 | v_dir=0.464  lr=6.9e-04
+13:49:21 INFO __main__:   fold12 ep 85  L1=0.1514 CE=0.204 dir_acc=0.916 | train=34.0 val=114.9 test=102.3 best=103.1 | v_dir=0.455  lr=6.5e-04
+13:49:21 INFO __main__:   fold12 ep 90  L1=0.1407 CE=0.184 dir_acc=0.926 | train=33.1 val=121.3 test=117.5 best=103.1 | v_dir=0.461  lr=6.2e-04
+13:49:21 INFO __main__:   fold12 ep 95  L1=0.1478 CE=0.166 dir_acc=0.934 | train=30.7 val=113.1 test=110.1 best=103.1 | v_dir=0.488  lr=5.7e-04
+13:49:21 INFO __main__:   fold12 ep100  L1=0.1452 CE=0.155 dir_acc=0.940 | train=29.4 val=120.2 test=119.6 best=103.1 | v_dir=0.482  lr=5.3e-04
+13:49:22 INFO __main__:   fold12 ep105  L1=0.1315 CE=0.135 dir_acc=0.948 | train=26.9 val=120.3 test=115.3 best=103.1 | v_dir=0.485  lr=4.9e-04
+13:49:22 INFO __main__:   fold12 ep110  L1=0.1345 CE=0.115 dir_acc=0.956 | train=28.0 val=119.0 test=114.3 best=103.1 | v_dir=0.473  lr=4.5e-04
+13:49:22 INFO __main__:   fold12 ep115  L1=0.1316 CE=0.112 dir_acc=0.958 | train=26.7 val=123.7 test=124.2 best=103.1 | v_dir=0.494  lr=4.1e-04
+13:49:22 INFO __main__:   fold12 ep120  L1=0.1280 CE=0.089 dir_acc=0.969 | train=26.1 val=125.6 test=111.5 best=103.1 | v_dir=0.515  lr=3.7e-04
+13:49:23 INFO __main__:   fold12 ep125  L1=0.1178 CE=0.076 dir_acc=0.973 | train=24.7 val=125.0 test=128.6 best=103.1 | v_dir=0.503  lr=3.3e-04
+13:49:23 INFO __main__:   fold12 ep130  L1=0.1246 CE=0.079 dir_acc=0.973 | train=23.7 val=124.0 test=113.2 best=103.1 | v_dir=0.479  lr=2.9e-04
+13:49:23 INFO __main__:   fold12 ep135  L1=0.1162 CE=0.066 dir_acc=0.977 | train=22.0 val=124.0 test=123.7 best=103.1 | v_dir=0.497  lr=2.6e-04
+13:49:24 INFO __main__:   fold12 ep140  L1=0.1127 CE=0.052 dir_acc=0.983 | train=21.3 val=122.9 test=118.5 best=103.1 | v_dir=0.512  lr=2.2e-04
+13:49:24 INFO __main__:   fold12 ep145  L1=0.1100 CE=0.053 dir_acc=0.981 | train=20.3 val=124.5 test=119.4 best=103.1 | v_dir=0.488  lr=1.9e-04
+13:49:24 INFO __main__:   fold12 ep150  L1=0.1073 CE=0.044 dir_acc=0.985 | train=19.4 val=122.1 test=117.5 best=103.1 | v_dir=0.479  lr=1.6e-04
+13:49:24 INFO __main__:   fold12 ep155  L1=0.1024 CE=0.037 dir_acc=0.988 | train=17.9 val=123.2 test=120.6 best=103.1 | v_dir=0.497  lr=1.3e-04
+13:49:25 INFO __main__:   fold12 ep160  L1=0.1021 CE=0.039 dir_acc=0.987 | train=17.6 val=124.0 test=121.4 best=103.1 | v_dir=0.503  lr=1.0e-04
+13:49:25 INFO __main__:   fold12 ep165  L1=0.1069 CE=0.032 dir_acc=0.991 | train=17.8 val=124.4 test=115.1 best=103.1 | v_dir=0.509  lr=7.8e-05
+13:49:25 INFO __main__:   fold12 ep170  L1=0.1082 CE=0.029 dir_acc=0.991 | train=16.1 val=125.0 test=121.0 best=103.1 | v_dir=0.515  lr=5.7e-05
+13:49:25 INFO __main__:   fold12 ep175  L1=0.0985 CE=0.029 dir_acc=0.992 | train=16.0 val=124.6 test=120.4 best=103.1 | v_dir=0.512  lr=4.0e-05
+13:49:26 INFO __main__:   fold12 ep180  L1=0.1009 CE=0.028 dir_acc=0.992 | train=15.3 val=126.0 test=120.2 best=103.1 | v_dir=0.503  lr=2.5e-05
+13:49:26 INFO __main__:   fold12 ep185  L1=0.0968 CE=0.027 dir_acc=0.992 | train=15.3 val=124.9 test=115.8 best=103.1 | v_dir=0.503  lr=1.4e-05
+13:49:26 INFO __main__:   fold12 ep190  L1=0.0942 CE=0.027 dir_acc=0.992 | train=14.9 val=124.4 test=120.4 best=103.1 | v_dir=0.503  lr=6.5e-06
+13:49:26 INFO __main__:   fold12 ep195  L1=0.0985 CE=0.029 dir_acc=0.992 | train=14.7 val=124.5 test=118.0 best=103.1 | v_dir=0.509  lr=2.1e-06
+13:49:27 INFO __main__:   fold12 ep199  L1=0.0991 CE=0.029 dir_acc=0.991 | train=14.7 val=124.6 test=117.5 best=103.1 | v_dir=0.506  lr=1.0e-06
+13:49:27 INFO __main__: Fold 12 done | val=103.1  test_MAE=117.5  test_RMSE=155.4  dir=0.530
+13:49:27 INFO __main__: Fold 13 | train=365 days (2025-03-08~2026-03-08) val=14 test=7 | test 2026-03-22 ~ 2026-03-28
+13:49:27 INFO __main__:   fold13 ep  0  L1=0.7068 CE=1.078 dir_acc=0.394 | train=197.0 val=179.6 test=167.9 best=179.6 | v_dir=0.458  lr=1.9e-04
+13:49:27 INFO __main__:   fold13 ep  5  L1=0.4458 CE=0.892 dir_acc=0.556 | train=116.2 val=120.5 test=103.5 best=100.4 | v_dir=0.583  lr=6.4e-04
+13:49:27 INFO __main__:   fold13 ep 10  L1=0.4063 CE=0.825 dir_acc=0.595 | train=111.0 val=96.8 test=105.3 best=96.8 | v_dir=0.542  lr=1.0e-03
+13:49:28 INFO __main__:   fold13 ep 15  L1=0.3332 CE=0.761 dir_acc=0.636 | train=86.3 val=108.9 test=102.4 best=96.0 | v_dir=0.482  lr=1.0e-03
+13:49:28 INFO __main__:   fold13 ep 20  L1=0.2990 CE=0.703 dir_acc=0.670 | train=77.4 val=107.6 test=101.6 best=96.0 | v_dir=0.554  lr=9.9e-04
+13:49:28 INFO __main__:   fold13 ep 25  L1=0.2724 CE=0.644 dir_acc=0.701 | train=79.0 val=111.6 test=108.9 best=96.0 | v_dir=0.491  lr=9.8e-04
+13:49:28 INFO __main__:   fold13 ep 30  L1=0.2546 CE=0.611 dir_acc=0.715 | train=63.7 val=105.3 test=102.5 best=96.0 | v_dir=0.515  lr=9.7e-04
+13:49:29 INFO __main__:   fold13 ep 35  L1=0.2344 CE=0.541 dir_acc=0.753 | train=58.5 val=97.1 test=105.5 best=96.0 | v_dir=0.521  lr=9.5e-04
+13:49:29 INFO __main__:   fold13 ep 40  L1=0.2216 CE=0.486 dir_acc=0.785 | train=59.5 val=103.1 test=107.3 best=96.0 | v_dir=0.518  lr=9.4e-04
+13:49:29 INFO __main__:   fold13 ep 45  L1=0.2044 CE=0.447 dir_acc=0.801 | train=49.8 val=107.8 test=100.0 best=96.0 | v_dir=0.497  lr=9.1e-04
+13:49:30 INFO __main__:   fold13 ep 50  L1=0.1988 CE=0.434 dir_acc=0.812 | train=46.9 val=108.9 test=101.4 best=96.0 | v_dir=0.497  lr=8.9e-04
+13:49:30 INFO __main__:   fold13 ep 55  L1=0.1905 CE=0.377 dir_acc=0.840 | train=46.7 val=95.2 test=104.1 best=95.2 | v_dir=0.506  lr=8.6e-04
+13:49:30 INFO __main__:   fold13 ep 60  L1=0.1914 CE=0.353 dir_acc=0.851 | train=45.0 val=110.4 test=107.5 best=95.2 | v_dir=0.521  lr=8.3e-04
+13:49:30 INFO __main__:   fold13 ep 65  L1=0.1752 CE=0.323 dir_acc=0.865 | train=39.6 val=115.6 test=111.0 best=95.2 | v_dir=0.488  lr=8.0e-04
+13:49:31 INFO __main__:   fold13 ep 70  L1=0.1703 CE=0.294 dir_acc=0.875 | train=38.1 val=104.4 test=112.5 best=95.2 | v_dir=0.485  lr=7.7e-04
+13:49:31 INFO __main__:   fold13 ep 75  L1=0.1697 CE=0.259 dir_acc=0.894 | train=39.6 val=102.5 test=106.0 best=95.2 | v_dir=0.515  lr=7.3e-04
+13:49:31 INFO __main__:   fold13 ep 80  L1=0.1593 CE=0.235 dir_acc=0.902 | train=38.1 val=97.4 test=112.7 best=95.2 | v_dir=0.500  lr=6.9e-04
+13:49:31 INFO __main__:   fold13 ep 85  L1=0.1578 CE=0.226 dir_acc=0.906 | train=33.4 val=103.2 test=107.5 best=95.2 | v_dir=0.482  lr=6.5e-04
+13:49:32 INFO __main__:   fold13 ep 90  L1=0.1496 CE=0.192 dir_acc=0.921 | train=32.5 val=101.7 test=104.2 best=95.2 | v_dir=0.503  lr=6.2e-04
+13:49:32 INFO __main__:   fold13 ep 95  L1=0.1391 CE=0.161 dir_acc=0.937 | train=30.4 val=98.4 test=112.6 best=95.2 | v_dir=0.500  lr=5.7e-04
+13:49:32 INFO __main__:   fold13 ep100  L1=0.1376 CE=0.150 dir_acc=0.940 | train=29.3 val=104.1 test=108.4 best=95.2 | v_dir=0.509  lr=5.3e-04
+13:49:33 INFO __main__:   fold13 ep105  L1=0.1419 CE=0.135 dir_acc=0.948 | train=27.7 val=99.8 test=108.0 best=95.2 | v_dir=0.539  lr=4.9e-04
+13:49:33 INFO __main__:   fold13 ep110  L1=0.1358 CE=0.129 dir_acc=0.949 | train=28.1 val=98.2 test=110.6 best=95.2 | v_dir=0.512  lr=4.5e-04
+13:49:33 INFO __main__:   fold13 ep115  L1=0.1288 CE=0.105 dir_acc=0.960 | train=27.6 val=103.5 test=106.0 best=95.2 | v_dir=0.509  lr=4.1e-04
+13:49:33 INFO __main__:   fold13 ep120  L1=0.1247 CE=0.090 dir_acc=0.967 | train=24.8 val=111.9 test=109.0 best=95.2 | v_dir=0.521  lr=3.7e-04
+13:49:34 INFO __main__:   fold13 ep125  L1=0.1247 CE=0.082 dir_acc=0.970 | train=24.4 val=101.8 test=112.7 best=95.2 | v_dir=0.521  lr=3.3e-04
+13:49:34 INFO __main__:   fold13 ep130  L1=0.1122 CE=0.062 dir_acc=0.978 | train=21.3 val=101.4 test=110.1 best=95.2 | v_dir=0.509  lr=2.9e-04
+13:49:34 INFO __main__:   fold13 ep135  L1=0.1099 CE=0.064 dir_acc=0.975 | train=21.8 val=102.6 test=114.2 best=95.2 | v_dir=0.461  lr=2.6e-04
+13:49:34 INFO __main__:   fold13 ep140  L1=0.1174 CE=0.059 dir_acc=0.978 | train=21.5 val=101.4 test=111.0 best=95.2 | v_dir=0.500  lr=2.2e-04
+13:49:35 INFO __main__:   fold13 ep145  L1=0.1152 CE=0.048 dir_acc=0.984 | train=21.6 val=103.6 test=111.6 best=95.2 | v_dir=0.512  lr=1.9e-04
+13:49:35 INFO __main__:   fold13 ep150  L1=0.1054 CE=0.048 dir_acc=0.985 | train=18.9 val=104.2 test=110.2 best=95.2 | v_dir=0.506  lr=1.6e-04
+13:49:35 INFO __main__:   fold13 ep155  L1=0.1073 CE=0.041 dir_acc=0.985 | train=18.5 val=108.5 test=109.3 best=95.2 | v_dir=0.494  lr=1.3e-04
+13:49:35 INFO __main__:   fold13 ep160  L1=0.1047 CE=0.038 dir_acc=0.988 | train=17.6 val=107.9 test=109.9 best=95.2 | v_dir=0.509  lr=1.0e-04
+13:49:36 INFO __main__:   fold13 ep165  L1=0.1063 CE=0.037 dir_acc=0.988 | train=17.1 val=104.3 test=110.1 best=95.2 | v_dir=0.509  lr=7.8e-05
+13:49:36 INFO __main__:   fold13 ep170  L1=0.0966 CE=0.033 dir_acc=0.990 | train=16.1 val=106.5 test=107.4 best=95.2 | v_dir=0.500  lr=5.7e-05
+13:49:36 INFO __main__:   fold13 ep175  L1=0.0994 CE=0.029 dir_acc=0.992 | train=15.8 val=105.7 test=109.8 best=95.2 | v_dir=0.494  lr=4.0e-05
+13:49:37 INFO __main__:   fold13 ep180  L1=0.1020 CE=0.029 dir_acc=0.993 | train=15.4 val=105.7 test=107.6 best=95.2 | v_dir=0.518  lr=2.5e-05
+13:49:37 INFO __main__:   fold13 ep185  L1=0.0991 CE=0.028 dir_acc=0.991 | train=15.1 val=104.4 test=108.8 best=95.2 | v_dir=0.512  lr=1.4e-05
+13:49:37 INFO __main__:   fold13 ep190  L1=0.1015 CE=0.027 dir_acc=0.993 | train=15.0 val=106.6 test=108.3 best=95.2 | v_dir=0.503  lr=6.5e-06
+13:49:37 INFO __main__:   fold13 ep195  L1=0.0997 CE=0.031 dir_acc=0.991 | train=14.7 val=104.4 test=109.5 best=95.2 | v_dir=0.506  lr=2.1e-06
+13:49:38 INFO __main__:   fold13 ep199  L1=0.1051 CE=0.030 dir_acc=0.991 | train=15.1 val=107.2 test=108.7 best=95.2 | v_dir=0.512  lr=1.0e-06
+13:49:38 INFO __main__: Fold 13 done | val=95.2  test_MAE=108.7  test_RMSE=146.2  dir=0.482
+13:49:38 INFO __main__: Fold 14 | train=365 days (2025-03-15~2026-03-15) val=14 test=7 | test 2026-03-29 ~ 2026-04-04
+13:49:38 INFO __main__:   fold14 ep  0  L1=0.7013 CE=1.078 dir_acc=0.390 | train=197.3 val=175.4 test=186.9 best=175.4 | v_dir=0.432  lr=1.9e-04
+13:49:38 INFO __main__:   fold14 ep  5  L1=0.4150 CE=0.890 dir_acc=0.556 | train=109.6 val=98.4 test=108.8 best=98.4 | v_dir=0.583  lr=6.4e-04
+13:49:38 INFO __main__:   fold14 ep 10  L1=0.3859 CE=0.830 dir_acc=0.586 | train=104.9 val=109.1 test=93.5 best=98.4 | v_dir=0.551  lr=1.0e-03
+13:49:39 INFO __main__:   fold14 ep 15  L1=0.3404 CE=0.775 dir_acc=0.628 | train=86.4 val=107.6 test=101.5 best=98.4 | v_dir=0.571  lr=1.0e-03
+13:49:39 INFO __main__:   fold14 ep 20  L1=0.2931 CE=0.715 dir_acc=0.664 | train=89.8 val=108.2 test=117.8 best=98.1 | v_dir=0.494  lr=9.9e-04
+13:49:39 INFO __main__:   fold14 ep 25  L1=0.2735 CE=0.660 dir_acc=0.690 | train=68.5 val=102.7 test=110.6 best=98.1 | v_dir=0.560  lr=9.8e-04
+13:49:39 INFO __main__:   fold14 ep 30  L1=0.2570 CE=0.609 dir_acc=0.720 | train=60.1 val=105.6 test=108.2 best=98.1 | v_dir=0.545  lr=9.7e-04
+13:49:40 INFO __main__:   fold14 ep 35  L1=0.2289 CE=0.531 dir_acc=0.760 | train=55.7 val=102.7 test=107.2 best=98.1 | v_dir=0.464  lr=9.5e-04
+13:49:40 INFO __main__:   fold14 ep 40  L1=0.2257 CE=0.492 dir_acc=0.781 | train=56.1 val=107.3 test=109.6 best=98.1 | v_dir=0.446  lr=9.4e-04
+13:49:40 INFO __main__:   fold14 ep 45  L1=0.2140 CE=0.448 dir_acc=0.800 | train=52.5 val=105.8 test=100.3 best=98.1 | v_dir=0.509  lr=9.1e-04
+13:49:41 INFO __main__:   fold14 ep 50  L1=0.2012 CE=0.423 dir_acc=0.814 | train=51.3 val=114.5 test=103.0 best=98.1 | v_dir=0.500  lr=8.9e-04
+13:49:41 INFO __main__:   fold14 ep 55  L1=0.1879 CE=0.376 dir_acc=0.837 | train=45.9 val=119.9 test=111.4 best=98.1 | v_dir=0.479  lr=8.6e-04
+13:49:41 INFO __main__:   fold14 ep 60  L1=0.1866 CE=0.344 dir_acc=0.851 | train=45.1 val=112.4 test=108.0 best=98.1 | v_dir=0.500  lr=8.3e-04
+13:49:41 INFO __main__:   fold14 ep 65  L1=0.1779 CE=0.318 dir_acc=0.864 | train=44.6 val=117.4 test=113.0 best=98.1 | v_dir=0.438  lr=8.0e-04
+13:49:42 INFO __main__:   fold14 ep 70  L1=0.1628 CE=0.285 dir_acc=0.884 | train=40.1 val=105.8 test=109.4 best=98.1 | v_dir=0.488  lr=7.7e-04
+13:49:42 INFO __main__:   fold14 ep 75  L1=0.1696 CE=0.269 dir_acc=0.889 | train=42.3 val=115.8 test=129.0 best=98.1 | v_dir=0.452  lr=7.3e-04
+13:49:42 INFO __main__:   fold14 ep 80  L1=0.1584 CE=0.243 dir_acc=0.903 | train=36.0 val=109.2 test=105.1 best=98.1 | v_dir=0.464  lr=6.9e-04
+13:49:42 INFO __main__:   fold14 ep 85  L1=0.1475 CE=0.213 dir_acc=0.912 | train=34.0 val=114.7 test=117.7 best=98.1 | v_dir=0.503  lr=6.5e-04
+13:49:43 INFO __main__:   fold14 ep 90  L1=0.1466 CE=0.205 dir_acc=0.917 | train=31.3 val=105.0 test=112.8 best=98.1 | v_dir=0.497  lr=6.2e-04
+13:49:43 INFO __main__:   fold14 ep 95  L1=0.1446 CE=0.169 dir_acc=0.930 | train=31.6 val=102.8 test=113.0 best=98.1 | v_dir=0.479  lr=5.7e-04
+13:49:43 INFO __main__:   fold14 ep100  L1=0.1399 CE=0.151 dir_acc=0.940 | train=29.8 val=108.4 test=111.5 best=98.1 | v_dir=0.440  lr=5.3e-04
+13:49:44 INFO __main__:   fold14 ep105  L1=0.1375 CE=0.134 dir_acc=0.947 | train=28.1 val=104.7 test=105.7 best=98.1 | v_dir=0.464  lr=4.9e-04
+13:49:44 INFO __main__:   fold14 ep110  L1=0.1436 CE=0.132 dir_acc=0.950 | train=28.9 val=108.0 test=114.4 best=98.1 | v_dir=0.464  lr=4.5e-04
+13:49:44 INFO __main__:   fold14 ep115  L1=0.1314 CE=0.106 dir_acc=0.961 | train=25.5 val=106.9 test=111.4 best=98.1 | v_dir=0.455  lr=4.1e-04
+13:49:44 INFO __main__:   fold14 ep120  L1=0.1243 CE=0.096 dir_acc=0.964 | train=25.0 val=108.8 test=111.8 best=98.1 | v_dir=0.440  lr=3.7e-04
+13:49:45 INFO __main__:   fold14 ep125  L1=0.1187 CE=0.080 dir_acc=0.969 | train=25.6 val=109.9 test=115.1 best=98.1 | v_dir=0.449  lr=3.3e-04
+13:49:45 INFO __main__:   fold14 ep130  L1=0.1178 CE=0.077 dir_acc=0.972 | train=23.2 val=108.5 test=109.3 best=98.1 | v_dir=0.443  lr=2.9e-04
+13:49:45 INFO __main__:   fold14 ep135  L1=0.1210 CE=0.062 dir_acc=0.979 | train=22.5 val=109.1 test=108.4 best=98.1 | v_dir=0.458  lr=2.6e-04
+13:49:45 INFO __main__:   fold14 ep140  L1=0.1118 CE=0.053 dir_acc=0.983 | train=21.0 val=110.2 test=107.1 best=98.1 | v_dir=0.455  lr=2.2e-04
+13:49:46 INFO __main__:   fold14 ep145  L1=0.1123 CE=0.048 dir_acc=0.984 | train=21.7 val=111.9 test=107.7 best=98.1 | v_dir=0.470  lr=1.9e-04
+13:49:46 INFO __main__:   fold14 ep150  L1=0.1105 CE=0.047 dir_acc=0.985 | train=19.4 val=109.1 test=109.3 best=98.1 | v_dir=0.464  lr=1.6e-04
+13:49:46 INFO __main__:   fold14 ep155  L1=0.1022 CE=0.041 dir_acc=0.987 | train=18.4 val=108.9 test=110.9 best=98.1 | v_dir=0.458  lr=1.3e-04
+13:49:47 INFO __main__:   fold14 ep160  L1=0.1009 CE=0.034 dir_acc=0.990 | train=17.4 val=107.4 test=110.6 best=98.1 | v_dir=0.458  lr=1.0e-04
+13:49:47 INFO __main__:   fold14 ep165  L1=0.0994 CE=0.032 dir_acc=0.990 | train=16.4 val=107.4 test=110.7 best=98.1 | v_dir=0.458  lr=7.8e-05
+13:49:47 INFO __main__:   fold14 ep170  L1=0.1073 CE=0.033 dir_acc=0.990 | train=16.5 val=106.0 test=110.9 best=98.1 | v_dir=0.449  lr=5.7e-05
+13:49:47 INFO __main__:   fold14 ep175  L1=0.1038 CE=0.029 dir_acc=0.991 | train=16.4 val=110.7 test=112.9 best=98.1 | v_dir=0.452  lr=4.0e-05
+13:49:48 INFO __main__:   fold14 ep180  L1=0.1018 CE=0.028 dir_acc=0.992 | train=15.3 val=108.6 test=111.4 best=98.1 | v_dir=0.452  lr=2.5e-05
+13:49:48 INFO __main__:   fold14 ep185  L1=0.0980 CE=0.027 dir_acc=0.992 | train=15.2 val=110.1 test=112.4 best=98.1 | v_dir=0.452  lr=1.4e-05
+13:49:48 INFO __main__:   fold14 ep190  L1=0.0935 CE=0.027 dir_acc=0.991 | train=14.9 val=109.0 test=112.4 best=98.1 | v_dir=0.452  lr=6.5e-06
+13:49:48 INFO __main__:   fold14 ep195  L1=0.0969 CE=0.030 dir_acc=0.991 | train=14.8 val=108.7 test=111.6 best=98.1 | v_dir=0.461  lr=2.1e-06
+13:49:49 INFO __main__:   fold14 ep199  L1=0.0997 CE=0.027 dir_acc=0.992 | train=14.8 val=108.8 test=112.2 best=98.1 | v_dir=0.452  lr=1.0e-06
+13:49:49 INFO __main__: Fold 14 done | val=98.1  test_MAE=112.2  test_RMSE=146.7  dir=0.548
+13:49:49 INFO __main__: Fold 15 | train=365 days (2025-03-22~2026-03-22) val=14 test=7 | test 2026-04-05 ~ 2026-04-11
+13:49:49 INFO __main__:   fold15 ep  0  L1=0.6962 CE=1.079 dir_acc=0.398 | train=197.8 val=177.1 test=177.9 best=177.1 | v_dir=0.402  lr=1.9e-04
+13:49:49 INFO __main__:   fold15 ep  5  L1=0.4081 CE=0.901 dir_acc=0.546 | train=114.1 val=103.2 test=103.7 best=103.2 | v_dir=0.545  lr=6.4e-04
+13:49:49 INFO __main__:   fold15 ep 10  L1=0.3945 CE=0.838 dir_acc=0.584 | train=102.9 val=111.8 test=105.7 best=97.7 | v_dir=0.565  lr=1.0e-03
+13:49:50 INFO __main__:   fold15 ep 15  L1=0.3242 CE=0.772 dir_acc=0.623 | train=79.0 val=100.5 test=103.9 best=96.9 | v_dir=0.565  lr=1.0e-03
+13:49:50 INFO __main__:   fold15 ep 20  L1=0.3186 CE=0.703 dir_acc=0.668 | train=80.0 val=101.2 test=103.8 best=92.5 | v_dir=0.577  lr=9.9e-04
+13:49:50 INFO __main__:   fold15 ep 25  L1=0.2732 CE=0.652 dir_acc=0.693 | train=68.1 val=96.4 test=93.1 best=92.5 | v_dir=0.527  lr=9.8e-04
+13:49:50 INFO __main__:   fold15 ep 30  L1=0.2513 CE=0.602 dir_acc=0.730 | train=64.6 val=103.3 test=103.8 best=91.1 | v_dir=0.512  lr=9.7e-04
+13:49:51 INFO __main__:   fold15 ep 35  L1=0.2303 CE=0.531 dir_acc=0.761 | train=58.8 val=100.2 test=96.4 best=91.1 | v_dir=0.548  lr=9.5e-04
+13:49:51 INFO __main__:   fold15 ep 40  L1=0.2175 CE=0.508 dir_acc=0.773 | train=52.3 val=92.4 test=105.9 best=91.1 | v_dir=0.488  lr=9.4e-04
+13:49:51 INFO __main__:   fold15 ep 45  L1=0.2031 CE=0.449 dir_acc=0.801 | train=47.9 val=104.5 test=101.6 best=91.1 | v_dir=0.509  lr=9.1e-04
+13:49:52 INFO __main__:   fold15 ep 50  L1=0.2059 CE=0.416 dir_acc=0.821 | train=50.7 val=101.8 test=97.0 best=91.1 | v_dir=0.506  lr=8.9e-04
+13:49:52 INFO __main__:   fold15 ep 55  L1=0.1996 CE=0.390 dir_acc=0.833 | train=49.8 val=98.3 test=100.2 best=91.1 | v_dir=0.551  lr=8.6e-04
+13:49:52 INFO __main__:   fold15 ep 60  L1=0.1783 CE=0.348 dir_acc=0.850 | train=42.7 val=97.9 test=96.9 best=91.1 | v_dir=0.524  lr=8.3e-04
+13:49:52 INFO __main__:   fold15 ep 65  L1=0.1728 CE=0.302 dir_acc=0.870 | train=41.0 val=102.1 test=97.3 best=91.1 | v_dir=0.515  lr=8.0e-04
+13:49:53 INFO __main__:   fold15 ep 70  L1=0.1598 CE=0.275 dir_acc=0.883 | train=38.9 val=98.5 test=103.0 best=91.1 | v_dir=0.488  lr=7.7e-04
+13:49:53 INFO __main__:   fold15 ep 75  L1=0.1566 CE=0.264 dir_acc=0.889 | train=36.4 val=98.5 test=99.2 best=91.1 | v_dir=0.521  lr=7.3e-04
+13:49:53 INFO __main__:   fold15 ep 80  L1=0.1573 CE=0.244 dir_acc=0.901 | train=34.4 val=97.4 test=101.0 best=91.1 | v_dir=0.491  lr=6.9e-04
+13:49:53 INFO __main__:   fold15 ep 85  L1=0.1628 CE=0.195 dir_acc=0.918 | train=36.7 val=100.5 test=108.8 best=91.1 | v_dir=0.506  lr=6.5e-04
+13:49:54 INFO __main__:   fold15 ep 90  L1=0.1461 CE=0.186 dir_acc=0.926 | train=33.4 val=94.7 test=101.5 best=91.1 | v_dir=0.515  lr=6.2e-04
+13:49:54 INFO __main__:   fold15 ep 95  L1=0.1384 CE=0.159 dir_acc=0.937 | train=31.3 val=100.2 test=98.9 best=91.1 | v_dir=0.524  lr=5.7e-04
+13:49:54 INFO __main__:   fold15 ep100  L1=0.1325 CE=0.139 dir_acc=0.947 | train=29.6 val=102.4 test=100.1 best=91.1 | v_dir=0.494  lr=5.3e-04
+13:49:55 INFO __main__:   fold15 ep105  L1=0.1362 CE=0.126 dir_acc=0.952 | train=28.8 val=100.3 test=102.3 best=91.1 | v_dir=0.512  lr=4.9e-04
+13:49:55 INFO __main__:   fold15 ep110  L1=0.1323 CE=0.117 dir_acc=0.955 | train=28.2 val=100.6 test=107.4 best=91.1 | v_dir=0.518  lr=4.5e-04
+13:49:55 INFO __main__:   fold15 ep115  L1=0.1197 CE=0.106 dir_acc=0.961 | train=27.0 val=99.8 test=101.5 best=91.1 | v_dir=0.521  lr=4.1e-04
+13:49:55 INFO __main__:   fold15 ep120  L1=0.1299 CE=0.084 dir_acc=0.970 | train=25.4 val=99.6 test=101.2 best=91.1 | v_dir=0.509  lr=3.7e-04
+13:49:56 INFO __main__:   fold15 ep125  L1=0.1197 CE=0.070 dir_acc=0.976 | train=23.1 val=100.8 test=103.7 best=91.1 | v_dir=0.530  lr=3.3e-04
+13:49:56 INFO __main__:   fold15 ep130  L1=0.1136 CE=0.066 dir_acc=0.976 | train=22.8 val=102.0 test=104.6 best=91.1 | v_dir=0.503  lr=2.9e-04
+13:49:56 INFO __main__:   fold15 ep135  L1=0.1142 CE=0.059 dir_acc=0.979 | train=20.9 val=100.8 test=103.3 best=91.1 | v_dir=0.545  lr=2.6e-04
+13:49:56 INFO __main__:   fold15 ep140  L1=0.1118 CE=0.048 dir_acc=0.985 | train=21.6 val=99.8 test=108.7 best=91.1 | v_dir=0.515  lr=2.2e-04
+13:49:57 INFO __main__:   fold15 ep145  L1=0.1092 CE=0.047 dir_acc=0.984 | train=19.3 val=99.2 test=102.9 best=91.1 | v_dir=0.539  lr=1.9e-04
+13:49:57 INFO __main__:   fold15 ep150  L1=0.1091 CE=0.041 dir_acc=0.986 | train=18.1 val=97.6 test=106.3 best=91.1 | v_dir=0.539  lr=1.6e-04
+13:49:57 INFO __main__:   fold15 ep155  L1=0.1051 CE=0.037 dir_acc=0.989 | train=17.6 val=99.2 test=101.9 best=91.1 | v_dir=0.521  lr=1.3e-04
+13:49:58 INFO __main__:   fold15 ep160  L1=0.1079 CE=0.034 dir_acc=0.991 | train=17.1 val=100.1 test=102.5 best=91.1 | v_dir=0.539  lr=1.0e-04
+13:49:58 INFO __main__:   fold15 ep165  L1=0.1011 CE=0.029 dir_acc=0.992 | train=16.6 val=100.4 test=104.5 best=91.1 | v_dir=0.521  lr=7.8e-05
+13:49:58 INFO __main__:   fold15 ep170  L1=0.0975 CE=0.028 dir_acc=0.993 | train=15.6 val=100.4 test=103.9 best=91.1 | v_dir=0.515  lr=5.7e-05
+13:49:58 INFO __main__:   fold15 ep175  L1=0.1029 CE=0.026 dir_acc=0.992 | train=15.8 val=98.1 test=108.0 best=91.1 | v_dir=0.521  lr=4.0e-05
+13:49:59 INFO __main__:   fold15 ep180  L1=0.1029 CE=0.029 dir_acc=0.991 | train=14.6 val=99.5 test=105.4 best=91.1 | v_dir=0.518  lr=2.5e-05
+13:49:59 INFO __main__:   fold15 ep185  L1=0.0943 CE=0.021 dir_acc=0.994 | train=14.3 val=99.7 test=105.4 best=91.1 | v_dir=0.527  lr=1.4e-05
+13:49:59 INFO __main__:   fold15 ep190  L1=0.0992 CE=0.025 dir_acc=0.993 | train=14.2 val=99.7 test=105.3 best=91.1 | v_dir=0.527  lr=6.5e-06
+13:50:00 INFO __main__:   fold15 ep195  L1=0.0978 CE=0.023 dir_acc=0.994 | train=14.1 val=99.4 test=104.9 best=91.1 | v_dir=0.536  lr=2.1e-06
+13:50:00 INFO __main__:   fold15 ep199  L1=0.0912 CE=0.022 dir_acc=0.995 | train=14.0 val=100.5 test=104.9 best=91.1 | v_dir=0.530  lr=1.0e-06
+13:50:00 INFO __main__: Fold 15 done | val=91.1  test_MAE=104.9  test_RMSE=174.6  dir=0.542
+13:50:00 INFO __main__: Fold 16 | train=365 days (2025-03-29~2026-03-29) val=14 test=7 | test 2026-04-12 ~ 2026-04-18
+13:50:00 INFO __main__:   fold16 ep  0  L1=0.6993 CE=1.079 dir_acc=0.395 | train=198.1 val=187.4 test=192.3 best=187.4 | v_dir=0.414  lr=1.9e-04
+13:50:00 INFO __main__:   fold16 ep  5  L1=0.4171 CE=0.896 dir_acc=0.556 | train=116.2 val=95.5 test=132.7 best=94.5 | v_dir=0.565  lr=6.4e-04
+13:50:00 INFO __main__:   fold16 ep 10  L1=0.3783 CE=0.829 dir_acc=0.587 | train=101.0 val=101.8 test=115.9 best=94.5 | v_dir=0.551  lr=1.0e-03
+13:50:01 INFO __main__:   fold16 ep 15  L1=0.3342 CE=0.762 dir_acc=0.630 | train=85.4 val=104.1 test=132.8 best=94.5 | v_dir=0.574  lr=1.0e-03
+13:50:01 INFO __main__:   fold16 ep 20  L1=0.2893 CE=0.701 dir_acc=0.672 | train=78.0 val=88.9 test=131.0 best=88.9 | v_dir=0.545  lr=9.9e-04
+13:50:01 INFO __main__:   fold16 ep 25  L1=0.2756 CE=0.636 dir_acc=0.703 | train=67.5 val=96.6 test=131.8 best=88.9 | v_dir=0.571  lr=9.8e-04
+13:50:02 INFO __main__:   fold16 ep 30  L1=0.2584 CE=0.601 dir_acc=0.720 | train=63.7 val=97.1 test=139.2 best=88.9 | v_dir=0.574  lr=9.7e-04
+13:50:02 INFO __main__:   fold16 ep 35  L1=0.2544 CE=0.555 dir_acc=0.747 | train=65.7 val=88.8 test=150.5 best=88.8 | v_dir=0.527  lr=9.5e-04
+13:50:02 INFO __main__:   fold16 ep 40  L1=0.2258 CE=0.491 dir_acc=0.779 | train=59.5 val=96.6 test=134.0 best=88.8 | v_dir=0.524  lr=9.4e-04
+13:50:02 INFO __main__:   fold16 ep 45  L1=0.2148 CE=0.454 dir_acc=0.803 | train=52.0 val=99.3 test=146.5 best=88.8 | v_dir=0.521  lr=9.1e-04
+13:50:03 INFO __main__:   fold16 ep 50  L1=0.1951 CE=0.414 dir_acc=0.817 | train=51.8 val=95.8 test=141.6 best=88.8 | v_dir=0.545  lr=8.9e-04
+13:50:03 INFO __main__:   fold16 ep 55  L1=0.1838 CE=0.373 dir_acc=0.835 | train=46.4 val=96.6 test=140.3 best=88.8 | v_dir=0.524  lr=8.6e-04
+13:50:03 INFO __main__:   fold16 ep 60  L1=0.1914 CE=0.361 dir_acc=0.845 | train=43.7 val=95.0 test=141.6 best=88.8 | v_dir=0.542  lr=8.3e-04
+13:50:04 INFO __main__:   fold16 ep 65  L1=0.1692 CE=0.309 dir_acc=0.869 | train=40.2 val=101.2 test=140.1 best=88.8 | v_dir=0.548  lr=8.0e-04
+13:50:04 INFO __main__:   fold16 ep 70  L1=0.1714 CE=0.272 dir_acc=0.885 | train=40.7 val=99.0 test=157.4 best=88.8 | v_dir=0.542  lr=7.7e-04
+13:50:04 INFO __main__:   fold16 ep 75  L1=0.1653 CE=0.268 dir_acc=0.886 | train=38.0 val=102.1 test=153.9 best=88.8 | v_dir=0.527  lr=7.3e-04
+13:50:04 INFO __main__:   fold16 ep 80  L1=0.1584 CE=0.216 dir_acc=0.912 | train=34.7 val=99.3 test=157.1 best=88.8 | v_dir=0.530  lr=6.9e-04
+13:50:05 INFO __main__:   fold16 ep 85  L1=0.1552 CE=0.201 dir_acc=0.917 | train=35.3 val=95.2 test=150.9 best=88.8 | v_dir=0.565  lr=6.5e-04
+13:50:05 INFO __main__:   fold16 ep 90  L1=0.1517 CE=0.181 dir_acc=0.929 | train=33.1 val=105.8 test=145.4 best=88.8 | v_dir=0.565  lr=6.2e-04
+13:50:05 INFO __main__:   fold16 ep 95  L1=0.1408 CE=0.156 dir_acc=0.936 | train=30.8 val=99.1 test=147.3 best=88.8 | v_dir=0.545  lr=5.7e-04
+13:50:05 INFO __main__:   fold16 ep100  L1=0.1389 CE=0.144 dir_acc=0.945 | train=31.4 val=98.4 test=149.1 best=88.8 | v_dir=0.568  lr=5.3e-04
+13:50:06 INFO __main__:   fold16 ep105  L1=0.1347 CE=0.136 dir_acc=0.947 | train=27.7 val=100.7 test=151.3 best=88.8 | v_dir=0.557  lr=4.9e-04
+13:50:06 INFO __main__:   fold16 ep110  L1=0.1426 CE=0.119 dir_acc=0.954 | train=29.3 val=105.3 test=155.3 best=88.8 | v_dir=0.548  lr=4.5e-04
+13:50:06 INFO __main__:   fold16 ep115  L1=0.1389 CE=0.097 dir_acc=0.964 | train=26.1 val=102.7 test=160.2 best=88.8 | v_dir=0.560  lr=4.1e-04
+13:50:07 INFO __main__:   fold16 ep120  L1=0.1197 CE=0.088 dir_acc=0.967 | train=25.1 val=102.7 test=160.8 best=88.8 | v_dir=0.557  lr=3.7e-04
+13:50:07 INFO __main__:   fold16 ep125  L1=0.1188 CE=0.072 dir_acc=0.973 | train=23.8 val=103.5 test=160.6 best=88.8 | v_dir=0.539  lr=3.3e-04
+13:50:07 INFO __main__:   fold16 ep130  L1=0.1264 CE=0.069 dir_acc=0.975 | train=23.4 val=101.5 test=155.0 best=88.8 | v_dir=0.551  lr=2.9e-04
+13:50:07 INFO __main__:   fold16 ep135  L1=0.1147 CE=0.060 dir_acc=0.979 | train=21.4 val=100.6 test=161.0 best=88.8 | v_dir=0.554  lr=2.6e-04
+13:50:08 INFO __main__:   fold16 ep140  L1=0.1165 CE=0.053 dir_acc=0.981 | train=20.6 val=102.6 test=158.4 best=88.8 | v_dir=0.551  lr=2.2e-04
+13:50:08 INFO __main__:   fold16 ep145  L1=0.1108 CE=0.042 dir_acc=0.987 | train=19.6 val=103.9 test=164.1 best=88.8 | v_dir=0.542  lr=1.9e-04
+13:50:08 INFO __main__:   fold16 ep150  L1=0.1099 CE=0.041 dir_acc=0.987 | train=19.5 val=104.0 test=163.4 best=88.8 | v_dir=0.551  lr=1.6e-04
+13:50:08 INFO __main__:   fold16 ep155  L1=0.1023 CE=0.034 dir_acc=0.990 | train=17.7 val=104.2 test=162.0 best=88.8 | v_dir=0.548  lr=1.3e-04
+13:50:09 INFO __main__:   fold16 ep160  L1=0.1022 CE=0.033 dir_acc=0.991 | train=16.8 val=103.7 test=161.2 best=88.8 | v_dir=0.539  lr=1.0e-04
+13:50:09 INFO __main__:   fold16 ep165  L1=0.1066 CE=0.029 dir_acc=0.992 | train=16.4 val=103.2 test=164.3 best=88.8 | v_dir=0.554  lr=7.8e-05
+13:50:09 INFO __main__:   fold16 ep170  L1=0.0999 CE=0.030 dir_acc=0.992 | train=15.6 val=103.3 test=164.0 best=88.8 | v_dir=0.560  lr=5.7e-05
+13:50:10 INFO __main__:   fold16 ep175  L1=0.1074 CE=0.026 dir_acc=0.993 | train=15.5 val=103.9 test=163.9 best=88.8 | v_dir=0.554  lr=4.0e-05
+13:50:10 INFO __main__:   fold16 ep180  L1=0.0992 CE=0.027 dir_acc=0.993 | train=15.1 val=103.7 test=162.8 best=88.8 | v_dir=0.548  lr=2.5e-05
+13:50:10 INFO __main__:   fold16 ep185  L1=0.0922 CE=0.023 dir_acc=0.994 | train=14.5 val=104.5 test=163.2 best=88.8 | v_dir=0.548  lr=1.4e-05
+13:50:10 INFO __main__:   fold16 ep190  L1=0.0967 CE=0.025 dir_acc=0.993 | train=14.6 val=104.1 test=162.3 best=88.8 | v_dir=0.545  lr=6.5e-06
+13:50:11 INFO __main__:   fold16 ep195  L1=0.1068 CE=0.026 dir_acc=0.994 | train=14.6 val=104.0 test=165.5 best=88.8 | v_dir=0.548  lr=2.1e-06
+13:50:11 INFO __main__:   fold16 ep199  L1=0.1062 CE=0.025 dir_acc=0.993 | train=14.5 val=104.2 test=161.6 best=88.8 | v_dir=0.545  lr=1.0e-06
+13:50:11 INFO __main__: Fold 16 done | val=88.8  test_MAE=161.6  test_RMSE=215.5  dir=0.476
+13:50:11 INFO __main__: ============================================================
+13:50:11 INFO __main__: V9.1 RESULTS
+13:50:11 INFO __main__:   MAE:  119.46
+13:50:11 INFO __main__:   RMSE: 169.71
+13:50:11 INFO __main__:   Predictions: 2688 hours (112 days)
+13:50:11 INFO __main__:   Output: /root/workspace/neimeng_prj/output/experiments/v9.1-sudun-hourly
+13:50:11 INFO __main__: ============================================================
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 20803 (\N{CJK UNIFIED IDEOGRAPH-5143}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 31532 (\N{CJK UNIFIED IDEOGRAPH-7B2C}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 21608 (\N{CJK UNIFIED IDEOGRAPH-5468}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 23454 (\N{CJK UNIFIED IDEOGRAPH-5B9E}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 38469 (\N{CJK UNIFIED IDEOGRAPH-9645}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 20803 (\N{CJK UNIFIED IDEOGRAPH-5143}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 31532 (\N{CJK UNIFIED IDEOGRAPH-7B2C}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 21608 (\N{CJK UNIFIED IDEOGRAPH-5468}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 23454 (\N{CJK UNIFIED IDEOGRAPH-5B9E}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 38469 (\N{CJK UNIFIED IDEOGRAPH-9645}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+13:50:11 INFO __main__: Saved: da_week1.png
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 20803 (\N{CJK UNIFIED IDEOGRAPH-5143}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 31532 (\N{CJK UNIFIED IDEOGRAPH-7B2C}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 21608 (\N{CJK UNIFIED IDEOGRAPH-5468}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 23454 (\N{CJK UNIFIED IDEOGRAPH-5B9E}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 38469 (\N{CJK UNIFIED IDEOGRAPH-9645}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 20803 (\N{CJK UNIFIED IDEOGRAPH-5143}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 31532 (\N{CJK UNIFIED IDEOGRAPH-7B2C}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 21608 (\N{CJK UNIFIED IDEOGRAPH-5468}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 23454 (\N{CJK UNIFIED IDEOGRAPH-5B9E}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 38469 (\N{CJK UNIFIED IDEOGRAPH-9645}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+13:50:11 INFO __main__: Saved: da_week2.png
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 20803 (\N{CJK UNIFIED IDEOGRAPH-5143}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 31532 (\N{CJK UNIFIED IDEOGRAPH-7B2C}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 21608 (\N{CJK UNIFIED IDEOGRAPH-5468}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 23454 (\N{CJK UNIFIED IDEOGRAPH-5B9E}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 38469 (\N{CJK UNIFIED IDEOGRAPH-9645}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 20803 (\N{CJK UNIFIED IDEOGRAPH-5143}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 31532 (\N{CJK UNIFIED IDEOGRAPH-7B2C}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 21608 (\N{CJK UNIFIED IDEOGRAPH-5468}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 23454 (\N{CJK UNIFIED IDEOGRAPH-5B9E}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 38469 (\N{CJK UNIFIED IDEOGRAPH-9645}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+13:50:12 INFO __main__: Saved: da_week3.png
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 20803 (\N{CJK UNIFIED IDEOGRAPH-5143}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 31532 (\N{CJK UNIFIED IDEOGRAPH-7B2C}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 21608 (\N{CJK UNIFIED IDEOGRAPH-5468}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 23454 (\N{CJK UNIFIED IDEOGRAPH-5B9E}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 38469 (\N{CJK UNIFIED IDEOGRAPH-9645}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 20803 (\N{CJK UNIFIED IDEOGRAPH-5143}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 31532 (\N{CJK UNIFIED IDEOGRAPH-7B2C}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 21608 (\N{CJK UNIFIED IDEOGRAPH-5468}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 23454 (\N{CJK UNIFIED IDEOGRAPH-5B9E}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 38469 (\N{CJK UNIFIED IDEOGRAPH-9645}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+13:50:12 INFO __main__: Saved: da_week4.png
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 20803 (\N{CJK UNIFIED IDEOGRAPH-5143}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 31532 (\N{CJK UNIFIED IDEOGRAPH-7B2C}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 21608 (\N{CJK UNIFIED IDEOGRAPH-5468}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 23454 (\N{CJK UNIFIED IDEOGRAPH-5B9E}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 38469 (\N{CJK UNIFIED IDEOGRAPH-9645}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 20803 (\N{CJK UNIFIED IDEOGRAPH-5143}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 31532 (\N{CJK UNIFIED IDEOGRAPH-7B2C}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 21608 (\N{CJK UNIFIED IDEOGRAPH-5468}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 23454 (\N{CJK UNIFIED IDEOGRAPH-5B9E}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 38469 (\N{CJK UNIFIED IDEOGRAPH-9645}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+13:50:12 INFO __main__: Saved: da_week5.png
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 20803 (\N{CJK UNIFIED IDEOGRAPH-5143}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 31532 (\N{CJK UNIFIED IDEOGRAPH-7B2C}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 21608 (\N{CJK UNIFIED IDEOGRAPH-5468}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 23454 (\N{CJK UNIFIED IDEOGRAPH-5B9E}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 38469 (\N{CJK UNIFIED IDEOGRAPH-9645}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 20803 (\N{CJK UNIFIED IDEOGRAPH-5143}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 31532 (\N{CJK UNIFIED IDEOGRAPH-7B2C}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 21608 (\N{CJK UNIFIED IDEOGRAPH-5468}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 23454 (\N{CJK UNIFIED IDEOGRAPH-5B9E}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 38469 (\N{CJK UNIFIED IDEOGRAPH-9645}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+13:50:12 INFO __main__: Saved: da_week6.png
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 20803 (\N{CJK UNIFIED IDEOGRAPH-5143}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 31532 (\N{CJK UNIFIED IDEOGRAPH-7B2C}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 21608 (\N{CJK UNIFIED IDEOGRAPH-5468}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 23454 (\N{CJK UNIFIED IDEOGRAPH-5B9E}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 38469 (\N{CJK UNIFIED IDEOGRAPH-9645}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 20803 (\N{CJK UNIFIED IDEOGRAPH-5143}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 31532 (\N{CJK UNIFIED IDEOGRAPH-7B2C}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 21608 (\N{CJK UNIFIED IDEOGRAPH-5468}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 23454 (\N{CJK UNIFIED IDEOGRAPH-5B9E}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 38469 (\N{CJK UNIFIED IDEOGRAPH-9645}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+13:50:12 INFO __main__: Saved: da_week7.png
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 20803 (\N{CJK UNIFIED IDEOGRAPH-5143}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 31532 (\N{CJK UNIFIED IDEOGRAPH-7B2C}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 21608 (\N{CJK UNIFIED IDEOGRAPH-5468}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 23454 (\N{CJK UNIFIED IDEOGRAPH-5B9E}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 38469 (\N{CJK UNIFIED IDEOGRAPH-9645}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 20803 (\N{CJK UNIFIED IDEOGRAPH-5143}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 31532 (\N{CJK UNIFIED IDEOGRAPH-7B2C}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 21608 (\N{CJK UNIFIED IDEOGRAPH-5468}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 23454 (\N{CJK UNIFIED IDEOGRAPH-5B9E}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 38469 (\N{CJK UNIFIED IDEOGRAPH-9645}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+13:50:12 INFO __main__: Saved: da_week8.png
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 20803 (\N{CJK UNIFIED IDEOGRAPH-5143}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 31532 (\N{CJK UNIFIED IDEOGRAPH-7B2C}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 21608 (\N{CJK UNIFIED IDEOGRAPH-5468}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 23454 (\N{CJK UNIFIED IDEOGRAPH-5B9E}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 38469 (\N{CJK UNIFIED IDEOGRAPH-9645}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 20803 (\N{CJK UNIFIED IDEOGRAPH-5143}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 31532 (\N{CJK UNIFIED IDEOGRAPH-7B2C}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 21608 (\N{CJK UNIFIED IDEOGRAPH-5468}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 23454 (\N{CJK UNIFIED IDEOGRAPH-5B9E}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 38469 (\N{CJK UNIFIED IDEOGRAPH-9645}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+13:50:13 INFO __main__: Saved: da_week9.png
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 20803 (\N{CJK UNIFIED IDEOGRAPH-5143}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 31532 (\N{CJK UNIFIED IDEOGRAPH-7B2C}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 21608 (\N{CJK UNIFIED IDEOGRAPH-5468}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 23454 (\N{CJK UNIFIED IDEOGRAPH-5B9E}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 38469 (\N{CJK UNIFIED IDEOGRAPH-9645}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 20803 (\N{CJK UNIFIED IDEOGRAPH-5143}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 31532 (\N{CJK UNIFIED IDEOGRAPH-7B2C}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 21608 (\N{CJK UNIFIED IDEOGRAPH-5468}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 23454 (\N{CJK UNIFIED IDEOGRAPH-5B9E}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 38469 (\N{CJK UNIFIED IDEOGRAPH-9645}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+13:50:13 INFO __main__: Saved: da_week10.png
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 20803 (\N{CJK UNIFIED IDEOGRAPH-5143}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 31532 (\N{CJK UNIFIED IDEOGRAPH-7B2C}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 21608 (\N{CJK UNIFIED IDEOGRAPH-5468}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 23454 (\N{CJK UNIFIED IDEOGRAPH-5B9E}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 38469 (\N{CJK UNIFIED IDEOGRAPH-9645}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 20803 (\N{CJK UNIFIED IDEOGRAPH-5143}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 31532 (\N{CJK UNIFIED IDEOGRAPH-7B2C}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 21608 (\N{CJK UNIFIED IDEOGRAPH-5468}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 23454 (\N{CJK UNIFIED IDEOGRAPH-5B9E}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 38469 (\N{CJK UNIFIED IDEOGRAPH-9645}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+13:50:13 INFO __main__: Saved: da_week11.png
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 20803 (\N{CJK UNIFIED IDEOGRAPH-5143}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 31532 (\N{CJK UNIFIED IDEOGRAPH-7B2C}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 21608 (\N{CJK UNIFIED IDEOGRAPH-5468}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 23454 (\N{CJK UNIFIED IDEOGRAPH-5B9E}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 38469 (\N{CJK UNIFIED IDEOGRAPH-9645}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 20803 (\N{CJK UNIFIED IDEOGRAPH-5143}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 31532 (\N{CJK UNIFIED IDEOGRAPH-7B2C}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 21608 (\N{CJK UNIFIED IDEOGRAPH-5468}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 23454 (\N{CJK UNIFIED IDEOGRAPH-5B9E}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 38469 (\N{CJK UNIFIED IDEOGRAPH-9645}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+13:50:13 INFO __main__: Saved: da_week12.png
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 20803 (\N{CJK UNIFIED IDEOGRAPH-5143}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 31532 (\N{CJK UNIFIED IDEOGRAPH-7B2C}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 21608 (\N{CJK UNIFIED IDEOGRAPH-5468}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 23454 (\N{CJK UNIFIED IDEOGRAPH-5B9E}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 38469 (\N{CJK UNIFIED IDEOGRAPH-9645}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 20803 (\N{CJK UNIFIED IDEOGRAPH-5143}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 31532 (\N{CJK UNIFIED IDEOGRAPH-7B2C}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 21608 (\N{CJK UNIFIED IDEOGRAPH-5468}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 23454 (\N{CJK UNIFIED IDEOGRAPH-5B9E}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 38469 (\N{CJK UNIFIED IDEOGRAPH-9645}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+13:50:13 INFO __main__: Saved: da_week13.png
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 20803 (\N{CJK UNIFIED IDEOGRAPH-5143}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 31532 (\N{CJK UNIFIED IDEOGRAPH-7B2C}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 21608 (\N{CJK UNIFIED IDEOGRAPH-5468}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 23454 (\N{CJK UNIFIED IDEOGRAPH-5B9E}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 38469 (\N{CJK UNIFIED IDEOGRAPH-9645}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 20803 (\N{CJK UNIFIED IDEOGRAPH-5143}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 31532 (\N{CJK UNIFIED IDEOGRAPH-7B2C}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 21608 (\N{CJK UNIFIED IDEOGRAPH-5468}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 23454 (\N{CJK UNIFIED IDEOGRAPH-5B9E}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 38469 (\N{CJK UNIFIED IDEOGRAPH-9645}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+13:50:13 INFO __main__: Saved: da_week14.png
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 20803 (\N{CJK UNIFIED IDEOGRAPH-5143}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 31532 (\N{CJK UNIFIED IDEOGRAPH-7B2C}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 21608 (\N{CJK UNIFIED IDEOGRAPH-5468}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 23454 (\N{CJK UNIFIED IDEOGRAPH-5B9E}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 38469 (\N{CJK UNIFIED IDEOGRAPH-9645}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 20803 (\N{CJK UNIFIED IDEOGRAPH-5143}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 31532 (\N{CJK UNIFIED IDEOGRAPH-7B2C}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 21608 (\N{CJK UNIFIED IDEOGRAPH-5468}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 23454 (\N{CJK UNIFIED IDEOGRAPH-5B9E}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 38469 (\N{CJK UNIFIED IDEOGRAPH-9645}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+13:50:13 INFO __main__: Saved: da_week15.png
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 20803 (\N{CJK UNIFIED IDEOGRAPH-5143}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 31532 (\N{CJK UNIFIED IDEOGRAPH-7B2C}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 21608 (\N{CJK UNIFIED IDEOGRAPH-5468}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 23454 (\N{CJK UNIFIED IDEOGRAPH-5B9E}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:497: UserWarning: Glyph 38469 (\N{CJK UNIFIED IDEOGRAPH-9645}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 20803 (\N{CJK UNIFIED IDEOGRAPH-5143}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 31532 (\N{CJK UNIFIED IDEOGRAPH-7B2C}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 21608 (\N{CJK UNIFIED IDEOGRAPH-5468}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 23454 (\N{CJK UNIFIED IDEOGRAPH-5B9E}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+/root/workspace/neimeng_prj/src/model_v9_hourly.py:498: UserWarning: Glyph 38469 (\N{CJK UNIFIED IDEOGRAPH-9645}) missing from font(s) DejaVu Sans.
+  plt.savefig(plots_dir / f"da_week{wi+1}.png", dpi=120, bbox_inches="tight")
+13:50:14 INFO __main__: Saved: da_week16.png
