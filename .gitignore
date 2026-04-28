@@ -26,7 +26,7 @@ output/rl/*.npz
 output/rl/sac_v8_logs/
 output/rl/sac_logs/
 
-# V8 model weights & norm
-output/experiments/*/model_weights.pt
+# Model weights & norm (all experiments)
+output/experiments/*/*.pt
 output/experiments/*/norm_*.npy
 output/experiments/*/target_stats.npz

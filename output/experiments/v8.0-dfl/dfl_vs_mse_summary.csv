@@ -1,0 +1,3 @@
+strategy,days,net_revenue_yuan,pf_net_yuan,realization_pct,annualized_yuan
+MSE-V8 + MILP,84,11968788.0,23765840.0,50.4,52007234.0
+DFL-V8 + MILP,84,10845019.0,23765840.0,45.6,47124190.0
