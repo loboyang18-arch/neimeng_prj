@@ -30,3 +30,8 @@ output/rl/sac_logs/
 output/experiments/*/*.pt
 output/experiments/*/norm_*.npy
 output/experiments/*/target_stats.npz
+output/experiments/*/mean_shape_train.npy
+
+# Anomaly detector artifacts (重新生成: python -m src.anomaly.{labels,features,train_detector})
+output/experiments/anomaly-detector/detector_lgbm.txt
+output/experiments/anomaly-detector/day_features.csv

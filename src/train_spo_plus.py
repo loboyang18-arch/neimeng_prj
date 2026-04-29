@@ -26,7 +26,7 @@ os.environ.setdefault("NM_V8_TARGET", NODAL_COL)
 os.environ.setdefault("NM_V8_EXTRA_LAG1",
                        "price_sudun_500kv1m_energy,price_sudun_500kv1m_cong")
 os.environ.setdefault("NM_V8_HOURLY_AGG", "mean4")
-os.environ.setdefault("NM_MIN_FEATURE_DATE", "2023-06-01")
+os.environ.setdefault("NM_MIN_FEATURE_DATE", "2024-12-14")
 
 import numpy as np
 import pandas as pd
@@ -143,7 +143,7 @@ class DailyDFLDataset(torch.utils.data.Dataset):
 logger = logging.getLogger(__name__)
 
 OUTPUT_DIR = ROOT / "output"
-SPO_DIR = OUTPUT_DIR / "experiments" / "v8.0-spo-v2"
+SPO_DIR = OUTPUT_DIR / "experiments" / "v8.0-spo-v4"
 DT = 0.25
 
 
@@ -240,10 +240,15 @@ def _evaluate_test_milp(
 def train_spo_plus(
     spo_epochs: int = 30,
     spo_lr: float = 3e-5,
-    test_start: str = "2026-01-25",
+    test_start: str = "2026-01-27",
+    test_end: str = "2026-04-17",
     alpha_start: float = 0.3,
     alpha_end: float = 0.7,
     eval_every: int = 5,
+    freeze_encoder: bool = False,
+    anchor_lambda: float = 0.0,
+    grad_accum_steps: int = 1,
+    spo_grad_scale: float = 1.0,
 ):
     SPO_DIR.mkdir(parents=True, exist_ok=True)
     actual_xlsx = ROOT / "source_data" / "日清算结果查询电厂侧(1)_副本.xlsx"
@@ -261,9 +266,11 @@ def train_spo_plus(
     day_nodal_96 = _build_nodal_96(dws)
 
     test_dt = pd.Timestamp(test_start).date()
+    test_end_dt = pd.Timestamp(test_end).date()
     train_days = [d for d in valid_dates if d < test_dt]
-    test_days = [d for d in valid_dates if d >= test_dt]
-    logger.info("  训练: %d 天, 测试: %d 天", len(train_days), len(test_days))
+    test_days = [d for d in valid_dates if test_dt <= d <= test_end_dt]
+    logger.info("  训练: %d 天, 测试: %d 天 (%s ~ %s)",
+                len(train_days), len(test_days), test_start, test_end)
 
     # ── 归一化 ──
     norm_mean, norm_std = _compute_norm(day_lag0, day_lag1, day_lag2, train_days)
@@ -282,8 +289,19 @@ def train_spo_plus(
     else:
         logger.warning("未找到预训练权重，从随机初始化开始")
 
-    # 保存 MSE baseline
+    # 冻结编码器（只微调回归头）
+    if freeze_encoder:
+        for name, param in model.named_parameters():
+            if "reg_head" not in name:
+                param.requires_grad = False
+        trainable = sum(p.numel() for p in model.parameters() if p.requires_grad)
+        total_p = sum(p.numel() for p in model.parameters())
+        logger.info("冻结编码器: 可训练参数 %d / %d", trainable, total_p)
+
+    # 保存 MSE baseline 权重（同时作为锚定基准）
     torch.save(model.state_dict(), SPO_DIR / "v8_mse_baseline.pt")
+    anchor_params = {n: p.detach().clone() for n, p in model.named_parameters()
+                     if p.requires_grad} if anchor_lambda > 0 else {}
 
     # ── 预计算 PF 收益 ──
     logger.info("预计算 PF 收益...")
@@ -320,7 +338,7 @@ def train_spo_plus(
     # ── MSE baseline 评估 ──
     logger.info("MSE baseline 测试集评估...")
     mse_eval = _evaluate_test_milp(
-        model, test_ds, y_mean, y_std, actual_xlsx, test_start, "2026-04-18",
+        model, test_ds, y_mean, y_std, actual_xlsx, test_start, test_end,
     )
     logger.info(
         "  MSE baseline: 净收益=%.1f万  PF=%.1f万  兑现率=%.1f%%  MAE=%.1f",
@@ -332,6 +350,8 @@ def train_spo_plus(
     logger.info("=" * 60)
     logger.info("SPO+ 微调: %d epochs, lr=%e, α=%.2f→%.2f, eval_every=%d",
                 spo_epochs, spo_lr, alpha_start, alpha_end, eval_every)
+    logger.info("  freeze_encoder=%s, anchor_λ=%.1e, grad_accum=%d, spo_scale=%.2f",
+                freeze_encoder, anchor_lambda, grad_accum_steps, spo_grad_scale)
     logger.info("=" * 60)
 
     mse_loss_fn = nn.L1Loss()
@@ -406,19 +426,27 @@ def train_spo_plus(
             spo_grad_24 = spo_grad_96.reshape(24, 4).mean(axis=1)
             spo_grad_24 = torch.from_numpy(spo_grad_24.astype(np.float32)).to(DEVICE)
 
-            # 梯度归一化：将 SPO+ 梯度量级对齐到 MSE loss
+            # 梯度归一化 + 衰减：将 SPO+ 梯度量级对齐到 MSE loss
             grad_norm = spo_grad_24.norm() + 1e-8
-            spo_grad_24 = spo_grad_24 / grad_norm * (mse_term.item() + 1e-4)
+            spo_grad_24 = spo_grad_24 / grad_norm * (mse_term.item() + 1e-4) * spo_grad_scale
 
-            # 混合反向传播
-            optimizer.zero_grad()
+            # 混合反向传播（梯度累积模式：每 grad_accum_steps 步才 step）
+            if n_days % grad_accum_steps == 0:
+                optimizer.zero_grad()
             # MSE 部分正常反向传播
-            ((1 - alpha) * mse_term).backward(retain_graph=True)
+            ((1 - alpha) * mse_term / grad_accum_steps).backward(retain_graph=True)
             # SPO+ 部分：手动注入梯度到 pred_hourly
-            pred_hourly.backward(alpha * spo_grad_24)
+            pred_hourly.backward(alpha * spo_grad_24 / grad_accum_steps)
 
-            nn.utils.clip_grad_norm_(model.parameters(), 1.0)
-            optimizer.step()
+            # 权重锚定正则化
+            if anchor_lambda > 0:
+                for name, param in model.named_parameters():
+                    if param.requires_grad and name in anchor_params and param.grad is not None:
+                        param.grad.add_(anchor_lambda * (param.data - anchor_params[name]))
+
+            if (n_days + 1) % grad_accum_steps == 0 or n_days == len(loader) - 1:
+                nn.utils.clip_grad_norm_(model.parameters(), 1.0)
+                optimizer.step()
 
             total_spo += float(np.sum(spo_grad_96 * pred_96_np))
             total_mse += mse_term.item()
@@ -446,7 +474,7 @@ def train_spo_plus(
             logger.info("  → 测试集 MILP 评估中...")
             t_eval = time.time()
             test_eval = _evaluate_test_milp(
-                model, test_ds, y_mean, y_std, actual_xlsx, test_start, "2026-04-18",
+                model, test_ds, y_mean, y_std, actual_xlsx, test_start, test_end,
             )
             eval_log.append({"epoch": epoch + 1, **test_eval, "label": f"SPO-ep{epoch+1}"})
 
@@ -537,4 +565,8 @@ if __name__ == "__main__":
         alpha_start=0.36,
         alpha_end=0.36,
         eval_every=2,
+        freeze_encoder=False,
+        anchor_lambda=1e-3,
+        grad_accum_steps=4,
+        spo_grad_scale=0.5,
     )

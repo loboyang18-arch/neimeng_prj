@@ -177,7 +177,8 @@ def train_dfl(
     dfl_lr: float = 3e-5,
     mse_pretrain: bool = True,
     mse_epochs: int = 100,
-    test_start: str = "2026-01-25",
+    test_start: str = "2026-01-27",
+    test_end: str = "2026-04-17",
     min_feature_date: str = "2023-06-01",
     alpha_start: float = 0.3,
     alpha_end: float = 0.8,
@@ -209,12 +210,11 @@ def train_dfl(
 
     # ── 划分数据 ──
     test_dt = pd.Timestamp(test_start).date()
+    test_end_dt = pd.Timestamp(test_end).date()
     train_days = [d for d in valid_dates if d < test_dt]
-    test_days = [d for d in valid_dates if d >= test_dt]
+    test_days = [d for d in valid_dates if test_dt <= d <= test_end_dt]
     logger.info("  训练: %d 天, 测试: %d 天 (%s ~ %s)",
-                len(train_days), len(test_days),
-                test_days[0] if test_days else "?",
-                test_days[-1] if test_days else "?")
+                len(train_days), len(test_days), test_start, test_end)
 
     # ── 归一化 ──
     norm_mean, norm_std = _compute_norm(day_lag0, day_lag1, day_lag2, train_days)
