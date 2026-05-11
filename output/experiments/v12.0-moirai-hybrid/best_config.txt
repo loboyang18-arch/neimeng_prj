@@ -1,0 +1,23 @@
+V12 Moirai Hybrid 最佳配置
+==========================
+源 Moirai: Salesforce/moirai-1.1-R-small (univariate zero-shot, patch_size=32, num_samples=100)
+源 V10: output/experiments/v10.0-final-200/test_predictions_hourly.csv
+混合: P50=V10_P50, P10/P90=V10_P50 ± Moirai_half_width × ws
+
+最佳超参:
+  width_scale (ws) = 0.35
+  alpha (α) = 0.40
+
+关键指标:
+  MAE (P50)  : 106.77
+  RMSE (P50) : 160.19
+  Cov80      : 0.432
+  Width      : 155.4
+  净收益总额 : 1220.09 万元 (=12,200,940 元)
+  兑现率     : 53.9%
+  亏损天     : 16 (out of 81)
+
+对比基线:
+  V10 baseline:                       1148.3 万 (Δ=+71.8)
+  V10 + 异常日规则 + no-op:           1211.4 万 (Δ=+8.7)
+  V10 + Chronos Hybrid (ws=0.4 α=0.4): 1210.9 万 (Δ=+9.2)

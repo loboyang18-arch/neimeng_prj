@@ -221,6 +221,11 @@ def run(pred_csv: Path, out_csv: Path | None, label: str = "MILP策略"):
             "pf_gross":       rev_pf["gross"],
             "pf_aux_cost":    rev_pf["aux_cost"],
             "pf_net":         rev_pf["net"],
+            "_c":             c.tolist(),
+            "_d":             d.tolist(),
+            "_soc":           soc.tolist(),
+            "_actual":        actual_24h.tolist(),
+            "_pred":          pred_24h.tolist(),
         })
 
     df = pd.DataFrame(rows)

@@ -7,6 +7,7 @@
   daily_summary.csv     — 逐日汇总：充放电量、窗口、收益、PF对照
   weekly_summary.csv    — 逐周对比：策略收益 vs 完全预知 vs 实际现货
   model_predictions.csv — 小时级预测电价（长格式，附实际值）
+  daily_cycle_revenue.csv — 逐日：策略/实际 等效循环、毛/辅/净收益、充放电成本收入（均按实际电价）
 
 运行方式：
   conda run -n power python scripts/export_dashboard_data.py
@@ -141,6 +142,118 @@ def build_daily_summary(df: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(result)
 
 
+def build_daily_cycle_revenue(ts: pd.DataFrame, daily: pd.DataFrame) -> pd.DataFrame:
+    """
+    策略侧与 daily_summary 一致：毛/净/辅助来自 MILP；充放电成本收入为逐 15min×实际价
+    （放电收入 − 充电成本 = 毛收益，与 gross_yuan 一致）。
+
+    实际侧与 compute_performance_metrics / metrics_actual_daily 一致：
+    gross/aux/net 来自逐日指标表；放电收入、主充电成本来自结算 CSV
+    ``actual_spot_revenue_*.csv`` 的 ``disc_fee``、``main_chg_fee``（与 gross = disc_fee - main_chg_fee 同源）。
+    """
+    CAP_MWH = 800.0
+    metrics_path = OUT_DIR / "metrics_actual_daily.csv"
+    if not metrics_path.exists():
+        raise FileNotFoundError(
+            f"缺少 {metrics_path}，请先运行：conda run -n power python scripts/compute_performance_metrics.py"
+        )
+    if not ACTUAL_REV.exists():
+        raise FileNotFoundError(
+            f"缺少 {ACTUAL_REV}（实际结算明细），无法写入与 metrics 一致的充放电金额。"
+        )
+
+    ts2 = ts.copy()
+    ts2["strat_charge_cost"] = ts2["charge_energy_mwh"] * ts2["actual_price"]
+    ts2["strat_discharge_revenue"] = ts2["discharge_energy_mwh"] * ts2["actual_price"]
+    strat_ts = ts2.groupby("date", as_index=False).agg(
+        strat_charge_cost=("strat_charge_cost", "sum"),
+        strat_discharge_revenue=("strat_discharge_revenue", "sum"),
+    )
+
+    d = daily[
+        ["date", "discharge_mwh", "gross_yuan", "aux_cost_yuan", "net_yuan"]
+    ].copy()
+    d = d.rename(columns={
+        "gross_yuan": "strat_gross_yuan",
+        "aux_cost_yuan": "strat_aux_cost_yuan",
+        "net_yuan": "strat_net_yuan",
+    })
+    d["strat_equivalent_cycles"] = (d["discharge_mwh"] / CAP_MWH).round(4)
+    d["strat_revenue_per_cycle"] = (
+        d["strat_net_yuan"] / d["strat_equivalent_cycles"].replace(0, np.nan)
+    ).round(0)
+
+    out = d.merge(strat_ts, on="date", how="left")
+
+    act = pd.read_csv(metrics_path)
+    rev = pd.read_csv(ACTUAL_REV, usecols=["date", "disc_fee", "main_chg_fee"])
+    rev["date"] = rev["date"].astype(str)
+    act["date"] = act["date"].astype(str)
+    act = act.merge(rev, on="date", how="left")
+    # 与 load_actual 中 gross = disc_fee - main_chg_fee 完全一致
+    act["actual_discharge_revenue"] = act["disc_fee"]
+    act["actual_charge_cost"] = act["main_chg_fee"]
+    act["actual_equivalent_cycles"] = (act["discharge_mwh"] / CAP_MWH).round(4)
+    act["actual_revenue_per_cycle"] = (
+        act["net_yuan"] / act["actual_equivalent_cycles"].replace(0, np.nan)
+    ).round(0)
+    act = act.rename(columns={
+        "gross_yuan": "actual_gross_yuan",
+        "aux_cost_yuan": "actual_aux_cost_yuan",
+        "net_yuan": "actual_net_yuan",
+    })
+    act_keep = act[
+        [
+            "date",
+            "actual_equivalent_cycles",
+            "actual_gross_yuan",
+            "actual_aux_cost_yuan",
+            "actual_net_yuan",
+            "actual_revenue_per_cycle",
+            "actual_charge_cost",
+            "actual_discharge_revenue",
+        ]
+    ]
+    out = out.merge(act_keep, on="date", how="left")
+
+    for c in [
+        "strat_gross_yuan",
+        "strat_aux_cost_yuan",
+        "strat_net_yuan",
+        "strat_revenue_per_cycle",
+        "strat_charge_cost",
+        "strat_discharge_revenue",
+        "actual_gross_yuan",
+        "actual_aux_cost_yuan",
+        "actual_net_yuan",
+        "actual_revenue_per_cycle",
+        "actual_charge_cost",
+        "actual_discharge_revenue",
+    ]:
+        if c in out.columns:
+            out[c] = out[c].round(0)
+
+    return out[
+        [
+            "date",
+            "strat_equivalent_cycles",
+            "strat_gross_yuan",
+            "strat_aux_cost_yuan",
+            "strat_net_yuan",
+            "strat_revenue_per_cycle",
+            "strat_charge_cost",
+            "strat_discharge_revenue",
+            "actual_equivalent_cycles",
+            "actual_gross_yuan",
+            "actual_aux_cost_yuan",
+            "actual_net_yuan",
+            "actual_revenue_per_cycle",
+            "actual_charge_cost",
+            "actual_discharge_revenue",
+        ]
+    ]
+
+
 def build_weekly_summary(daily: pd.DataFrame,
                          actual_rev: pd.DataFrame) -> pd.DataFrame:
     """逐周汇总，合并实际现货收益。"""
@@ -228,6 +341,15 @@ def main():
     out_daily = OUT_DIR / "daily_summary.csv"
     daily.to_csv(out_daily, index=False, encoding="utf-8-sig")
     print(f"  已保存：{out_daily}  ({len(daily)} 行)")
+
+    # ── 逐日循环收益（策略净=与 daily_summary 一致；非 slot 之和）──────────────
+    try:
+        cyc = build_daily_cycle_revenue(ts, daily)
+        out_cyc = OUT_DIR / "daily_cycle_revenue.csv"
+        cyc.to_csv(out_cyc, index=False, encoding="utf-8-sig")
+        print(f"  已保存：{out_cyc}  ({len(cyc)} 行)")
+    except FileNotFoundError as e:
+        print(f"  跳过 daily_cycle_revenue.csv：{e}")
 
     # ── 逐周汇总 ────────────────────────────────────────────────────────────
     print("\n[4/4] 整理逐周汇总（合并实际现货）…")

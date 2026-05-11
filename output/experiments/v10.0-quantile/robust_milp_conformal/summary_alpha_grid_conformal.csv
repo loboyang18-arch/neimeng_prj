@@ -1,0 +1,4 @@
+alpha,n_days,n_loss_days,net_total_wan,pf_total_wan,realization_rate,avg_interval_width
+0.0,81,17,1113.69,2264.07,0.4919,40.79
+0.5,81,18,1122.47,2264.07,0.4958,40.79
+1.0,81,16,1141.83,2264.07,0.5043,40.79

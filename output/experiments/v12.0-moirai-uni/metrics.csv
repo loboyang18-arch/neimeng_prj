@@ -1,0 +1,13 @@
+,0
+model_id,Salesforce/moirai-1.1-R-small
+use_covariates,False
+covariates,[]
+context_hours,720
+patch_size,32
+num_samples,100
+n_test_days,81
+mae,144.6
+rmse,192.98
+bias,-13.12
+coverage_80,0.801
+interval_width,444.0

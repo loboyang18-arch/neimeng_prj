@@ -35,3 +35,13 @@ output/experiments/*/mean_shape_train.npy
 # Anomaly detector artifacts (重新生成: python -m src.anomaly.{labels,features,train_detector})
 output/experiments/anomaly-detector/detector_lgbm.txt
 output/experiments/anomaly-detector/day_features.csv
+
+# Pickle files (can be regenerated from CSVs)
+output/experiments/**/*.pkl
+
+# Log files
+logs/
+output/**/*.log
+
+# Excel files (generated from CSVs)
+output/**/*.xlsx

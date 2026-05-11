@@ -57,6 +57,11 @@ AUX_MWH          = 13.03                     # 日辅助用电（MWh/天）
 TERMINAL_DISCOUNT = 0.95                     # 跨日剩余电量的终端价值折扣
 
 # ── 核心 MILP 求解 ──────────────────────────────────────────────────────────
+class MILPSolverFailure(RuntimeError):
+    """MILP 求解器在时限内未找到可行解。"""
+    pass
+
+
 def _build_milp_15min(prices_96: np.ndarray,
                       eta_c: float = ETA_1WAY,
                       eta_d: float = ETA_1WAY,
@@ -65,17 +70,25 @@ def _build_milp_15min(prices_96: np.ndarray,
                       dp_ramp: float = DP_RAMP,
                       l_min: int = L_MIN,
                       max_charge_mwh: float = MAX_CHARGE_MWH,
+                      min_charge_mwh: float = 0.0,
                       soc_init: float = 0.0,
                       force_zero_end: bool = True,
-                      next_day_avg_price: float = 0.0):
+                      next_day_avg_price: float = 0.0,
+                      prices_discharge_96: np.ndarray | None = None,
+                      cap_comp_per_mwh: float = 0.0,
+                      enforce_switch_gap: bool = True,
+                      time_limit: float = 60.0,
+                      raise_on_failure: bool = False):
     """
     构建并求解 15 分钟粒度日前充放电 MILP。
 
     Args:
-        soc_init          : 日初 SOC（MWh），跨日时传入前一天日末 SOC。
-        force_zero_end    : 若 True，强制 soc[T-1]=0（日末放空）；
-                            若 False，日末 SOC 可自由，终端价值 = next_day_avg_price × eta_d × TERMINAL_DISCOUNT。
-        next_day_avg_price: 次日预测平均电价（元/MWh），用于计算终端价值，仅在 force_zero_end=False 时有效。
+        prices_96          : 价格序列；缺省时也用作放电价格（即标准 MILP）。
+        prices_discharge_96: 鲁棒模式下放电时假设的价格（通常用 P10 - 偏低）；
+                             此时 prices_96 视作充电时假设的价格（通常用 P90 - 偏高）。
+        soc_init           : 日初 SOC（MWh），跨日时传入前一天日末 SOC。
+        force_zero_end     : 若 True，强制 soc[T-1]=0（日末放空）。
+        next_day_avg_price : 次日预测平均电价，用于跨日终端价值。
 
     Returns:
         (c, d, soc)：各长度 96 的 ndarray；求解失败时返回零数组。
@@ -88,19 +101,24 @@ def _build_milp_15min(prices_96: np.ndarray,
     IYD = 3 * T            # y_d[0..95]（放电二值）
     IS  = 4 * T            # soc[0..95]
 
-    prices = np.asarray(prices_96, dtype=float)
+    p_charge = np.asarray(prices_96, dtype=float)
+    p_discharge = p_charge if prices_discharge_96 is None \
+        else np.asarray(prices_discharge_96, dtype=float)
 
     # ── 目标函数 ─────────────────────────────────────────────────────────────
-    # minimize Σ prices·c - Σ prices·d  (等价于 maximize 净收益)
+    # minimize Σ p_charge·c - Σ (p_discharge + cap_comp)·d  (等价于 maximize 净收益)
     # 收益单位：元，各时段能量 = power × DT（MWh）
+    # cap_comp_per_mwh：放电容量补偿（元/MWh），与电价并列计入放电收入
+    # 系数缩放（OBJ_SCALE）：HiGHS 对绝对系数尺度敏感，缩放后 MIP gap 收敛更稳；
+    # 仅缩放目标，约束系数与可行域不变，最优解相同。
+    OBJ_SCALE = 1000.0
     obj = np.zeros(N)
-    obj[IC:IC + T] = +prices * DT    # 充电成本
-    obj[ID:ID + T] = -prices * DT    # 放电收入
+    obj[IC:IC + T] = +p_charge * DT / OBJ_SCALE                          # 充电成本
+    obj[ID:ID + T] = -(p_discharge + cap_comp_per_mwh) * DT / OBJ_SCALE  # 放电收入 + 补偿
     # 跨日终端价值：持有 1 MWh 至次日的净收益预期 = next_day_avg × eta_d × discount
-    # 在 minimize 目标中对应负号（持有有价值 → 减少成本）
     if not force_zero_end and next_day_avg_price > 0:
         terminal_value_per_mwh = next_day_avg_price * eta_d * TERMINAL_DISCOUNT
-        obj[IS + T - 1] = -terminal_value_per_mwh  # soc[T-1] 每 MWh 的"节省"
+        obj[IS + T - 1] = -terminal_value_per_mwh / OBJ_SCALE
 
     # ── 变量界 ───────────────────────────────────────────────────────────────
     lb = np.zeros(N)
@@ -135,6 +153,7 @@ def _build_milp_15min(prices_96: np.ndarray,
     # ⑪  最小连续充电 y_c      按 t×k 展开（≤ T×(l_min-1)）行
     # ⑫  最小连续放电 y_d      同上
     # ⑬  日充电量上限           1   行
+    # ⑭  日充电量下限（可选）   1   行（仅当 min_charge_mwh > 0 时启用）
     def _min_run_count(TT, LM):
         """统计最小连续运行约束行数：t∈[0,TT-1], k∈[1,LM-1], t+k<TT"""
         cnt = 0
@@ -145,7 +164,11 @@ def _build_milp_15min(prices_96: np.ndarray,
         return cnt
 
     n_minrun = _min_run_count(T, l_min)  # 每种二值变量的最小运行约束数
-    n_con = 4 * T + 6 * (T - 1) + 2 * n_minrun + 1
+    has_min_charge = float(min_charge_mwh) > 0
+    # 充放电切换间隔约束 ⑤⑥（共 2*(T-1) 行）；取消时省去 2*(T-1) 行
+    n_switch_rows = 2 * (T - 1) if enforce_switch_gap else 0
+    n_con = (4 * T + 4 * (T - 1) + n_switch_rows + 2 * n_minrun + 1
+             + (1 if has_min_charge else 0))
     A     = lil_matrix((n_con, N), dtype=float)
     lb_c  = np.full(n_con, -np.inf)
     ub_c  = np.zeros(n_con)
@@ -186,19 +209,21 @@ def _build_milp_15min(prices_96: np.ndarray,
         ub_c[row] = 1.0
         row += 1
 
-    # ⑤ 充→放间隔：y_c[t] + y_d[t+1] ≤ 1
-    for t in range(T - 1):
-        A[row, IYC + t]     = 1.0
-        A[row, IYD + t + 1] = 1.0
-        ub_c[row] = 1.0
-        row += 1
-
-    # ⑥ 放→充间隔：y_d[t] + y_c[t+1] ≤ 1
-    for t in range(T - 1):
-        A[row, IYD + t]     = 1.0
-        A[row, IYC + t + 1] = 1.0
-        ub_c[row] = 1.0
-        row += 1
+    # ⑤ 充→放间隔（可选）：y_c[t] + y_d[t+1] ≤ 1
+    # ⑥ 放→充间隔（可选）：y_d[t] + y_c[t+1] ≤ 1
+    # 取消该约束时整数搜索空间显著缩小，HiGHS 收敛更稳；
+    # 物理上等价于"充放电切换无需 15min 间隔"。
+    if enforce_switch_gap:
+        for t in range(T - 1):
+            A[row, IYC + t]     = 1.0
+            A[row, IYD + t + 1] = 1.0
+            ub_c[row] = 1.0
+            row += 1
+        for t in range(T - 1):
+            A[row, IYD + t]     = 1.0
+            A[row, IYC + t + 1] = 1.0
+            ub_c[row] = 1.0
+            row += 1
 
     # ⑦ c 爬坡上升：c[t] - c[t-1] ≤ dp_ramp
     for t in range(1, T):
@@ -261,32 +286,227 @@ def _build_milp_15min(prices_96: np.ndarray,
     ub_c[row] = max_charge_mwh
     row += 1
 
+    # ⑭ 日充电量下限（可选）：Σ c[t]·DT ≥ min_charge_mwh
+    #    用于在大额放电补偿（如 350 元/MWh）下，强制 MILP 做满循环避免遗失补偿。
+    if has_min_charge:
+        for t in range(T):
+            A[row, IC + t] = -DT  # -Σ c·DT ≤ -min_charge_mwh ⇔ Σ c·DT ≥ min_charge_mwh
+        ub_c[row] = -float(min_charge_mwh)
+        row += 1
+
     assert row == n_con, f"约束行计数错误: {row} != {n_con}"
 
     # ── 求解 ─────────────────────────────────────────────────────────────────
+    # 仅在大额容量补偿场景下放宽 mip_rel_gap，保证旧约束/无补偿场景与历史一致。
+    if cap_comp_per_mwh > 0:
+        solver_opts = {
+            "disp": False,
+            "time_limit": float(time_limit),
+            "mip_rel_gap": 1e-3,
+        }
+    else:
+        solver_opts = {
+            "disp": False,
+            "time_limit": float(time_limit),
+        }
     res = milp(
         obj,
         constraints=LinearConstraint(csc_matrix(A), lb_c, ub_c),
         integrality=integ,
         bounds=Bounds(lb, ub),
-        options={"disp": False, "time_limit": 60.0},
+        options=solver_opts,
     )
 
-    if res.status not in (0, 3):
+    # status 0=最优, 3=超时但有可行解；其他=失败
+    if res.status not in (0, 3) or res.x is None:
+        msg = (f"MILP 求解未找到可行解 (status={res.status}, "
+               f"time_limit={time_limit}s, cap_comp={cap_comp_per_mwh})")
+        if raise_on_failure:
+            raise MILPSolverFailure(msg)
+        import warnings
+        warnings.warn(msg + "，返回零方案", RuntimeWarning, stacklevel=2)
         return np.zeros(T), np.zeros(T), np.zeros(T)
 
     x = res.x
     return x[IC:IC + T], x[ID:ID + T], x[IS:IS + T]
 
 
+def _build_milp_cbc(prices_96: np.ndarray,
+                    eta_c: float = ETA_1WAY,
+                    eta_d: float = ETA_1WAY,
+                    cap_mwh: float = CAP_MWH,
+                    p_max: float = P_MAX_MW,
+                    dp_ramp: float = DP_RAMP,
+                    l_min: int = L_MIN,
+                    max_charge_mwh: float = MAX_CHARGE_MWH,
+                    soc_init: float = 0.0,
+                    force_zero_end: bool = True,
+                    next_day_avg_price: float = 0.0,
+                    prices_discharge_96: np.ndarray | None = None,
+                    cap_comp_per_mwh: float = 0.0,
+                    enforce_switch_gap: bool = True,
+                    time_limit: float = 120.0,
+                    raise_on_failure: bool = False):
+    """PuLP + CBC 版本的 15 分钟 MILP 求解。
+
+    与 _build_milp_15min 完全相同的变量/约束/目标结构，但使用 CBC 求解器
+    （对 192 个二值变量 + 容量补偿目标函数远比 HiGHS 稳定）。
+
+    cap_comp_per_mwh 直接进入目标函数：每放电 1 MWh 额外获得 cap_comp 元，
+    求解器自动决定最优循环次数——无需 min_charge 硬约束。
+    """
+    import pulp
+
+    T = 96
+    p_charge = np.asarray(prices_96, dtype=float)
+    p_discharge = p_charge if prices_discharge_96 is None \
+        else np.asarray(prices_discharge_96, dtype=float)
+
+    prob = pulp.LpProblem("battery_dispatch_15min", pulp.LpMaximize)
+
+    c   = [pulp.LpVariable(f"c_{t}",   0, p_max) for t in range(T)]
+    d   = [pulp.LpVariable(f"d_{t}",   0, p_max) for t in range(T)]
+    y_c = [pulp.LpVariable(f"yc_{t}",  0, 1, cat=pulp.LpBinary) for t in range(T)]
+    y_d = [pulp.LpVariable(f"yd_{t}",  0, 1, cat=pulp.LpBinary) for t in range(T)]
+
+    soc_ub = 0.0 if force_zero_end else cap_mwh
+    soc = [pulp.LpVariable(f"soc_{t}", 0, cap_mwh) for t in range(T)]
+    if force_zero_end:
+        soc[T - 1].upBound = 0.0
+
+    # ── 目标函数：maximize 放电收入(含补偿) - 充电成本 + 终端价值 ──
+    revenue = pulp.lpSum(
+        (p_discharge[t] + cap_comp_per_mwh) * d[t] * DT
+        - p_charge[t] * c[t] * DT
+        for t in range(T)
+    )
+    if not force_zero_end and next_day_avg_price > 0:
+        terminal = next_day_avg_price * eta_d * TERMINAL_DISCOUNT * soc[T - 1]
+        revenue += terminal
+    prob += revenue
+
+    # ── 约束 ──
+
+    # ① SOC 动态方程
+    for t in range(T):
+        prev_soc = soc_init if t == 0 else soc[t - 1]
+        prob += soc[t] == prev_soc + eta_c * c[t] * DT - d[t] * DT / eta_d
+
+    # ② c[t] ≤ p_max·y_c[t]
+    for t in range(T):
+        prob += c[t] <= p_max * y_c[t]
+
+    # ③ d[t] ≤ p_max·y_d[t]
+    for t in range(T):
+        prob += d[t] <= p_max * y_d[t]
+
+    # ④ y_c[t] + y_d[t] ≤ 1
+    for t in range(T):
+        prob += y_c[t] + y_d[t] <= 1
+
+    # ⑤⑥ 切换间隔（可选）
+    if enforce_switch_gap:
+        for t in range(T - 1):
+            prob += y_c[t] + y_d[t + 1] <= 1
+            prob += y_d[t] + y_c[t + 1] <= 1
+
+    # ⑦⑧ 充电爬坡
+    for t in range(1, T):
+        prob += c[t] - c[t - 1] <= dp_ramp
+        prob += c[t - 1] - c[t] <= dp_ramp
+
+    # ⑨⑩ 放电爬坡
+    for t in range(1, T):
+        prob += d[t] - d[t - 1] <= dp_ramp
+        prob += d[t - 1] - d[t] <= dp_ramp
+
+    # ⑪ 最小连续充电 ≥ l_min 时段
+    for t in range(T):
+        prev = 0 if t == 0 else y_c[t - 1]
+        for k in range(1, l_min):
+            if t + k < T:
+                prob += y_c[t + k] >= y_c[t] - prev
+
+    # ⑫ 最小连续放电 ≥ l_min 时段
+    for t in range(T):
+        prev = 0 if t == 0 else y_d[t - 1]
+        for k in range(1, l_min):
+            if t + k < T:
+                prob += y_d[t + k] >= y_d[t] - prev
+
+    # ⑬ 日充电量上限
+    prob += pulp.lpSum(c[t] * DT for t in range(T)) <= max_charge_mwh
+
+    # ── 求解 ──
+    solver = pulp.PULP_CBC_CMD(
+        msg=0,
+        timeLimit=int(time_limit),
+        gapRel=0.05,
+    )
+    prob.solve(solver)
+
+    # CBC status: 1=Optimal, 0=Not Solved (可能超时但有可行解), -1=Infeasible, -2=Unbounded
+    has_solution = (prob.status == pulp.constants.LpStatusOptimal or
+                    (prob.status == pulp.constants.LpStatusNotSolved
+                     and prob.sol_status == pulp.constants.LpSolutionFeasible))
+    if not has_solution:
+        msg = f"CBC 求解失败 (status={prob.status}: {pulp.LpStatus[prob.status]}, time_limit={time_limit}s)"
+        if raise_on_failure:
+            raise MILPSolverFailure(msg)
+        import warnings
+        warnings.warn(msg + "，返回零方案", RuntimeWarning, stacklevel=2)
+        return np.zeros(T), np.zeros(T), np.zeros(T)
+
+    c_out   = np.array([v.varValue or 0.0 for v in c])
+    d_out   = np.array([v.varValue or 0.0 for v in d])
+    soc_out = np.array([v.varValue or 0.0 for v in soc])
+    return c_out, d_out, soc_out
+
+
 def solve_day_milp_15min(prices_96: np.ndarray, **kwargs):
-    """基于预测电价（15分钟展开）求解最优充放电计划。"""
-    return _build_milp_15min(np.asarray(prices_96, dtype=float), **kwargs)
+    """基于预测电价（15分钟展开）求解最优充放电计划。默认使用 CBC 求解器。"""
+    return _build_milp_cbc(np.asarray(prices_96, dtype=float), **kwargs)
 
 
 def solve_pf_day_15min(actual_96: np.ndarray, **kwargs):
-    """完全预知基准：用真实 15 分钟电价求解同一 MILP。"""
-    return _build_milp_15min(np.asarray(actual_96, dtype=float), **kwargs)
+    """完全预知基准：用真实 15 分钟电价求解同一 MILP。默认使用 CBC 求解器。"""
+    return _build_milp_cbc(np.asarray(actual_96, dtype=float), **kwargs)
+
+
+def solve_day_milp_15min_robust(p10_96: np.ndarray,
+                                 p50_96: np.ndarray,
+                                 p90_96: np.ndarray,
+                                 alpha: float = 0.5,
+                                 **kwargs):
+    """鲁棒 MILP：基于分位数预测求解充放电计划。
+
+    思路（pessimistic minmax over P10–P90）：
+      - 充电成本按 (1-α)·P50 + α·P90 估计（假设充电时电价偏高）
+      - 放电收入按 (1-α)·P50 + α·P10 估计（假设放电时电价偏低）
+      - α=0  退化为标准 MILP（用 P50）
+      - α=1  完全保守
+      - 推荐 α ∈ [0.3, 0.7]
+
+    Args:
+        p10_96, p50_96, p90_96: 各 96 维分位数序列（15 分钟粒度，元/MWh）
+        alpha:  鲁棒强度，∈ [0, 1]
+        kwargs: 透传给 `_build_milp_15min`（如 soc_init / force_zero_end / next_day_avg_price）
+
+    Returns:
+        (c, d, soc)：与 solve_day_milp_15min 一致
+    """
+    p10 = np.asarray(p10_96, dtype=float)
+    p50 = np.asarray(p50_96, dtype=float)
+    p90 = np.asarray(p90_96, dtype=float)
+
+    p_charge = (1.0 - alpha) * p50 + alpha * p90
+    p_discharge = (1.0 - alpha) * p50 + alpha * p10
+
+    return _build_milp_15min(
+        prices_96=p_charge,
+        prices_discharge_96=p_discharge,
+        **kwargs,
+    )
 
 
 # ── 收益评估 ────────────────────────────────────────────────────────────────

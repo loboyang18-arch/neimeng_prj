@@ -1,0 +1,9 @@
+,0
+model_id,amazon/chronos-bolt-base
+context_hours,720
+n_test_days,81
+mae,143.2545548199902
+rmse,192.1557611918717
+bias,-16.68485529375849
+coverage_80,0.7654320987654321
+interval_width,412.423141036014

@@ -1,0 +1,16 @@
+,0
+n_days,81.0
+old_charge_mwh_total,87685.09
+old_discharge_mwh_total,79793.37999999999
+old_cycles_avg,1.352962962962963
+old_net_total,11268219.0
+old_pf_net_total,22610049.0
+new_charge_mwh_total,132008.4
+new_discharge_mwh_total,120127.67000000001
+new_cycles_avg,4.074691358024691
+new_arb_net_total,3383152.0
+new_cap_comp_total,42044676.0
+new_net_total,45427841.0
+new_pf_net_total,54993934.0
+old_realization,0.4983721618648416
+new_realization,0.8260518514641997
